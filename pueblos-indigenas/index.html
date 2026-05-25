@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cemanáhuac — Pueblos Indígenas de América</title>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://conoceteyreconocete.com/pueblos-indigenas/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://conoceteyreconocete.com/pueblos-indigenas/">
+  <meta property="og:title" content="Cemanáhuac — Pueblos Indígenas de América">
+  <meta property="og:description" content="Explora los territorios indígenas de América en un globo 3D interactivo. Datos de Native Land Digital.">
+  <meta property="og:image" content="https://conoceteyreconocete.com/og-image.jpg">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Conócete y Reconócete">
+  <link rel="icon" href="../Loco%20CYR%20transparente.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/earcut/2.2.4/earcut.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body, #app { margin: 0; padding: 0; width: 100%; height: 100vh; overflow: hidden; background: #000814; }
+
+    canvas#globe { display: block; width: 100%; height: 100%; cursor: grab; }
+    canvas#globe:active { cursor: grabbing; }
+
+    /* ── HEADER ── */
+    #hdr {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+      background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: #c8a96e; letter-spacing: 2px; }
+    .tagline { font-size: 9px; color: #8b6914; letter-spacing: 3px; font-style: italic; margin-top: 2px; }
+    #breadcrumb { font-size: 11px; color: #8b6914; font-family: 'Lato', sans-serif; letter-spacing: 0.05em; }
+    .controls { display: flex; gap: 8px; align-items: center; }
+    .ctrl {
+      background: rgba(200,169,110,0.15); border: 1px solid #8b6914;
+      color: #c8a96e; width: 30px; height: 30px; border-radius: 6px;
+      cursor: pointer; font-size: 16px; font-family: monospace;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .ctrl:hover { background: rgba(200,169,110,0.3); }
+
+    /* ── HINT ── */
+    #hint {
+      position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.6); color: #c8a96e; font-size: 11px;
+      padding: 6px 16px; border-radius: 20px;
+      border: 1px solid rgba(139,105,20,0.4); font-style: italic;
+      transition: opacity 1s; pointer-events: none; white-space: nowrap;
+      font-family: 'Lato', sans-serif; z-index: 10;
+    }
+
+    /* ── TOOLTIP ── */
+    #tooltip {
+      position: fixed; display: none; pointer-events: none;
+      background: rgba(0,0,0,0.82); color: #c8a96e; font-size: 11px;
+      padding: 5px 12px; border-radius: 6px; font-family: 'Lato', sans-serif;
+      border: 1px solid rgba(200,169,110,0.3); z-index: 30; white-space: nowrap;
+    }
+
+    /* ── DISCLAIMER ── */
+    #disclaimer {
+      position: fixed; bottom: 8px; left: 0; right: 0; text-align: center;
+      font-size: 9px; color: rgba(255,255,255,0.35); font-style: italic;
+      font-family: 'Cormorant Garamond', serif; pointer-events: none; z-index: 5;
+      padding: 0 20px;
+    }
+
+    /* ── CARD OVERLAY ── */
+    #cardOverlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55);
+      align-items: center; justify-content: center; z-index: 100;
+    }
+    #cardOverlay.visible { display: flex; }
+
+    #card {
+      background: #faf6ee; border-radius: 12px; width: 460px;
+      max-height: 85vh; overflow-y: auto;
+      border-top: 4px solid #c8a96e;
+      transform: perspective(900px) translateZ(-80px) scale(0.8);
+      transition: transform .45s cubic-bezier(.175,.885,.32,1.275);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+      position: relative;
+      scrollbar-width: thin; scrollbar-color: #c8a96e transparent;
+    }
+    #card::-webkit-scrollbar { width: 4px; }
+    #card::-webkit-scrollbar-thumb { background: #c8a96e; border-radius: 2px; }
+    #cardOverlay.visible #card { transform: perspective(900px) translateZ(0) scale(1); }
+
+    .card-hero {
+      height: 110px; display: flex; align-items: flex-end; padding: 14px;
+      border-radius: 8px 8px 0 0; position: relative; overflow: hidden;
+    }
+    .card-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,0.55); color: #c8a96e;
+      font-size: 9px; padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 1px; font-family: 'Lato', sans-serif; text-transform: uppercase;
+    }
+    .card-close {
+      position: absolute; top: 10px; right: 10px;
+      background: rgba(0,0,0,0.6); color: #c8a96e; border: none;
+      width: 28px; height: 28px; border-radius: 50%;
+      cursor: pointer; font-size: 14px; z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .card-close:hover { background: #2c1a0a; }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 26px;
+      font-weight: 600; color: #fff; line-height: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+    .card-sub {
+      font-size: 11px; color: rgba(255,255,255,0.85); margin-top: 3px;
+      font-family: 'Lato', sans-serif; text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .card-body { padding: 14px 16px; }
+    .card-section { margin-bottom: 16px; }
+    .section-title {
+      font-size: 9px; letter-spacing: 3px; color: #8b6914;
+      text-transform: uppercase; margin-bottom: 10px;
+      font-family: 'Lato', sans-serif; font-weight: 700;
+      padding-bottom: 5px; border-bottom: 1px solid rgba(200,169,110,0.25);
+    }
+    .carousel {
+      display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+    .thumb {
+      min-width: 70px; height: 70px; border-radius: 8px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      border: 1px solid rgba(200,169,110,0.3); flex-shrink: 0;
+      font-size: 22px; gap: 4px;
+    }
+    .thumb-label { font-size: 9px; color: rgba(255,255,255,0.75); font-family: 'Lato', sans-serif; }
+    .food-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .food-tag {
+      background: #f0e8d4; border: 1px solid #c8a96e; color: #6b4a10;
+      font-size: 11px; padding: 3px 10px; border-radius: 20px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+    }
+    .customs-text {
+      font-size: 13px; color: #3a2a0a; line-height: 1.65;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+    }
+    .protocol-item {
+      display: flex; gap: 8px; align-items: flex-start;
+      font-size: 12px; color: #3a2a0a; line-height: 1.5;
+      font-family: 'Lato', sans-serif; background: #f5ede0;
+      border-radius: 6px; padding: 7px 10px; margin-bottom: 5px;
+    }
+    .protocol-check { color: #8b6914; flex-shrink: 0; font-weight: 700; }
+    .card-cta {
+      display: block; width: calc(100% - 28px); margin: 0 14px 14px;
+      padding: 10px; background: #2c1a0a; color: #c8a96e; border: none;
+      border-radius: 6px; font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; letter-spacing: 1px; cursor: pointer; text-align: center;
+      transition: background 0.2s;
+    }
+    .card-cta:hover { background: #3d2514; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      #card { width: 95vw; }
+      .logo { font-size: 16px; }
+      #breadcrumb { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <header id="hdr">
+    <div>
+      <div class="logo">Cemanáhuac</div>
+      <div class="tagline">Conectando pueblos y conciencia</div>
+    </div>
+    <div id="breadcrumb">El continente americano</div>
+    <div class="controls">
+      <button class="ctrl" id="btnZoomIn"  title="Acercar">+</button>
+      <button class="ctrl" id="btnZoomOut" title="Alejar">−</button>
+      <button class="ctrl" id="btnReset"   title="Restablecer">↺</button>
+    </div>
+  </header>
+
+  <canvas id="globe"></canvas>
+
+  <div id="hint">Arrastra el globo &nbsp;·&nbsp; Scroll para zoom &nbsp;·&nbsp; Clic para explorar</div>
+
+  <div id="tooltip"></div>
+
+  <div id="disclaimer">
+    Datos de territorios: Native Land Digital (native-land.ca) — recurso educativo, no legal. Los límites pueden ser imprecisos — consulta directamente con las naciones indígenas para información oficial.
+  </div>
+
+  <div id="cardOverlay" onclick="handleOverlayClick(event)">
+    <div id="card">
+      <div class="card-hero" id="cardHero">
+        <div class="card-badge" id="cardBadge">América</div>
+        <button class="card-close" onclick="closeCard()">✕</button>
+        <div>
+          <div class="card-title" id="cardTitle">Pueblo</div>
+          <div class="card-sub"   id="cardSub">Territorio indígena · América</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="section-title">🪡 Atuendos típicos</div>
+          <div class="carousel" id="cardCarousel"></div>
+        </div>
+        <div class="card-section">
+          <div class="section-title">🌽 Alimentos representativos</div>
+          <div class="food-tags" id="cardFoods"></div>
+        </div>
+        <div class="card-section">
+          <div class="section-title">🔥 Usos y costumbres</div>
+          <div class="customs-text" id="cardCustoms"></div>
+        </div>
+        <div class="card-section">
+          <div class="section-title">🤝 Protocolo de convivencia</div>
+          <div id="cardProtocols"></div>
+        </div>
+      </div>
+      <button class="card-cta" id="cardCta">Explorar más sobre este pueblo ↗</button>
+    </div>
+  </div>
+
+</div><!-- #app -->
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════
+   1. DATOS DE PUEBLOS
+   NOTA: En producción mover NATIVE_LAND_API_KEY a función serverless
+   ═══════════════════════════════════════ */
+const NATIVE_LAND_API_KEY = 'GCD1K8KADaoPGqJZW973M'; // mover a serverless en producción
+
+const PUEBLOS_DATA = {
+  "Nahua": {
+    tag: "~1.5M hablantes",
+    foods: ["Tamales","Pozole","Atole","Tlayudas","Huauzontle"],
+    customs: "La milpa es el centro de su vida espiritual y económica. Los temazcales son espacios sagrados de purificación. La danza del Xochipitzahuatl celebra la feminidad y la naturaleza.",
+    protocols: ["Pedir permiso antes de fotografiar ceremonias","Vestir con modestia en espacios sagrados","Aceptar los alimentos ofrecidos como señal de respeto"]
+  },
+  "Maya": {
+    tag: "~800K hablantes",
+    foods: ["Cochinita pibil","Sopa de lima","Papadzules","Poc chuc"],
+    customs: "El hanal pixán honra a los ancestros en noviembre. El cenote es portal sagrado entre mundos. La cerámica de Ticul es arte vivo.",
+    protocols: ["No entrar a cenotes sagrados sin guía local","Respetar restricciones fotográficas en templos","Comprar artesanías directamente a artesanos"]
+  },
+  "Zapotec": {
+    tag: "~450K hablantes",
+    foods: ["Tlayudas","Mole negro","Tasajo","Chapulines"],
+    customs: "La Guelaguetza es reciprocidad colectiva. El tequio es trabajo comunitario obligatorio y sagrado.",
+    protocols: ["No interrumpir asambleas comunitarias","Registrarse con autoridades al llegar","El tequio es obligatorio en comunidades"]
+  },
+  "Navajo": {
+    tag: "~170K hablantes",
+    foods: ["Fry bread","Mutton stew","Blue corn mush","Sumac lemonade"],
+    customs: "El Blessingway restaura la armonía y la belleza. El hogan es vivienda sagrada orientada al este. El tejido navajo es patrimonio mundial.",
+    protocols: ["Las tierras Navajo requieren permiso para fotografiar","No entrar a hogans sin invitación","Comprar directamente en la Nación Navajo"]
+  },
+  "Cherokee": {
+    tag: "~380K personas",
+    foods: ["Hominy","Bean bread","Kanuchi","Ramp soup"],
+    customs: "El Stomp Dance conecta a la comunidad con sus ancestros. El consejo de ancianos guía las decisiones del pueblo.",
+    protocols: ["Respetar los sitios sagrados de las Smoky Mountains","No grabar ceremonias del Stomp Dance","Visitar los museos Cherokee"]
+  },
+  "Wayuu": {
+    tag: "~380K personas",
+    foods: ["Friche","Chicha de maíz","Arepa wayuu","Carne seca"],
+    customs: "El palabrero resuelve conflictos sin violencia. La mochila wayuu es un universo tejido con mensajes.",
+    protocols: ["Siempre aceptar el café o chicha que ofrezcan","No llegar sin anunciarse a una ranchería","Preguntar antes de fotografiar artesanías"]
+  },
+  "Quechua": {
+    tag: "~4M hablantes",
+    foods: ["Pachamanca","Cuy","Chicha de jora","Moraya","Quinua"],
+    customs: "La Pachamama recibe ofrendas en agosto. El ayni es reciprocidad sagrada entre familias y con la tierra.",
+    protocols: ["Descalzarse antes de entrar a espacios sagrados","Participar del ayni si te invitan","No caminar sobre terrazas en descanso"]
+  },
+  "Mapuche": {
+    tag: "~700K personas",
+    foods: ["Muday","Catuto","Milcao","Curanto","Piñones de araucaria"],
+    customs: "El kultrun es el tambor sagrado que representa el universo. La machi realiza ceremonias de sanación. El We Tripantu celebra el Año Nuevo Mapuche en junio.",
+    protocols: ["Pedir permiso para asistir a cualquier ceremonia","El kultrun no es instrumento recreativo","Respetar el protocolo de saludo con el kimün"]
+  },
+  "Aymara": {
+    tag: "~2M hablantes",
+    foods: ["Chuño","Quinua","Api morado","Thimpu","Tunta"],
+    customs: "La Pachamama es centro de la espiritualidad andina. El yatiri lee hojas de coca para guiar decisiones.",
+    protocols: ["La hoja de coca es sagrada, no folclore","Pedir permiso en mercado de brujas","No pisar ofrendas de la Pachamama"]
+  },
+  "Guarani": {
+    tag: "~5M hablantes",
+    foods: ["Mbejú","Sopa paraguaya","Tereré","Chipa","Mbojapé"],
+    customs: "La tierra sin mal es el horizonte espiritual del pueblo. El tereré es ritual social cotidiano. Paraguay es el único país bilingüe con lengua indígena oficial.",
+    protocols: ["El tereré se comparte, nunca se rechaza","Aprender al menos el saludo en guaraní","Respetar el silencio en templos jesuíticos guaraníes"]
+  },
+  "Yanomami": {
+    tag: "~35K personas",
+    foods: ["Plátano asado","Carne de tapir","Larvas de palma","Miel silvestre"],
+    customs: "El shapori viaja al mundo de los espíritus. El shabono es vivienda colectiva circular que refleja su visión del cosmos.",
+    protocols: ["Acceso restringido — requiere permiso FUNAI","No llevar enfermedades a comunidades","Nunca fotografiar sin autorización"]
+  },
+  "Cree": {
+    tag: "~350K personas",
+    foods: ["Bannock","Pemmican","Bayas silvestres","Caribú"],
+    customs: "El pow-wow reúne a las naciones para danza y comunidad. La Gran Medicina es sociedad espiritual ancestral.",
+    protocols: ["Los pow-wows tienen reglas de vestimenta para visitantes","No imitar tocados de guerra","Respetar zonas de caza y recolección"]
+  },
+  "Guna": {
+    tag: "~80K personas",
+    foods: ["Chicha fuerte","Cangrejo","Pescado","Coco","Ñame"],
+    customs: "Las molas son arte textil que cuenta la historia del pueblo. La comarca Guna Yala tiene autonomía política reconocida.",
+    protocols: ["Pagar la tarifa de entrada a la comarca","No fotografiar mujeres en mola sin permiso","Comprar molas directamente a las creadoras"]
+  },
+  "Emberá": {
+    tag: "~50K personas",
+    foods: ["Chontaduro","Borojó","Pescado ahumado","Ñame"],
+    customs: "La pintura corporal con jagua protege espiritualmente. El jaibaná media entre humanos y espíritus.",
+    protocols: ["Pedir guía local para entrar a comunidades ribereñas","No recoger plantas sin autorización del jaibaná","Respetar espacios de ritual en silencio"]
+  }
+};
+
+/* ═══════════════════════════════════════
+   2. PALETA Y CONSTANTES
+   ═══════════════════════════════════════ */
+const PALETTE = [
+  '#c8956e','#8b9e58','#5a8a70','#b87a3a','#7a6e9e',
+  '#9e5a5a','#5a8a8a','#9e8a3a','#c86040','#6a8a50',
+  '#a06030','#4a7a8a','#8a7040','#6a5a9e','#9e7050'
+];
+const GLOBE_R = 1;
+const PI = Math.PI;
+
+/* ═══════════════════════════════════════
+   3. ESTADO
+   ═══════════════════════════════════════ */
+let allTerritories = [];
+let isDragging     = false;
+let prevMouse      = { x: 0, y: 0 };
+let dragStart      = { x: 0, y: 0 };
+let rotationX      = 0;
+let rotationY      = -1.4;   // América centrada (~lon -80°)
+let targetCameraZ  = 2.8;
+let autoRotate     = true;
+let hoveredMesh    = null;
+let hintDismissed  = false;
+
+/* ═══════════════════════════════════════
+   4. THREE.JS SETUP
+   ═══════════════════════════════════════ */
+const canvas   = document.getElementById('globe');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000814);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0, 0, 2.8);
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+const dirLight = new THREE.DirectionalLight(0xfff5e0, 1.2);
+dirLight.position.set(5, 3, 5);
+scene.add(dirLight);
+
+/* ═══════════════════════════════════════
+   5. GRUPOS (comparten rotación)
+   ═══════════════════════════════════════ */
+const globeGroup       = new THREE.Group();
+const territoriesGroup = new THREE.Group();
+const labelsGroup      = new THREE.Group();
+scene.add(globeGroup);
+scene.add(territoriesGroup);
+scene.add(labelsGroup);
+
+/* ═══════════════════════════════════════
+   6. GLOBO + ATMÓSFERA
+   ═══════════════════════════════════════ */
+const globeGeo  = new THREE.SphereGeometry(GLOBE_R, 64, 64);
+const globeMat  = new THREE.MeshPhongMaterial({ shininess: 15 });
+const globeMesh = new THREE.Mesh(globeGeo, globeMat);
+globeGroup.add(globeMesh);
+
+const loader = new THREE.TextureLoader();
+loader.load('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg',
+  t => { globeMat.map = t; globeMat.needsUpdate = true; });
+loader.load('https://unpkg.com/three-globe/example/img/earth-topology.png',
+  t => { globeMat.bumpMap = t; globeMat.bumpScale = 0.05; globeMat.needsUpdate = true; });
+
+const atmoMesh = new THREE.Mesh(
+  new THREE.SphereGeometry(1.015, 32, 32),
+  new THREE.MeshPhongMaterial({ color: 0x4488cc, transparent: true, opacity: 0.1, side: THREE.FrontSide })
+);
+globeGroup.add(atmoMesh);
+
+/* ═══════════════════════════════════════
+   7. ESTRELLAS
+   ═══════════════════════════════════════ */
+(function() {
+  const pos = new Float32Array(3000 * 3);
+  for (let i = 0; i < 3000; i++) {
+    const theta = Math.random() * 2 * PI;
+    const phi   = Math.acos(2 * Math.random() - 1);
+    const r     = 50;
+    pos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+    pos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+    pos[i*3+2] = r * Math.cos(phi);
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.06 })));
+})();
+
+/* ═══════════════════════════════════════
+   8. CARGAR GEOJSON LOCAL
+   ═══════════════════════════════════════ */
+fetch('./territories_americas.geojson')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(data => {
+    allTerritories = data.features;
+    console.log('[Cemanáhuac] Territorios cargados:', allTerritories.length);
+  })
+  .catch(err => console.error('[Cemanáhuac] Error GeoJSON:', err));
+
+/* ═══════════════════════════════════════
+   9. FUNCIONES GEOMÉTRICAS
+   ═══════════════════════════════════════ */
+function latLonToVec3(lat, lon, r) {
+  const phi   = (90 - lat) * PI / 180;
+  const theta = (lon + 180) * PI / 180;
+  return new THREE.Vector3(
+    -r * Math.sin(phi) * Math.cos(theta),
+     r * Math.cos(phi),
+     r * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+function worldPointToLatLon(worldPt) {
+  globeGroup.updateWorldMatrix(true, false);
+  const local = globeGroup.worldToLocal(worldPt.clone());
+  const lat = 90 - Math.acos(Math.max(-1, Math.min(1, local.y / GLOBE_R))) * 180 / PI;
+  const lon = Math.atan2(local.z, -local.x) * 180 / PI;
+  return { lat, lon };
+}
+
+function pointInPolygon(lat, lon, coords) {
+  let inside = false;
+  for (let i = 0, j = coords.length - 1; i < coords.length; j = i++) {
+    const xi = coords[i][0], yi = coords[i][1];
+    const xj = coords[j][0], yj = coords[j][1];
+    if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi))
+      inside = !inside;
+  }
+  return inside;
+}
+
+function getTerritoriesAtPoint(lat, lon) {
+  return allTerritories.filter(f => {
+    const g = f.geometry;
+    if (!g) return false;
+    if (g.type === 'Polygon')
+      return pointInPolygon(lat, lon, g.coordinates[0]);
+    if (g.type === 'MultiPolygon')
+      return g.coordinates.some(p => pointInPolygon(lat, lon, p[0]));
+    return false;
+  });
+}
+
+/* ═══════════════════════════════════════
+   10. RENDERIZAR TERRITORIOS
+   ═══════════════════════════════════════ */
+function clearTerritories() {
+  [territoriesGroup, labelsGroup].forEach(grp => {
+    while (grp.children.length) {
+      const o = grp.children[0];
+      if (o.geometry) o.geometry.dispose();
+      if (o.material) {
+        if (o.material.map) o.material.map.dispose();
+        o.material.dispose();
+      }
+      grp.remove(o);
+    }
+  });
+  hoveredMesh = null;
+}
+
+function makeLabel(name, color) {
+  const w = 256, h = 48;
+  const cvs = document.createElement('canvas');
+  cvs.width = w; cvs.height = h;
+  const ctx = cvs.getContext('2d');
+  ctx.fillStyle = 'rgba(0,0,0,0.62)';
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(2, 2, w-4, h-4, 4) : ctx.rect(2, 2, w-4, h-4);
+  ctx.fill();
+  ctx.font = '600 13px Lato, sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(name.substring(0, 26), w/2, h/2);
+  return new THREE.CanvasTexture(cvs);
+}
+
+function renderTerritories(features) {
+  clearTerritories();
+
+  features.forEach((feature, idx) => {
+    const color = PALETTE[idx % PALETTE.length];
+    const geom  = feature.geometry;
+    if (!geom) return;
+    const name  = feature.properties.Name || feature.properties.name || 'Territorio';
+
+    const polygons = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
+
+    polygons.forEach(polygon => {
+      const ring = polygon[0];
+      if (!ring || ring.length < 4) return;
+
+      /* ── Contorno ── */
+      try {
+        const pts = ring.map(([lo, la]) => latLonToVec3(la, lo, 1.003));
+        const lg  = new THREE.BufferGeometry().setFromPoints(pts);
+        const lm  = new THREE.LineBasicMaterial({ color: new THREE.Color(color) });
+        const ln  = new THREE.Line(lg, lm);
+        ln.userData = { feature, name, color, isLine: true };
+        territoriesGroup.add(ln);
+      } catch(e) { /* skip */ }
+
+      /* ── Relleno con earcut ── */
+      try {
+        const flat2D = ring.flatMap(([lo, la]) => [lo, la]);
+        const idxs   = earcut(flat2D, null, 2);
+        if (!idxs || idxs.length === 0) return;
+
+        const verts = [];
+        ring.forEach(([lo, la]) => {
+          const v = latLonToVec3(la, lo, 1.002);
+          verts.push(v.x, v.y, v.z);
+        });
+
+        const fg = new THREE.BufferGeometry();
+        fg.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
+        fg.setIndex(idxs);
+        fg.computeVertexNormals();
+
+        const fm = new THREE.MeshBasicMaterial({
+          color: new THREE.Color(color),
+          transparent: true, opacity: 0.55,
+          side: THREE.DoubleSide, depthWrite: false
+        });
+        const mesh = new THREE.Mesh(fg, fm);
+        mesh.userData = { feature, name, color, isFill: true };
+        territoriesGroup.add(mesh);
+      } catch(e) { /* skip earcut failures silently */ }
+    });
+
+    /* ── Label (sprite) ── */
+    try {
+      const ring0  = polygons[0][0];
+      const cLon   = ring0.reduce((s, [lo]) => s + lo, 0) / ring0.length;
+      const cLat   = ring0.reduce((s, [, la]) => s + la, 0) / ring0.length;
+      const lPos   = latLonToVec3(cLat, cLon, 1.042);
+      const tex    = makeLabel(name, color);
+      const spr    = new THREE.Sprite(
+        new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false })
+      );
+      spr.position.copy(lPos);
+      spr.scale.set(0.38, 0.072, 1);
+      spr.userData = { isLabel: true };
+      labelsGroup.add(spr);
+    } catch(e) { /* skip */ }
+  });
+}
+
+/* ═══════════════════════════════════════
+   11. RAYCASTER + CLICK HANDLER
+   ═══════════════════════════════════════ */
+const raycaster = new THREE.Raycaster();
+
+function handleClick(cx, cy) {
+  const mouse = new THREE.Vector2(
+    (cx / window.innerWidth)  * 2 - 1,
+    -(cy / window.innerHeight) * 2 + 1
+  );
+  raycaster.setFromCamera(mouse, camera);
+
+  /* ¿Clic en territorio ya visible? */
+  const fills = territoriesGroup.children.filter(c => c.userData.isFill);
+  if (fills.length) {
+    const hits = raycaster.intersectObjects(fills);
+    if (hits.length) {
+      openCard(hits[0].object.userData.feature, hits[0].object.userData.color);
+      return;
+    }
+  }
+
+  /* ¿Clic en el globo? */
+  const gHits = raycaster.intersectObject(globeMesh);
+  if (gHits.length) {
+    dismissHint();
+    autoRotate = false;
+    const { lat, lon } = worldPointToLatLon(gHits[0].point);
+    const found = getTerritoriesAtPoint(lat, lon);
+
+    if (found.length > 0) {
+      renderTerritories(found);
+      document.getElementById('breadcrumb').textContent =
+        `El continente · ${found.length} pueblo${found.length !== 1 ? 's' : ''} encontrado${found.length !== 1 ? 's' : ''}`;
+    } else {
+      clearTerritories();
+      document.getElementById('breadcrumb').textContent =
+        `Sin territorios registrados · Lat ${lat.toFixed(1)}° Lon ${lon.toFixed(1)}°`;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════
+   12. CARD
+   ═══════════════════════════════════════ */
+function openCard(feature, color) {
+  const name = feature.properties.Name || feature.properties.name || 'Territorio';
+  const col  = color || '#c8956e';
+
+  const key  = Object.keys(PUEBLOS_DATA).find(k =>
+    name.toLowerCase().includes(k.toLowerCase()) ||
+    k.toLowerCase().includes(name.toLowerCase().split(/\s+/)[0])
+  );
+  const data = key ? PUEBLOS_DATA[key] : null;
+
+  document.getElementById('cardBadge').textContent  = 'América · ' + name;
+  document.getElementById('cardTitle').textContent  = name;
+  document.getElementById('cardSub').textContent    = data ? data.tag : 'Territorio indígena · América';
+  document.getElementById('cardHero').style.background =
+    `linear-gradient(135deg, ${col} 0%, #1a0a00 100%)`;
+
+  /* Carrusel */
+  const thumbs = [
+    { i: '👩', l: 'Mujer' }, { i: '👨', l: 'Hombre' },
+    { i: '🪶', l: 'Ceremonial' }, { i: '🎉', l: 'Festivo' }
+  ];
+  document.getElementById('cardCarousel').innerHTML = thumbs.map(t =>
+    `<div class="thumb" style="background:linear-gradient(135deg,${col}99,#1a0a0099)">
+       <span>${t.i}</span><span class="thumb-label">${t.l}</span>
+     </div>`).join('');
+
+  /* Alimentos */
+  document.getElementById('cardFoods').innerHTML = data
+    ? data.foods.map(f => `<span class="food-tag">${f}</span>`).join('')
+    : `<span style="font-size:12px;color:#8b6914;font-style:italic;font-family:'Cormorant Garamond',serif">Contenido completo próximamente</span>`;
+
+  /* Costumbres */
+  document.getElementById('cardCustoms').textContent = data ? data.customs : '';
+
+  /* Protocolos */
+  document.getElementById('cardProtocols').innerHTML = data
+    ? data.protocols.map(p =>
+        `<div class="protocol-item"><span class="protocol-check">✓</span><span>${p}</span></div>`
+      ).join('')
+    : '';
+
+  document.getElementById('cardCta').onclick = () =>
+    window.open('https://native-land.ca', '_blank');
+
+  document.getElementById('cardOverlay').classList.add('visible');
+}
+
+function closeCard() {
+  document.getElementById('cardOverlay').classList.remove('visible');
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('cardOverlay')) closeCard();
+}
+
+/* ═══════════════════════════════════════
+   13. CONTROLES — MOUSE
+   ═══════════════════════════════════════ */
+const tooltip = document.getElementById('tooltip');
+
+function dismissHint() {
+  if (hintDismissed) return;
+  hintDismissed = true;
+  const h = document.getElementById('hint');
+  h.style.opacity = '0';
+  setTimeout(() => h.style.display = 'none', 1000);
+}
+
+canvas.addEventListener('mousedown', e => {
+  isDragging = true;
+  prevMouse  = { x: e.clientX, y: e.clientY };
+  dragStart  = { x: e.clientX, y: e.clientY };
+  autoRotate = false;
+});
+
+canvas.addEventListener('mousemove', e => {
+  if (isDragging) {
+    rotationY += (e.clientX - prevMouse.x) * 0.005;
+    rotationX += (e.clientY - prevMouse.y) * 0.005;
+    rotationX  = Math.max(-PI/2, Math.min(PI/2, rotationX));
+    prevMouse  = { x: e.clientX, y: e.clientY };
+  } else {
+    /* Hover territorios */
+    const mouse = new THREE.Vector2(
+      (e.clientX / window.innerWidth) * 2 - 1,
+      -(e.clientY / window.innerHeight) * 2 + 1
+    );
+    raycaster.setFromCamera(mouse, camera);
+    const fills = territoriesGroup.children.filter(c => c.userData.isFill);
+    const hits  = fills.length ? raycaster.intersectObjects(fills) : [];
+
+    if (hits.length) {
+      canvas.style.cursor = 'pointer';
+      const mesh = hits[0].object;
+      if (hoveredMesh && hoveredMesh !== mesh) hoveredMesh.material.opacity = 0.55;
+      mesh.material.opacity = 0.85;
+      hoveredMesh = mesh;
+      tooltip.style.display = 'block';
+      tooltip.style.left    = (e.clientX + 14) + 'px';
+      tooltip.style.top     = (e.clientY - 10) + 'px';
+      tooltip.textContent   = mesh.userData.name;
+    } else {
+      canvas.style.cursor = 'grab';
+      if (hoveredMesh) { hoveredMesh.material.opacity = 0.55; hoveredMesh = null; }
+      tooltip.style.display = 'none';
+    }
+  }
+});
+
+canvas.addEventListener('mouseup', e => {
+  const dx = Math.abs(e.clientX - dragStart.x);
+  const dy = Math.abs(e.clientY - dragStart.y);
+  isDragging = false;
+  if (dx < 4 && dy < 4) handleClick(e.clientX, e.clientY);
+});
+
+canvas.addEventListener('mouseleave', () => {
+  isDragging = false;
+  tooltip.style.display = 'none';
+  if (hoveredMesh) { hoveredMesh.material.opacity = 0.55; hoveredMesh = null; }
+});
+
+/* ═══════════════════════════════════════
+   CONTROLES — TOUCH
+   ═══════════════════════════════════════ */
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  const t  = e.touches[0];
+  isDragging = true; autoRotate = false;
+  prevMouse  = dragStart = { x: t.clientX, y: t.clientY };
+}, { passive: false });
+
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const t = e.touches[0];
+  rotationY += (t.clientX - prevMouse.x) * 0.005;
+  rotationX += (t.clientY - prevMouse.y) * 0.005;
+  rotationX  = Math.max(-PI/2, Math.min(PI/2, rotationX));
+  prevMouse  = { x: t.clientX, y: t.clientY };
+}, { passive: false });
+
+canvas.addEventListener('touchend', e => {
+  const t  = e.changedTouches[0];
+  const dx = Math.abs(t.clientX - dragStart.x);
+  const dy = Math.abs(t.clientY - dragStart.y);
+  isDragging = false;
+  if (dx < 10 && dy < 10) handleClick(t.clientX, t.clientY);
+});
+
+/* ═══════════════════════════════════════
+   CONTROLES — ZOOM Y BOTONES
+   ═══════════════════════════════════════ */
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  targetCameraZ = Math.max(1.3, Math.min(5.0, targetCameraZ + e.deltaY * 0.002));
+}, { passive: false });
+
+document.getElementById('btnZoomIn').onclick  = () => { targetCameraZ = Math.max(1.3, targetCameraZ - 0.3); };
+document.getElementById('btnZoomOut').onclick = () => { targetCameraZ = Math.min(5.0, targetCameraZ + 0.3); };
+document.getElementById('btnReset').onclick   = () => {
+  rotationX = 0; rotationY = -1.4; targetCameraZ = 2.8; autoRotate = true;
+  clearTerritories();
+  document.getElementById('breadcrumb').textContent = 'El continente americano';
+};
+
+/* ═══════════════════════════════════════
+   RESIZE
+   ═══════════════════════════════════════ */
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+/* ═══════════════════════════════════════
+   14. ANIMATE LOOP
+   ═══════════════════════════════════════ */
+function animate() {
+  requestAnimationFrame(animate);
+
+  if (autoRotate) rotationY += 0.003;
+
+  globeGroup.rotation.x       = rotationX;
+  globeGroup.rotation.y       = rotationY;
+  territoriesGroup.rotation.x = rotationX;
+  territoriesGroup.rotation.y = rotationY;
+  labelsGroup.rotation.x      = rotationX;
+  labelsGroup.rotation.y      = rotationY;
+
+  camera.position.z += (targetCameraZ - camera.position.z) * 0.1;
+
+  renderer.render(scene, camera);
+}
+
+animate();
+</script>
+</body>
+</html>
