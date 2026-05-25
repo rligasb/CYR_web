@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conócete y Reconócete</title>
+  <link rel="icon" type="image/png" href="./Loco%20CYR%20transparente.png">
+  <link rel="shortcut icon" type="image/png" href="./Loco%20CYR%20transparente.png">
+  <!-- Google Fonts: Cormorant Garamond (serif elegante) + Lato (humanista sans-serif) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       RESET & BASE
+    ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow: hidden;
+    }
+
+    /* ================================================================
+       CONTENEDOR PRINCIPAL — SCROLL SNAPPING
+       scroll-snap-type: y mandatory crea el efecto de pantalla completa
+    ================================================================ */
+    .scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .scroll-container::-webkit-scrollbar { display: none; }
+
+    /* ================================================================
+       SECCIONES — BASE
+       Cada sección ocupa 100vh y se ancla al inicio del snap
+    ================================================================ */
+    .section {
+      height: 100vh;
+      scroll-snap-align: start;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ================================================================
+       HEADER FIJO
+    ================================================================ */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 0 2.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.18);
+    }
+
+    .header-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active { color: #c8a96e; }
+
+    /* Botón "Registra tu compra" en header */
+    .btn-compra {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1.1rem;
+      background: #8b6914;
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-compra:hover  { background: #6b5010; transform: translateY(-1px); }
+    .btn-compra svg    { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Selector de idioma en header */
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Select de idioma — header (fondo oscuro) */
+    .lang-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c8a96e'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 8px;
+      border: 1px solid rgba(200, 169, 110, 0.35);
+      border-radius: 3px;
+      color: #c8a96e;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      outline: none;
+      padding: 0.28rem 1.8rem 0.28rem 0.6rem;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .lang-select:hover  { border-color: #c8a96e; }
+    .lang-select option { background: #1a1a1a; color: #fff; letter-spacing: 0; text-transform: none; }
+
+    /* Select de idioma — footer (fondo blanco) */
+    .lang-select-light {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238b6914'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 8px;
+      border: 1px solid rgba(139, 105, 20, 0.35);
+      border-radius: 3px;
+      color: #8b6914;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      outline: none;
+      padding: 0.28rem 1.8rem 0.28rem 0.6rem;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease;
+    }
+    .lang-select-light:hover  { border-color: #8b6914; }
+    .lang-select-light option  { background: #fff; color: #1a1a1a; letter-spacing: 0; text-transform: none; }
+
+    /* Hamburger móvil */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    /* Nav móvil desplegable */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(8, 8, 8, 0.97);
+      padding: 1.5rem 2rem 2rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { font-size: 0.95rem; padding: 0.5rem 0; text-align: left; }
+    .mobile-lang { display: flex; margin-top: 0.75rem; }
+
+    /* ================================================================
+       SECCIÓN 1 — HERO
+       Atmósfera: Negra, sofisticada, portal de entrada
+    ================================================================ */
+    #section-hero {
+      background: #ffffff;
+      padding-top: 100px;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(200, 169, 110, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(200, 169, 110, 0.05) 0%, transparent 45%);
+    }
+
+    .hero-content {
+      text-align: center;
+      padding: 0 2rem;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Logo hero — animación scale + fade */
+    .hero-logo {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      margin: 0 auto 1.75rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.9s ease 0.1s, transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+    }
+    .hero-logo.anim { opacity: 1; transform: scale(1); }
+
+    /* Título — stagger delay 0.35s */
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 300;
+      color: #1a1a1a;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.8s ease 0.35s, transform 0.8s ease 0.35s;
+    }
+    .hero-title.anim { opacity: 1; transform: translateY(0); }
+
+    /* Subtítulo — delay 0.55s */
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #8b6914;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s;
+    }
+    .hero-subtitle.anim { opacity: 1; transform: translateY(0); }
+
+    /* Párrafo — delay 0.75s */
+    .hero-text {
+      font-size: clamp(0.875rem, 1.6vw, 1rem);
+      font-weight: 300;
+      color: #5a4a3a;
+      line-height: 1.85;
+      max-width: 540px;
+      margin: 0 auto 2.25rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s ease 0.75s, transform 0.8s ease 0.75s;
+    }
+    .hero-text.anim { opacity: 1; transform: translateY(0); }
+
+    /* CTA — delay 0.95s */
+    .hero-cta {
+      display: inline-block;
+      padding: 0.8rem 2.4rem;
+      border: 1px solid #8b6914;
+      color: #8b6914;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.8s ease 0.95s, transform 0.8s ease 0.95s,
+                  background 0.3s ease, color 0.3s ease;
+    }
+    .hero-cta.anim { opacity: 1; transform: translateY(0); }
+    .hero-cta:hover { background: #8b6914; color: #ffffff; }
+
+    /* Indicador de scroll */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(180, 140, 70, 0.7);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, transparent, rgba(200, 169, 110, 0.65));
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.35; transform: scaleY(0.75) translateY(-4px); }
+      50%       { opacity: 1;    transform: scaleY(1)    translateY(0); }
+    }
+
+    /* ================================================================
+       SECCIÓN 2 — PAQUETE 3+4=7
+       Atmósfera: Blanca, limpia, estructurada. Contraste total con S1.
+    ================================================================ */
+    #section-paquete {
+      background: #ffffff;
+      justify-content: flex-start;
+      padding-top: 64px;
+      overflow-y: auto; /* scroll interno si el contenido no cabe */
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1080px;
+      padding: 2.5rem 2rem 2rem;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    /* S2: rojo profundo */
+    .s2-tag { color: #8b0000; }
+
+    .s2-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .s2-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      font-style: italic;
+      color: #8b0000;
+      font-weight: 300;
+    }
+
+    .s2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .s2-card {
+      background: #fff;
+      border-left: 4px solid #8b0000;
+      padding: 1.5rem 1.35rem;
+      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .s2-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+    }
+
+    .s2-card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(139, 0, 0, 0.12);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .s2-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.6rem;
+    }
+
+    .s2-card-body {
+      font-size: 0.875rem;
+      color: #555;
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    /* ================================================================
+       SECCIÓN 3 — SEMINARIO DE PANAMÁ
+       Atmósfera: Beige cálido, orgánico, esperanzador. Contraste con S2.
+    ================================================================ */
+    #section-seminario {
+      background: #f5f0e8;
+      justify-content: flex-start;
+      padding-top: 64px;
+      overflow-y: auto;
+    }
+
+    .s3-tag { color: #8b6914; }
+
+    .s3-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 600;
+      color: #3d2b1f;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .s3-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      font-style: italic;
+      color: #8b6914;
+      font-weight: 300;
+    }
+
+    /* Separador dorado */
+    .s3-divider {
+      width: 55px;
+      height: 2px;
+      background: linear-gradient(to right, #8b6914, transparent);
+      margin: 1.25rem auto 0;
+    }
+
+    .s3-blocks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .s3-block {
+      background: rgba(255, 255, 255, 0.52);
+      border-top: 3px solid #8b6914;
+      padding: 1.1rem 1.1rem;
+    }
+
+    .s3-block-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #3d2b1f;
+      margin-bottom: 0.4rem;
+    }
+
+    .s3-block-body {
+      font-size: 0.845rem;
+      color: #5a4035;
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* Grid blog / actualizaciones */
+    /* WordPress: Reemplazar estas tarjetas con llamada a WP REST API en fase 2 */
+    .s3-blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .s3-blog-card {
+      background: rgba(255, 255, 255, 0.65);
+      padding: 1.1rem;
+      border-bottom: 2px solid #8b6914;
+    }
+
+    .s3-blog-date {
+      font-size: 0.68rem;
+      color: #8b6914;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .s3-blog-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #3d2b1f;
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .s3-blog-excerpt {
+      font-size: 0.8rem;
+      color: #5a4035;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ================================================================
+       SECCIÓN 4 — FOOTER
+       Atmósfera: Negra con oro. Cierre coherente con S1.
+    ================================================================ */
+    #section-footer {
+      background: #ffffff;
+      background-image: radial-gradient(ellipse at 50% 50%, rgba(200, 169, 110, 0.07) 0%, transparent 65%);
+    }
+
+    .footer-content {
+      text-align: center;
+      padding: 0 2rem;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .footer-content.anim { opacity: 1; transform: translateY(0); }
+
+    .footer-logo {
+      height: 90px;
+      width: auto;
+      margin: 0 auto 1.75rem;
+      display: block;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+      font-weight: 300;
+      color: #1a1a1a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      font-style: italic;
+      color: #5a4a3a;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .footer-divider {
+      width: 70px;
+      height: 1px;
+      background: rgba(200, 169, 110, 0.45);
+      margin: 0 auto 1.5rem;
+    }
+
+    .footer-note {
+      font-size: 0.775rem;
+      color: #999;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* Selector de idioma en footer */
+    .footer-lang {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: #bbb;
+      letter-spacing: 0.05em;
+    }
+
+    /* ================================================================
+       ANIMACIONES DE ENTRADA (usadas en S2 y S3)
+    ================================================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.anim { opacity: 1; transform: translateY(0); }
+
+    /* ================================================================
+       RESPONSIVE — TABLET (≤ 1024px)
+       Scroll snap sigue activo, ajustes de espaciado y grid
+    ================================================================ */
+    @media (max-width: 1024px) {
+      .section-inner { max-width: 100%; padding: 2rem 1.75rem; }
+
+      .s2-grid      { gap: 1rem; }
+      .s3-blocks    { gap: 0.85rem; }
+      .s3-blog-grid { gap: 0.85rem; }
+
+      .lang-selector { margin-left: 1rem; padding-left: 1rem; }
+      .lang-select   { font-size: 0.65rem; padding: 0.22rem 1.6rem 0.22rem 0.5rem; }
+    }
+
+    /* ================================================================
+       RESPONSIVE — MÓVIL (≤ 768px)
+       Desactivar snap: las secciones fluyen como página normal
+    ================================================================ */
+    @media (max-width: 768px) {
+      /* El body y el contenedor fluyen normalmente */
+      body { overflow: auto; }
+
+      .scroll-container {
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+      }
+
+      /* Secciones: altura automática, mínimo pantalla completa */
+      .section {
+        height: auto;
+        min-height: 100svh; /* svh evita saltos con la barra del navegador móvil */
+        overflow: visible;
+        scroll-snap-align: none;
+        padding-top: 64px; /* espacio para header fijo */
+      }
+
+      /* Hero: centrado vertical con flexbox */
+      #section-hero {
+        justify-content: center;
+        padding-bottom: 3rem;
+        padding-top: 64px;
+      }
+
+      /* Secciones con contenido largo: altura libre */
+      #section-paquete,
+      #section-seminario {
+        height: auto;
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 3rem;
+        overflow: visible;
+      }
+
+      /* Footer: centrado con padding generoso */
+      #section-footer {
+        height: auto;
+        min-height: 100svh;
+        padding: 80px 1.5rem 3rem;
+        overflow: visible;
+      }
+
+      /* Header: ocultar nav, mostrar hamburger */
+      .header-nav { display: none; }
+      .hamburger  { display: flex; }
+      header      { padding: 0 1.25rem; }
+
+      /* Hero: logo y texto reducidos */
+      .hero-logo   { width: 85px; height: 85px; margin-bottom: 1.25rem; }
+      .hero-content { padding: 0 1.25rem; }
+      .hero-cta    { padding: 0.75rem 2rem; }
+
+      /* Grids: columna única */
+      .s2-grid      { grid-template-columns: 1fr; gap: 0.9rem; }
+      .s3-blocks    { grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 1rem; }
+      .s3-blog-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+
+      /* Espaciado interior secciones */
+      .section-inner { padding: 0 1.25rem 2rem; }
+
+      /* Scroll indicator: ocultar en móvil */
+      .scroll-indicator { display: none; }
+    }
+
+    /* ================================================================
+       RESPONSIVE — MÓVIL PEQUEÑO (≤ 480px)
+    ================================================================ */
+    @media (max-width: 480px) {
+      .hero-logo   { width: 70px; height: 70px; }
+
+      .s2-card     { padding: 1.25rem 1rem; }
+      .s3-block    { padding: 0.9rem; }
+      .s3-blog-card { padding: 0.9rem; }
+
+      .footer-logo  { height: 70px; }
+      .footer-brand { letter-spacing: 0.1em; }
+    }
+
+    /* ================================================================
+       RESPONSIVE — LANDSCAPE MÓVIL (altura < 500px)
+       Reducir espaciados para que el hero no quede cortado
+    ================================================================ */
+    @media (max-height: 500px) and (max-width: 900px) {
+      .hero-logo   { width: 55px; height: 55px; margin-bottom: 0.75rem; }
+      .hero-text   { display: none; } /* ocultar párrafo largo en landscape */
+      .hero-content { padding: 0 1.5rem; }
+      #section-hero { padding-top: 64px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER FIJO
+     Logo izquierda · Navegación derecha · Selector de idioma
+================================================================ -->
+<header id="main-header">
+
+  <!-- Logo — usar siempre la imagen, no texto -->
+  <div class="header-logo">
+    <img src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
+  </div>
+
+  <!-- Navegación escritorio -->
+  <nav class="header-nav" id="desktop-nav">
+    <button class="nav-link active"
+            onclick="scrollToSection('section-hero')"
+            data-section="section-hero"
+            data-i18n="nav_home"></button>
+
+    <button class="nav-link"
+            onclick="scrollToSection('section-paquete')"
+            data-section="section-paquete"
+            data-i18n="nav_paquete"></button>
+
+    <button class="nav-link"
+            onclick="scrollToSection('section-seminario')"
+            data-section="section-seminario"
+            data-i18n="nav_seminario"></button>
+
+    <div class="lang-selector" id="header-lang">
+      <!-- Botones de idioma generados por JS -->
+    </div>
+
+    <a class="btn-compra" href="./compras.html" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+      </svg>
+      Registra tu compra
+    </a>
+  </nav>
+
+  <!-- Botón hamburger (móvil) -->
+  <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+</header>
+
+<!-- Nav móvil desplegable -->
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="nav-link"
+          onclick="scrollToSection('section-hero'); closeMobileNav()"
+          data-i18n="nav_home"></button>
+  <button class="nav-link"
+          onclick="scrollToSection('section-paquete'); closeMobileNav()"
+          data-i18n="nav_paquete"></button>
+  <button class="nav-link"
+          onclick="scrollToSection('section-seminario'); closeMobileNav()"
+          data-i18n="nav_seminario"></button>
+  <div class="mobile-lang" id="mobile-lang">
+    <!-- Botones de idioma generados por JS -->
+  </div>
+  <a class="btn-compra" href="./compras.html" target="_blank" style="margin-top:0.5rem; align-self:flex-start;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+    </svg>
+    Registra tu compra
+  </a>
+</nav>
+
+
+<!-- ================================================================
+     CONTENEDOR DE SCROLL SNAPPING
+================================================================ -->
+<div class="scroll-container" id="scroll-container">
+
+
+  <!-- ==============================================================
+       SECCIÓN 1 — HERO / PRESENTACIÓN
+       Paleta: Negro · Blanco · Ocre (#c8a96e) · Beige (#d4c5a9)
+  ============================================================== -->
+  <section class="section" id="section-hero">
+
+    <div class="hero-content" id="hero-content">
+
+      <!-- LOGO HERO — 130px, animación scale+fade -->
+      <img class="hero-logo" id="hero-logo"
+           src="./Loco%20CYR%20transparente.png"
+           alt="Conócete y Reconócete">
+
+      <!-- TÍTULO PRINCIPAL -->
+      <h1 class="hero-title" id="hero-title" data-i18n="hero_title"></h1>
+
+      <!-- SUBTÍTULO -->
+      <p class="hero-subtitle" data-i18n="hero_subtitle"></p>
+
+      <!-- PÁRRAFO — EDITAR: descripción de Laura y del proyecto -->
+      <p class="hero-text" data-i18n="hero_text"></p>
+
+      <!-- BOTÓN CTA -->
+      <button class="hero-cta" id="hero-cta"
+              onclick="scrollToSection('section-paquete')"
+              data-i18n="hero_cta"></button>
+
+    </div>
+
+    <!-- Indicador de scroll animado -->
+    <div class="scroll-indicator">
+      <span data-i18n="scroll_hint"></span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section>
+
+
+  <!-- ==============================================================
+       SECCIÓN 2 — PAQUETE 3+4=7
+       Paleta: Blanco · Negro (#1a1a1a) · Rojo profundo (#8b0000)
+       WordPress/blog: En fases posteriores esta sección puede
+       conectarse a un CPT (Custom Post Type) en WordPress.
+  ============================================================== -->
+  <section class="section" id="section-paquete">
+    <div class="section-inner">
+
+      <div class="section-header fade-in">
+        <span class="section-tag s2-tag" data-i18n="s2_tag"></span>
+        <h2 class="s2-title" data-i18n="s2_title"></h2>
+        <p class="s2-subtitle" data-i18n="s2_subtitle"></p>
+      </div>
+
+      <div class="s2-grid">
+
+        <!-- TARJETA 1 ── EDITAR: descripción de lo que incluye el paquete -->
+        <div class="s2-card fade-in">
+          <div class="s2-card-number">01</div>
+          <h3 class="s2-card-title" data-i18n="s2_card1_title"></h3>
+          <p class="s2-card-body" data-i18n="s2_card1_body"></p>
+        </div>
+
+        <!-- TARJETA 2 ── EDITAR: significado y filosofía del paquete -->
+        <div class="s2-card fade-in">
+          <div class="s2-card-number">02</div>
+          <h3 class="s2-card-title" data-i18n="s2_card2_title"></h3>
+          <p class="s2-card-body" data-i18n="s2_card2_body"></p>
+        </div>
+
+        <!-- TARJETA 3 ── EDITAR: etapas del proceso -->
+        <div class="s2-card fade-in">
+          <div class="s2-card-number">03</div>
+          <h3 class="s2-card-title" data-i18n="s2_card3_title"></h3>
+          <p class="s2-card-body" data-i18n="s2_card3_body"></p>
+        </div>
+
+        <!-- TARJETA 4 ── EDITAR: métodos y datos de pago -->
+        <div class="s2-card fade-in">
+          <div class="s2-card-number">04</div>
+          <h3 class="s2-card-title" data-i18n="s2_card4_title"></h3>
+          <p class="s2-card-body" data-i18n="s2_card4_body"></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==============================================================
+       SECCIÓN 3 — SEMINARIO DE PANAMÁ
+       Paleta: Beige (#f5f0e8) · Marrón (#3d2b1f) · Dorado (#8b6914)
+       WordPress/blog: Las tarjetas de blog de abajo se reemplazarán
+       con llamadas a WP REST API (/wp-json/wp/v2/posts) en fase 2.
+  ============================================================== -->
+  <section class="section" id="section-seminario">
+    <div class="section-inner">
+
+      <div class="section-header fade-in">
+        <span class="section-tag s3-tag" data-i18n="s3_tag"></span>
+        <h2 class="s3-title" data-i18n="s3_title"></h2>
+        <p class="s3-subtitle" data-i18n="s3_subtitle"></p>
+        <div class="s3-divider"></div>
+      </div>
+
+      <div class="s3-blocks">
+
+        <!-- BLOQUE 1 ── EDITAR: historia y motivación del seminario -->
+        <div class="s3-block fade-in">
+          <h3 class="s3-block-title" data-i18n="s3_block1_title"></h3>
+          <p class="s3-block-body" data-i18n="s3_block1_body"></p>
+        </div>
+
+        <!-- BLOQUE 2 ── EDITAR: temario y contenidos -->
+        <div class="s3-block fade-in">
+          <h3 class="s3-block-title" data-i18n="s3_block2_title"></h3>
+          <p class="s3-block-body" data-i18n="s3_block2_body"></p>
+        </div>
+
+        <!-- BLOQUE 3 ── EDITAR: actualizaciones y noticias -->
+        <div class="s3-block fade-in">
+          <h3 class="s3-block-title" data-i18n="s3_block3_title"></h3>
+          <p class="s3-block-body" data-i18n="s3_block3_body"></p>
+        </div>
+
+        <!-- BLOQUE 4 ── EDITAR: descripción mesas humanitarias -->
+        <div class="s3-block fade-in">
+          <h3 class="s3-block-title" data-i18n="s3_block4_title"></h3>
+          <p class="s3-block-body" data-i18n="s3_block4_body"></p>
+        </div>
+
+      </div>
+
+      <!-- BLOG / ACTUALIZACIONES
+           WordPress fase 2: reemplazar con fetch('/wp-json/wp/v2/posts?per_page=3') -->
+      <div class="s3-blog-grid">
+
+        <!-- POST 1 ── EDITAR o reemplazar con WP API -->
+        <div class="s3-blog-card fade-in">
+          <p class="s3-blog-date" data-i18n="s3_blog1_date"></p>
+          <h4 class="s3-blog-title" data-i18n="s3_blog1_title"></h4>
+          <p class="s3-blog-excerpt" data-i18n="s3_blog1_excerpt"></p>
+        </div>
+
+        <!-- POST 2 ── EDITAR o reemplazar con WP API -->
+        <div class="s3-blog-card fade-in">
+          <p class="s3-blog-date" data-i18n="s3_blog2_date"></p>
+          <h4 class="s3-blog-title" data-i18n="s3_blog2_title"></h4>
+          <p class="s3-blog-excerpt" data-i18n="s3_blog2_excerpt"></p>
+        </div>
+
+        <!-- POST 3 ── EDITAR o reemplazar con WP API -->
+        <div class="s3-blog-card fade-in">
+          <p class="s3-blog-date" data-i18n="s3_blog3_date"></p>
+          <h4 class="s3-blog-title" data-i18n="s3_blog3_title"></h4>
+          <p class="s3-blog-excerpt" data-i18n="s3_blog3_excerpt"></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==============================================================
+       SECCIÓN 4 — FOOTER (página completa)
+       Paleta: Negro (#0a0a0a) · Ocre · Beige. Cierre visual con S1.
+  ============================================================== -->
+  <section class="section" id="section-footer">
+
+    <div class="footer-content" id="footer-content">
+
+      <!-- LOGO FOOTER — tamaño grande, centrado -->
+      <img class="footer-logo"
+           src="./Loco%20CYR%20transparente.png"
+           alt="Conócete y Reconócete">
+
+      <!-- Nombre del proyecto -->
+      <p class="footer-brand">Conócete &amp; Reconócete</p>
+
+      <!-- TAGLINE -->
+      <p class="footer-tagline" data-i18n="footer_tagline"></p>
+
+      <div class="footer-divider"></div>
+
+      <!-- NOTA DE PRIVACIDAD ── EDITAR si cambia el aviso -->
+      <p class="footer-note" data-i18n="footer_note"></p>
+
+      <!-- Selector de idioma en footer -->
+      <div class="footer-lang" id="footer-lang">
+        <!-- Botones generados por JS -->
+      </div>
+
+      <!-- COPYRIGHT ── EDITAR año si es necesario -->
+      <p class="footer-copy" data-i18n="footer_copy"></p>
+
+    </div>
+
+  </section>
+
+
+</div><!-- /scroll-container -->
+
+
+<!-- ================================================================
+     JAVASCRIPT
+     - Sistema de traducciones (objeto translations)
+     - setLanguage(lang) — aplica idioma a todos los data-i18n
+     - scrollToSection(id) — scroll suave a sección
+     - IntersectionObserver — animaciones de entrada
+     - buildLangSelectors() — genera botones de idioma dinámicamente
+================================================================ -->
+<script>
+
+/* ================================================================
+   TRADUCCIONES
+   Para editar texto: modificar los valores en cada idioma.
+   Para agregar un idioma: duplicar un bloque y traducir.
+   NUNCA escribir texto directamente en el HTML — siempre aquí.
+================================================================ */
+const translations = {
+
+  /* ── ESPAÑOL — idioma principal, completamente traducido ── */
+  es: {
+    // Navegación
+    nav_home:      'Inicio',
+    nav_paquete:   'Paquete 3+4=7',
+    nav_seminario: 'Seminario de Panamá',
+
+    // Sección 1: Hero
+    hero_title:    'Conócete y Reconócete',
+    hero_subtitle: 'Un espacio seguro para tu transformación',
+    // EDITAR: descripción de Laura y el proyecto
+    hero_text:     'Laura es una coach certificada con formación en diversas disciplinas, que trabaja de forma individual, grupal y empresarial. Este proyecto nació de la necesidad colectiva de entendernos, aportar y aprender juntos.',
+    hero_cta:      'Descubre más',
+    scroll_hint:   'Desliza',
+
+    // Sección 2: Paquete 3+4=7
+    s2_tag:         'Tu inversión · Tu proceso',
+    s2_title:       'Paquete 3+4=7',
+    s2_subtitle:    'Tu inversión, tu proceso, tu transformación',
+    s2_card1_title: '¿Qué adquiriste?',
+    // EDITAR: descripción del contenido del paquete
+    s2_card1_body:  '[Descripción del paquete adquirido. Detalla los módulos, sesiones o servicios incluidos en tu compra.]',
+    s2_card2_title: '¿Qué significa?',
+    // EDITAR: filosofía y significado del 3+4=7
+    s2_card2_body:  '[El significado y propósito del proceso: 3 sesiones individuales + 4 grupales = 7 encuentros de transformación. Detalla la filosofía detrás.]',
+    s2_card3_title: 'El proceso',
+    // EDITAR: etapas, frecuencia y duración
+    s2_card3_body:  '[Describe las etapas del proceso: inicio, desarrollo y cierre. Incluye frecuencia de sesiones, duración y metodología.]',
+    s2_card4_title: 'Forma de pago',
+    // EDITAR: métodos de pago, cuentas, plazos
+    s2_card4_body:  '[Información sobre métodos de pago aceptados, plazos, cuentas bancarias o plataformas de pago habilitadas.]',
+
+    // Sección 3: Seminario de Panamá
+    s3_tag:          'Capacitándonos para servir',
+    s3_title:        'Seminario de Panamá',
+    s3_subtitle:     'Capacitándonos juntos para servir',
+    s3_block1_title: '¿Por qué este seminario?',
+    // EDITAR: historia y motivación del seminario
+    s3_block1_body:  '[Historia y motivación detrás del Seminario de Panamá. ¿Qué necesidad lo originó? ¿Qué lo hace único?]',
+    s3_block2_title: '¿Qué veremos?',
+    // EDITAR: temario, módulos y facilitadores
+    s3_block2_body:  '[Temario del seminario: módulos, temas, facilitadores. Incluye los grandes ejes de aprendizaje y metodología.]',
+    s3_block3_title: 'Procesos en desarrollo',
+    // EDITAR: actualizaciones, logros, próximos pasos
+    s3_block3_body:  '[Actualizaciones sobre los procesos actuales, novedades, logros y próximos pasos del seminario.]',
+    s3_block4_title: 'Mesas de ayuda humanitaria',
+    // EDITAR: descripción de las mesas y pregunta reflexiva
+    s3_block4_body:  'Espacios de acción colectiva donde canalizamos lo aprendido en servicio real. ¿A quién quieres ayudar y cómo?',
+
+    // Blog / Actualizaciones (placeholders hasta integración WordPress)
+    s3_blog1_date:    'Próximamente',
+    s3_blog1_title:   'Primera actualización del seminario',
+    s3_blog1_excerpt: '[Este espacio se conectará con el blog de WordPress en la siguiente fase. Aquí aparecerán las novedades del seminario.]',
+    s3_blog2_date:    'Próximamente',
+    s3_blog2_title:   'Avances de las mesas humanitarias',
+    s3_blog2_excerpt: '[Actualizaciones sobre el trabajo de las mesas de ayuda humanitaria y su impacto en la comunidad.]',
+    s3_blog3_date:    'Próximamente',
+    s3_blog3_title:   'Reflexiones del proceso',
+    s3_blog3_excerpt: '[Reflexiones, aprendizajes y testimonios de los participantes del Seminario de Panamá.]',
+
+    // Footer
+    footer_tagline: 'Un espacio seguro para conocerte, reconocerte y crecer.',
+    // EDITAR: aviso de privacidad / acceso exclusivo
+    footer_note:    'La información publicada es exclusiva para nuestros participantes.',
+    footer_copy:    '© 2025 Conócete y Reconócete. Todos los derechos reservados.',
+  },
+
+
+  /* ── INGLÉS — placeholder, completar en fases posteriores ── */
+  en: {
+    nav_home:        'Home',
+    nav_paquete:     'Package 3+4=7',
+    nav_seminario:   'Panama Seminar',
+    hero_title:      'Know Yourself and Recognize Yourself',
+    hero_subtitle:   'A safe space for your transformation',
+    hero_text:       'Laura is a certified coach with training in various disciplines, working individually, in groups, and with organizations. This project was born from the collective need to understand each other, contribute, and learn together.',
+    hero_cta:        'Discover more',
+    scroll_hint:     'Scroll',
+    s2_tag:          'Your investment · Your process',
+    s2_title:        'Package 3+4=7',
+    s2_subtitle:     'Your investment, your process, your transformation',
+    s2_card1_title:  'What did you acquire?',
+    s2_card1_body:   '[Package description — to be completed]',
+    s2_card2_title:  'What does it mean?',
+    s2_card2_body:   '[Package meaning — to be completed]',
+    s2_card3_title:  'The process',
+    s2_card3_body:   '[Process stages — to be completed]',
+    s2_card4_title:  'Payment method',
+    s2_card4_body:   '[Payment information — to be completed]',
+    s3_tag:          'Training to serve',
+    s3_title:        'Panama Seminar',
+    s3_subtitle:     'Training together to serve',
+    s3_block1_title: 'Why this seminar?',
+    s3_block1_body:  '[Seminar history and motivation — to be completed]',
+    s3_block2_title: 'What will we cover?',
+    s3_block2_body:  '[Curriculum and modules — to be completed]',
+    s3_block3_title: 'Ongoing processes',
+    s3_block3_body:  '[Current updates — to be completed]',
+    s3_block4_title: 'Humanitarian aid tables',
+    s3_block4_body:  'Collective action spaces where we channel what we learned into real service. Who do you want to help and how?',
+    s3_blog1_date:    'Coming soon',
+    s3_blog1_title:   'First seminar update',
+    s3_blog1_excerpt: '[Will connect to WordPress blog in the next phase.]',
+    s3_blog2_date:    'Coming soon',
+    s3_blog2_title:   'Humanitarian tables update',
+    s3_blog2_excerpt: '[Updates on humanitarian work — to be completed]',
+    s3_blog3_date:    'Coming soon',
+    s3_blog3_title:   'Process reflections',
+    s3_blog3_excerpt: '[Testimonials and learnings — to be completed]',
+    footer_tagline:  'A safe space to know yourself, recognize yourself, and grow.',
+    footer_note:     'Published information is exclusive for our participants.',
+    footer_copy:     '© 2025 Conócete y Reconócete. All rights reserved.',
+  },
+
+
+  /* ── RUMANO — placeholder, traducción en curso ── */
+  ro: {
+    nav_home:        'Acasă',
+    nav_paquete:     'Pachet 3+4=7',
+    nav_seminario:   'Seminarul din Panama',
+    hero_title:      'Cunoaște-te și Recunoaște-te',
+    hero_subtitle:   'Un spațiu sigur pentru transformarea ta',
+    hero_text:       '[Traducere în curs — Laura este un coach certificat cu formare în diverse discipline, care lucrează individual, în grup și cu organizații.]',
+    hero_cta:        'Descoperă mai mult',
+    scroll_hint:     'Derulează',
+    s2_tag:          'Investiția ta · Procesul tău',
+    s2_title:        'Pachet 3+4=7',
+    s2_subtitle:     'Investiția ta, procesul tău, transformarea ta',
+    s2_card1_title:  'Ce ai achiziționat?',
+    s2_card1_body:   '[Traducere în curs — Conținut în curând]',
+    s2_card2_title:  'Ce înseamnă?',
+    s2_card2_body:   '[Traducere în curs]',
+    s2_card3_title:  'Procesul',
+    s2_card3_body:   '[Traducere în curs]',
+    s2_card4_title:  'Modalitate de plată',
+    s2_card4_body:   '[Traducere în curs]',
+    s3_tag:          'Ne formăm pentru a servi',
+    s3_title:        'Seminarul din Panama',
+    s3_subtitle:     'Ne formăm împreună pentru a servi',
+    s3_block1_title: 'De ce acest seminar?',
+    s3_block1_body:  '[Traducere în curs]',
+    s3_block2_title: 'Ce vom vedea?',
+    s3_block2_body:  '[Traducere în curs]',
+    s3_block3_title: 'Procese în desfășurare',
+    s3_block3_body:  '[Traducere în curs]',
+    s3_block4_title: 'Mese de ajutor umanitar',
+    s3_block4_body:  'Spații de acțiune colectivă. Cui vrei să ajuți și cum?',
+    s3_blog1_date:    'În curând',
+    s3_blog1_title:   'Prima actualizare a seminarului',
+    s3_blog1_excerpt: '[Traducere în curs]',
+    s3_blog2_date:    'În curând',
+    s3_blog2_title:   'Actualizare mese umanitare',
+    s3_blog2_excerpt: '[Traducere în curs]',
+    s3_blog3_date:    'În curând',
+    s3_blog3_title:   'Reflecții ale procesului',
+    s3_blog3_excerpt: '[Traducere în curs]',
+    footer_tagline:  'Un spațiu sigur pentru a te cunoaște, recunoaște și crește.',
+    footer_note:     'Informațiile publicate sunt exclusive pentru participanții noștri.',
+    footer_copy:     '© 2025 Conócete y Reconócete. Toate drepturile rezervate.',
+  },
+
+
+  /* ── HINDI — placeholder, traducción en curso ── */
+  hi: {
+    nav_home:        'मुख्य पृष्ठ',
+    nav_paquete:     'पैकेज 3+4=7',
+    nav_seminario:   'पनामा सेमिनार',
+    hero_title:      'स्वयं को जानें और पहचानें',
+    hero_subtitle:   'आपके परिवर्तन के लिए एक सुरक्षित स्थान',
+    hero_text:       '[अनुवाद शीघ्र आ रहा है — Laura एक प्रमाणित कोच हैं जो व्यक्तिगत, समूह और संगठनात्मक स्तर पर कार्य करती हैं।]',
+    hero_cta:        'और जानें',
+    scroll_hint:     'स्क्रॉल करें',
+    s2_tag:          'आपका निवेश · आपकी प्रक्रिया',
+    s2_title:        'पैकेज 3+4=7',
+    s2_subtitle:     'आपका निवेश, आपकी प्रक्रिया, आपका परिवर्तन',
+    s2_card1_title:  'आपने क्या प्राप्त किया?',
+    s2_card1_body:   '[अनुवाद शीघ्र आ रहा है]',
+    s2_card2_title:  'इसका क्या अर्थ है?',
+    s2_card2_body:   '[अनुवाद शीघ्र आ रहा है]',
+    s2_card3_title:  'प्रक्रिया',
+    s2_card3_body:   '[अनुवाद शीघ्र आ रहा है]',
+    s2_card4_title:  'भुगतान विधि',
+    s2_card4_body:   '[अनुवाद शीघ्र आ रहा है]',
+    s3_tag:          'सेवा के लिए प्रशिक्षण',
+    s3_title:        'पनामा सेमिनार',
+    s3_subtitle:     'सेवा के लिए मिलकर प्रशिक्षण',
+    s3_block1_title: 'यह सेमिनार क्यों?',
+    s3_block1_body:  '[अनुवाद शीघ्र आ रहा है]',
+    s3_block2_title: 'हम क्या सीखेंगे?',
+    s3_block2_body:  '[अनुवाद शीघ्र आ रहा है]',
+    s3_block3_title: 'विकासशील प्रक्रियाएं',
+    s3_block3_body:  '[अनुवाद शीघ्र आ रहा है]',
+    s3_block4_title: 'मानवीय सहायता समूह',
+    s3_block4_body:  'सामूहिक कार्य के स्थान। आप किसकी मदद करना चाहते हैं और कैसे?',
+    s3_blog1_date:    'शीघ्र आ रहा है',
+    s3_blog1_title:   'सेमिनार का पहला अपडेट',
+    s3_blog1_excerpt: '[अनुवाद शीघ्र आ रहा है]',
+    s3_blog2_date:    'शीघ्र आ रहा है',
+    s3_blog2_title:   'मानवीय कार्य अपडेट',
+    s3_blog2_excerpt: '[अनुवाद शीघ्र आ रहा है]',
+    s3_blog3_date:    'शीघ्र आ रहा है',
+    s3_blog3_title:   'प्रक्रिया की प्रतिबिंब',
+    s3_blog3_excerpt: '[अनुवाद शीघ्र आ रहा है]',
+    footer_tagline:  'स्वयं को जानने, पहचानने और बढ़ने के लिए एक सुरक्षित स्थान।',
+    footer_note:     'प्रकाशित जानकारी केवल हमारे प्रतिभागियों के लिए है।',
+    footer_copy:     '© 2025 Conócete y Reconócete. सर्वाधिकार सुरक्षित।',
+  },
+
+
+  /* ── PORTUGUÉS — placeholder, traducción en curso ── */
+  pt: {
+    nav_home:        'Início',
+    nav_paquete:     'Pacote 3+4=7',
+    nav_seminario:   'Seminário do Panamá',
+    hero_title:      'Conheça-se e Reconheça-se',
+    hero_subtitle:   'Um espaço seguro para a sua transformação',
+    hero_text:       'Laura é uma coach certificada com formação em diversas disciplinas, que trabalha de forma individual, em grupo e empresarial. [Tradução em andamento]',
+    hero_cta:        'Descubra mais',
+    scroll_hint:     'Deslize',
+    s2_tag:          'Seu investimento · Seu processo',
+    s2_title:        'Pacote 3+4=7',
+    s2_subtitle:     'Seu investimento, seu processo, sua transformação',
+    s2_card1_title:  'O que você adquiriu?',
+    s2_card1_body:   '[Tradução em andamento — Conteúdo em breve]',
+    s2_card2_title:  'O que significa?',
+    s2_card2_body:   '[Tradução em andamento]',
+    s2_card3_title:  'O processo',
+    s2_card3_body:   '[Tradução em andamento]',
+    s2_card4_title:  'Forma de pagamento',
+    s2_card4_body:   '[Tradução em andamento]',
+    s3_tag:          'Treinando para servir',
+    s3_title:        'Seminário do Panamá',
+    s3_subtitle:     'Treinando juntos para servir',
+    s3_block1_title: 'Por que este seminário?',
+    s3_block1_body:  '[Tradução em andamento]',
+    s3_block2_title: 'O que veremos?',
+    s3_block2_body:  '[Tradução em andamento]',
+    s3_block3_title: 'Processos em desenvolvimento',
+    s3_block3_body:  '[Tradução em andamento]',
+    s3_block4_title: 'Mesas de ajuda humanitária',
+    s3_block4_body:  'Espaços de ação coletiva. A quem você quer ajudar e como?',
+    s3_blog1_date:    'Em breve',
+    s3_blog1_title:   'Primeira atualização do seminário',
+    s3_blog1_excerpt: '[Tradução em andamento]',
+    s3_blog2_date:    'Em breve',
+    s3_blog2_title:   'Atualização das mesas humanitárias',
+    s3_blog2_excerpt: '[Tradução em andamento]',
+    s3_blog3_date:    'Em breve',
+    s3_blog3_title:   'Reflexões do processo',
+    s3_blog3_excerpt: '[Tradução em andamento]',
+    footer_tagline:  'Um espaço seguro para se conhecer, reconhecer e crescer.',
+    footer_note:     'As informações publicadas são exclusivas para nossos participantes.',
+    footer_copy:     '© 2025 Conócete y Reconócete. Todos os direitos reservados.',
+  },
+
+  /* ── ITALIANO — completamente traducido ── */
+  it: {
+    nav_home:        'Inizio',
+    nav_paquete:     'Pacchetto 3+4=7',
+    nav_seminario:   'Seminario di Panamá',
+    hero_title:      'Conosci te stesso e Riconosciti',
+    hero_subtitle:   'Uno spazio sicuro per la tua trasformazione',
+    hero_text:       'Laura è una coach certificata con formazione in diverse discipline, che lavora in modo individuale, di gruppo e aziendale. Questo progetto è nato dal bisogno collettivo di capirci, contribuire e imparare insieme.',
+    hero_cta:        'Scopri di più',
+    scroll_hint:     'Scorri',
+    s2_tag:          'Il tuo investimento · Il tuo processo',
+    s2_title:        'Pacchetto 3+4=7',
+    s2_subtitle:     'Il tuo investimento, il tuo processo, la tua trasformazione',
+    s2_card1_title:  'Cosa hai acquistato?',
+    s2_card1_body:   '[Descrizione del pacchetto acquistato. Dettaglia i moduli, le sessioni o i servizi inclusi nel tuo acquisto.]',
+    s2_card2_title:  'Cosa significa?',
+    s2_card2_body:   '[Il significato e lo scopo del processo: 3 sessioni individuali + 4 di gruppo = 7 incontri di trasformazione. Dettaglia la filosofia che vi sta dietro.]',
+    s2_card3_title:  'Il processo',
+    s2_card3_body:   '[Descrivi le fasi del processo: inizio, sviluppo e chiusura. Includi la frequenza delle sessioni, la durata e la metodologia.]',
+    s2_card4_title:  'Modalità di pagamento',
+    s2_card4_body:   '[Informazioni sui metodi di pagamento accettati, scadenze, conti bancari o piattaforme di pagamento abilitate.]',
+    s3_tag:          'Formarci per servire',
+    s3_title:        'Seminario di Panamá',
+    s3_subtitle:     'Formarci insieme per servire',
+    s3_block1_title: 'Perché questo seminario?',
+    s3_block1_body:  '[Storia e motivazione dietro al Seminario di Panamá. Quale bisogno lo ha originato? Cosa lo rende unico?]',
+    s3_block2_title: 'Cosa vedremo?',
+    s3_block2_body:  '[Programma del seminario: moduli, temi, facilitatori. Include i grandi assi di apprendimento e la metodologia.]',
+    s3_block3_title: 'Processi in sviluppo',
+    s3_block3_body:  '[Aggiornamenti sui processi attuali, novità, risultati e prossimi passi del seminario.]',
+    s3_block4_title: 'Tavoli di aiuto umanitario',
+    s3_block4_body:  'Spazi di azione collettiva dove convogliamo ciò che abbiamo imparato in un servizio reale. Chi vuoi aiutare e come?',
+    s3_blog1_date:    'Prossimamente',
+    s3_blog1_title:   'Primo aggiornamento del seminario',
+    s3_blog1_excerpt: '[Questo spazio si collegherà al blog WordPress nella fase successiva. Qui appariranno le novità del seminario.]',
+    s3_blog2_date:    'Prossimamente',
+    s3_blog2_title:   'Avanzamento dei tavoli umanitari',
+    s3_blog2_excerpt: '[Aggiornamenti sul lavoro dei tavoli di aiuto umanitario e il loro impatto sulla comunità.]',
+    s3_blog3_date:    'Prossimamente',
+    s3_blog3_title:   'Riflessioni del processo',
+    s3_blog3_excerpt: '[Riflessioni, apprendimenti e testimonianze dei partecipanti al Seminario di Panamá.]',
+    footer_tagline:  'Uno spazio sicuro per conoscerti, riconoscerti e crescere.',
+    footer_note:     'Le informazioni pubblicate sono esclusive per i nostri partecipanti.',
+    footer_copy:     '© 2025 Conócete y Reconócete. Tutti i diritti riservati.',
+  },
+
+}; // fin translations
+
+
+/* ================================================================
+   CONFIGURACIÓN DE IDIOMAS
+================================================================ */
+const languages = [
+  { code: 'es', label: 'ES', name: 'Español'   },
+  { code: 'en', label: 'EN', name: 'English'   },
+  { code: 'it', label: 'IT', name: 'Italiano'  },
+  { code: 'ro', label: 'RO', name: 'Română'    },
+  { code: 'hi', label: 'HI', name: 'हिन्दी'   },
+  { code: 'pt', label: 'PT', name: 'Português' },
+];
+
+
+/* ================================================================
+   setLanguage(lang)
+   Aplica un idioma a todos los elementos con data-i18n.
+   Guarda la preferencia en localStorage.
+================================================================ */
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  const t = translations[lang];
+
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  document.documentElement.lang = lang;
+
+  // Marcar botón activo en todos los selectores
+  // Sincronizar todos los <select> de idioma
+  document.querySelectorAll('.lang-select, .lang-select-light').forEach(function(sel) {
+    sel.value = lang;
+  });
+
+  localStorage.setItem('cyr_lang', lang);
+}
+
+
+/* ================================================================
+   scrollToSection(id)
+   Desplaza el scroll-container a la sección indicada.
+================================================================ */
+function scrollToSection(sectionId) {
+  var el = document.getElementById(sectionId);
+  if (!el) return;
+
+  // En móvil el body tiene overflow, en desktop el scroll-container
+  var isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    var container = document.getElementById('scroll-container');
+    var index = Array.from(container.children).indexOf(el);
+    container.scrollTo({ top: index * window.innerHeight, behavior: 'smooth' });
+  }
+}
+
+
+/* ================================================================
+   closeMobileNav()
+================================================================ */
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+
+
+/* ================================================================
+   buildLangSelectors()
+   Genera los botones de idioma en header, footer y móvil.
+================================================================ */
+function buildLangSelectors() {
+
+  function makeSelect(cssClass) {
+    var sel = document.createElement('select');
+    sel.className = cssClass;
+    sel.setAttribute('aria-label', 'Seleccionar idioma');
+    languages.forEach(function(lang) {
+      var opt = document.createElement('option');
+      opt.value = lang.code;
+      opt.textContent = lang.label + ' — ' + lang.name;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function() { setLanguage(this.value); });
+    return sel;
+  }
+
+  // Header (fondo oscuro)
+  var headerContainer = document.getElementById('header-lang');
+  if (headerContainer) headerContainer.appendChild(makeSelect('lang-select'));
+
+  // Footer (fondo blanco)
+  var footerContainer = document.getElementById('footer-lang');
+  if (footerContainer) footerContainer.appendChild(makeSelect('lang-select-light'));
+
+  // Móvil (fondo oscuro)
+  var mobileContainer = document.getElementById('mobile-lang');
+  if (mobileContainer) mobileContainer.appendChild(makeSelect('lang-select'));
+}
+
+
+/* ================================================================
+   triggerHeroAnimations()
+   Dispara las animaciones de entrada de la sección Hero con stagger.
+================================================================ */
+function triggerHeroAnimations() {
+  var elements = [
+    { id: 'hero-logo',     delay: 80  },
+    { id: 'hero-title',    delay: 350 },
+    { id: 'hero-cta',      delay: 950 },
+  ];
+
+  // Aplicar también a .hero-subtitle y .hero-text por clase
+  var subtitleEl = document.querySelector('.hero-subtitle');
+  var textEl     = document.querySelector('.hero-text');
+  var heroContent = document.querySelector('.hero-content');
+
+  // Reset por si se re-invoca
+  elements.forEach(function(item) {
+    var el = document.getElementById(item.id);
+    if (el) el.classList.remove('anim');
+  });
+  if (subtitleEl) subtitleEl.classList.remove('anim');
+  if (textEl)     textEl.classList.remove('anim');
+  if (heroContent) heroContent.style.visibility = 'visible';
+
+  // Stagger
+  elements.forEach(function(item) {
+    setTimeout(function() {
+      var el = document.getElementById(item.id);
+      if (el) el.classList.add('anim');
+    }, item.delay);
+  });
+  setTimeout(function() { if (subtitleEl) subtitleEl.classList.add('anim'); }, 550);
+  setTimeout(function() { if (textEl)     textEl.classList.add('anim'); },     750);
+}
+
+
+/* ================================================================
+   initScrollAnimations()
+   IntersectionObserver para los elementos .fade-in y el footer.
+================================================================ */
+function initScrollAnimations() {
+  var isMobile  = window.innerWidth <= 768;
+  var rootEl    = isMobile ? null : document.getElementById('scroll-container');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('anim');
+    });
+  }, { threshold: 0.12, root: rootEl });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  var footerContent = document.getElementById('footer-content');
+  if (footerContent) observer.observe(footerContent);
+}
+
+
+/* ================================================================
+   initActiveNav()
+   Resalta en ocre el link de la sección actualmente visible.
+================================================================ */
+function initActiveNav() {
+  var sectionIds = ['section-hero', 'section-paquete', 'section-seminario', 'section-footer'];
+  var isMobile   = window.innerWidth <= 768;
+  var rootEl     = isMobile ? null : document.getElementById('scroll-container');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var activeId = entry.target.id;
+      document.querySelectorAll('.nav-link[data-section]').forEach(function(link) {
+        link.classList.toggle('active', link.dataset.section === activeId);
+      });
+    });
+  }, { threshold: 0.5, root: rootEl });
+
+  sectionIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+}
+
+
+/* ================================================================
+   HAMBURGER
+================================================================ */
+document.getElementById('hamburger-btn').addEventListener('click', function() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+});
+
+
+/* ================================================================
+   INICIALIZACIÓN
+================================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+
+  // 1. Construir selectores de idioma
+  buildLangSelectors();
+
+  // 2. Aplicar idioma guardado (o español por defecto)
+  var savedLang = localStorage.getItem('cyr_lang') || 'es';
+  setLanguage(savedLang);
+
+  // 3. Animaciones de scroll
+  initScrollAnimations();
+
+  // 4. Navegación activa
+  initActiveNav();
+
+  // 5. Hero — pequeño delay para que la fuente cargue
+  setTimeout(triggerHeroAnimations, 250);
+
+});
+
+</script>
+</body>
+</html>

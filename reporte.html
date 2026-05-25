@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte de Firmas</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #fff; color: #2d1a0e; }
+
+  /* PANTALLA — página de filtro */
+  .filtro-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 24px;
+    background: #fdf8f2;
+  }
+  .filtro-page h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2d1a0e;
+    text-align: center;
+  }
+  .filtro-page p { font-size: 14px; color: #8a6a50; text-align: center; }
+  .filtro-page select {
+    padding: 14px 20px;
+    border: 2px solid #e0c4a0;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    color: #2d1a0e;
+    background: white;
+    outline: none;
+    min-width: 260px;
+    cursor: pointer;
+  }
+  .filtro-page select:focus { border-color: #D94F2B; }
+  .btn-ver {
+    padding: 14px 36px;
+    background: #D94F2B;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-ver:hover { background: #b83d1f; }
+  .contador-prev { font-size: 13px; color: #8a6a50; }
+  .contador-prev strong { color: #D94F2B; }
+
+  /* PANTALLA — tabla de resultados */
+  .resultado-page { display: none; }
+  .resultado-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+    background: #fdf8f2;
+    border-bottom: 2px solid #e8d8c0;
+    flex-wrap: wrap;
+  }
+  .btn-volver {
+    padding: 8px 16px;
+    background: white;
+    border: 1.5px solid #e0c4a0;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    color: #2d1a0e;
+  }
+  .btn-imprimir {
+    margin-left: auto;
+    padding: 8px 20px;
+    background: #2A8C7E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .pais-titulo { font-size: 15px; font-weight: 600; color: #2d1a0e; }
+  .resultado-count { font-size: 13px; color: #8a6a50; }
+  .resultado-count strong { color: #D94F2B; }
+
+  .table-wrap { padding: 20px 24px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: #2d1a0e; color: white; }
+  thead th { padding: 10px 12px; text-align: left; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+  tbody tr { border-bottom: 1px solid #e8d8c0; }
+  tbody tr:nth-child(even) { background: #fdf8f2; }
+  tbody td { padding: 10px 12px; vertical-align: middle; }
+  .firma-img { width: 130px; height: 58px; object-fit: contain; border: 1px solid #e0c4a0; border-radius: 6px; background: white; display: block; }
+  .num { color: #D94F2B; font-weight: 500; }
+  .fecha { color: #999; font-size: 12px; }
+
+  .spinner { width: 32px; height: 32px; border: 3px solid #f0d0c0; border-top-color: #D94F2B; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 60px auto 12px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* IMPRESIÓN — solo registros, sin nada más */
+  @media print {
+    .filtro-page  { display: none !important; }
+    .resultado-bar { display: none !important; }
+    thead { display: none !important; }
+    .table-wrap { padding: 0; }
+    body { padding: 0; }
+    .resultado-page { display: block !important; }
+    tbody tr { break-inside: avoid; border-bottom: 1px solid #ddd; }
+    .firma-img { width: 110px; height: 50px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASO 1: Filtro por país -->
+<div class="filtro-page" id="filtroPagina">
+  <h1>Reporte de Firmas</h1>
+  <p>Selecciona el país para generar el reporte</p>
+  <div class="spinner" id="spinnerFiltro"></div>
+  <select id="filtroPais" style="display:none" onchange="actualizarContador()">
+    <option value="">— Todos los países —</option>
+  </select>
+  <p class="contador-prev" id="contadorPrev" style="display:none">
+    <strong id="contadorN">0</strong> registros encontrados
+  </p>
+  <button class="btn-ver" id="btnVer" style="display:none" onclick="mostrarReporte()">Ver reporte</button>
+</div>
+
+<!-- PASO 2: Tabla de resultados -->
+<div class="resultado-page" id="resultadoPagina">
+  <div class="resultado-bar">
+    <button class="btn-volver" onclick="volver()">← Volver</button>
+    <span class="pais-titulo" id="paisTitulo"></span>
+    <span class="resultado-count">Total: <strong id="totalN">0</strong> registros</span>
+    <button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / PDF</button>
+  </div>
+  <div id="tablaContenido"></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://swbbcidwsbksdxxipedo.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3YmJjaWR3c2Jrc2R4eGlwZWRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5OTY0MTgsImV4cCI6MjA5MzU3MjQxOH0.KOxx9Ig4N1Z7KoeGU-DZdYO-GyaVBvh8L3V8Yhu4eFY';
+
+let todos = [];
+
+async function cargar() {
+  // Supabase limita a 1000 por request — paginamos hasta traer todos
+  let pagina = 0;
+  const tamano = 1000;
+  todos = [];
+  while (true) {
+    const desde = pagina * tamano;
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/firmas?select=*&order=created_at.desc&limit=${tamano}&offset=${desde}`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    const lote = await res.json();
+    if (!lote.length) break;
+    todos = todos.concat(lote);
+    if (lote.length < tamano) break;
+    pagina++;
+  }
+
+  const paises = [...new Set(todos.map(r => r.pais).filter(Boolean))].sort();
+  const sel = document.getElementById('filtroPais');
+  paises.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p; o.textContent = p;
+    sel.appendChild(o);
+  });
+
+  document.getElementById('spinnerFiltro').style.display = 'none';
+  sel.style.display = 'block';
+  document.getElementById('contadorPrev').style.display = 'block';
+  document.getElementById('btnVer').style.display = 'block';
+  actualizarContador();
+}
+
+function actualizarContador() {
+  const pais = document.getElementById('filtroPais').value;
+  const n = pais ? todos.filter(r => r.pais === pais).length : todos.length;
+  document.getElementById('contadorN').textContent = n;
+}
+
+function mostrarReporte() {
+  const pais = document.getElementById('filtroPais').value;
+  const datos = pais ? todos.filter(r => r.pais === pais) : todos;
+
+  document.getElementById('paisTitulo').textContent = pais || 'Todos los países';
+  document.getElementById('totalN').textContent = datos.length;
+
+  const filas = datos.map((r, i) => `
+    <tr>
+      <td class="num">${i + 1}</td>
+      <td><strong>${r.nombre || '—'}</strong></td>
+      <td>${r.pais || '—'}</td>
+      <td>${r.tipo_id || '—'}</td>
+      <td>${r.num_id || '—'}</td>
+      <td>${r.email || '—'}</td>
+      <td>${r.firma_url ? `<img class="firma-img" src="${r.firma_url}" loading="lazy">` : '—'}</td>
+      <td class="fecha">${r.created_at ? new Date(r.created_at).toLocaleDateString('es-MX',{year:'numeric',month:'short',day:'numeric'}) : '—'}</td>
+    </tr>`).join('');
+
+  document.getElementById('tablaContenido').innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Nombre</th><th>País</th><th>Tipo ID</th><th>Número ID</th><th>Correo</th><th>Firma</th><th>Fecha</th></tr></thead>
+        <tbody>${filas}</tbody>
+      </table>
+    </div>`;
+
+  document.getElementById('filtroPagina').style.display = 'none';
+  document.getElementById('resultadoPagina').style.display = 'block';
+}
+
+function volver() {
+  document.getElementById('filtroPagina').style.display = 'flex';
+  document.getElementById('resultadoPagina').style.display = 'none';
+}
+
+cargar();
+</script>
+</body>
+</html>

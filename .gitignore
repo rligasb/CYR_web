@@ -1,0 +1,25 @@
+# Capa de datos — NO va al repo ni a producción
+*.py
+*.json
+*.zip
+
+# Carpetas de datos
+Bernardo/
+Comunidades/
+Firmas/
+web/
+
+# Reportes generados por scripts locales
+reporte_comparativa.html
+reporte_comparativa.py
+reporte_firmas_invalidas.html
+reporte_impresion_Colombia.html
+reporte_pendientes_refirma.html
+
+# Documentación interna
+BRIEFING.md
+CLAUDE.md
+
+# Sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registra tu compra — Conócete y Reconócete</title>
+  <link rel="icon" type="image/png" href="./Loco%20CYR%20transparente.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ================================================================
+       HEADER — idéntico al de index.html
+    ================================================================ */
+    header {
+      position: relative;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 0 2.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.18);
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover { color: #c8a96e; }
+
+    /* Botón Volver al inicio */
+    .btn-volver {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1.1rem;
+      background: transparent;
+      border: 1px solid rgba(200, 169, 110, 0.5);
+      border-radius: 3px;
+      color: #c8a96e;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-volver:hover { background: rgba(200, 169, 110, 0.12); color: #fff; border-color: #c8a96e; }
+    .btn-volver svg   { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Selector de idioma */
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .lang-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c8a96e'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 8px;
+      border: 1px solid rgba(200, 169, 110, 0.35);
+      border-radius: 3px;
+      color: #c8a96e;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      outline: none;
+      padding: 0.28rem 1.8rem 0.28rem 0.6rem;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease;
+    }
+    .lang-select:hover  { border-color: #c8a96e; }
+    .lang-select option { background: #1a1a1a; color: #fff; letter-spacing: 0; text-transform: none; }
+
+    /* Hamburger móvil */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    /* Nav móvil desplegable */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(8, 8, 8, 0.97);
+      padding: 1.5rem 2rem 2rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { font-size: 0.95rem; padding: 0.5rem 0; text-align: left; }
+    .mobile-lang { display: flex; margin-top: 0.75rem; }
+
+    /* ── iframe ocupa todo el espacio restante ── */
+    .frame-wrapper {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .lang-selector { margin-left: 1rem; padding-left: 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+      .hamburger  { display: flex; }
+      header      { padding: 0 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER — igual que index.html, botón "Volver al inicio" en lugar de "Registra tu compra"
+================================================================ -->
+<header>
+  <div class="header-logo">
+    <a href="./index.html">
+      <img src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
+    </a>
+  </div>
+
+  <nav class="header-nav">
+    <a class="nav-link" href="./index.html#section-hero"   data-i18n="nav_home"></a>
+    <a class="nav-link" href="./index.html#section-paquete"   data-i18n="nav_paquete"></a>
+    <a class="nav-link" href="./index.html#section-seminario" data-i18n="nav_seminario"></a>
+
+    <div class="lang-selector" id="header-lang">
+      <!-- Selector de idioma generado por JS -->
+    </div>
+
+    <!-- Botón volver al inicio (reemplaza "Registra tu compra") -->
+    <a class="btn-volver" href="./index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/>
+      </svg>
+      Volver al inicio
+    </a>
+  </nav>
+
+  <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Nav móvil -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a class="nav-link" href="./index.html#section-hero"      data-i18n="nav_home"></a>
+  <a class="nav-link" href="./index.html#section-paquete"   data-i18n="nav_paquete"></a>
+  <a class="nav-link" href="./index.html#section-seminario" data-i18n="nav_seminario"></a>
+  <div class="mobile-lang" id="mobile-lang"></div>
+  <a class="btn-volver" href="./index.html" style="margin-top:0.5rem; align-self:flex-start;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/>
+    </svg>
+    Volver al inicio
+  </a>
+</nav>
+
+<!-- iframe -->
+<div class="frame-wrapper">
+  <iframe
+    src="https://proyectosycompras.com/portal/conocete-y-reconote"
+    title="Registra tu compra — Conócete y Reconócete"
+    allow="fullscreen">
+  </iframe>
+</div>
+
+<script>
+/* ── Traducciones mínimas para los links de navegación ── */
+const translations = {
+  es: { nav_home: 'Inicio', nav_paquete: 'Paquete 3+4=7', nav_seminario: 'Seminario de Panamá' },
+  en: { nav_home: 'Home',   nav_paquete: 'Package 3+4=7', nav_seminario: 'Panama Seminar'      },
+  it: { nav_home: 'Inizio', nav_paquete: 'Pacchetto 3+4=7', nav_seminario: 'Seminario di Panamá' },
+  ro: { nav_home: 'Acasă',  nav_paquete: 'Pachet 3+4=7',  nav_seminario: 'Seminarul din Panama' },
+  hi: { nav_home: 'मुख्य पृष्ठ', nav_paquete: 'पैकेज 3+4=7', nav_seminario: 'पनामा सेमिनार' },
+  pt: { nav_home: 'Início', nav_paquete: 'Pacote 3+4=7',  nav_seminario: 'Seminário do Panamá' },
+};
+
+const languages = [
+  { code: 'es', label: 'ES', name: 'Español'   },
+  { code: 'en', label: 'EN', name: 'English'   },
+  { code: 'it', label: 'IT', name: 'Italiano'  },
+  { code: 'ro', label: 'RO', name: 'Română'    },
+  { code: 'hi', label: 'HI', name: 'हिन्दी'   },
+  { code: 'pt', label: 'PT', name: 'Português' },
+];
+
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  var t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-select').forEach(function(s) { s.value = lang; });
+  localStorage.setItem('cyr_lang', lang);
+}
+
+function buildLangSelectors() {
+  ['header-lang', 'mobile-lang'].forEach(function(id) {
+    var container = document.getElementById(id);
+    if (!container) return;
+    var sel = document.createElement('select');
+    sel.className = 'lang-select';
+    sel.setAttribute('aria-label', 'Seleccionar idioma');
+    languages.forEach(function(lang) {
+      var opt = document.createElement('option');
+      opt.value = lang.code;
+      opt.textContent = lang.label + ' — ' + lang.name;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function() { setLanguage(this.value); });
+    container.appendChild(sel);
+  });
+}
+
+/* Hamburger */
+document.getElementById('hamburger-btn').addEventListener('click', function() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+});
+
+/* Inicialización */
+document.addEventListener('DOMContentLoaded', function() {
+  buildLangSelectors();
+  var lang = localStorage.getItem('cyr_lang') || 'es';
+  setLanguage(lang);
+});
+</script>
+
+</body>
+</html>

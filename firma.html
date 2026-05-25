@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Firma Digital — Apoyo Comunidades Indígenas Latinoamérica</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #4a1208;
+    --coral: #D94F2B;
+    --turquesa: #2A8C7E;
+    --jade: #3A7D44;
+    --ocre: #C8860A;
+    --morado: #7B3F8C;
+    --gold: #D94F2B;
+    --gold-light: #F4A261;
+    --cream: #FDF3E7;
+    --cream-dark: #F9E4C8;
+    --text: #2d1a0e;
+    --muted: #7a5a40;
+    --error: #c0392b;
+    --success: #3A7D44;
+    --border: #d4a870;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #F0EBE3;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hero Header */
+  .hero {
+    width: 100%;
+    background-image: url('fondo_firma.png');
+    background-size: cover;
+    background-position: center;
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .gold-line {
+    width: 60px; height: 1px;
+    background: #5C1A0A;
+    margin: 20px auto 0;
+    height: 2px;
+    width: 60px;
+    opacity: 0.4;
+  }
+
+  /* Card */
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: #FFFFFF;
+    border-radius: 20px 20px 0 0;
+    margin-top: -20px;
+    padding: 32px 24px 48px;
+    flex: 1;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2A8C7E;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #D94F2B;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .field input, .field select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--gold);
+  }
+  .field input.error, .field select.error {
+    border-color: var(--error);
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* Signature */
+  .signature-section {
+    margin-top: 28px;
+    margin-bottom: 28px;
+  }
+  .sig-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #5C1A0A;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sig-clear {
+    font-size: 11px;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .canvas-wrapper {
+    position: relative;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+  }
+  .canvas-wrapper.error {
+    border-color: var(--error);
+  }
+  #sigCanvas {
+    display: block;
+    width: 100%;
+    touch-action: none;
+    cursor: crosshair;
+  }
+  .sig-hint {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    color: rgba(0,0,0,0.18);
+    pointer-events: none;
+    text-align: center;
+    transition: opacity 0.3s;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+  .sig-baseline {
+    position: absolute;
+    bottom: 36px; left: 16px; right: 16px;
+    height: 1px;
+    background: rgba(201,168,76,0.25);
+    pointer-events: none;
+  }
+
+  /* Consent */
+  .consent {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    padding: 16px;
+    background: rgba(42,140,126,0.08);
+    border-radius: 10px;
+    border: 1px solid rgba(42,140,126,0.3);
+  }
+  .consent input[type="checkbox"] {
+    width: 20px; height: 20px;
+    min-width: 20px;
+    accent-color: #2A8C7E;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+  .consent p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .consent a { color: var(--gold); text-decoration: none; }
+
+  /* Submit */
+  .btn-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #2A8C7E 0%, #3aada0 100%);
+    color: #5C1A0A;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-submit:active { transform: scale(0.98); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .error-msg {
+    font-size: 11px;
+    color: var(--error);
+    margin-top: 6px;
+  }
+
+  /* Counter */
+  .counter-bar {
+    background: #E8825A; border-bottom: 2px solid #C8602A;
+    padding: 12px 24px;
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+  }
+  .counter-bar span {
+    font-size: 12px;
+    color: rgba(90,30,10,0.7);
+  }
+  .counter-bar strong {
+    color: #5C1A0A;
+    font-size: 14px;
+  }
+
+  /* Success */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .success-icon {
+    width: 80px; height: 80px;
+    border: 2px solid var(--success);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 24px;
+    color: var(--success);
+  }
+  .success-screen h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .success-screen p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Loading overlay */
+  .loading {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,26,46,0.85);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .loading.active { display: flex; }
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid rgba(201,168,76,0.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  .loading p { color: var(--gold-light); font-size: 14px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hero-box {
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 14px;
+    padding: 22px 28px;
+    max-width: 380px;
+    margin: 0 auto 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero-box h1 {
+    color: #FFFFFF !important;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+  .hero-box p {
+    color: rgba(255,255,255,0.92) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+</style>
+</head>
+<body>
+
+<div class="loading" id="loadingOverlay">
+  <div class="spinner"></div>
+  <p>Registrando firma…</p>
+</div>
+
+<div class="hero">
+  <div class="hero-box">
+    <h1>Apoyo Comunidades Indígenas Latinoamérica</h1>
+    <p>Tu firma es tu voz. Únete al llamado por los pueblos originarios de nuestra tierra.</p>
+  </div>
+  <div class="gold-line"></div>
+</div>
+
+<div class="counter-bar">
+  <span>Firmas registradas: </span><strong id="counterDisplay">—</strong>
+</div>
+
+<div class="card">
+
+  <!-- Success -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>Firma registrada</h2>
+    <p>Tu participación ha sido guardada exitosamente.<br>¡Gracias por sumarte a esta causa!</p>
+  </div>
+
+  <!-- Form -->
+  <div id="formWrapper">
+    <p class="section-label">Datos del firmante</p>
+
+    <div class="field">
+      <label>Nombre completo *</label>
+      <input type="text" id="nombre" placeholder="Como aparece en tu identificación" autocomplete="name">
+      <p class="error-msg" id="errNombre"></p>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>País *</label>
+        <select id="pais">
+          <option value="">— Selecciona —</option>
+          <optgroup label="── América del Norte ──">
+            <option>Canadá</option>
+            <option>Estados Unidos</option>
+            <option>México</option>
+          </optgroup>
+          <optgroup label="── América Central ──">
+            <option>Belice</option>
+            <option>Costa Rica</option>
+            <option>El Salvador</option>
+            <option>Guatemala</option>
+            <option>Honduras</option>
+            <option>Nicaragua</option>
+            <option>Panamá</option>
+          </optgroup>
+          <optgroup label="── América del Sur ──">
+            <option>Argentina</option>
+            <option>Bolivia</option>
+            <option>Brasil</option>
+            <option>Chile</option>
+            <option>Colombia</option>
+            <option>Ecuador</option>
+            <option>Guyana</option>
+            <option>Guyana Francesa</option>
+            <option>Paraguay</option>
+            <option>Perú</option>
+            <option>Surinam</option>
+            <option>Uruguay</option>
+            <option>Venezuela</option>
+          </optgroup>
+          <optgroup label="── Caribe ──">
+            <option>Antigua y Barbuda</option>
+            <option>Aruba</option>
+            <option>Bahamas</option>
+            <option>Barbados</option>
+            <option>Bonaire</option>
+            <option>Cuba</option>
+            <option>Curazao</option>
+            <option>Dominica</option>
+            <option>Granada</option>
+            <option>Guadalupe</option>
+            <option>Haití</option>
+            <option>Jamaica</option>
+            <option>Martinica</option>
+            <option>Puerto Rico</option>
+            <option>República Dominicana</option>
+            <option>Saint Kitts y Nevis</option>
+            <option>San Vicente y las Granadinas</option>
+            <option>Santa Lucía</option>
+            <option>Sint Maarten</option>
+            <option>Trinidad y Tobago</option>
+          </optgroup>
+          <optgroup label="── Europa ──">
+            <option>Alemania</option>
+            <option>Austria</option>
+            <option>Dinamarca</option>
+            <option>España</option>
+            <option>Finlandia</option>
+            <option>Francia</option>
+            <option>Grecia</option>
+            <option>Italia</option>
+            <option>Macedonia</option>
+            <option>Montenegro</option>
+            <option>Noruega</option>
+            <option>Países Bajos</option>
+            <option>Portugal</option>
+            <option>Reino Unido</option>
+            <option>Rumanía</option>
+            <option>Serbia</option>
+            <option>Suecia</option>
+            <option>Suiza</option>
+            <option>Turquía</option>
+          </optgroup>
+          <optgroup label="── Asia ──">
+            <option>Arabia Saudita</option>
+            <option>China</option>
+            <option>Corea del Sur</option>
+            <option>Emiratos Árabes Unidos</option>
+            <option>India</option>
+            <option>Indonesia</option>
+            <option>Israel</option>
+            <option>Japón</option>
+            <option>Qatar</option>
+            <option>Singapur</option>
+            <option>Tailandia</option>
+          </optgroup>
+          <optgroup label="── Otro ──">
+            <option>Otro</option>
+          </optgroup>
+
+        </select>
+        <p class="error-msg" id="errPais"></p>
+      </div>
+      <div class="field">
+        <label>Tipo de ID *</label>
+        <select id="tipoId">
+          <option value="">— Tipo —</option>
+          <option>INE / IFE</option>
+          <option>Pasaporte</option>
+          <option>Cédula</option>
+          <option>DNI</option>
+          <option>Licencia</option>
+          <option>Otro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Número de identificación *</label>
+      <input type="text" id="numId" placeholder="Número de tu documento oficial" autocomplete="off">
+      <p class="error-msg" id="errNumId"></p>
+    </div>
+
+    <div class="field">
+      <label>Correo electrónico (opcional)</label>
+      <input type="email" id="email" placeholder="Para enviarte confirmación" autocomplete="email">
+    </div>
+
+    <div class="signature-section">
+      <div class="sig-label">
+        Firma autógrafa *
+        <button class="sig-clear" onclick="clearSig()">Borrar</button>
+      </div>
+      <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="sigCanvas"></canvas>
+        <div class="sig-baseline"></div>
+        <div class="sig-hint" id="sigHint">Firma aquí con tu dedo</div>
+      </div>
+      <p class="error-msg" id="errFirma"></p>
+    </div>
+
+    <div class="consent">
+      <input type="checkbox" id="consentCheck">
+      <p>Confirmo que los datos proporcionados son verídicos y otorgo mi consentimiento para que esta firma sea utilizada con fines del documento <em>Conócete y Reconócete</em>.</p>
+    </div>
+
+    <button class="btn-submit" id="btnSubmit" onclick="enviarFirma()">
+      Registrar mi firma
+    </button>
+  </div>
+
+</div>
+
+<script>
+// ─── CONFIG ────────────────────────────────────────────────────────────────
+const SUPABASE_URL  = 'https://swbbcidwsbksdxxipedo.supabase.co';
+const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3YmJjaWR3c2Jrc2R4eGlwZWRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5OTY0MTgsImV4cCI6MjA5MzU3MjQxOH0.KOxx9Ig4N1Z7KoeGU-DZdYO-GyaVBvh8L3V8Yhu4eFY';
+const TABLE_NAME    = 'firmas';
+const STORAGE_BUCKET = 'firmas-imagenes';        // bucket en Supabase Storage
+// ───────────────────────────────────────────────────────────────────────────
+
+const canvas = document.getElementById('sigCanvas');
+const ctx    = canvas.getContext('2d');
+let drawing  = false;
+let hasSig   = false;
+let lastX = 0, lastY = 0;
+
+function resizeCanvas() {
+  const w = canvas.offsetWidth;
+  const h = Math.round(w * 0.45);
+  canvas.width  = w;
+  canvas.height = h;
+  canvas.style.height = h + 'px';
+  ctx.strokeStyle = '#1a1a2e';
+  ctx.lineWidth   = 2.5;
+  ctx.lineCap     = 'round';
+  ctx.lineJoin    = 'round';
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width  / rect.width;
+  const scaleY = canvas.height / rect.height;
+  if (e.touches) {
+    return {
+      x: (e.touches[0].clientX - rect.left) * scaleX,
+      y: (e.touches[0].clientY - rect.top)  * scaleY
+    };
+  }
+  return {
+    x: (e.clientX - rect.left) * scaleX,
+    y: (e.clientY - rect.top)  * scaleY
+  };
+}
+
+function startDraw(e) {
+  e.preventDefault();
+  drawing = true;
+  const p = getPos(e);
+  lastX = p.x; lastY = p.y;
+  document.getElementById('sigHint').style.opacity = '0';
+}
+function draw(e) {
+  if (!drawing) return;
+  e.preventDefault();
+  const p = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(p.x, p.y);
+  ctx.stroke();
+  lastX = p.x; lastY = p.y;
+  hasSig = true;
+}
+function stopDraw() { drawing = false; }
+
+canvas.addEventListener('mousedown',  startDraw);
+canvas.addEventListener('mousemove',  draw);
+canvas.addEventListener('mouseup',    stopDraw);
+canvas.addEventListener('touchstart', startDraw, { passive: false });
+canvas.addEventListener('touchmove',  draw,      { passive: false });
+canvas.addEventListener('touchend',   stopDraw);
+
+function clearSig() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasSig = false;
+  document.getElementById('sigHint').style.opacity = '1';
+}
+
+// ─── COUNTER ───────────────────────────────────────────────────────────────
+async function loadCounter() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/${TABLE_NAME}?select=id`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`,
+                   'Prefer': 'count=exact', 'Range': '0-0' } }
+    );
+    const count = res.headers.get('Content-Range')?.split('/')[1] || '—';
+    document.getElementById('counterDisplay').textContent =
+      parseInt(count).toLocaleString('es-MX');
+  } catch(e) {
+    document.getElementById('counterDisplay').textContent = '—';
+  }
+}
+loadCounter();
+
+// ─── VALIDATION ────────────────────────────────────────────────────────────
+function validar() {
+  let ok = true;
+  const set = (id, msg) => {
+    document.getElementById(id).textContent = msg;
+    if (msg) ok = false;
+  };
+  const nombre = document.getElementById('nombre').value.trim();
+  const pais   = document.getElementById('pais').value;
+  const numId  = document.getElementById('numId').value.trim();
+
+  set('errNombre', nombre.length < 3 ? 'Ingresa tu nombre completo' : '');
+  set('errPais',   !pais ? 'Selecciona tu país' : '');
+  set('errNumId',  numId.length < 4 ? 'Ingresa tu número de identificación' : '');
+  set('errFirma',  !hasSig ? 'Por favor traza tu firma en el recuadro' : '');
+
+  if (!document.getElementById('consentCheck').checked) {
+    alert('Debes aceptar el consentimiento para continuar.');
+    ok = false;
+  }
+  return ok;
+}
+
+// ─── SUBMIT ────────────────────────────────────────────────────────────────
+async function enviarFirma() {
+  if (!validar()) return;
+
+  const loading = document.getElementById('loadingOverlay');
+  loading.classList.add('active');
+  document.getElementById('btnSubmit').disabled = true;
+
+  try {
+    // 1. Subir imagen de firma a Supabase Storage
+    const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+    const filename = `firma_${Date.now()}_${Math.random().toString(36).slice(2)}.png`;
+
+    const uploadRes = await fetch(
+      `${SUPABASE_URL}/storage/v1/object/firmas-imagenes/${filename}`,
+      {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'image/png',
+          'x-upsert': 'false'
+        },
+        body: blob
+      }
+    );
+    if (!uploadRes.ok) {
+      const errText = await uploadRes.text();
+      throw new Error('Error al subir imagen: ' + errText);
+    }
+    const firmaUrl = `${SUPABASE_URL}/storage/v1/object/public/firmas-imagenes/${filename}`;
+
+    // 2. Insertar registro en tabla
+    const payload = {
+      nombre:    document.getElementById('nombre').value.trim(),
+      pais:      document.getElementById('pais').value,
+      tipo_id:   document.getElementById('tipoId').value,
+      num_id:    document.getElementById('numId').value.trim(),
+      email:     document.getElementById('email').value.trim() || null,
+      firma_url: firmaUrl,
+      ip:        null,
+      created_at: new Date().toISOString()
+    };
+
+    const dbRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/${TABLE_NAME}`,
+      {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      }
+    );
+    if (!dbRes.ok) throw new Error('Error al guardar registro');
+
+    // Éxito
+    loading.classList.remove('active');
+    document.getElementById('formWrapper').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    loadCounter();
+
+  } catch(err) {
+    loading.classList.remove('active');
+    document.getElementById('btnSubmit').disabled = false;
+    alert('Ocurrió un error: ' + err.message + '\nIntenta de nuevo.');
+  }
+}
+</script>
+</body>
+</html>
