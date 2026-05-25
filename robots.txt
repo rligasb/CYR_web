@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /pueblos-indigenas/
+Disallow: /firma.html
+Disallow: /compras.html
+Disallow: /.htaccess
+Disallow: /.env
+Disallow: /*.log
+Disallow: /*.sql
+Disallow: /*.bak
+Sitemap: https://conoceteyreconocete.com/sitemap.xml
