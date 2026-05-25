@@ -393,9 +393,9 @@ const globeMesh = new THREE.Mesh(globeGeo, globeMat);
 globeGroup.add(globeMesh);
 
 const loader = new THREE.TextureLoader();
-loader.load('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg',
+loader.load('./earth-blue-marble.jpg',
   t => { globeMat.map = t; globeMat.needsUpdate = true; });
-loader.load('https://unpkg.com/three-globe/example/img/earth-topology.png',
+loader.load('./earth-topology.png',
   t => { globeMat.bumpMap = t; globeMat.bumpScale = 0.05; globeMat.needsUpdate = true; });
 
 const atmoMesh = new THREE.Mesh(
