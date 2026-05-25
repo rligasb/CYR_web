@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/earcut/2.2.4/earcut.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body, #app { margin: 0; padding: 0; width: 100%; height: 100vh; overflow: hidden; background: #000814; }
@@ -181,7 +182,7 @@
 
   <canvas id="globe"></canvas>
 
-  <div id="hint">Arrastra el globo &nbsp;·&nbsp; Scroll para zoom &nbsp;·&nbsp; Clic para explorar</div>
+  <div id="hint">Haz clic en un país para explorar sus pueblos</div>
   <div id="tooltip"></div>
 
   <div id="disclaimer">
@@ -269,7 +270,7 @@ let isDragging     = false;
 let prevMouse      = { x:0, y:0 };
 let dragStart      = { x:0, y:0 };
 let rotationX      = 0;
-let rotationY      = -1.4;
+let rotationY      = Math.PI * 0.5;
 let targetCameraZ  = 2.8;
 let autoRotate     = true;
 let hoveredMesh    = null;
@@ -299,10 +300,12 @@ scene.add(sun);
    territoriesGroup y labelsGroup son HIJOS de globeGroup
    → rotan automáticamente con el globo sin sincronización manual
    ═══════════════════════════════════════ */
-const globeGroup       = new THREE.Group();
-const territoriesGroup = new THREE.Group();
-const labelsGroup      = new THREE.Group();
+const globeGroup        = new THREE.Group();
+const countryBordersGroup = new THREE.Group();
+const territoriesGroup  = new THREE.Group();
+const labelsGroup       = new THREE.Group();
 scene.add(globeGroup);
+globeGroup.add(countryBordersGroup);
 globeGroup.add(territoriesGroup);
 globeGroup.add(labelsGroup);
 
@@ -344,6 +347,36 @@ fetch('./territories_americas.geojson')
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(d => { allTerritories = d.features; console.log('[Cemanáhuac] territorios:', allTerritories.length); })
   .catch(e => console.error('[Cemanáhuac] GeoJSON error:', e));
+
+/* Capa 1 — Contornos de países (siempre visible) */
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(topo => {
+    const countries = topojson.feature(topo, topo.objects.countries);
+    renderCountryBorders(countries.features);
+    console.log('[Cemanáhuac] países cargados:', countries.features.length);
+  })
+  .catch(e => console.error('[Cemanáhuac] world-atlas error:', e));
+
+function renderCountryBorders(features) {
+  features.forEach(feature => {
+    const geom  = feature.geometry;
+    if (!geom) return;
+    const polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
+    polys.forEach(polygon => {
+      const ring = polygon[0];
+      if (!ring || ring.length < 3) return;
+      try {
+        const pts = ring.map(([lon, lat]) => latLonToVec3(lat, lon, 1.001));
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.4 });
+        const line = new THREE.Line(geo, mat);
+        line.userData = { type: 'countryBorder', feature };
+        countryBordersGroup.add(line);
+      } catch(e) {}
+    });
+  });
+}
 
 /* ═══════════════════════════════════════
    9. CONVERSIÓN LAT/LON ↔ 3D
@@ -444,21 +477,36 @@ function renderTerritories(features) {
       } catch(e) { console.warn('earcut:', name, e); }
     });
 
-    /* Label centroide */
+    /* Label centroide — solo visible con territorios étnicos (Capa 2) */
     try {
-      const r0 = polys[0][0];
+      const r0  = polys[0][0];
       const cLo = r0.reduce((s, [lo]) => s + lo, 0) / r0.length;
       const cLa = r0.reduce((s, [, la]) => s + la, 0) / r0.length;
-      const cv = document.createElement('canvas'); cv.width = 256; cv.height = 48;
+
+      const cv  = document.createElement('canvas');
+      cv.width  = 256; cv.height = 48;
       const ctx = cv.getContext('2d');
-      ctx.fillStyle = 'rgba(0,0,0,0.55)';
-      ctx.fillRect(0, 0, 256, 48);
-      ctx.font = 'bold 14px Lato, sans-serif';
-      ctx.fillStyle = '#ffffff';
-      ctx.textAlign = 'center';
+
+      ctx.clearRect(0, 0, 256, 48);                    // limpiar antes de dibujar
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.65)';
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(4, 8, 248, 32, 8);
+      } else {
+        ctx.rect(4, 8, 248, 32);
+      }
+      ctx.fill();
+
+      ctx.font         = 'bold 15px Arial, sans-serif';
+      ctx.fillStyle    = '#ffffff';
+      ctx.textAlign    = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(name.substring(0, 24), 128, 24);
-      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false }));
+
+      const tex = new THREE.CanvasTexture(cv);
+      tex.needsUpdate  = true;
+      const sp  = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
       sp.position.copy(latLonToVec3(cLa, cLo, 1.05));
       sp.scale.set(0.3, 0.075, 1);
       labelsGroup.add(sp);
@@ -659,7 +707,7 @@ document.getElementById('btnZoomOut').onclick = () => { targetCameraZ = Math.min
 
 /* ── Reset ── */
 document.getElementById('btnReset').onclick = () => {
-  rotationX = 0; rotationY = -1.4; targetCameraZ = 2.8; autoRotate = true;
+  rotationX = 0; rotationY = Math.PI * 0.5; targetCameraZ = 2.8; autoRotate = true;
   clearTerritories();
   updateBreadcrumb(0);
   closeCard();
