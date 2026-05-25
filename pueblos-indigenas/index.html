@@ -270,7 +270,7 @@ let isDragging     = false;
 let prevMouse      = { x:0, y:0 };
 let dragStart      = { x:0, y:0 };
 let rotationX      = 0;
-let rotationY      = Math.PI * 0.5;
+let rotationY      = 1.8;
 let targetCameraZ  = 2.8;
 let autoRotate     = true;
 let hoveredMesh    = null;
@@ -707,7 +707,7 @@ document.getElementById('btnZoomOut').onclick = () => { targetCameraZ = Math.min
 
 /* ── Reset ── */
 document.getElementById('btnReset').onclick = () => {
-  rotationX = 0; rotationY = Math.PI * 0.5; targetCameraZ = 2.8; autoRotate = true;
+  rotationX = 0; rotationY = 1.8; targetCameraZ = 2.8; autoRotate = true;
   clearTerritories();
   updateBreadcrumb(0);
   closeCard();
