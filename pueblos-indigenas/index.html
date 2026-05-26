@@ -1036,6 +1036,10 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const rawX     = (cLat * RAD) * 0.5;
   targetRotY     = shortestRotation(globeGroup.rotation.y, rawY);
   targetRotX     = shortestRotation(globeGroup.rotation.x, rawX);
+  console.log('[FLY2] globeGroup.rotation.y ANTES:', globeGroup.rotation.y.toFixed(4));
+  console.log('[FLY2] rawY:', rawY.toFixed(4));
+  console.log('[FLY2] targetRotY FINAL:', targetRotY.toFixed(4));
+  console.log('[FLY2] isFlying:', isFlying);
   ocultarLabelEtnia();
   targetCameraZ = 2.0;
 
@@ -1049,7 +1053,7 @@ function flyToCountry(countryFeature, countryName, countryColor) {
     rotationX = globeGroup.rotation.x;
     isFlying  = false;
     showTerritoriesForCountry(countryFeature, countryName);
-  }, 1600);
+  }, 2500);
 }
 
 function showTerritoriesForCountry(countryFeature, countryName) {
@@ -1243,6 +1247,7 @@ canvas.addEventListener('touchstart', e => {
 
 canvas.addEventListener('touchmove', e => {
   e.preventDefault();
+  if (isFlying) return;  // no interferir con el vuelo
   const t = e.touches[0];
   globeGroup.rotation.y += (t.clientX-prevMouse.x)*0.005;
   globeGroup.rotation.x += (t.clientY-prevMouse.y)*0.005;
