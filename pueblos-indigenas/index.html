@@ -227,7 +227,10 @@ const PI = Math.PI;
    3. ESTADO
    ═══════════════════════════════════════ */
 let allTerritories     = [];
-let countryItems       = [];   // {mesh, border, label, feature, name, color}
+let countryItems       = [];   // {feature, name, color}
+let countryLabels      = [];   // {sprite, name, nivel}
+const NIVEL_1 = new Set(['México','Brasil','Canadá','Estados Unidos','Argentina']);
+const NIVEL_2 = new Set(['Colombia','Venezuela','Perú','Chile','Bolivia']);
 let selectedCountry    = null;
 let isDragging         = false;
 let prevMouse          = { x:0, y:0 };
@@ -320,10 +323,19 @@ async function init() {
     const res  = await fetch('./countries-50m.json');
     const topo = await res.json();
     const all  = topojson.feature(topo, topo.objects.countries);
-    const americas = all.features.filter(f => AMERICA_IDS[f.id] !== undefined);
+    /* Filtro por centroide geográfico: lon -180 a -30, lat -60 a 85 */
+    const americas = all.features.filter(f => {
+      if (!f.geometry) return false;
+      const geom  = f.geometry;
+      const ring  = geom.type === 'Polygon'
+        ? geom.coordinates[0]
+        : geom.type === 'MultiPolygon' ? geom.coordinates[0][0] : null;
+      if (!ring || !ring.length) return false;
+      const avgLon = ring.reduce((s, [lo]) => s + lo, 0) / ring.length;
+      const avgLat = ring.reduce((s, [, la]) => s + la, 0) / ring.length;
+      return avgLon >= -180 && avgLon <= -30 && avgLat >= -60 && avgLat <= 85;
+    });
     renderCountries(americas);
-    console.log('[Cemanáhuac] países cargados:', americas.length);
-    console.log('[Cemanáhuac] meshes raycasting:', countryFillGroup.children.length);
   } catch(e) { console.error('[Cemanáhuac] world-atlas error:', e); }
 
   /* Territorios étnicos */
@@ -436,63 +448,74 @@ function makeSprite(text, bgColor, textColor, w, h, fontSize) {
 }
 
 /* ═══════════════════════════════════════
+   11b. LABEL SPRITE CON STROKE (países)
+   ═══════════════════════════════════════ */
+function crearLabelSprite(texto) {
+  const cv  = document.createElement('canvas');
+  cv.width  = 256; cv.height = 64;
+  const ctx = cv.getContext('2d');
+  ctx.clearRect(0, 0, 256, 64);
+  ctx.font        = 'bold 28px Arial';
+  ctx.strokeStyle = 'rgba(0,0,0,0.85)';
+  ctx.lineWidth   = 4;
+  ctx.fillStyle   = '#ffffff';
+  ctx.textAlign   = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.strokeText(texto.substring(0, 18), 128, 32);
+  ctx.fillText(texto.substring(0, 18), 128, 32);
+  const tex = new THREE.CanvasTexture(cv);
+  tex.needsUpdate  = true;
+  return new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }));
+}
+
+/* ═══════════════════════════════════════
    12. RENDERIZAR PAÍSES
    ═══════════════════════════════════════ */
 function renderCountries(features) {
-  countryItems = [];
+  countryItems  = [];
+  countryLabels = [];
 
   features.forEach((feature, i) => {
     const color = COUNTRY_PALETTE[i % COUNTRY_PALETTE.length];
     const name  = AMERICA_IDS[feature.id] || 'País';
     const geom  = feature.geometry;
+    if (!geom) return;
     const polys = geom.type==='Polygon' ? [geom.coordinates] : geom.coordinates;
-
-    let fillMesh = null;
 
     polys.forEach(polygon => {
       const ring = polygon[0];
       if (!ring || ring.length < 3) return;
 
-      /* Relleno país */
-      try {
-        const flat = ring.flatMap(([lo,la]) => [lo,la]);
-        const idx  = earcut(flat, null, 2);
-        if (!idx || !idx.length) return;
-        const verts = [];
-        ring.forEach(([lo,la]) => { const v=latLonToVec3(la,lo,1.001); verts.push(v.x,v.y,v.z); });
-        const fg = new THREE.BufferGeometry();
-        fg.setAttribute('position', new THREE.Float32BufferAttribute(verts,3));
-        fg.setIndex(idx);
-        const fm = new THREE.MeshBasicMaterial({ color: new THREE.Color(color), transparent: true, opacity: 0.45, side: THREE.DoubleSide, depthWrite: false });
-        const mesh = new THREE.Mesh(fg, fm);
-        mesh.userData = { feature, name, color, isCountry: true };
-        countryFillGroup.add(mesh);
-        if (!fillMesh) fillMesh = mesh;
-      } catch(e) {}
-
-      /* Borde país */
+      /* Borde sutil — no tapa la textura Blue Marble */
       try {
         const pts = ring.map(([lo,la]) => latLonToVec3(la,lo,1.002));
         const lg  = new THREE.BufferGeometry().setFromPoints(pts);
-        const ln  = new THREE.Line(lg, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 }));
+        const ln  = new THREE.Line(lg, new THREE.LineBasicMaterial({
+          color: 0xffffff, transparent: true, opacity: 0.25
+        }));
         countryBordGroup.add(ln);
       } catch(e) {}
     });
 
-    /* Label país */
-    let lbl = null;
+    /* Label dinámica con stroke y nivel de zoom */
     try {
       const bbox  = getBoundingBox(feature);
       const cLat  = (bbox.minLat + bbox.maxLat) / 2;
       const cLon  = (bbox.minLon + bbox.maxLon) / 2;
-      lbl = makeSprite(name, 'rgba(0,0,0,0.6)', '#ffffff', 200, 36, 12);
-      lbl.position.copy(latLonToVec3(cLat, cLon, 1.06));
-      lbl.scale.set(0.28, 0.05, 1);
-      countryLblGroup.add(lbl);
+      const sp    = crearLabelSprite(name);
+      sp.position.copy(latLonToVec3(cLat, cLon, 1.05));
+      sp.visible  = false; // animate() controla la visibilidad
+      countryLblGroup.add(sp);
+      const nivel = NIVEL_1.has(name) ? 1 : NIVEL_2.has(name) ? 2 : 3;
+      countryLabels.push({ sprite: sp, name, nivel });
     } catch(e) {}
 
-    if (fillMesh) countryItems.push({ mesh: fillMesh, feature, name, color, label: lbl });
+    /* SIEMPRE push — click detection usa pointInFeature(), no mesh raycasting */
+    countryItems.push({ feature, name, color });
   });
+
+  console.log('[Cemanáhuac] países cargados:', features.length);
+  console.log('[Cemanáhuac] meshes raycasting:', countryItems.length);
 }
 
 /* ═══════════════════════════════════════
@@ -814,6 +837,8 @@ document.getElementById('btnReset').onclick   = () => {
   countryFillGroup.visible = true;
   countryBordGroup.visible = true;
   countryLblGroup.visible  = true;
+  /* Forzar re-evaluación de labels en siguiente frame del animate */
+  countryLabels.forEach(l => { l.sprite.visible = false; });
   closeCard();
   updateBreadcrumb(null);
   setHint('Haz clic en un país para explorar sus pueblos indígenas');
@@ -832,15 +857,28 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (isFlying) {
-    /* Lerp suave hacia el país */
     globeGroup.rotation.y += (targetRotY - globeGroup.rotation.y) * 0.05;
     globeGroup.rotation.x += (targetRotX - globeGroup.rotation.x) * 0.05;
     camera.position.z     += (targetCameraZ - camera.position.z)  * 0.05;
   } else {
-    /* Drag manual o estado estático */
     globeGroup.rotation.x  = rotationX;
     globeGroup.rotation.y  = rotationY;
     camera.position.z     += (targetCameraZ - camera.position.z) * 0.1;
+  }
+
+  /* Labels dinámicas por distancia de cámara */
+  if (countryLblGroup.visible && countryLabels.length) {
+    const dist   = camera.position.z;
+    const aspect = camera.aspect || (window.innerWidth / window.innerHeight);
+    countryLabels.forEach(({ sprite, nivel }) => {
+      const umbral = nivel === 1 ? 3.0 : nivel === 2 ? 2.2 : 1.6;
+      if (dist > umbral) { sprite.visible = false; return; }
+      sprite.visible = true;
+      const factor = Math.max(0, (umbral - dist) / umbral);
+      const escala = factor * 0.08;
+      sprite.scale.set(escala * aspect, escala, 1);
+      sprite.material.opacity = Math.min(1, factor * 2);
+    });
   }
 
   renderer.render(scene, camera);
