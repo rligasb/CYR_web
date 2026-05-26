@@ -806,11 +806,17 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLat   = (bbox.minLat + bbox.maxLat) / 2;
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
+  console.log('[DEBUG flyTo] país:', countryName);
+  console.log('[DEBUG flyTo] bbox:', JSON.stringify(getBoundingBox(countryFeature)));
+  console.log('[DEBUG flyTo] cLon:', cLon, 'cLat:', cLat);
+
   const RAD  = PI / 180;
   targetRotY = -((cLon + 90) * RAD);  // sin GLOBE_OFFSET — ya implícito en +90
   targetRotX = -(cLat * RAD) * 0.5;
-  console.log('[flyTo] lon:', cLon.toFixed(1), 'lat:', cLat.toFixed(1),
-              '→ targetRotY:', targetRotY.toFixed(3));
+
+  console.log('[DEBUG flyTo] targetRotY:', targetRotY, 'targetRotX:', targetRotX);
+  console.log('[DEBUG flyTo] globe.rotation antes:',
+              globeGroup.rotation.y.toFixed(3), globeGroup.rotation.x.toFixed(3));
   ocultarLabelEtnia();
   targetCameraZ = 1.5;
 
