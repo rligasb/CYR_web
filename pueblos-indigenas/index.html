@@ -247,6 +247,7 @@ const NIVEL_1 = new Set(['México','Brasil','Canadá','Estados Unidos','Argentin
 const NIVEL_2 = new Set(['Colombia','Venezuela','Perú','Chile','Bolivia']);
 let meshEtniaHover = null;  // mesh étnico actualmente bajo el cursor
 let labelEtnia     = null;  // sprite reutilizable de label hover
+let traducciones   = {};    // caché: nombre_EN → nombre_ES
 let selectedCountry    = null;
 let isDragging         = false;
 let prevMouse          = { x:0, y:0 };
@@ -298,6 +299,12 @@ globeGroup.add(labelsGroup);
 /* Rotación inicial */
 globeGroup.rotation.x = rotationX;
 globeGroup.rotation.y = rotationY;
+
+/* Offset del sistema de coordenadas: lon=-90 enfrenta la cámara en rotY=0
+   Para centrar lon=L: targetRotY = GLOBE_OFFSET_Y + L * PI/180
+   = PI/2 + L*PI/180 = (L + 90) * PI/180                          */
+const GLOBE_OFFSET_Y = PI / 2;   // offset natural del globo (90°)
+const GLOBE_OFFSET_X = rotationX; // = 0.15
 
 /* ═══════════════════════════════════════
    6. GLOBO + ATMÓSFERA
@@ -352,6 +359,16 @@ async function init() {
     allTerritories = data.features;
     console.log('[Cemanáhuac] territorios cargados:', allTerritories.length);
   } catch(e) { console.error('[Cemanáhuac] territories error:', e); }
+
+  /* Pre-traducir nombres únicos de etnias */
+  if (allTerritories.length) {
+    const nombres = [...new Set(
+      allTerritories
+        .map(f => f.properties.Name || f.properties.name || '')
+        .filter(Boolean)
+    )];
+    traducciones = await traducirNombres(nombres);
+  }
 
   labelEtnia = initLabelEtnia();
   animate();
@@ -603,15 +620,74 @@ function clearTerritories() {
   hoveredMesh = null;
 }
 
+/* ── Fan triangulation: más robusto que earcut para polígonos esféricos ── */
+function crearRellenoFan(ring, color) {
+  const verts = ring.map(([lo, la]) => latLonToVec3(la, lo, 1.002));
+  const n     = verts.length;
+  if (n < 3) return null;
+
+  // Centroide normalizado en la esfera
+  const c = verts.reduce((acc, v) => acc.clone().add(v), new THREE.Vector3())
+    .divideScalar(n).normalize().multiplyScalar(1.002);
+
+  const positions = [];
+  for (let i = 0; i < n - 1; i++) {
+    positions.push(...c.toArray(), ...verts[i].toArray(), ...verts[i+1].toArray());
+  }
+  positions.push(...c.toArray(), ...verts[n-1].toArray(), ...verts[0].toArray());
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.computeVertexNormals();
+  return geo;
+}
+
+/* ── Traducción batch de nombres (requiere proxy con key Anthropic) ── */
+async function traducirNombres(nombres) {
+  if (!nombres.length) return {};
+  console.log('[Cemanáhuac] traduciendo', nombres.length, 'nombres...');
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': '',            // el proxy inyecta la key
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 8000,
+        messages: [{ role: 'user', content:
+          `Traduce al español estos nombres de pueblos indígenas de América Latina. Son nombres propios — algunos tienen traducción establecida, otros se quedan igual.\nResponde ÚNICAMENTE con un objeto JSON válido sin texto adicional ni markdown. Formato: {"nombre original":"traducción"}\n\n${nombres.join('\n')}`
+        }]
+      })
+    });
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const data  = await response.json();
+    const texto = data.content[0].text.replace(/```json|```/g, '').trim();
+    return JSON.parse(texto);
+  } catch(err) {
+    console.warn('[Cemanáhuac] traducción no disponible (proxy no configurado):', err.message);
+    const fallback = {};
+    nombres.forEach(n => { fallback[n] = n; });
+    return fallback;
+  }
+}
+
+function getNombreEtnia(feature) {
+  const orig = feature.properties.Name || feature.properties.name || 'Territorio indígena';
+  return traducciones[orig] || orig;
+}
+
 function renderTerritories(features) {
   clearTerritories();
   features.forEach((feature, i) => {
-    const color = colorAleatorio(i);  // color único por territorio (ángulo dorado)
-    const name  = feature.properties.Name || feature.properties.name || 'Territorio';
-    const geom  = feature.geometry;
-    const polys = geom.type==='Polygon' ? [geom.coordinates] : geom.coordinates;
+    const color  = colorAleatorio(i);
+    const name   = getNombreEtnia(feature);  // nombre traducido si disponible
+    const geom   = feature.geometry;
+    const polys  = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates;
 
-    /* Centroide del primer polígono — para posicionar la label hover */
+    /* Centroide del primer polígono */
     let centroide = null;
     try { centroide = calcularCentroide(polys[0]); } catch(e) {}
 
@@ -619,44 +695,37 @@ function renderTerritories(features) {
       const ring = polygon[0];
       if (!ring || ring.length < 3) return;
 
-      /* Contorno del territorio */
+      /* Contorno */
       try {
-        const pts = ring.map(([lo,la]) => latLonToVec3(la,lo,1.004));
+        const pts = ring.map(([lo, la]) => latLonToVec3(la, lo, 1.004));
         const ln  = new THREE.Line(
           new THREE.BufferGeometry().setFromPoints(pts),
           new THREE.LineBasicMaterial({ color, depthTest: false })
         );
         ln.renderOrder = 2;
-        ln.userData    = { feature, name };
+        ln.userData = { feature, name };
         territoriesGroup.add(ln);
       } catch(e) {}
 
-      /* Relleno semitransparente con earcut */
+      /* Relleno con fan triangulation (más robusto que earcut para polígonos esféricos) */
       try {
-        const flat = ring.flatMap(([lo,la]) => [lo,la]);
-        const idx  = earcut(flat, null, 2);
-        if (!idx || !idx.length) return;
-        const verts = [];
-        ring.forEach(([lo,la]) => { const v=latLonToVec3(la,lo,1.003); verts.push(v.x,v.y,v.z); });
-        const fg = new THREE.BufferGeometry();
-        fg.setAttribute('position', new THREE.Float32BufferAttribute(verts,3));
-        fg.setIndex(idx);
-        fg.computeVertexNormals();
+        const geo = crearRellenoFan(ring, color);
+        if (!geo) return;
         const mat  = new THREE.MeshBasicMaterial({
           color, transparent: true, opacity: 0.35,
           side: THREE.DoubleSide, depthWrite: false, depthTest: false
         });
-        const mesh = new THREE.Mesh(fg, mat);
+        const mesh = new THREE.Mesh(geo, mat);
         mesh.renderOrder = 2;
         mesh.userData = {
           feature, name, color, isEtnic: true,
           nombreEtnia: name,
+          colorBase:   color,
           centroide:   centroide
         };
         territoriesGroup.add(mesh);
-      } catch(e) {}
+      } catch(e) { console.warn('[Cemanáhuac] relleno fallido:', name, e.message); }
     });
-    /* Sin labels estáticas — el sistema de hover usa una sola label reutilizable */
   });
 }
 
@@ -691,8 +760,12 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLat   = (bbox.minLat + bbox.maxLat) / 2;
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
-  targetRotY   = -(cLon * PI / 180);
-  targetRotX   = -(cLat * PI / 180) * 0.6;
+  const RAD  = PI / 180;
+  targetRotY = GLOBE_OFFSET_Y + (cLon * RAD); // (cLon + 90) * RAD
+  targetRotX = GLOBE_OFFSET_X - (cLat * RAD) * 0.5;
+  console.log('[flyTo] lon:', cLon.toFixed(1), 'lat:', cLat.toFixed(1),
+              '→ targetRotY:', targetRotY.toFixed(3),
+              '(OFFSET_Y:', GLOBE_OFFSET_Y.toFixed(3), ')');
   ocultarLabelEtnia();
   targetCameraZ = 1.5;
 
