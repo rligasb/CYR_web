@@ -233,9 +233,9 @@ let isDragging         = false;
 let prevMouse          = { x:0, y:0 };
 let dragStart          = { x:0, y:0 };
 let rotationX          = 0.15;
-let rotationY          = 1.7;
+let rotationY          = Math.PI;
 let targetRotX         = 0.15;
-let targetRotY         = 1.7;
+let targetRotY         = Math.PI;
 let targetCameraZ      = 2.2;
 let isFlying           = false;
 let flyTimer           = null;
@@ -312,24 +312,31 @@ globeGroup.add(new THREE.Mesh(
 })();
 
 /* ═══════════════════════════════════════
-   8. CARGAR DATOS
+   8. CARGAR DATOS (async/await)
    ═══════════════════════════════════════ */
-/* Territorios étnicos */
-fetch('./territories_americas.geojson')
-  .then(r => r.json())
-  .then(d => { allTerritories = d.features; console.log('[Cemanáhuac] etnias:', allTerritories.length); })
-  .catch(e => console.error('[Cemanáhuac] territorios error:', e));
-
-/* Países de América */
-fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
-  .then(r => r.json())
-  .then(topo => {
-    const all      = topojson.feature(topo, topo.objects.countries);
+async function init() {
+  /* Países primero — carga los meshes de raycasting */
+  try {
+    const res  = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json');
+    const topo = await res.json();
+    const all  = topojson.feature(topo, topo.objects.countries);
     const americas = all.features.filter(f => AMERICA_IDS[f.id] !== undefined);
     renderCountries(americas);
-    console.log('[Cemanáhuac] países América:', americas.length);
-  })
-  .catch(e => console.error('[Cemanáhuac] world-atlas error:', e));
+    console.log('[Cemanáhuac] países cargados:', americas.length);
+    console.log('[Cemanáhuac] meshes raycasting:', countryFillGroup.children.length);
+  } catch(e) { console.error('[Cemanáhuac] world-atlas error:', e); }
+
+  /* Territorios étnicos */
+  try {
+    const res2 = await fetch('./territories_americas.geojson');
+    const data = await res2.json();
+    allTerritories = data.features;
+    console.log('[Cemanáhuac] territorios cargados:', allTerritories.length);
+  } catch(e) { console.error('[Cemanáhuac] territories error:', e); }
+
+  animate();
+}
+init();
 
 /* ═══════════════════════════════════════
    9. UTILIDADES GEOMÉTRICAS
@@ -582,7 +589,7 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLat   = (bbox.minLat + bbox.maxLat) / 2;
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
-  targetRotY   = -(cLon * PI / 180) + PI * 0.5;
+  targetRotY   = -(cLon * PI / 180) + PI;
   targetRotX   = -(cLat * PI / 180) * 0.4;
   targetCameraZ = 1.5;
 
@@ -795,8 +802,8 @@ document.getElementById('btnZoomOut').onclick = () => { targetCameraZ = Math.min
 document.getElementById('btnReset').onclick   = () => {
   if (flyTimer) clearTimeout(flyTimer);
   isFlying = false; selectedCountry = null;
-  rotationX  = 0.15; rotationY  = 1.7;
-  targetRotX = 0.15; targetRotY = 1.7;
+  rotationX  = 0.15; rotationY  = Math.PI;
+  targetRotX = 0.15; targetRotY = Math.PI;
   targetCameraZ = 2.2;
   clearTerritories();
   countryFillGroup.visible = true;
@@ -833,8 +840,6 @@ function animate() {
 
   renderer.render(scene, camera);
 }
-
-animate();
 </script>
 </body>
 </html>
