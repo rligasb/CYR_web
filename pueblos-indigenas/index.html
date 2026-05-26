@@ -1166,9 +1166,11 @@ canvas.addEventListener('mousedown', e => {
 
 canvas.addEventListener('mousemove', e => {
   if (isDragging && !isFlying) {
-    rotationY += (e.clientX - prevMouse.x) * 0.005;
-    rotationX += (e.clientY - prevMouse.y) * 0.005;
-    rotationX  = Math.max(-PI/2, Math.min(PI/2, rotationX));
+    globeGroup.rotation.y += (e.clientX - prevMouse.x) * 0.005;
+    globeGroup.rotation.x += (e.clientY - prevMouse.y) * 0.005;
+    globeGroup.rotation.x  = Math.max(-PI/2, Math.min(PI/2, globeGroup.rotation.x));
+    rotationY = globeGroup.rotation.y;  // mantener sincronizado
+    rotationX = globeGroup.rotation.x;
     prevMouse  = { x:e.clientX, y:e.clientY };
     canvas.style.cursor = 'grabbing';
   } else if (!isDragging) {
@@ -1242,9 +1244,11 @@ canvas.addEventListener('touchstart', e => {
 canvas.addEventListener('touchmove', e => {
   e.preventDefault();
   const t = e.touches[0];
-  rotationY += (t.clientX-prevMouse.x)*0.005;
-  rotationX += (t.clientY-prevMouse.y)*0.005;
-  rotationX  = Math.max(-PI/2, Math.min(PI/2, rotationX));
+  globeGroup.rotation.y += (t.clientX-prevMouse.x)*0.005;
+  globeGroup.rotation.x += (t.clientY-prevMouse.y)*0.005;
+  globeGroup.rotation.x  = Math.max(-PI/2, Math.min(PI/2, globeGroup.rotation.x));
+  rotationY = globeGroup.rotation.y;
+  rotationX = globeGroup.rotation.x;
   prevMouse  = { x:t.clientX, y:t.clientY };
 }, { passive:false });
 
@@ -1298,8 +1302,6 @@ function animate() {
     globeGroup.rotation.x += (targetRotX - globeGroup.rotation.x) * 0.05;
     camera.position.z     += (targetCameraZ - camera.position.z)  * 0.05;
   } else {
-    globeGroup.rotation.x  = rotationX;
-    globeGroup.rotation.y  = rotationY;
     camera.position.z     += (targetCameraZ - camera.position.z) * 0.1;
   }
 
