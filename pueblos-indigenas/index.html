@@ -485,7 +485,7 @@ function calcularCentroide(coords) {
 /* ── Sistema de label única reutilizable (se actualiza en hover) ── */
 function initLabelEtnia() {
   const canvas = document.createElement('canvas');
-  canvas.width = 512; canvas.height = 80;
+  canvas.width = 256; canvas.height = 48;
   const ctx = canvas.getContext('2d');
   const tex = new THREE.CanvasTexture(canvas);
   const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
@@ -500,21 +500,21 @@ function mostrarLabelEtnia(mesh) {
   if (!labelEtnia) return;
   const nombre = mesh.userData.nombreEtnia || 'Territorio';
   const { canvas, ctx, tex, sprite } = labelEtnia;
-  ctx.clearRect(0, 0, 512, 80);
+  ctx.clearRect(0, 0, 256, 48);
   ctx.fillStyle = 'rgba(0,0,0,0.65)';
   ctx.beginPath();
-  if (ctx.roundRect) ctx.roundRect(8, 8, 496, 64, 10); else ctx.rect(8, 8, 496, 64);
+  if (ctx.roundRect) ctx.roundRect(4, 4, 248, 40, 8); else ctx.rect(4, 4, 248, 40);
   ctx.fill();
-  ctx.font         = 'bold 32px Arial';
+  ctx.font         = 'bold 22px Arial';
   ctx.textAlign    = 'center';
   ctx.textBaseline = 'middle';
   ctx.strokeStyle  = 'rgba(0,0,0,0.9)';
-  ctx.lineWidth    = 5;
-  ctx.strokeText(nombre.substring(0, 28), 256, 40);
+  ctx.lineWidth    = 4;
+  ctx.strokeText(nombre.substring(0, 24), 128, 24);
   ctx.fillStyle    = 'white';
-  ctx.fillText(nombre.substring(0, 28), 256, 40);
+  ctx.fillText(nombre.substring(0, 24), 128, 24);
   tex.needsUpdate  = true;
-  sprite.scale.set(0.5, 0.08, 1);
+  // escala dinámica: se aplica en el loop animate() según distancia de cámara
   sprite.visible   = true;
 }
 
@@ -1333,11 +1333,14 @@ function animate() {
     camera.position.z     += (targetCameraZ - camera.position.z) * 0.1;
   }
 
-  /* Label hover de etnia — actualizar posición en world space */
+  /* Label hover de etnia — posición y escala dinámica con zoom */
   if (labelEtnia && labelEtnia.sprite.visible && meshEtniaHover && meshEtniaHover.userData.centroide) {
     const wPos = meshEtniaHover.userData.centroide.clone();
     globeGroup.localToWorld(wPos);
     labelEtnia.sprite.position.copy(wPos);
+    const dist   = camera.position.z;
+    const escala = Math.max(0.02, (dist - 1.0) * 0.04);
+    labelEtnia.sprite.scale.set(escala * 4, escala, 1);
   }
 
   /* Labels dinámicas de países por distancia de cámara */
