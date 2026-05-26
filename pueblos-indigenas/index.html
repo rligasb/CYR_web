@@ -618,6 +618,8 @@ function clearTerritories() {
   });
   ocultarLabelEtnia();
   hoveredMesh = null;
+  territoriesGroup.visible = false; // ocultar hasta hacer clic en un país + zoom
+  labelsGroup.visible      = false;
 }
 
 /* ── Fan triangulation: más robusto que earcut para polígonos esféricos ── */
@@ -674,9 +676,53 @@ async function traducirNombres(nombres) {
   }
 }
 
+/* Correcciones manuales con prioridad absoluta sobre la API */
+const CORRECCIONES_MANUALES = {
+  'Teenek':'Tének (Huasteco)','Tének':'Tének (Huasteco)',
+  'Nahua':'Nahua (Náhuatl)','Nahuat':'Nahuat','Nahuatl':'Náhuatl',
+  'Maya':'Maya','Yucatec Maya':'Maya Yucateco',
+  'Tzotzil':'Tzotzil (Maya)','Tzeltal':'Tzeltal (Maya)',
+  'Chol':'Ch\'ol','Tojolabal':'Tojolabal','Chuj':'Chuj',
+  'Qanjobal':'Q\'anjob\'al','Mam':'Mam',
+  'Zapotec':'Zapoteca','Mixtec':'Mixteca','Mixteco':'Mixteca',
+  'Otomi':'Otomí','Otomí':'Otomí',
+  'Purepecha':'Purépecha','Tarascan':'Purépecha (Tarasco)',
+  'Totonac':'Totonaco','Totonaca':'Totonaco',
+  'Mazahua':'Mazahua','Mazatec':'Mazateco',
+  'Raramuri':'Rarámuri (Tarahumara)','Tarahumara':'Rarámuri (Tarahumara)',
+  'Wixarika':'Wixárika (Huichol)','Huichol':'Wixárika (Huichol)',
+  'Triqui':'Triqui','Amuzgo':'Amuzgo',
+  'Chinantec':'Chinanteco','Chatino':'Chatino',
+  'Zoque':'Zoque','Chontal':'Chontal',
+  'Huave':'Huave (Mero\'ikooc)',
+  'Seri':'Seri (Comcáac)','Comcaac':'Seri (Comcáac)',
+  'Yaqui':'Yaqui (Yoeme)','Mayo':'Mayo (Yoreme)',
+  'Cucapah':'Cucapá','Cocopah':'Cucapá',
+  'Pame':'Pame (Xi\'iuy)','Chichimec':'Chichimeca Jonaz',
+  'Kiche':'K\'iche\'','Quiche':'K\'iche\'',
+  'Kaqchikel':'Kaqchikel','Cakchiquel':'Kaqchikel',
+  'Ixil':'Ixil','Achi':'Achi\'','Poqomchi':'Poqomchi\'',
+  'Qeqchi':'Q\'eqchi\'','Keqchi':'Q\'eqchi\'',
+  'Wayuu':'Wayuu','Arhuaco':'Arhuaco (Iku)','Kogi':'Kogui',
+  'Embera':'Emberá','Wounaan':'Wounaan',
+  'Yanomami':'Yanomami','Pemon':'Pemón',
+  'Quechua':'Quechua','Aymara':'Aymara',
+  'Shipibo':'Shipibo-Conibo','Asháninka':'Asháninka','Ashaninka':'Asháninka',
+  'Guarani':'Guaraní','Guaraní':'Guaraní',
+  'Xavante':'Xavante','Kayapo':'Kayapó',
+  'Mapuche':'Mapuche','Tehuelche':'Tehuelche',
+  'Selknam':'Selknam (Ona)',
+  'Taino':'Taíno','Garifuna':'Garífuna','Garinagu':'Garífuna'
+};
+
 function getNombreEtnia(feature) {
   const orig = feature.properties.Name || feature.properties.name || 'Territorio indígena';
-  return traducciones[orig] || orig;
+  // 1. Correcciones manuales tienen prioridad absoluta
+  if (CORRECCIONES_MANUALES[orig]) return CORRECCIONES_MANUALES[orig];
+  // 2. Traducción de la API (si disponible)
+  if (traducciones[orig]) return traducciones[orig];
+  // 3. Nombre original
+  return orig;
 }
 
 function renderTerritories(features) {
@@ -761,11 +807,10 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
   const RAD  = PI / 180;
-  targetRotY = GLOBE_OFFSET_Y + (cLon * RAD); // (cLon + 90) * RAD
-  targetRotX = GLOBE_OFFSET_X - (cLat * RAD) * 0.5;
+  targetRotY = -((cLon + 90) * RAD);  // sin GLOBE_OFFSET — ya implícito en +90
+  targetRotX = -(cLat * RAD) * 0.5;
   console.log('[flyTo] lon:', cLon.toFixed(1), 'lat:', cLat.toFixed(1),
-              '→ targetRotY:', targetRotY.toFixed(3),
-              '(OFFSET_Y:', GLOBE_OFFSET_Y.toFixed(3), ')');
+              '→ targetRotY:', targetRotY.toFixed(3));
   ocultarLabelEtnia();
   targetCameraZ = 1.5;
 
@@ -792,6 +837,8 @@ function showTerritoriesForCountry(countryFeature, countryName) {
 
   if (found.length > 0) {
     renderTerritories(found);
+    territoriesGroup.visible = true;  // mostrar polígonos del país seleccionado
+    labelsGroup.visible      = true;
     updateBreadcrumb(countryName, found.length);
     setHint('Clic en un territorio para ver su ficha');
   } else {
