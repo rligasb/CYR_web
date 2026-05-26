@@ -637,7 +637,6 @@ function crearRellenoFan(ring, color) {
 }
 
 /* ── Traducción batch de nombres (requiere proxy con key Anthropic) ── */
-/* Correcciones manuales — tabla completa, sin dependencia de API */
 const CORRECCIONES_MANUALES = {
   'Nahua': 'Nahua',
   'Nahua ( Morelos, Puebla, Tlaxcala, Veracruz, Hidalgo, San Luis Potosi, Oaxaca)': 'Nahua (Morelos, Puebla, Tlaxcala, Veracruz, Hidalgo, San Luis Potosí, Oaxaca)',
@@ -649,9 +648,6 @@ const CORRECCIONES_MANUALES = {
   'Mexihcah (Triple Alliance)': 'Mexihcah (Triple Alianza)',
   'Maya (Yucateco)': 'Maya Yucateco',
   'Hach Winik (Lacandon)': 'Hach Winik (Lacandón)',
-  'Batsil Winik\' Otik (Tzotzil)': 'Batsil Winik\' Otik (Tzotzil)',
-  'Winik Atel (Tzeltal)': 'Winik Atel (Tzeltal)',
-  'Tojolwinik\'otik (Tojolabal)': 'Tojolwinik\'otik (Tojolabal)',
   'Tének': 'Tének (Huasteco)',
   'Teenek': 'Tének (Huasteco)',
   'Iréchikwa Ts\'intsúntsani (P\'urhépecha Kingdom)': 'Iréchikwa Ts\'intsúntsani (Reino P\'urhépecha)',
@@ -671,23 +667,22 @@ const CORRECCIONES_MANUALES = {
   'Paipai (Akwa\'ala)': 'Paipai (Akwa\'ala)',
   'Ko\'lew (Kiliwa)': 'Ko\'lew (Kiliwa)',
   'O\' de püt/Angpøn (Zoque)': 'O\' de püt (Zoque)',
-  'Popoluca (mixe-zoque)': 'Popoluca (mixe-zoque)',
-  'Tapachulteco (mixe-zoque)': 'Tapachulteco (mixe-zoque)',
-  'Slijuala Xanuc (Chontal)': 'Slijuala Xanuc (Chontal de Tabasco)',
+  'Popoluca (mixe-zoque)': 'Popoluca',
+  'Tapachulteco (mixe-zoque)': 'Tapachulteco',
+  'Slijuala Xanuc (Chontal)': 'Chontal de Tabasco',
   'Yoko T\'aan (Chontal)': 'Yoko T\'aan (Chontal)',
   'Totonac': 'Totonaco',
   'Runixa Ngiigua (Chocho)': 'Runixa Ngiigua (Chocho)',
-  'Ngi-iva (Popoloca)': 'Ngi-iva (Popoloca)',
-  'Yabaham (Cuicateco)': 'Yabaham (Cuicateco)',
-  'Me̱\'pha̱a̱ (Tlapaneco)': 'Me\'phaa (Tlapaneco)',
-  'Tzjon Non/ Tzo\'tyio (Amuzgo)': 'Tzjon Non (Amuzgo)',
+  'Ngi-iva (Popoloca)': 'Popoloca',
+  'Yabaham (Cuicateco)': 'Cuicateco',
+  'Tzjon Non/ Tzo\'tyio (Amuzgo)': 'Amuzgo',
   'Wiñikoñlojoñbä /Xk\'uk\'witsob/Ajlumob (Ch\'ol)': 'Ch\'ol',
   'Chiapaneco': 'Chiapaneco',
   'Tlahuica': 'Tlahuica',
   'Matlatzinca': 'Matlatzinca',
   'Matlatzinco/Tlahuica/Ocuiltec': 'Matlatzinco / Tlahuica / Ocuiltec',
   'Caxcan': 'Caxcán',
-  'Zacateco ': 'Zacateco',
+  'Zacateco': 'Zacateco',
   'Huachichil (Guachichil)': 'Guachichil',
   'Tobosos': 'Tobosos',
   'Yoli (Concho)': 'Yoli (Concho)',
@@ -703,16 +698,19 @@ const CORRECCIONES_MANUALES = {
   'Pericú': 'Pericú',
   'Guaycura': 'Guaycura',
   'Ópata (Tegüima-Eudebe-Hoba)': 'Ópata',
-  'jñatjo/ jñatrjo (Mazahua)': 'Jñatjo (Mazahua)',
-  'Ndé Kónitsąąíí Gokíyaa (Lipan Apache)': 'Ndé Kónitsąąíí Gokíyaa (Apache Lipán)',
-  'Xi úi (Pame)': 'Xi úi (Pame)',
-  'Ézá\'r (Chichimeco Jonaz)': 'Ézá\'r (Chichimeco Jonaz)',
+  'jñatjo/ jñatrjo (Mazahua)': 'Mazahua',
+  'Ndé Kónitsąąíí Gokíyaa (Lipan Apache)': 'Apache Lipán',
+  'Xi úi (Pame)': 'Pame',
+  'Ézá\'r (Chichimeco Jonaz)': 'Chichimeco Jonaz',
   'Esto\'k Gna (Carrizo/Comecrudo)': 'Carrizo / Comecrudo',
+  'Batsil Winik\' Otik (Tzotzil)': 'Tzotzil',
+  'Winik Atel (Tzeltal)': 'Tzeltal',
+  'Tojolwinik\'otik (Tojolabal)': 'Tojolabal',
   'K\'iche\'': 'K\'iche\'',
   'Kaqchikel': 'Kaqchikel',
   'Awakateka': 'Awakateko',
   'Ixil': 'Ixil',
-  'Winaq Qo\' (Mam)': 'Winaq Qo\' (Mam)',
+  'Winaq Qo\' (Mam)': 'Mam',
   'Q\'anjob\'al': 'Q\'anjob\'al',
   'Q\'eqchi\'': 'Q\'eqchi\'',
   'Poqomam': 'Poqomam',
@@ -752,7 +750,7 @@ const CORRECCIONES_MANUALES = {
   'Buglé and Ngäbé': 'Buglé y Ngäbé',
   'Tjer-di/Teribe Broram': 'Teribe (Naso)',
   'Wayúu': 'Wayúu',
-  'Ijku (Arhuaco)': 'Ijku (Arhuaco)',
+  'Ijku (Arhuaco)': 'Arhuaco',
   'Kogui/Kaggabba': 'Kogui',
   'Kankuamo': 'Kankuamo',
   'Wiwa': 'Wiwa',
@@ -801,6 +799,7 @@ const CORRECCIONES_MANUALES = {
   'Q\'ero': 'Q\'ero',
   'Aymara': 'Aymara',
   'Ashaninka': 'Asháninka',
+  'Asheninka': 'Asheninka',
   'Nomatsigenga': 'Nomatsigenga',
   'Matsigenka': 'Matsigenka',
   'Yanesha': 'Yanesha',
@@ -858,7 +857,7 @@ const CORRECCIONES_MANUALES = {
   'Tekohá (Guarani)': 'Tekohá (Guaraní)',
   'Tekohá (Paĩ Tavytera/Kaiowá)': 'Tekohá (Kaiowá)',
   'Tekohá (Ñandeva – Avá Guaraní)': 'Tekohá (Avá Guaraní)',
-  'Mebêngôkre (Kayapó)': 'Mebêngôkre (Kayapó)',
+  'Mebêngôkre (Kayapó)': 'Kayapó',
   'Mundurukânia (Wuy jugu)': 'Munduruku',
   'Tenetehara (Tembé)': 'Tenetehara / Tembé',
   'Sateré-Mawé': 'Sateré-Mawé',
@@ -932,7 +931,21 @@ const CORRECCIONES_MANUALES = {
   'Lucayo': 'Lucayo',
   'Yamayeka (Yamaye)': 'Yamayeka (Taíno de Jamaica)',
   'Taino': 'Taíno',
-  'Garifuna': 'Garífuna'
+  'Garifuna': 'Garífuna',
+  'Lenca': 'Lenca',
+  'Chorotega': 'Chorotega',
+  'Matagalpa/Cacaopera': 'Matagalpa / Cacaopera',
+  'Subtiaba': 'Subtiaba',
+  'Corobicí': 'Corobicí',
+  'Chono': 'Chono',
+  'Selknam': 'Selk\'nam',
+  'Mapuche': 'Mapuche',
+  'Guaraní': 'Guaraní',
+  "Me'phaa (Tlapaneco)": "Me'phaa (Tlapaneco)",
+  'Chontal de Guerrero – Tuxteco': 'Chontal de Guerrero',
+  'Coahuiltecan': 'Coahuilteco',
+  'Piro/Manso/Tiwa Tribe': 'Piro / Manso / Tiwa',
+  'Tampachoa (Mansos)': 'Mansos'
 };
 
 function getNombreEtnia(feature) {
@@ -941,6 +954,7 @@ function getNombreEtnia(feature) {
     || 'Territorio indígena';
   return CORRECCIONES_MANUALES[nombreOriginal] || nombreOriginal;
 }
+
 
 function renderTerritories(features) {
   clearTerritories();
