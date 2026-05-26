@@ -362,11 +362,6 @@ async function init() {
 
   /* CORRECCIONES_MANUALES cubre todos los nombres — sin llamada a API */
 
-  /* Logs de diagnóstico para calibrar flyToCountry */
-  console.log('[INIT] globeGroup.rotation.y:', globeGroup.rotation.y);
-  console.log('[INIT] globe.rotation.y:', globeGroup.rotation.y);
-  console.log('[INIT] rotationY variable:', rotationY);
-
   labelEtnia = initLabelEtnia();
   animate();
 }
@@ -1029,13 +1024,8 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
   const RAD  = PI / 180;
-  targetRotY = -((cLon + 90) * RAD);  // sin GLOBE_OFFSET — ya implícito en +90
-  targetRotX = -(cLat * RAD) * 0.5;
-
-  console.log('[FLY] país:', countryName);
-  console.log('[FLY] cLon:', cLon, 'cLat:', cLat);
-  console.log('[FLY] targetRotY:', targetRotY);
-  console.log('[FLY] globe.rotation.y antes:', globeGroup.rotation.y);
+  targetRotY = -(cLon * RAD);   // rotation.y=0 → lon=0 (Greenwich)
+  targetRotX = (cLat * RAD) * 0.5;
   ocultarLabelEtnia();
   targetCameraZ = 1.5;
 
