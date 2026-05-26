@@ -1014,6 +1014,14 @@ function updateBreadcrumb(countryName, count) {
 /* ═══════════════════════════════════════
    15. VUELO CINEMATOGRÁFICO AL PAÍS
    ═══════════════════════════════════════ */
+/* Ruta más corta entre dos ángulos — evita dar la vuelta larga */
+function shortestRotation(current, target) {
+  let delta = target - current;
+  while (delta >  Math.PI) delta -= 2 * Math.PI;
+  while (delta < -Math.PI) delta += 2 * Math.PI;
+  return current + delta;
+}
+
 function flyToCountry(countryFeature, countryName, countryColor) {
   if (isFlying) return;
   isFlying       = true;
@@ -1023,11 +1031,13 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLat   = (bbox.minLat + bbox.maxLat) / 2;
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
-  const RAD  = PI / 180;
-  targetRotY = -(cLon * RAD);   // rotation.y=0 → lon=0 (Greenwich)
-  targetRotX = (cLat * RAD) * 0.5;
+  const RAD      = PI / 180;
+  const rawY     = -(cLon * RAD);
+  const rawX     = (cLat * RAD) * 0.5;
+  targetRotY     = shortestRotation(globeGroup.rotation.y, rawY);
+  targetRotX     = shortestRotation(globeGroup.rotation.x, rawX);
   ocultarLabelEtnia();
-  targetCameraZ = 1.5;
+  targetCameraZ = 2.0;
 
   updateBreadcrumb(countryName);
   setHint('Buscando pueblos indígenas…');
@@ -1035,9 +1045,9 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   /* Mostrar territorios después del vuelo */
   if (flyTimer) clearTimeout(flyTimer);
   flyTimer = setTimeout(() => {
-    isFlying = false;
-    rotationY = targetRotY;
-    rotationX = targetRotX;
+    rotationY = globeGroup.rotation.y;  // sincronizar con posición real del lerp
+    rotationX = globeGroup.rotation.x;
+    isFlying  = false;
     showTerritoriesForCountry(countryFeature, countryName);
   }, 1600);
 }
@@ -1259,7 +1269,7 @@ document.getElementById('btnReset').onclick   = () => {
   isFlying = false; selectedCountry = null;
   rotationX  = 0.15; rotationY  = 0;
   targetRotX = 0.15; targetRotY = 0;
-  targetCameraZ = 2.2;
+  targetCameraZ = 2.5;
   clearTerritories();
   countryFillGroup.visible = true;
   countryBordGroup.visible = true;
