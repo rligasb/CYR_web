@@ -1299,8 +1299,17 @@ window.addEventListener('resize', () => {
 /* ═══════════════════════════════════════
    20. ANIMATE LOOP
    ═══════════════════════════════════════ */
+let primerFrame = true;
+
 function animate() {
   requestAnimationFrame(animate);
+
+  if (primerFrame) {
+    console.log('[FRAME1] globeGroup.rotation.y:', globeGroup.rotation.y.toFixed(6));
+    console.log('[FRAME1] globeGroup.rotation.x:', globeGroup.rotation.x.toFixed(6));
+    console.log('[FRAME1] globeGroup.parent rotation:', globeGroup.parent?.rotation.y.toFixed(6));
+    primerFrame = false;
+  }
 
   if (isFlying) {
     globeGroup.rotation.y += (targetRotY - globeGroup.rotation.y) * 0.05;
