@@ -317,7 +317,7 @@ globeGroup.add(new THREE.Mesh(
 async function init() {
   /* Países primero — carga los meshes de raycasting */
   try {
-    const res  = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json');
+    const res  = await fetch('./countries-50m.json');
     const topo = await res.json();
     const all  = topojson.feature(topo, topo.objects.countries);
     const americas = all.features.filter(f => AMERICA_IDS[f.id] !== undefined);
