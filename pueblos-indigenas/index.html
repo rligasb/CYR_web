@@ -1032,7 +1032,7 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
   const RAD      = PI / 180;
-  const rawY     = -(cLon * RAD);
+  const rawY     = -((cLon + 90) * RAD);
   const rawX     = (cLat * RAD) * 0.5;
   targetRotY     = shortestRotation(globeGroup.rotation.y, rawY);
   targetRotX     = shortestRotation(globeGroup.rotation.x, rawX);
