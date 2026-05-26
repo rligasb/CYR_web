@@ -233,9 +233,9 @@ let isDragging         = false;
 let prevMouse          = { x:0, y:0 };
 let dragStart          = { x:0, y:0 };
 let rotationX          = 0.15;
-let rotationY          = Math.PI;
+let rotationY          = 0;
 let targetRotX         = 0.15;
-let targetRotY         = Math.PI;
+let targetRotY         = 0;
 let targetCameraZ      = 2.2;
 let isFlying           = false;
 let flyTimer           = null;
@@ -589,8 +589,8 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLat   = (bbox.minLat + bbox.maxLat) / 2;
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
-  targetRotY   = -(cLon * PI / 180) + PI;
-  targetRotX   = -(cLat * PI / 180) * 0.4;
+  targetRotY   = (cLon + 90) * PI / 180;
+  targetRotX   = -(cLat * PI / 180) * 0.3;
   targetCameraZ = 1.5;
 
   updateBreadcrumb(countryName);
@@ -677,30 +677,33 @@ function handleClick(cx, cy) {
   );
   raycaster.setFromCamera(mouse, camera);
 
-  /* ¿Clic en territorio étnico? */
+  /* 1. ¿Clic en territorio étnico? */
   const ethnicMeshes = territoriesGroup.children.filter(c => c.userData.isEtnic);
   if (ethnicMeshes.length) {
     const hits = raycaster.intersectObjects(ethnicMeshes);
     if (hits.length) { openCard(hits[0].object.userData.feature, hits[0].object.userData.color); return; }
   }
 
-  /* ¿Clic en país? */
-  const countryMeshes = countryFillGroup.children;
-  if (countryMeshes.length && countryFillGroup.visible) {
-    const hits = raycaster.intersectObjects(Array.from(countryMeshes));
-    if (hits.length) {
-      const { feature, name, color } = hits[0].object.userData;
-      flyToCountry(feature, name, color);
+  /* 2. Raycast contra globo → lat/lon → buscar país o territorio */
+  const gHits = raycaster.intersectObject(globeMesh);
+  if (!gHits.length) return;
+
+  const { lat, lon } = pointToLatLon(gHits[0].point);
+
+  if (countryFillGroup.visible && countryItems.length) {
+    /* Buscar qué país de América contiene el punto */
+    const clicked = countryItems.find(item => pointInFeature(lat, lon, item.feature));
+    if (clicked) {
+      flyToCountry(clicked.feature, clicked.name, clicked.color);
       return;
     }
-  }
-
-  /* ¿Clic en globo (sin países visibles)? */
-  const gHits = raycaster.intersectObject(globeMesh);
-  if (gHits.length && !countryFillGroup.visible) {
-    const { lat, lon } = pointToLatLon(gHits[0].point);
+  } else if (!countryFillGroup.visible) {
+    /* Ya dentro de un país — clic en zona sin polígono étnico */
     const found = getTerritoriesAtPoint(lat, lon);
-    if (found.length) { renderTerritories(found); updateBreadcrumb(selectedCountry ? AMERICA_IDS[selectedCountry.id] : null, found.length); }
+    if (found.length) {
+      renderTerritories(found);
+      updateBreadcrumb(selectedCountry ? AMERICA_IDS[selectedCountry.id] : null, found.length);
+    }
   }
 }
 
@@ -738,17 +741,19 @@ canvas.addEventListener('mousemove', e => {
       return;
     }
 
-    /* Hover en países */
-    const cMeshes = Array.from(countryFillGroup.children).filter(c => c.userData.isCountry);
-    const cHits   = cMeshes.length && countryFillGroup.visible ? raycaster.intersectObjects(cMeshes) : [];
-    if (cHits.length) {
-      canvas.style.cursor = 'pointer';
-      const mesh = cHits[0].object;
-      if (hoveredMesh && hoveredMesh !== mesh) hoveredMesh.material.opacity = 0.45;
-      mesh.material.opacity = 0.75; hoveredMesh = mesh;
-      tooltip.style.cssText = `display:block;left:${e.clientX+12}px;top:${e.clientY-8}px`;
-      tooltip.textContent   = mesh.userData.name;
-      return;
+    /* Hover en países (via globeMesh + pointInFeature) */
+    if (countryFillGroup.visible && countryItems.length) {
+      const gH = raycaster.intersectObject(globeMesh);
+      if (gH.length) {
+        const { lat, lon } = pointToLatLon(gH[0].point);
+        const found = countryItems.find(item => pointInFeature(lat, lon, item.feature));
+        if (found) {
+          canvas.style.cursor = 'pointer';
+          tooltip.style.cssText = `display:block;left:${e.clientX+12}px;top:${e.clientY-8}px`;
+          tooltip.textContent   = found.name;
+          return;
+        }
+      }
     }
 
     canvas.style.cursor = 'grab';
@@ -802,8 +807,8 @@ document.getElementById('btnZoomOut').onclick = () => { targetCameraZ = Math.min
 document.getElementById('btnReset').onclick   = () => {
   if (flyTimer) clearTimeout(flyTimer);
   isFlying = false; selectedCountry = null;
-  rotationX  = 0.15; rotationY  = Math.PI;
-  targetRotX = 0.15; targetRotY = Math.PI;
+  rotationX  = 0.15; rotationY  = 0;
+  targetRotX = 0.15; targetRotY = 0;
   targetCameraZ = 2.2;
   clearTerritories();
   countryFillGroup.visible = true;
