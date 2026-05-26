@@ -183,6 +183,20 @@ const AMERICA_IDS = {
   328:'Guyana', 740:'Surinam', 254:'Guayana Francesa'
 };
 
+/* Nombres exactos de countries-50m.json para los 35 países americanos */
+const PAISES_AMERICA = new Set([
+  'Canada','United States of America','Mexico',
+  'Guatemala','Belize','Honduras','El Salvador',
+  'Nicaragua','Costa Rica','Panama',
+  'Cuba','Jamaica','Haiti','Dominican Rep.',
+  'Trinidad and Tobago','Bahamas','Barbados',
+  'Saint Lucia','St. Vin. and Gren.','Grenada',
+  'Antigua and Barb.','Dominica','St. Kitts and Nevis',
+  'Colombia','Venezuela','Guyana','Suriname',
+  'Brazil','Ecuador','Peru','Bolivia',
+  'Chile','Argentina','Uruguay','Paraguay'
+]);
+
 /* Paleta suave para países */
 const COUNTRY_PALETTE = [
   '#6a9e7c','#b87a50','#5a8a9e','#9e8a44','#7a6e9e',
@@ -229,6 +243,7 @@ const PI = Math.PI;
 let allTerritories     = [];
 let countryItems       = [];   // {feature, name, color}
 let countryLabels      = [];   // {sprite, name, nivel}
+let etniaLabels        = [];   // sprites de territorios étnicos (visibilidad por zoom)
 const NIVEL_1 = new Set(['México','Brasil','Canadá','Estados Unidos','Argentina']);
 const NIVEL_2 = new Set(['Colombia','Venezuela','Perú','Chile','Bolivia']);
 let selectedCountry    = null;
@@ -322,19 +337,10 @@ async function init() {
   try {
     const res  = await fetch('./countries-50m.json');
     const topo = await res.json();
-    const all  = topojson.feature(topo, topo.objects.countries);
-    /* Filtro por centroide geográfico: lon -180 a -30, lat -60 a 85 */
-    const americas = all.features.filter(f => {
-      if (!f.geometry) return false;
-      const geom  = f.geometry;
-      const ring  = geom.type === 'Polygon'
-        ? geom.coordinates[0]
-        : geom.type === 'MultiPolygon' ? geom.coordinates[0][0] : null;
-      if (!ring || !ring.length) return false;
-      const avgLon = ring.reduce((s, [lo]) => s + lo, 0) / ring.length;
-      const avgLat = ring.reduce((s, [, la]) => s + la, 0) / ring.length;
-      return avgLon >= -180 && avgLon <= -30 && avgLat >= -60 && avgLat <= 85;
-    });
+    const all     = topojson.feature(topo, topo.objects.countries);
+    const americas = all.features.filter(f =>
+      f.properties && PAISES_AMERICA.has(f.properties.name)
+    );
     renderCountries(americas);
   } catch(e) { console.error('[Cemanáhuac] world-atlas error:', e); }
 
@@ -477,7 +483,8 @@ function renderCountries(features) {
 
   features.forEach((feature, i) => {
     const color = COUNTRY_PALETTE[i % COUNTRY_PALETTE.length];
-    const name  = AMERICA_IDS[feature.id] || 'País';
+    /* +feature.id convierte "032"→32, solucionando IDs con ceros iniciales */
+    const name  = AMERICA_IDS[+feature.id] || feature.properties?.name || 'País';
     const geom  = feature.geometry;
     if (!geom) return;
     const polys = geom.type==='Polygon' ? [geom.coordinates] : geom.coordinates;
@@ -486,13 +493,14 @@ function renderCountries(features) {
       const ring = polygon[0];
       if (!ring || ring.length < 3) return;
 
-      /* Borde sutil — no tapa la textura Blue Marble */
+      /* Borde sutil — depthTest:false garantiza que se dibuje sobre el globo */
       try {
         const pts = ring.map(([lo,la]) => latLonToVec3(la,lo,1.002));
         const lg  = new THREE.BufferGeometry().setFromPoints(pts);
         const ln  = new THREE.Line(lg, new THREE.LineBasicMaterial({
-          color: 0xffffff, transparent: true, opacity: 0.25
+          color: 0xffffff, transparent: true, opacity: 0.35, depthTest: false
         }));
+        ln.renderOrder = 1;
         countryBordGroup.add(ln);
       } catch(e) {}
     });
@@ -530,6 +538,7 @@ function clearTerritories() {
       grp.remove(o);
     }
   });
+  etniaLabels = [];
   hoveredMesh = null;
 }
 
@@ -568,15 +577,16 @@ function renderTerritories(features) {
       } catch(e) {}
     });
 
-    /* Label étnico */
+    /* Label étnico — invisible por defecto, animate() controla visibilidad por zoom */
     try {
       const r0  = polys[0][0];
       const cLo = r0.reduce((s,[lo])=>s+lo,0)/r0.length;
       const cLa = r0.reduce((s,[,la])=>s+la,0)/r0.length;
-      const sp  = makeSprite(name, 'rgba(0,0,0,0.65)', '#ffffff', 256, 44, 14);
+      const sp  = crearLabelSprite(name);
       sp.position.copy(latLonToVec3(cLa, cLo, 1.055));
-      sp.scale.set(0.3, 0.054, 1);
+      sp.visible = false;   // zoom-controlled
       labelsGroup.add(sp);
+      etniaLabels.push(sp);
     } catch(e) {}
   });
 }
@@ -725,7 +735,7 @@ function handleClick(cx, cy) {
     const found = getTerritoriesAtPoint(lat, lon);
     if (found.length) {
       renderTerritories(found);
-      updateBreadcrumb(selectedCountry ? AMERICA_IDS[selectedCountry.id] : null, found.length);
+      updateBreadcrumb(selectedCountry ? (AMERICA_IDS[+selectedCountry.id] || selectedCountry.properties?.name) : null, found.length);
     }
   }
 }
@@ -866,7 +876,25 @@ function animate() {
     camera.position.z     += (targetCameraZ - camera.position.z) * 0.1;
   }
 
-  /* Labels dinámicas por distancia de cámara */
+  /* Labels étnicos — solo visibles en zoom muy cercano */
+  if (etniaLabels.length) {
+    const dist   = camera.position.z;
+    const aspect = camera.aspect || (window.innerWidth / window.innerHeight);
+    const UMBRAL_ETNIA = 1.45;
+    if (dist >= UMBRAL_ETNIA) {
+      etniaLabels.forEach(s => { s.visible = false; });
+    } else {
+      const factor = Math.max(0, (UMBRAL_ETNIA - dist) / UMBRAL_ETNIA);
+      const escala = factor * 0.06;
+      etniaLabels.forEach(s => {
+        s.visible = true;
+        s.scale.set(escala * aspect, escala, 1);
+        s.material.opacity = Math.min(1, factor * 3);
+      });
+    }
+  }
+
+  /* Labels dinámicas de países por distancia de cámara */
   if (countryLblGroup.visible && countryLabels.length) {
     const dist   = camera.position.z;
     const aspect = camera.aspect || (window.innerWidth / window.innerHeight);
