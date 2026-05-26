@@ -243,9 +243,10 @@ const PI = Math.PI;
 let allTerritories     = [];
 let countryItems       = [];   // {feature, name, color}
 let countryLabels      = [];   // {sprite, name, nivel}
-let etniaLabels        = [];   // sprites de territorios étnicos (visibilidad por zoom)
 const NIVEL_1 = new Set(['México','Brasil','Canadá','Estados Unidos','Argentina']);
 const NIVEL_2 = new Set(['Colombia','Venezuela','Perú','Chile','Bolivia']);
+let meshEtniaHover = null;  // mesh étnico actualmente bajo el cursor
+let labelEtnia     = null;  // sprite reutilizable de label hover
 let selectedCountry    = null;
 let isDragging         = false;
 let prevMouse          = { x:0, y:0 };
@@ -352,6 +353,7 @@ async function init() {
     console.log('[Cemanáhuac] territorios cargados:', allTerritories.length);
   } catch(e) { console.error('[Cemanáhuac] territories error:', e); }
 
+  labelEtnia = initLabelEtnia();
   animate();
 }
 init();
@@ -454,6 +456,65 @@ function makeSprite(text, bgColor, textColor, w, h, fontSize) {
 }
 
 /* ═══════════════════════════════════════
+   11a. COLORES Y CENTROIDE DE ETNIAS
+   ═══════════════════════════════════════ */
+function colorAleatorio(seed) {
+  const hue = (seed * 137.508) % 360; // ángulo dorado → colores bien distribuidos
+  const c   = new THREE.Color();
+  c.setHSL(hue / 360, 0.70, 0.55);
+  return c;
+}
+
+function calcularCentroide(coords) {
+  // coords = [[lon,lat], ...] del exterior ring del polígono
+  const ring   = coords[0];
+  const sumLon = ring.reduce((s, [lo])   => s + lo, 0);
+  const sumLat = ring.reduce((s, [, la]) => s + la, 0);
+  return latLonToVec3(sumLat / ring.length, sumLon / ring.length, 1.08);
+}
+
+/* ── Sistema de label única reutilizable (se actualiza en hover) ── */
+function initLabelEtnia() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512; canvas.height = 80;
+  const ctx = canvas.getContext('2d');
+  const tex = new THREE.CanvasTexture(canvas);
+  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+  const sprite = new THREE.Sprite(mat);
+  sprite.visible     = false;
+  sprite.renderOrder = 10;
+  scene.add(sprite); // en scene, no en globeGroup → se actualiza en animate()
+  return { sprite, canvas, ctx, tex };
+}
+
+function mostrarLabelEtnia(mesh) {
+  if (!labelEtnia) return;
+  const nombre = mesh.userData.nombreEtnia || 'Territorio';
+  const { canvas, ctx, tex, sprite } = labelEtnia;
+  ctx.clearRect(0, 0, 512, 80);
+  ctx.fillStyle = 'rgba(0,0,0,0.65)';
+  ctx.beginPath();
+  if (ctx.roundRect) ctx.roundRect(8, 8, 496, 64, 10); else ctx.rect(8, 8, 496, 64);
+  ctx.fill();
+  ctx.font         = 'bold 32px Arial';
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.strokeStyle  = 'rgba(0,0,0,0.9)';
+  ctx.lineWidth    = 5;
+  ctx.strokeText(nombre.substring(0, 28), 256, 40);
+  ctx.fillStyle    = 'white';
+  ctx.fillText(nombre.substring(0, 28), 256, 40);
+  tex.needsUpdate  = true;
+  sprite.scale.set(0.5, 0.08, 1);
+  sprite.visible   = true;
+}
+
+function ocultarLabelEtnia() {
+  if (labelEtnia) labelEtnia.sprite.visible = false;
+  meshEtniaHover = null;
+}
+
+/* ═══════════════════════════════════════
    11b. LABEL SPRITE CON STROKE (países)
    ═══════════════════════════════════════ */
 function crearLabelSprite(texto) {
@@ -538,29 +599,39 @@ function clearTerritories() {
       grp.remove(o);
     }
   });
-  etniaLabels = [];
+  ocultarLabelEtnia();
   hoveredMesh = null;
 }
 
 function renderTerritories(features) {
   clearTerritories();
   features.forEach((feature, i) => {
-    const color = ETHNIC_PALETTE[i % ETHNIC_PALETTE.length];
+    const color = colorAleatorio(i);  // color único por territorio (ángulo dorado)
     const name  = feature.properties.Name || feature.properties.name || 'Territorio';
     const geom  = feature.geometry;
     const polys = geom.type==='Polygon' ? [geom.coordinates] : geom.coordinates;
 
+    /* Centroide del primer polígono — para posicionar la label hover */
+    let centroide = null;
+    try { centroide = calcularCentroide(polys[0]); } catch(e) {}
+
     polys.forEach(polygon => {
       const ring = polygon[0];
       if (!ring || ring.length < 3) return;
+
+      /* Contorno del territorio */
       try {
         const pts = ring.map(([lo,la]) => latLonToVec3(la,lo,1.004));
-        territoriesGroup.add(Object.assign(
-          new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
-            new THREE.LineBasicMaterial({ color: new THREE.Color(color) })),
-          { userData: { feature, name, color } }
-        ));
+        const ln  = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(pts),
+          new THREE.LineBasicMaterial({ color, depthTest: false })
+        );
+        ln.renderOrder = 2;
+        ln.userData    = { feature, name };
+        territoriesGroup.add(ln);
       } catch(e) {}
+
+      /* Relleno semitransparente con earcut */
       try {
         const flat = ring.flatMap(([lo,la]) => [lo,la]);
         const idx  = earcut(flat, null, 2);
@@ -571,23 +642,21 @@ function renderTerritories(features) {
         fg.setAttribute('position', new THREE.Float32BufferAttribute(verts,3));
         fg.setIndex(idx);
         fg.computeVertexNormals();
-        const mesh = new THREE.Mesh(fg, new THREE.MeshBasicMaterial({ color: new THREE.Color(color), transparent: true, opacity: 0.65, side: THREE.DoubleSide, depthWrite: false }));
-        mesh.userData = { feature, name, color, isEtnic: true };
+        const mat  = new THREE.MeshBasicMaterial({
+          color, transparent: true, opacity: 0.35,
+          side: THREE.DoubleSide, depthWrite: false, depthTest: false
+        });
+        const mesh = new THREE.Mesh(fg, mat);
+        mesh.renderOrder = 2;
+        mesh.userData = {
+          feature, name, color, isEtnic: true,
+          nombreEtnia: name,
+          centroide:   centroide
+        };
         territoriesGroup.add(mesh);
       } catch(e) {}
     });
-
-    /* Label étnico — invisible por defecto, animate() controla visibilidad por zoom */
-    try {
-      const r0  = polys[0][0];
-      const cLo = r0.reduce((s,[lo])=>s+lo,0)/r0.length;
-      const cLa = r0.reduce((s,[,la])=>s+la,0)/r0.length;
-      const sp  = crearLabelSprite(name);
-      sp.position.copy(latLonToVec3(cLa, cLo, 1.055));
-      sp.visible = false;   // zoom-controlled
-      labelsGroup.add(sp);
-      etniaLabels.push(sp);
-    } catch(e) {}
+    /* Sin labels estáticas — el sistema de hover usa una sola label reutilizable */
   });
 }
 
@@ -622,8 +691,9 @@ function flyToCountry(countryFeature, countryName, countryColor) {
   const cLat   = (bbox.minLat + bbox.maxLat) / 2;
   const cLon   = (bbox.minLon + bbox.maxLon) / 2;
 
-  targetRotY   = (cLon + 90) * PI / 180;
-  targetRotX   = -(cLat * PI / 180) * 0.3;
+  targetRotY   = -(cLon * PI / 180);
+  targetRotX   = -(cLat * PI / 180) * 0.6;
+  ocultarLabelEtnia();
   targetCameraZ = 1.5;
 
   updateBreadcrumb(countryName);
@@ -767,11 +837,21 @@ canvas.addEventListener('mousemove', e => {
     if (eHits.length) {
       canvas.style.cursor = 'pointer';
       const mesh = eHits[0].object;
-      if (hoveredMesh && hoveredMesh !== mesh) hoveredMesh.material.opacity = 0.65;
-      mesh.material.opacity = 0.88; hoveredMesh = mesh;
-      tooltip.style.cssText = `display:block;left:${e.clientX+12}px;top:${e.clientY-8}px`;
-      tooltip.textContent   = mesh.userData.name;
+      if (meshEtniaHover && meshEtniaHover !== mesh) {
+        meshEtniaHover.material.opacity = 0.35; // restaurar anterior
+      }
+      if (meshEtniaHover !== mesh) {
+        mesh.material.opacity = 0.65;           // resaltar actual
+        meshEtniaHover = mesh;
+        mostrarLabelEtnia(mesh);
+      }
+      tooltip.style.display = 'none';           // label 3D reemplaza tooltip
       return;
+    }
+    /* Si salió de etnias, restaurar */
+    if (meshEtniaHover) {
+      meshEtniaHover.material.opacity = 0.35;
+      ocultarLabelEtnia();
     }
 
     /* Hover en países (via globeMesh + pointInFeature) */
@@ -803,7 +883,9 @@ canvas.addEventListener('mouseup', e => {
 
 canvas.addEventListener('mouseleave', () => {
   isDragging = false; tooltip.style.display = 'none';
-  if (hoveredMesh) { hoveredMesh.material.opacity = hoveredMesh.userData.isCountry ? 0.45 : 0.65; hoveredMesh = null; }
+  if (meshEtniaHover) { meshEtniaHover.material.opacity = 0.35; }
+  ocultarLabelEtnia();
+  hoveredMesh = null;
 });
 
 canvas.addEventListener('touchstart', e => {
@@ -876,22 +958,11 @@ function animate() {
     camera.position.z     += (targetCameraZ - camera.position.z) * 0.1;
   }
 
-  /* Labels étnicos — solo visibles en zoom muy cercano */
-  if (etniaLabels.length) {
-    const dist   = camera.position.z;
-    const aspect = camera.aspect || (window.innerWidth / window.innerHeight);
-    const UMBRAL_ETNIA = 1.45;
-    if (dist >= UMBRAL_ETNIA) {
-      etniaLabels.forEach(s => { s.visible = false; });
-    } else {
-      const factor = Math.max(0, (UMBRAL_ETNIA - dist) / UMBRAL_ETNIA);
-      const escala = factor * 0.06;
-      etniaLabels.forEach(s => {
-        s.visible = true;
-        s.scale.set(escala * aspect, escala, 1);
-        s.material.opacity = Math.min(1, factor * 3);
-      });
-    }
+  /* Label hover de etnia — actualizar posición en world space */
+  if (labelEtnia && labelEtnia.sprite.visible && meshEtniaHover && meshEtniaHover.userData.centroide) {
+    const wPos = meshEtniaHover.userData.centroide.clone();
+    globeGroup.localToWorld(wPos);
+    labelEtnia.sprite.position.copy(wPos);
   }
 
   /* Labels dinámicas de países por distancia de cámara */
