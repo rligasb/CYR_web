@@ -25,7 +25,7 @@
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0d1117; }
 
-    #map { position: fixed; inset: 0; z-index: 0; background: #0d1117; }
+    #map { position: fixed; inset: 0; z-index: 0; }
 
     /* Leaflet attribution — dark theme */
     .leaflet-control-attribution {
@@ -684,6 +684,9 @@ let paisActualNombre  = null;
 const AMERICAS_BOUNDS = [[-56, -82], [60, -34]];
 const COLOR_ORO       = '#c8a96e';
 
+/* Envolvente del hemisferio americano [lon, lat] — simple rectángulo de 5 vértices
+   Oeste -170 (Alaska/Aleutianas), Este -34 (NE Brasil), Norte 75 (N Canadá/Groenlandia), Sur -58 (Tierra del Fuego) */
+const ENVOLVENTE_COORDS = [[-170,75],[-34,75],[-34,-58],[-170,-58],[-170,75]];
 
 /* ═══════════════════════════════════════
    5. UI HELPERS
@@ -944,8 +947,7 @@ async function init() {
   // ── Mapa con viscosidad máxima de límites ──────────
   map = L.map('map', {
     zoomControl:          false,
-    maxBoundsViscosity:   1.0,
-    worldCopyJump:        false
+    maxBoundsViscosity:   1.0
   });
 
   // ── Pane para la máscara (encima de tiles, debajo de vectores, sin clics) ──
@@ -953,29 +955,35 @@ async function init() {
   map.getPane('mascaraPane').style.zIndex        = '350';
   map.getPane('mascaraPane').style.pointerEvents = 'none';
 
-  // Máscara manual con hueco (determinista, sin turf.mask ni winding)
-  // L.polygon([anilloExterior, anilloHueco]) perfora el hueco directamente
-  // Coordenadas en formato Leaflet [lat, lng]
-  const anilloMundo  = [[-85,-180],[-85,180],[85,180],[85,-180]];  // exterior = mundo
-  const huecoAmerica = [[-58,-170],[-58,-34],[75,-34],[75,-170]];  // hueco = envolvente de América
+  // Polígono envolvente del hemisferio americano [lon, lat]
+  const envolventeFeature = {
+    type: 'Feature',
+    geometry: { type: 'Polygon', coordinates: [ENVOLVENTE_COORDS] }
+  };
 
-  L.polygon([anilloMundo, huecoAmerica], {
+  // Máscara = mundo MENOS el hemisferio (via turf.mask)
+  const mascaraFeature = turf.mask(envolventeFeature);
+
+  L.geoJSON(mascaraFeature, {
     pane:        'mascaraPane',
-    fillColor:   '#0d1117',
-    fillOpacity: 1,
-    stroke:      false,
+    style: {
+      fillColor:   '#0d1117',   // mismo fondo del body
+      fillOpacity: 1,
+      stroke:      false,
+      weight:      0
+    },
     interactive: false
   }).addTo(map);
 
   // ── Límites de navegación ────────────────────────────
   // maxBounds ligeramente más grande que el envolvente para arrastre natural
   map.setMaxBounds(L.latLngBounds([-65, -180], [80, -20]));
-  map.setMinZoom(3); // con noWrap, zoom 3 reduce bandas negras en pantallas anchas sin cortar el continente
+  map.setMinZoom(2);
 
   // ── Tile layer satelital Esri ────────────────────────
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxZoom: 18, noWrap: true }
+    { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxZoom: 18 }
   ).addTo(map);
 
   // Vista inicial: continente americano
