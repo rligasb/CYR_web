@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cemanáhuac — Poblaciones Originarias de América</title>
-  <meta name="description" content="Explora los territorios de poblaciones originarias (pueblos indígenas) de América en un mapa interactivo. Datos de Native Land Digital.">
-  <meta name="keywords" content="poblaciones originarias, pueblos indígenas, territorios originarios, territorios indígenas, América, Cemanáhuac, mapa interactivo, Native Land">
+  <title>Cemanáhuac — Pueblos Indígenas de América</title>
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://conoceteyreconocete.com/pueblos-indigenas/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://conoceteyreconocete.com/pueblos-indigenas/">
-  <meta property="og:title" content="Cemanáhuac — Poblaciones Originarias de América">
-  <meta property="og:description" content="Explora los territorios de poblaciones originarias (pueblos indígenas) de América en un mapa interactivo. Datos de Native Land Digital.">
+  <meta property="og:title" content="Cemanáhuac — Pueblos Indígenas de América">
+  <meta property="og:description" content="Explora los territorios indígenas de América en un mapa interactivo. Datos de Native Land Digital.">
   <meta property="og:image" content="https://conoceteyreconocete.com/og-image.jpg">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Conócete y Reconócete">
@@ -191,6 +189,7 @@
 
     /* ── MÓVIL (max 720px) ── */
     @media (max-width: 720px) {
+      /* Panel: hoja inferior */
       #panelEtnias {
         top: auto; bottom: 0; left: 0; right: 0;
         width: 100%; height: 45vh; max-height: 45vh;
@@ -200,11 +199,21 @@
       }
       #panelEtnias.colapsado { height: 52px; overflow: hidden; }
       .panel-handle { display: flex; }
+
+      /* Card: casi pantalla completa */
       #cardOverlay { align-items: flex-end; }
-      #card { width: 100% !important; max-height: 92vh; border-radius: 16px 16px 0 0; }
+      #card {
+        width: 100% !important; max-height: 92vh;
+        border-radius: 16px 16px 0 0; border-top-width: 4px;
+      }
+
+      /* Breadcrumb más corto en móvil */
       #breadcrumb { font-size: 10px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     }
-    @media (max-width: 480px) { .logo { font-size: 16px; } }
+
+    @media (max-width: 480px) {
+      .logo { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -223,11 +232,11 @@
   </header>
 
   <div id="map"></div>
-  <div id="hint">Haz clic en un país para explorar sus poblaciones originarias</div>
+  <div id="hint">Haz clic en un país para explorar sus pueblos indígenas</div>
   <div id="tooltip"></div>
   <div id="disclaimer">
     Datos de territorios: Native Land Digital (native-land.ca) — recurso educativo, no legal.
-    Los límites pueden ser imprecisos — consulta directamente con las naciones originarias para información oficial.
+    Los límites pueden ser imprecisos — consulta directamente con las naciones indígenas para información oficial.
   </div>
 
   <!-- Panel de etnias -->
@@ -253,7 +262,7 @@
         <button class="card-close" onclick="closeCard()">✕</button>
         <div>
           <div class="card-title" id="cardTitle">Pueblo</div>
-          <div class="card-sub"   id="cardSub">Territorio originario · América</div>
+          <div class="card-sub"   id="cardSub">Territorio indígena · América</div>
         </div>
       </div>
       <div class="card-body">
@@ -667,7 +676,7 @@ const CORRECCIONES_MANUALES = {
 function getNombreEtnia(feature) {
   const nombreOriginal = feature.properties.Name
     || feature.properties.name
-    || 'Territorio originario';
+    || 'Territorio indígena';
   return CORRECCIONES_MANUALES[nombreOriginal] || nombreOriginal;
 }
 
@@ -678,15 +687,11 @@ let map;
 let capaPaises        = null;
 let capaEtniaActiva   = null;
 let allTerritories    = [];
-let listaEtnias       = [];
+let listaEtnias       = [];   // [{nombre, features, tieneficha}]
 let paisActualFeature = null;
 let paisActualNombre  = null;
 const AMERICAS_BOUNDS = [[-56, -82], [60, -34]];
 const COLOR_ORO       = '#c8a96e';
-
-/* Envolvente del hemisferio americano [lon, lat] — simple rectángulo de 5 vértices
-   Oeste -170 (Alaska/Aleutianas), Este -34 (NE Brasil), Norte 75 (N Canadá/Groenlandia), Sur -58 (Tierra del Fuego) */
-const ENVOLVENTE_COORDS = [[-170,75],[-34,75],[-34,-58],[-170,-58],[-170,75]];
 
 /* ═══════════════════════════════════════
    5. UI HELPERS
@@ -711,7 +716,7 @@ function openCard(feature, color) {
 
   document.getElementById('cardBadge').textContent  = name;
   document.getElementById('cardTitle').textContent  = name;
-  document.getElementById('cardSub').textContent    = data ? data.tag : 'Territorio originario · América';
+  document.getElementById('cardSub').textContent    = data ? data.tag : 'Territorio indígena · América';
   document.getElementById('cardHero').style.background = `linear-gradient(135deg,${col},#1a0a00)`;
 
   document.getElementById('cardCarousel').innerHTML =
@@ -742,6 +747,7 @@ document.getElementById('cardOverlay').addEventListener('click', e => {
 function filtrarTerritoriosPorPais(countryFeature) {
   let countryBbox;
   try { countryBbox = turf.bbox(countryFeature); } catch(e) { return []; }
+
   const found = [];
   for (const territorio of allTerritories) {
     try {
@@ -755,7 +761,7 @@ function filtrarTerritoriosPorPais(countryFeature) {
 }
 
 /* ═══════════════════════════════════════
-   8. LÓGICA DE FICHA — misma que openCard
+   8. LÓGICA DE FICHA — misma que usa openCard
    ═══════════════════════════════════════ */
 function tieneFicha(nombre) {
   return !!Object.keys(PUEBLOS_DATA).find(k =>
@@ -783,12 +789,13 @@ function fitDesplazado(bounds, maxZoom) {
 }
 
 /* ═══════════════════════════════════════
-   10. RENDER DE LISTA
+   10. RENDER DE LISTA DE ETNIAS
    ═══════════════════════════════════════ */
 function renderLista(etnias, filtro) {
   const lista = document.getElementById('panelLista');
   const f     = filtro.toLowerCase().trim();
   const vis   = f ? etnias.filter(e => e.nombre.toLowerCase().includes(f)) : etnias;
+
   const conFicha = vis.filter(e =>  e.tieneficha);
   const sinFicha = vis.filter(e => !e.tieneficha);
 
@@ -796,8 +803,8 @@ function renderLista(etnias, filtro) {
 
   if (!conFicha.length && !sinFicha.length) {
     const msg = document.createElement('div');
-    msg.className   = 'panel-vacio';
-    msg.textContent = f ? `Sin resultados para "${filtro}"` : 'Sin territorios registrados';
+    msg.className = 'panel-vacio';
+    msg.textContent = f ? 'Sin resultados para "' + filtro + '"' : 'Sin territorios registrados';
     lista.appendChild(msg);
     return;
   }
@@ -808,9 +815,11 @@ function renderLista(etnias, filtro) {
     sep.className   = 'panel-grupo';
     sep.textContent = titulo;
     lista.appendChild(sep);
+
     items.forEach(etnia => {
       const div = document.createElement('div');
       div.className = 'panel-item' + (etnia.tieneficha ? '' : ' sin-ficha');
+
       if (etnia.tieneficha) {
         const dot = document.createElement('span');
         dot.className   = 'panel-dot';
@@ -818,6 +827,7 @@ function renderLista(etnias, filtro) {
         div.appendChild(dot);
       }
       div.appendChild(document.createTextNode(etnia.nombre));
+
       div.addEventListener('click', () => {
         lista.querySelectorAll('.panel-item').forEach(i => i.classList.remove('activo'));
         div.classList.add('activo');
@@ -836,7 +846,8 @@ function renderLista(etnias, filtro) {
    ═══════════════════════════════════════ */
 function mostrarPanel(nombre, etnias) {
   document.getElementById('panelPaisNombre').textContent = nombre;
-  const n = etnias.length, m = etnias.filter(e => e.tieneficha).length;
+  const n = etnias.length;
+  const m = etnias.filter(e => e.tieneficha).length;
   document.getElementById('panelConteo').textContent =
     `${n} pueblo${n !== 1 ? 's' : ''} (${m} con ficha)`;
   document.getElementById('panelBusqueda').value = '';
@@ -850,15 +861,27 @@ function mostrarPanel(nombre, etnias) {
    12. SELECCIONAR ETNIA
    ═══════════════════════════════════════ */
 function seleccionarEtnia(etnia) {
+  // 1. Quitar resalte previo
   if (capaEtniaActiva) { map.removeLayer(capaEtniaActiva); capaEtniaActiva = null; }
 
+  // 2. Dibujar SOLO los polígonos de esta etnia
   capaEtniaActiva = L.geoJSON(etnia.features, {
-    style: { fillColor: COLOR_ORO, fillOpacity: 0.55, color: COLOR_ORO, weight: 2, opacity: 1 }
+    style: {
+      fillColor:   COLOR_ORO,
+      fillOpacity: 0.55,
+      color:       COLOR_ORO,
+      weight:      2,
+      opacity:     1
+    }
   }).addTo(map);
 
+  // 3. Encuadrar con desplazamiento (una etnia a la vez → maxZoom 7)
   fitDesplazado(capaEtniaActiva.getBounds(), 7);
+
+  // 4. Abrir la card (verbatim openCard, feature representativo)
   openCard(etnia.features[0], COLOR_ORO);
 
+  // 5. Breadcrumb: Cemanáhuac › País › Etnia
   document.getElementById('breadcrumb').innerHTML =
     `Cemanáhuac <span style="color:#c8a96e">›</span> ${paisActualNombre} <span style="color:#c8a96e">›</span> ${etnia.nombre}`;
 }
@@ -870,13 +893,18 @@ function entrarPais(countryFeature, nombre, color) {
   paisActualFeature = countryFeature;
   paisActualNombre  = nombre;
 
+  // Limpiar etnia previa
   if (capaEtniaActiva) { map.removeLayer(capaEtniaActiva); capaEtniaActiva = null; }
+
+  // Ocultar capa de países
   if (capaPaises && map.hasLayer(capaPaises)) map.removeLayer(capaPaises);
 
+  // Breadcrumb
   document.getElementById('breadcrumb').innerHTML =
     `Cemanáhuac <span style="color:#c8a96e">›</span> ${nombre}`;
-  setHint('Buscando poblaciones originarias…');
+  setHint('Buscando pueblos indígenas…');
 
+  // Filtrado Turf (reusado)
   const encontrados = filtrarTerritoriosPorPais(countryFeature);
 
   if (!encontrados.length) {
@@ -888,13 +916,17 @@ function entrarPais(countryFeature, nombre, color) {
     return;
   }
 
+  // Construir mapa de etnias únicas (dedupe por nombre español)
   const etniaMap = new Map();
   for (const feature of encontrados) {
     const n = getNombreEtnia(feature);
-    if (!etniaMap.has(n)) etniaMap.set(n, { nombre: n, features: [], tieneficha: tieneFicha(n) });
+    if (!etniaMap.has(n)) {
+      etniaMap.set(n, { nombre: n, features: [], tieneficha: tieneFicha(n) });
+    }
     etniaMap.get(n).features.push(feature);
   }
 
+  // Ordenar: con ficha primero, luego alfabético es-MX dentro de cada grupo
   listaEtnias = Array.from(etniaMap.values()).sort((a, b) => {
     if (a.tieneficha !== b.tieneficha) return a.tieneficha ? -1 : 1;
     return a.nombre.localeCompare(b.nombre, 'es-MX');
@@ -905,7 +937,10 @@ function entrarPais(countryFeature, nombre, color) {
     '→ pueblos en lista:', listaEtnias.length,
     '| con ficha:', conFichaCount);
 
+  // Encuadrar país desplazado a la izquierda (hueco derecho = panel)
   fitDesplazado(L.geoJSON(countryFeature).getBounds());
+
+  // Mostrar panel con lista
   mostrarPanel(nombre, listaEtnias);
   setHint('Selecciona una etnia de la lista');
 }
@@ -925,7 +960,7 @@ function reset() {
   listaEtnias       = [];
   closeCard();
   document.getElementById('breadcrumb').textContent = 'El continente americano';
-  setHint('Haz clic en un país para explorar sus poblaciones originarias');
+  setHint('Haz clic en un país para explorar sus pueblos indígenas');
 }
 
 /* ═══════════════════════════════════════
@@ -936,65 +971,29 @@ document.getElementById('panelBusqueda').addEventListener('input', e => {
 });
 
 document.getElementById('panelHandle').addEventListener('click', () => {
-  if (window.matchMedia('(max-width: 720px)').matches)
+  if (window.matchMedia('(max-width: 720px)').matches) {
     document.getElementById('panelEtnias').classList.toggle('colapsado');
+  }
 });
 
 /* ═══════════════════════════════════════
    16. INIT
    ═══════════════════════════════════════ */
 async function init() {
-  // ── Mapa con viscosidad máxima de límites ──────────
-  map = L.map('map', {
-    zoomControl:          false,
-    maxBoundsViscosity:   1.0
-  });
+  map = L.map('map', { zoomControl: false });
 
-  // ── Pane para la máscara (encima de tiles, debajo de vectores, sin clics) ──
-  map.createPane('mascaraPane');
-  map.getPane('mascaraPane').style.zIndex        = '350';
-  map.getPane('mascaraPane').style.pointerEvents = 'none';
-
-  // Polígono envolvente del hemisferio americano [lon, lat]
-  const envolventeFeature = {
-    type: 'Feature',
-    geometry: { type: 'Polygon', coordinates: [ENVOLVENTE_COORDS] }
-  };
-
-  // Máscara = mundo MENOS el hemisferio (via turf.mask)
-  const mascaraFeature = turf.mask(envolventeFeature);
-
-  L.geoJSON(mascaraFeature, {
-    pane:        'mascaraPane',
-    style: {
-      fillColor:   '#0d1117',   // mismo fondo del body
-      fillOpacity: 1,
-      stroke:      false,
-      weight:      0
-    },
-    interactive: false
-  }).addTo(map);
-
-  // ── Límites de navegación ────────────────────────────
-  // maxBounds ligeramente más grande que el envolvente para arrastre natural
-  map.setMaxBounds(L.latLngBounds([-65, -180], [80, -20]));
-  map.setMinZoom(2);
-
-  // ── Tile layer satelital Esri ────────────────────────
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxZoom: 18 }
   ).addTo(map);
 
-  // Vista inicial: continente americano
   map.fitBounds(AMERICAS_BOUNDS);
 
-  // Controles del header
   document.getElementById('btnZoomIn').onclick  = () => map.zoomIn();
   document.getElementById('btnZoomOut').onclick = () => map.zoomOut();
   document.getElementById('btnReset').onclick   = reset;
 
-  // ── Cargar países ────────────────────────────────────
+  // Cargar países
   try {
     const res    = await fetch('./countries-50m.json');
     const topo   = await res.json();
@@ -1029,7 +1028,7 @@ async function init() {
     console.log('[Cemanáhuac] países cargados:', americas.length);
   } catch(e) { console.error('[Cemanáhuac] world-atlas error:', e); }
 
-  // ── Cargar territorios (cache en memoria) ────────────
+  // Cargar territorios (cache — no se recarga en cada clic)
   try {
     const res2 = await fetch('./territories_americas.geojson');
     const data = await res2.json();
