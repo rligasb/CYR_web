@@ -684,7 +684,7 @@ let allTerritories    = [];
 let listaEtnias       = [];
 let paisActualFeature = null;
 let paisActualNombre  = null;
-const AMERICAS_BOUNDS = [[-56, -82], [60, -34]];
+const AMERICAS_BOUNDS = [[-56, -120], [72, -34]]; // incluye costa Pacífica de Norteamérica para centrar los continentes
 const COLOR_ORO       = '#c8a96e';
 
 
@@ -958,9 +958,15 @@ async function init() {
   map.setMinZoom(3); // con noWrap, zoom 3 reduce bandas negras en pantallas anchas sin cortar el continente
 
   // ── Tile layer satelital Esri ────────────────────────
+  // bounds: Leaflet no solicita tiles fuera del hemisferio occidental → sin placeholder gris al oeste de -180°
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxZoom: 18, noWrap: true }
+    {
+      attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
+      maxZoom:     18,
+      noWrap:      true,
+      bounds:      L.latLngBounds([-60, -180], [80, -28])
+    }
   ).addTo(map);
 
   // Vista inicial: continente americano
