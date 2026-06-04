@@ -26,9 +26,6 @@
     html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0d1117; }
 
     #map { position: fixed; inset: 0; z-index: 0; background: #0d1117; }
-    /* Leaflet asigna background:#ddd a .leaflet-container — anularlo para que las zonas
-       fuera del mundo único (con noWrap:true) muestren el fondo oscuro de la identidad */
-    .leaflet-container { background: #0d1117 !important; }
 
     /* Leaflet attribution — dark theme */
     .leaflet-control-attribution {
@@ -951,10 +948,28 @@ async function init() {
     worldCopyJump:        false
   });
 
-  // ── Límites de navegación (candado sin máscara) ─────────
-  // SW [-58,-180] incluye Tierra del Fuego + Pacífico occidental completo
-  // NE [78,-28] incluye N Canadá/Groenlandia y corta antes de Cape Verde (-25°W) y África (-17°W)
-  map.setMaxBounds(L.latLngBounds([-58, -180], [78, -28]));
+  // ── Pane para la máscara (encima de tiles, debajo de vectores, sin clics) ──
+  map.createPane('mascaraPane');
+  map.getPane('mascaraPane').style.zIndex        = '350';
+  map.getPane('mascaraPane').style.pointerEvents = 'none';
+
+  // Máscara manual con hueco (determinista, sin turf.mask ni winding)
+  // L.polygon([anilloExterior, anilloHueco]) perfora el hueco directamente
+  // Coordenadas en formato Leaflet [lat, lng]
+  const anilloMundo  = [[-85,-180],[-85,180],[85,180],[85,-180]];  // exterior = mundo
+  const huecoAmerica = [[-58,-170],[-58,-34],[75,-34],[75,-170]];  // hueco = envolvente de América
+
+  L.polygon([anilloMundo, huecoAmerica], {
+    pane:        'mascaraPane',
+    fillColor:   '#0d1117',
+    fillOpacity: 1,
+    stroke:      false,
+    interactive: false
+  }).addTo(map);
+
+  // ── Límites de navegación ────────────────────────────
+  // maxBounds ligeramente más grande que el envolvente para arrastre natural
+  map.setMaxBounds(L.latLngBounds([-65, -180], [80, -20]));
   map.setMinZoom(3); // con noWrap, zoom 3 reduce bandas negras en pantallas anchas sin cortar el continente
 
   // ── Tile layer satelital Esri ────────────────────────
