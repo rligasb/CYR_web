@@ -730,12 +730,18 @@ function setHint(text) {
    6. CARD (verbatim)
    ═══════════════════════════════════════ */
 function openCard(feature, color) {
-  const name = feature.properties.Name || feature.properties.name || 'Territorio';
-  const col  = color || '#c8956e';
-  const key  = Object.keys(PUEBLOS_DATA).find(k =>
-    name.toLowerCase().includes(k.toLowerCase()) ||
-    k.toLowerCase().includes(name.toLowerCase().split(' ')[0])
-  );
+  const rawName  = feature.properties.Name || feature.properties.name || 'Territorio';
+  const corrName = CORRECCIONES_MANUALES[rawName] || rawName; // nombre corregido (ej. "Totonac" → "Totonaco")
+  const col      = color || '#c8956e';
+  // Matching doble: por nombre raw Y por nombre corregido — más robusto ante variantes del GeoJSON
+  const key = Object.keys(PUEBLOS_DATA).find(k => {
+    const kl = k.toLowerCase();
+    return rawName.toLowerCase().includes(kl)  ||
+           corrName.toLowerCase().includes(kl) ||
+           kl.includes(rawName.toLowerCase().split(' ')[0])  ||
+           kl.includes(corrName.toLowerCase().split(' ')[0]);
+  });
+  const name = rawName; // para mostrar en card badge/título
   const data = key ? PUEBLOS_DATA[key] : null;
 
   // Badge y título
