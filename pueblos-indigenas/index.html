@@ -1060,20 +1060,20 @@ async function init() {
   document.getElementById('btnZoomOut').onclick = () => map.zoomOut();
   document.getElementById('btnReset').onclick   = reset;
 
-  // ── Cargar datos en paralelo (países + territorios + fichas) ─
-  const [resCountries, resGeo, resPueblos] = await Promise.allSettled([
-    fetch('./countries-50m.json').then(r => r.json()),
-    fetch('./territories_americas.geojson').then(r => r.json()),
-    fetch('./pueblos.json').then(r => r.json())
-  ]);
-
-  // Fichas de pueblos
-  if (resPueblos.status === 'fulfilled') {
-    PUEBLOS_DATA = resPueblos.value;
+  // ── 1. Fichas: carga PRIMERO, secuencial (pequeño ~50 KB, garantiza PUEBLOS_DATA antes de interacción) ──
+  try {
+    const rPueblos = await fetch('./pueblos.json');
+    PUEBLOS_DATA   = await rPueblos.json();
     console.log('[Cemanáhuac] pueblos cargados:', Object.keys(PUEBLOS_DATA).length);
-  } else {
-    console.warn('[Cemanáhuac] pueblos.json no cargó; card en modo básico:', resPueblos.reason);
+  } catch(e) {
+    console.warn('[Cemanáhuac] pueblos.json no cargó; card en modo básico:', e);
   }
+
+  // ── 2. Países y territorios en paralelo ──────────────────────
+  const [resCountries, resGeo] = await Promise.allSettled([
+    fetch('./countries-50m.json').then(r => r.json()),
+    fetch('./territories_americas.geojson').then(r => r.json())
+  ]);
 
   // Países
   if (resCountries.status === 'fulfilled') {
