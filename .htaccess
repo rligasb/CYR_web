@@ -38,6 +38,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # CSP — adaptada para CYR:
     #   - Supabase (firmas, base de datos)
+    #   - Esri World Imagery (tiles satelitales del mapa /pueblos-indigenas/)
     #   - Sin api.anthropic.com ni Cloudflare Workers
     Header always set Content-Security-Policy "\
 default-src 'self'; \
@@ -57,7 +58,8 @@ img-src 'self' data: blob: \
     *.supabase.co \
     *.supabase.in \
     upload.wikimedia.org \
-    commons.wikimedia.org; \
+    commons.wikimedia.org \
+    *.arcgisonline.com; \
 connect-src 'self' \
     https://swbbcidwsbksdxxipedo.supabase.co \
     https://swbbcidwsbksdxxipedo.supabase.in; \
