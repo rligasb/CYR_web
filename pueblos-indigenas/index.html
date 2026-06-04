@@ -946,27 +946,13 @@ document.getElementById('panelHandle').addEventListener('click', () => {
 async function init() {
   // ── Mapa con viscosidad máxima de límites ──────────
   map = L.map('map', {
-    zoomControl:          false,
-    maxBoundsViscosity:   1.0,
-    worldCopyJump:        false
+    zoomControl: false
   });
 
-  // ── Límites de navegación (candado sin máscara) ─────────
-  // SW [-58,-180] incluye Tierra del Fuego + Pacífico occidental completo
-  // NE [78,-28] incluye N Canadá/Groenlandia y corta antes de Cape Verde (-25°W) y África (-17°W)
-  map.setMaxBounds(L.latLngBounds([-58, -180], [78, -28]));
-  map.setMinZoom(3); // con noWrap, zoom 3 reduce bandas negras en pantallas anchas sin cortar el continente
-
-  // ── Tile layer satelital Esri ────────────────────────
-  // bounds: Leaflet no solicita tiles fuera del hemisferio occidental → sin placeholder gris al oeste de -180°
+  // ── Tile layer satelital Esri — mapamundi completo ──────
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    {
-      attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
-      maxZoom:     18,
-      noWrap:      true,
-      bounds:      L.latLngBounds([-60, -180], [80, -28])
-    }
+    { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxZoom: 18 }
   ).addTo(map);
 
   // Vista inicial: continente americano
