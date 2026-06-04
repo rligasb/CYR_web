@@ -166,43 +166,5 @@
     "protocols": ["Pedir guía local para entrar a comunidades ribereñas","No recoger plantas sin autorización del jaibaná","Respetar espacios de ritual en silencio"],
     "imagenes": [],
     "fuentes": []
-  },
-  "Totonaco": {
-    "pais": "México",
-    "poblacion": "Más de 200 mil hablantes de totonaco",
-    "region": "Totonacapan — norte de Veracruz y Sierra Norte de Puebla",
-    "lengua": "Totonaco (familia totonaco-tepehua)",
-    "lugar": {
-      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/El_Taj%C3%ADn_Pir%C3%A1mide_de_los_Nichos.JPG",
-      "pie": "El Tajín — Pirámide de los Nichos",
-      "credito": "Carlos490 — CC BY-SA 3.0",
-      "fuente": "Wikimedia Commons"
-    },
-    "customs": "El corazón espiritual totonaca late en tres lugares que dan nombre al pueblo: 'tutunakú' significa 'tres corazones', por Cempoala, El Tajín y el Castillo de Teayo. El Tajín, su ciudad más célebre, floreció entre los años 600 y 1200 y es Patrimonio Mundial desde 1992, con su icónica Pirámide de los Nichos. La región es cuna de la Danza de los Voladores y de la vainilla, originaria de esta tierra: los totonacas fueron, hasta el siglo XIX, los principales productores mundiales de su 'oro negro'.",
-    "foods": ["Pipián (salsa de pepita de calabaza)", "Mole de Totonacapan", "Zacahuil", "Pulacles (tamales de frijol ceremoniales)", "Platillos y dulces con vainilla"],
-    "protocols": ["La Danza de los Voladores es un rito sagrado, no un espectáculo", "Pedir permiso antes de fotografiar ceremonias", "Tratar El Tajín y los sitios rituales con respeto"],
-    "imagenes": [
-      {
-        "tipo": "Mujer",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/1/11/MUJERES_TOTONACAS.jpg",
-        "pie": "Mujeres totonacas",
-        "credito": "Bastian.studio1 — CC BY-SA 4.0",
-        "fuente": "Wikimedia Commons"
-      },
-      {
-        "tipo": "Ceremonial",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Danzantes_Papantla.JPG",
-        "pie": "Danzantes de Papantla",
-        "credito": "Yaomautzin Ohtokani Olvera Lara — CC BY-SA 4.0",
-        "fuente": "Wikimedia Commons"
-      }
-    ],
-    "fuentes": [
-      "https://es.wikipedia.org/wiki/Cultura_totonaca",
-      "https://es.wikipedia.org/wiki/Pueblo_totonaca",
-      "https://en.wikipedia.org/wiki/El_Taj%C3%ADn",
-      "https://lugares.inah.gob.mx/es/taxonomy/term/56106",
-      "https://catalogo.inpi.gob.mx/totonaco/"
-    ]
   }
 }
