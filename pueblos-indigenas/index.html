@@ -1062,7 +1062,7 @@ async function init() {
 
   // ── 1. Fichas: carga PRIMERO, secuencial (pequeño ~50 KB, garantiza PUEBLOS_DATA antes de interacción) ──
   try {
-    const rPueblos = await fetch('./pueblos.json');
+    const rPueblos = await fetch('./pueblos.json', { cache: 'no-cache' });
     PUEBLOS_DATA   = await rPueblos.json();
     console.log('[Cemanáhuac] pueblos cargados:', Object.keys(PUEBLOS_DATA).length);
   } catch(e) {
