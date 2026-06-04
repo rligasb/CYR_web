@@ -6,8 +6,18 @@
     "lengua": "Náhuatl",
     "lugar": null,
     "customs": "La milpa es el centro de su vida espiritual y económica. Los temazcales son espacios sagrados de purificación. La danza del Xochipitzahuatl celebra la feminidad y la naturaleza.",
-    "foods": ["Tamales","Pozole","Atole","Tlayudas","Huauzontle"],
-    "protocols": ["Pedir permiso antes de fotografiar ceremonias","Vestir con modestia en espacios sagrados","Aceptar los alimentos ofrecidos como señal de respeto"],
+    "foods": [
+      "Tamales",
+      "Pozole",
+      "Atole",
+      "Tlayudas",
+      "Huauzontle"
+    ],
+    "protocols": [
+      "Pedir permiso antes de fotografiar ceremonias",
+      "Vestir con modestia en espacios sagrados",
+      "Aceptar los alimentos ofrecidos como señal de respeto"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -18,9 +28,26 @@
     "lengua": "Lenguas mayas",
     "lugar": null,
     "customs": "El hanal pixán honra a los ancestros en noviembre. El cenote es portal sagrado entre mundos. La cerámica de Ticul es arte vivo.",
-    "foods": ["Cochinita pibil","Sopa de lima","Papadzules","Poc chuc"],
-    "protocols": ["No entrar a cenotes sagrados sin guía local","Respetar restricciones fotográficas en templos","Comprar artesanías directamente a artesanos"],
-    "imagenes": [],
+    "foods": [
+      "Cochinita pibil",
+      "Sopa de lima",
+      "Papadzules",
+      "Poc chuc"
+    ],
+    "protocols": [
+      "No entrar a cenotes sagrados sin guía local",
+      "Respetar restricciones fotográficas en templos",
+      "Comprar artesanías directamente a artesanos"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Mujer",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Centro_de_Textiles_del_Mundo_Maya_3.jpg",
+        "pie": "Mujer maya con textiles tradicionales",
+        "credito": "StellarD — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": []
   },
   "Zapotec": {
@@ -30,8 +57,17 @@
     "lengua": "Zapoteco",
     "lugar": null,
     "customs": "La Guelaguetza es reciprocidad colectiva. El tequio es trabajo comunitario obligatorio y sagrado.",
-    "foods": ["Tlayudas","Mole negro","Tasajo","Chapulines"],
-    "protocols": ["No interrumpir asambleas comunitarias","Registrarse con autoridades al llegar","El tequio es obligatorio en comunidades"],
+    "foods": [
+      "Tlayudas",
+      "Mole negro",
+      "Tasajo",
+      "Chapulines"
+    ],
+    "protocols": [
+      "No interrumpir asambleas comunitarias",
+      "Registrarse con autoridades al llegar",
+      "El tequio es obligatorio en comunidades"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -42,8 +78,17 @@
     "lengua": "Diné Bizaad (Navajo)",
     "lugar": null,
     "customs": "El Blessingway restaura la armonía y la belleza. El hogan es vivienda sagrada orientada al este. El tejido navajo es patrimonio mundial.",
-    "foods": ["Fry bread","Mutton stew","Blue corn mush","Sumac lemonade"],
-    "protocols": ["Las tierras Navajo requieren permiso para fotografiar","No entrar a hogans sin invitación","Comprar directamente en la Nación Navajo"],
+    "foods": [
+      "Fry bread",
+      "Mutton stew",
+      "Blue corn mush",
+      "Sumac lemonade"
+    ],
+    "protocols": [
+      "Las tierras Navajo requieren permiso para fotografiar",
+      "No entrar a hogans sin invitación",
+      "Comprar directamente en la Nación Navajo"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -54,8 +99,17 @@
     "lengua": "Tsalagi (Cherokee)",
     "lugar": null,
     "customs": "El Stomp Dance conecta a la comunidad con sus ancestros. El consejo de ancianos guía las decisiones del pueblo.",
-    "foods": ["Hominy","Bean bread","Kanuchi","Ramp soup"],
-    "protocols": ["Respetar los sitios sagrados de las Smoky Mountains","No grabar ceremonias del Stomp Dance","Visitar los museos Cherokee"],
+    "foods": [
+      "Hominy",
+      "Bean bread",
+      "Kanuchi",
+      "Ramp soup"
+    ],
+    "protocols": [
+      "Respetar los sitios sagrados de las Smoky Mountains",
+      "No grabar ceremonias del Stomp Dance",
+      "Visitar los museos Cherokee"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -66,8 +120,17 @@
     "lengua": "Wayuunaiki",
     "lugar": null,
     "customs": "El palabrero resuelve conflictos sin violencia. La mochila wayuu es un universo tejido con mensajes.",
-    "foods": ["Friche","Chicha de maíz","Arepa wayuu","Carne seca"],
-    "protocols": ["Siempre aceptar el café o chicha que ofrezcan","No llegar sin anunciarse a una ranchería","Preguntar antes de fotografiar artesanías"],
+    "foods": [
+      "Friche",
+      "Chicha de maíz",
+      "Arepa wayuu",
+      "Carne seca"
+    ],
+    "protocols": [
+      "Siempre aceptar el café o chicha que ofrezcan",
+      "No llegar sin anunciarse a una ranchería",
+      "Preguntar antes de fotografiar artesanías"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -78,8 +141,18 @@
     "lengua": "Quechua",
     "lugar": null,
     "customs": "La Pachamama recibe ofrendas en agosto. El ayni es reciprocidad sagrada entre familias y con la tierra.",
-    "foods": ["Pachamanca","Cuy","Chicha de jora","Moraya","Quinua"],
-    "protocols": ["Descalzarse antes de entrar a espacios sagrados","Participar del ayni si te invitan","No caminar sobre terrazas en descanso"],
+    "foods": [
+      "Pachamanca",
+      "Cuy",
+      "Chicha de jora",
+      "Moraya",
+      "Quinua"
+    ],
+    "protocols": [
+      "Descalzarse antes de entrar a espacios sagrados",
+      "Participar del ayni si te invitan",
+      "No caminar sobre terrazas en descanso"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -90,8 +163,18 @@
     "lengua": "Mapudungun",
     "lugar": null,
     "customs": "El kultrun es el tambor sagrado que representa el universo. La machi realiza ceremonias de sanación. El We Tripantu celebra el Año Nuevo Mapuche en junio.",
-    "foods": ["Muday","Catuto","Milcao","Curanto","Piñones de araucaria"],
-    "protocols": ["Pedir permiso para asistir a cualquier ceremonia","El kultrun no es instrumento recreativo","Respetar el protocolo de saludo con el kimün"],
+    "foods": [
+      "Muday",
+      "Catuto",
+      "Milcao",
+      "Curanto",
+      "Piñones de araucaria"
+    ],
+    "protocols": [
+      "Pedir permiso para asistir a cualquier ceremonia",
+      "El kultrun no es instrumento recreativo",
+      "Respetar el protocolo de saludo con el kimün"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -102,8 +185,18 @@
     "lengua": "Aymara",
     "lugar": null,
     "customs": "La Pachamama es centro de la espiritualidad andina. El yatiri lee hojas de coca para guiar decisiones.",
-    "foods": ["Chuño","Quinua","Api morado","Thimpu","Tunta"],
-    "protocols": ["La hoja de coca es sagrada, no folclore","Pedir permiso en mercado de brujas","No pisar ofrendas de la Pachamama"],
+    "foods": [
+      "Chuño",
+      "Quinua",
+      "Api morado",
+      "Thimpu",
+      "Tunta"
+    ],
+    "protocols": [
+      "La hoja de coca es sagrada, no folclore",
+      "Pedir permiso en mercado de brujas",
+      "No pisar ofrendas de la Pachamama"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -114,8 +207,18 @@
     "lengua": "Guaraní",
     "lugar": null,
     "customs": "La tierra sin mal es el horizonte espiritual del pueblo. El tereré es ritual social cotidiano. Paraguay es el único país bilingüe con lengua indígena oficial.",
-    "foods": ["Mbejú","Sopa paraguaya","Tereré","Chipa","Mbojapé"],
-    "protocols": ["El tereré se comparte, nunca se rechaza","Aprender al menos el saludo en guaraní","Respetar el silencio en templos jesuíticos guaraníes"],
+    "foods": [
+      "Mbejú",
+      "Sopa paraguaya",
+      "Tereré",
+      "Chipa",
+      "Mbojapé"
+    ],
+    "protocols": [
+      "El tereré se comparte, nunca se rechaza",
+      "Aprender al menos el saludo en guaraní",
+      "Respetar el silencio en templos jesuíticos guaraníes"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -126,8 +229,17 @@
     "lengua": "Yanomami",
     "lugar": null,
     "customs": "El shapori viaja al mundo de los espíritus. El shabono es vivienda colectiva circular que refleja su visión del cosmos.",
-    "foods": ["Plátano asado","Carne de tapir","Larvas de palma","Miel silvestre"],
-    "protocols": ["Acceso restringido — requiere permiso FUNAI","No llevar enfermedades a comunidades","Nunca fotografiar sin autorización"],
+    "foods": [
+      "Plátano asado",
+      "Carne de tapir",
+      "Larvas de palma",
+      "Miel silvestre"
+    ],
+    "protocols": [
+      "Acceso restringido — requiere permiso FUNAI",
+      "No llevar enfermedades a comunidades",
+      "Nunca fotografiar sin autorización"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -138,8 +250,17 @@
     "lengua": "Cree (ᓀᐦᐃᔭᐍᐏᐣ)",
     "lugar": null,
     "customs": "El pow-wow reúne a las naciones para danza y comunidad. La Gran Medicina es sociedad espiritual ancestral.",
-    "foods": ["Bannock","Pemmican","Bayas silvestres","Caribú"],
-    "protocols": ["Los pow-wows tienen reglas de vestimenta para visitantes","No imitar tocados de guerra","Respetar zonas de caza y recolección"],
+    "foods": [
+      "Bannock",
+      "Pemmican",
+      "Bayas silvestres",
+      "Caribú"
+    ],
+    "protocols": [
+      "Los pow-wows tienen reglas de vestimenta para visitantes",
+      "No imitar tocados de guerra",
+      "Respetar zonas de caza y recolección"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -150,8 +271,18 @@
     "lengua": "Dulegaya (Guna)",
     "lugar": null,
     "customs": "Las molas son arte textil que cuenta la historia del pueblo. La comarca Guna Yala tiene autonomía política reconocida.",
-    "foods": ["Chicha fuerte","Cangrejo","Pescado","Coco","Ñame"],
-    "protocols": ["Pagar la tarifa de entrada a la comarca","No fotografiar mujeres en mola sin permiso","Comprar molas directamente a las creadoras"],
+    "foods": [
+      "Chicha fuerte",
+      "Cangrejo",
+      "Pescado",
+      "Coco",
+      "Ñame"
+    ],
+    "protocols": [
+      "Pagar la tarifa de entrada a la comarca",
+      "No fotografiar mujeres en mola sin permiso",
+      "Comprar molas directamente a las creadoras"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -162,8 +293,17 @@
     "lengua": "Emberá",
     "lugar": null,
     "customs": "La pintura corporal con jagua protege espiritualmente. El jaibaná media entre humanos y espíritus.",
-    "foods": ["Chontaduro","Borojó","Pescado ahumado","Ñame"],
-    "protocols": ["Pedir guía local para entrar a comunidades ribereñas","No recoger plantas sin autorización del jaibaná","Respetar espacios de ritual en silencio"],
+    "foods": [
+      "Chontaduro",
+      "Borojó",
+      "Pescado ahumado",
+      "Ñame"
+    ],
+    "protocols": [
+      "Pedir guía local para entrar a comunidades ribereñas",
+      "No recoger plantas sin autorización del jaibaná",
+      "Respetar espacios de ritual en silencio"
+    ],
     "imagenes": [],
     "fuentes": []
   },
@@ -179,8 +319,18 @@
       "fuente": "Wikimedia Commons"
     },
     "customs": "El corazón espiritual totonaca late en tres lugares que dan nombre al pueblo: 'tutunakú' significa 'tres corazones', por Cempoala, El Tajín y el Castillo de Teayo. El Tajín, su ciudad más célebre, floreció entre los años 600 y 1200 y es Patrimonio Mundial desde 1992, con su icónica Pirámide de los Nichos. La región es cuna de la Danza de los Voladores y de la vainilla, originaria de esta tierra: los totonacas fueron, hasta el siglo XIX, los principales productores mundiales de su 'oro negro'.",
-    "foods": ["Pipián (salsa de pepita de calabaza)", "Mole de Totonacapan", "Zacahuil", "Pulacles (tamales de frijol ceremoniales)", "Platillos y dulces con vainilla"],
-    "protocols": ["La Danza de los Voladores es un rito sagrado, no un espectáculo", "Pedir permiso antes de fotografiar ceremonias", "Tratar El Tajín y los sitios rituales con respeto"],
+    "foods": [
+      "Pipián (salsa de pepita de calabaza)",
+      "Mole de Totonacapan",
+      "Zacahuil",
+      "Pulacles (tamales de frijol ceremoniales)",
+      "Platillos y dulces con vainilla"
+    ],
+    "protocols": [
+      "La Danza de los Voladores es un rito sagrado, no un espectáculo",
+      "Pedir permiso antes de fotografiar ceremonias",
+      "Tratar El Tajín y los sitios rituales con respeto"
+    ],
     "imagenes": [
       {
         "tipo": "Mujer",
@@ -205,20 +355,44 @@
       "https://catalogo.inpi.gob.mx/totonaco/"
     ]
   },
-
   "Tzotzil": {
     "pais": "México",
     "poblacion": "~400K hablantes",
     "region": "Los Altos de Chiapas",
     "lengua": "Tzotzil (familia maya)",
-    "lugar": null,
+    "lugar": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/San_Juan_Chamula%2C_Church_-_panoramio.jpg",
+      "pie": "Iglesia de San Juan Chamula, centro espiritual tzotzil",
+      "credito": "Frans-Banja Mulder — CC BY 3.0",
+      "fuente": "Wikimedia Commons"
+    },
     "customs": "San Juan Chamula, el municipio tzotzil más conocido, funde catolicismo y espiritualidad maya en rituales sin paralelo: el interior de su iglesia es un espacio sagrado con curanderos (j'iloles), velas, copal y posh. Los tzotziles del Carnaval de Zinacantán visten uno de los trajes indígenas más coloridos de México. El tejido de huipiles en telar de cintura transmite identidad, linaje y cosmología familiar de generación en generación.",
-    "foods": ["Pozol (bebida de maíz fermentado)", "Tamales de chipilín", "Caldo de res con verduras", "Atole agrio", "Posh (aguardiente de caña ceremonial)"],
-    "protocols": ["No fotografiar el interior de la iglesia de San Juan Chamula — la sanción puede ser la expulsión inmediata", "El posh y las ofrendas en los rituales son medicina sagrada, no curiosidades turísticas", "Durante el Carnaval tzotzil, respetar los espacios reservados para la comunidad"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_tzotzil", "https://catalogo.inpi.gob.mx/tzotzil/"]
+    "foods": [
+      "Pozol (bebida de maíz fermentado)",
+      "Tamales de chipilín",
+      "Caldo de res con verduras",
+      "Atole agrio",
+      "Posh (aguardiente de caña ceremonial)"
+    ],
+    "protocols": [
+      "No fotografiar el interior de la iglesia de San Juan Chamula — la sanción puede ser la expulsión inmediata",
+      "El posh y las ofrendas en los rituales son medicina sagrada, no curiosidades turísticas",
+      "Durante el Carnaval tzotzil, respetar los espacios reservados para la comunidad"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Mujer",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Tzotzil_Woman_in_Doorway_-_Zinacantan_-_Chiapas_-_Mexico.jpg",
+        "pie": "Mujer tzotzil en Zinacantán, Chiapas",
+        "credito": "Adam Jones — CC BY 2.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_tzotzil",
+      "https://catalogo.inpi.gob.mx/tzotzil/"
+    ]
   },
-
   "Tzeltal": {
     "pais": "México",
     "poblacion": "~600K hablantes",
@@ -226,38 +400,92 @@
     "lengua": "Tzeltal (familia maya)",
     "lugar": null,
     "customs": "Los tzeltales son el pueblo maya más numeroso de México. Su cosmovisión gira en torno al maíz como ser sagrado y fuente de vida. Las comunidades de Tenejapa, Oxchuc y Cancuc son centros de arte textil: los brocados en telar de cintura narran mitología, identidad de linaje y territorio. Muchas comunidades tzeltales participaron activamente en el movimiento zapatista de 1994.",
-    "foods": ["Tamales de bola de chipilin", "Sopa de pan chiapaneco", "Estofado de pollo", "Pozol de cacao", "Chipilín con arroz"],
-    "protocols": ["Solicitar permiso antes de fotografiar personas o ceremonias", "Las comunidades autónomas zapatistas tzeltales tienen protocolos de acceso propios — respetarlos", "Comprar textiles directamente a tejedoras, no a intermediarios"],
+    "foods": [
+      "Tamales de bola de chipilin",
+      "Sopa de pan chiapaneco",
+      "Estofado de pollo",
+      "Pozol de cacao",
+      "Chipilín con arroz"
+    ],
+    "protocols": [
+      "Solicitar permiso antes de fotografiar personas o ceremonias",
+      "Las comunidades autónomas zapatistas tzeltales tienen protocolos de acceso propios — respetarlos",
+      "Comprar textiles directamente a tejedoras, no a intermediarios"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_tzeltal", "https://catalogo.inpi.gob.mx/tzeltal/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_tzeltal",
+      "https://catalogo.inpi.gob.mx/tzeltal/"
+    ]
   },
-
   "P'urhépecha": {
     "pais": "México",
     "poblacion": "~140K hablantes",
     "region": "Michoacán (lago Pátzcuaro, Meseta Tarasca)",
     "lengua": "P'urhépecha (lengua aislada — sin familia lingüística conocida)",
-    "lugar": null,
+    "lugar": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Top_of_Janitzio_2.JPG",
+      "pie": "Isla de Janitzio en el lago de Pátzcuaro, corazón del mundo p'urhépecha",
+      "credito": "Sunfishtommy — CC BY-SA 3.0",
+      "fuente": "Wikimedia Commons"
+    },
     "customs": "La Noche de Muertos purépecha en la isla de Janitzio es una de las ceremonias más profundas de Mesoamérica: familias velan a sus difuntos con ofrendas de cempasúchil, comida y canto sobre los cerros y en los panteones toda la noche. Los p'urhépecha resistieron la expansión azteca y la conquista española con singular tenacidad. Tzintzuntzan, su capital sagrada, preserva las Yácatas piramidales y una tradición artesanal irrepetible: laqueado, cobre martillado y cerámica de barro negro.",
-    "foods": ["Uchepos (tamales de elote tierno)", "Corundas (tamales triangulares de ceniza)", "Churipo (caldo de carne con verduras)", "Atápakua (salsa espesa de semillas)", "Charales fritos (pescado del lago)"],
-    "protocols": ["La Noche de Muertos es rito familiar íntimo — observar con silencio y distancia, nunca con flashes ni ruido", "No remover ni pisar las ofrendas en los panteones de Janitzio o Pátzcuaro", "Comprar artesanías de cobre en Santa Clara del Cobre y laca en Uruapan directamente a los artesanos"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_p%27urhépecha", "https://catalogo.inpi.gob.mx/purhepecha/"]
+    "foods": [
+      "Uchepos (tamales de elote tierno)",
+      "Corundas (tamales triangulares de ceniza)",
+      "Churipo (caldo de carne con verduras)",
+      "Atápakua (salsa espesa de semillas)",
+      "Charales fritos (pescado del lago)"
+    ],
+    "protocols": [
+      "La Noche de Muertos es rito familiar íntimo — observar con silencio y distancia, nunca con flashes ni ruido",
+      "No remover ni pisar las ofrendas en los panteones de Janitzio o Pátzcuaro",
+      "Comprar artesanías de cobre en Santa Clara del Cobre y laca en Uruapan directamente a los artesanos"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Ceremonial",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Tar%C3%A1scas.jpg",
+        "pie": "Danzantes p'urhépecha en traje ceremonial",
+        "credito": "Elsa Jaimes — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_p%27urhépecha",
+      "https://catalogo.inpi.gob.mx/purhepecha/"
+    ]
   },
-
   "Rarámuri": {
     "pais": "México",
     "poblacion": "~50K personas",
     "region": "Sierra Tarahumara, Chihuahua (Barrancas del Cobre)",
     "lengua": "Rarámuri (familia uto-azteca)",
-    "lugar": null,
+    "lugar": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Copper_Canyon_near_Creel_Mexico_-_Barrancas_del_Cobre_-_panoramio.jpg",
+      "pie": "Barrancas del Cobre — territorio ancestral rarámuri",
+      "credito": "David Broad — CC BY 3.0",
+      "fuente": "Wikimedia Commons"
+    },
     "customs": "Los rarámuri, 'los de los pies ligeros', son corredores de ultrafondo por herencia cultural: sus carreras rituales (rarajípari para hombres, rowena para mujeres) pueden durar días a través de la sierra. El tesgüino (cerveza fermentada de maíz) es el eje de las asambleas comunitarias y las ceremonias de curación. Habitan las cuevas y rancherías dispersas de las Barrancas del Cobre, el sistema de cañones más profundo de México.",
-    "foods": ["Tesgüino (cerveza ceremonial de maíz)", "Pinole (harina de maíz tostado)", "Gorditas de maíz azul", "Sotol (bebida de agave)", "Carne de venado asada"],
-    "protocols": ["No entrar a cuevas ni rancherías rarámuri sin invitación — son espacios privados y sagrados", "El tesgüino en una reunión es señal de comunidad; rechazarlo puede considerarse desaire", "En las carreras rarámuri, los observadores no deben interrumpir ni cruzar el camino de los corredores"],
+    "foods": [
+      "Tesgüino (cerveza ceremonial de maíz)",
+      "Pinole (harina de maíz tostado)",
+      "Gorditas de maíz azul",
+      "Sotol (bebida de agave)",
+      "Carne de venado asada"
+    ],
+    "protocols": [
+      "No entrar a cuevas ni rancherías rarámuri sin invitación — son espacios privados y sagrados",
+      "El tesgüino en una reunión es señal de comunidad; rechazarlo puede considerarse desaire",
+      "En las carreras rarámuri, los observadores no deben interrumpir ni cruzar el camino de los corredores"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_rar%C3%A1muri", "https://catalogo.inpi.gob.mx/tarahumara/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_rar%C3%A1muri",
+      "https://catalogo.inpi.gob.mx/tarahumara/"
+    ]
   },
-
   "Wixárika": {
     "pais": "México",
     "poblacion": "~50K personas",
@@ -265,12 +493,32 @@
     "lengua": "Wixárika (familia uto-azteca)",
     "lugar": null,
     "customs": "La peregrinación anual a Wirikuta (San Luis Potosí) para recolectar peyote (jíkuri) es uno de los ritos más sagrados del continente americano: un viaje de cientos de kilómetros a pie que conecta a los wixaritari con sus deidades. Las nierika (tablillas votivas de estambre e hilo) son arte sagrado y comunicación con el plano espiritual. El mara'akame (chamán-cantor) es el puente entre los vivos, los muertos y las deidades del fuego, el agua y el venado.",
-    "foods": ["Tamales de venado sagrado (ceremoniales)", "Tejuino (bebida de maíz fermentado)", "Maíz azul en tortillas y atole", "Frijoles negros de olla", "Nopales asados"],
-    "protocols": ["El peyote es medicina sagrada — cualquier uso fuera del contexto ritual es una violación cultural y espiritual", "Las nierika y objetos ceremoniales son arte sagrado, no souvenirs", "La ruta de peregrinación a Wirikuta no debe ser perturbada ni fotografiada sin permiso del mara'akame"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_wix%C3%A1rika", "https://catalogo.inpi.gob.mx/huichol/"]
+    "foods": [
+      "Tamales de venado sagrado (ceremoniales)",
+      "Tejuino (bebida de maíz fermentado)",
+      "Maíz azul en tortillas y atole",
+      "Frijoles negros de olla",
+      "Nopales asados"
+    ],
+    "protocols": [
+      "El peyote es medicina sagrada — cualquier uso fuera del contexto ritual es una violación cultural y espiritual",
+      "Las nierika y objetos ceremoniales son arte sagrado, no souvenirs",
+      "La ruta de peregrinación a Wirikuta no debe ser perturbada ni fotografiada sin permiso del mara'akame"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Arte",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Cuadro_de_estambre_wix%C3%A1rika_-_Cham%C3%A1n.jpg",
+        "pie": "Cuadro de estambre wixárika representando al mara'akame (chamán)",
+        "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_wix%C3%A1rika",
+      "https://catalogo.inpi.gob.mx/huichol/"
+    ]
   },
-
   "Hñähñu": {
     "pais": "México",
     "poblacion": "~280K hablantes",
@@ -278,12 +526,32 @@
     "lengua": "Hñähñu / Otomí (familia oto-pame)",
     "lugar": null,
     "customs": "Los hñähñu habitan el árido Valle del Mezquital y han desarrollado una cultura de resistencia adaptada al semidesierto: extraen pulque, gusanos de maguey y fibras del maguey con técnica milenaria. El bordado en punto de cruz sobre tela de manta, con diseños geométricos que representan el universo, es su expresión artística más reconocida a nivel internacional. La Organización Mazahua-Otomí del Agua protagonizó históricas movilizaciones por el derecho al agua.",
-    "foods": ["Gusanos de maguey (chinicuiles)", "Pulque ceremonial", "Mixiotes de carne en penca de maguey", "Escamoles (larvas de hormiga)", "Xoconostle (tuna agria) en salsa"],
-    "protocols": ["Pedir permiso explícito antes de fotografiar — la desconfianza histórica hacia foráneos es justificada", "Los diseños de bordado otomí tienen significado identitario — respetar su uso y no copiarlos comercialmente", "El pulque y los gusanos de maguey forman parte de rituales; tratarlos con respeto, no como exotismo"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_otom%C3%AD", "https://catalogo.inpi.gob.mx/otomi/"]
+    "foods": [
+      "Gusanos de maguey (chinicuiles)",
+      "Pulque ceremonial",
+      "Mixiotes de carne en penca de maguey",
+      "Escamoles (larvas de hormiga)",
+      "Xoconostle (tuna agria) en salsa"
+    ],
+    "protocols": [
+      "Pedir permiso explícito antes de fotografiar — la desconfianza histórica hacia foráneos es justificada",
+      "Los diseños de bordado otomí tienen significado identitario — respetar su uso y no copiarlos comercialmente",
+      "El pulque y los gusanos de maguey forman parte de rituales; tratarlos con respeto, no como exotismo"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Mujer",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/OtomiWomanEmbroidery.jpg",
+        "pie": "Mujer hñähñu con bordado en punto de cruz",
+        "credito": "AlejandroLinaresGarcia — CC BY-SA 3.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_otom%C3%AD",
+      "https://catalogo.inpi.gob.mx/otomi/"
+    ]
   },
-
   "Tojolabal": {
     "pais": "México",
     "poblacion": "~55K hablantes",
@@ -291,12 +559,24 @@
     "lengua": "Tojolabal (familia maya)",
     "lugar": null,
     "customs": "Los tojolabales son uno de los pueblos más comprometidos con la autonomía zapatista: sus comunidades de Las Margaritas y Comitán fueron protagonistas del levantamiento del 1 de enero de 1994. Su nombre significa 'los que hablan derecho', lo que refleja su tradición de asamblea y gobierno colectivo horizontal. La milpa y el trabajo comunitario (mano vuelta) sostienen la vida económica y social.",
-    "foods": ["Tamales de chipilín", "Pozol de cacao", "Frijoles negros de olla", "Tasajo chiapaneco", "Chayote con epazote"],
-    "protocols": ["Las comunidades autónomas zapatistas tojolabales tienen autoridades propias — coordinar visita con los caracoles antes de llegar", "No fotografiar sin autorización de la asamblea comunitaria", "El trabajo colectivo en la milpa es sagrado — no interrumpirlo"],
+    "foods": [
+      "Tamales de chipilín",
+      "Pozol de cacao",
+      "Frijoles negros de olla",
+      "Tasajo chiapaneco",
+      "Chayote con epazote"
+    ],
+    "protocols": [
+      "Las comunidades autónomas zapatistas tojolabales tienen autoridades propias — coordinar visita con los caracoles antes de llegar",
+      "No fotografiar sin autorización de la asamblea comunitaria",
+      "El trabajo colectivo en la milpa es sagrado — no interrumpirlo"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_tojolabal", "https://catalogo.inpi.gob.mx/tojolabal/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_tojolabal",
+      "https://catalogo.inpi.gob.mx/tojolabal/"
+    ]
   },
-
   "Ñuu Savi": {
     "pais": "México",
     "poblacion": "~500K hablantes",
@@ -304,12 +584,24 @@
     "lengua": "Mixteco (familia oto-mangue, múltiples variantes)",
     "lugar": null,
     "customs": "Los ñuu savi, 'pueblo de la lluvia', crearon los códices prehispánicos más ricos y mejor conservados de Mesoamérica (Nuttall, Vindobonensis, Bodley): auténticos libros de historia, genealogía y religión en papel amate pintado. La orfebrería mixteca en oro alcanzó su cumbre en los tesoros de la Tumba 7 de Monte Albán. El tequio (trabajo comunitario obligatorio) sigue siendo el motor de la vida comunal en cientos de municipios de la Mixteca.",
-    "foods": ["Estofado oaxaqueño", "Mole colorado de Oaxaca", "Tamales de tequesquite", "Mezcal ceremonial de agave espadín", "Quesillo (queso Oaxaca)"],
-    "protocols": ["El tequio es obligación comunitaria — si la comunidad te incluye en él, participar es señal de respeto", "No entrar a zonas arqueológicas de la Mixteca cerradas al público sin permiso del INAH", "Las comunidades mixtecas tienen acceso controlado; coordinar visitas con el ayuntamiento o la asamblea local"],
+    "foods": [
+      "Estofado oaxaqueño",
+      "Mole colorado de Oaxaca",
+      "Tamales de tequesquite",
+      "Mezcal ceremonial de agave espadín",
+      "Quesillo (queso Oaxaca)"
+    ],
+    "protocols": [
+      "El tequio es obligación comunitaria — si la comunidad te incluye en él, participar es señal de respeto",
+      "No entrar a zonas arqueológicas de la Mixteca cerradas al público sin permiso del INAH",
+      "Las comunidades mixtecas tienen acceso controlado; coordinar visitas con el ayuntamiento o la asamblea local"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_mixteco", "https://catalogo.inpi.gob.mx/mixteco/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_mixteco",
+      "https://catalogo.inpi.gob.mx/mixteco/"
+    ]
   },
-
   "Mixe": {
     "pais": "México",
     "poblacion": "~135K hablantes",
@@ -317,12 +609,24 @@
     "lengua": "Mixe / Ayuukjä'äy (familia mixe-zoqueana)",
     "lugar": null,
     "customs": "El Zempoaltépetl, 'veinte aguas', es la montaña sagrada de los mixes y escenario de los ritos más importantes del ciclo agrícola. Su aislamiento geográfico les permitió mantener la autonomía: nunca fueron conquistados por aztecas ni completamente por españoles. El sistema de cargos comunitarios y las bandas de viento (cada comunidad tiene la suya) son los ejes de la identidad mixe contemporánea.",
-    "foods": ["Tasajo de res", "Cecina enchilada", "Memelas de maíz", "Tlayudas con asiento", "Tamales de mole amarillo"],
-    "protocols": ["El Zempoaltépetl es sagrado — acceder a sus cumbres sin guía local y sin permiso comunitario está prohibido", "El sistema de cargos es la autoridad legítima — dirigirse a él antes de cualquier actividad comunitaria", "Fotografiar ceremonias en el cerro sagrado está estrictamente vedado"],
+    "foods": [
+      "Tasajo de res",
+      "Cecina enchilada",
+      "Memelas de maíz",
+      "Tlayudas con asiento",
+      "Tamales de mole amarillo"
+    ],
+    "protocols": [
+      "El Zempoaltépetl es sagrado — acceder a sus cumbres sin guía local y sin permiso comunitario está prohibido",
+      "El sistema de cargos es la autoridad legítima — dirigirse a él antes de cualquier actividad comunitaria",
+      "Fotografiar ceremonias en el cerro sagrado está estrictamente vedado"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_mixe", "https://catalogo.inpi.gob.mx/mixe/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_mixe",
+      "https://catalogo.inpi.gob.mx/mixe/"
+    ]
   },
-
   "Tének": {
     "pais": "México",
     "poblacion": "~170K hablantes",
@@ -330,12 +634,24 @@
     "lengua": "Tének / Huasteco (familia maya — el único maya fuera de Mesoamérica central)",
     "lugar": null,
     "customs": "Los tének son, lingüísticamente, los mayas más orientales y más separados geográficamente de la familia: su separación del tronco maya ocurrió hace más de 3,000 años. La Danza de los Voladores, compartida con totonacas y nahuas, es en la Huasteca un rito de fertilidad solar que los tének reivindican como propio. El bordado del quechquémitl —la blusa ceremonial— en hilo de colores sobre tela de manta es la expresión más reconocida de su identidad.",
-    "foods": ["Zacahuil (tamal gigante de mole de guajolote)", "Bocoles (gorditas de frijol)", "Enchiladas huastecas", "Xocol atole de maíz", "Jol (caldo de cabeza de res)"],
-    "protocols": ["Solicitar permiso antes de presenciar o fotografiar danzas rituales", "El Zacahuil se comparte en festividades — aceptarlo es señal de integración y respeto", "Comprar bordados directamente en los mercados de Aquismón o Tancanhuitz"],
+    "foods": [
+      "Zacahuil (tamal gigante de mole de guajolote)",
+      "Bocoles (gorditas de frijol)",
+      "Enchiladas huastecas",
+      "Xocol atole de maíz",
+      "Jol (caldo de cabeza de res)"
+    ],
+    "protocols": [
+      "Solicitar permiso antes de presenciar o fotografiar danzas rituales",
+      "El Zacahuil se comparte en festividades — aceptarlo es señal de integración y respeto",
+      "Comprar bordados directamente en los mercados de Aquismón o Tancanhuitz"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_huasteco", "https://catalogo.inpi.gob.mx/teenek/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_huasteco",
+      "https://catalogo.inpi.gob.mx/teenek/"
+    ]
   },
-
   "Chinantla": {
     "pais": "México",
     "poblacion": "~125K hablantes",
@@ -343,12 +659,24 @@
     "lengua": "Chinanteco (familia oto-mangue, múltiples variantes)",
     "lugar": null,
     "customs": "Los chinantecos habitan la exuberante selva húmeda del norte de Oaxaca, cuya biodiversidad excepcional es directamente resultado de su manejo territorial tradicional. El traje de holán blanco con bordado de colores intensos de las mujeres chinantecas es considerado el más vistoso de México. El cultivo del café de sombra y la pesca artesanal en el Papaloapan son sus actividades productivas emblemáticas.",
-    "foods": ["Tamales de hierba santa", "Totopo (tortilla tostada de barro)", "Camarones de río en chile", "Tasajo con chepiche", "Atole de guaje"],
-    "protocols": ["El acceso a las reservas forestales comunitarias requiere permiso de los ejidos", "Respetar las vedas de pesca en el Papaloapan y sus afluentes", "Fotografiar los trajes bordados solo con autorización — su diseño tiene significado identitario profundo"],
+    "foods": [
+      "Tamales de hierba santa",
+      "Totopo (tortilla tostada de barro)",
+      "Camarones de río en chile",
+      "Tasajo con chepiche",
+      "Atole de guaje"
+    ],
+    "protocols": [
+      "El acceso a las reservas forestales comunitarias requiere permiso de los ejidos",
+      "Respetar las vedas de pesca en el Papaloapan y sus afluentes",
+      "Fotografiar los trajes bordados solo con autorización — su diseño tiene significado identitario profundo"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_chinanteco", "https://catalogo.inpi.gob.mx/chinanteco/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_chinanteco",
+      "https://catalogo.inpi.gob.mx/chinanteco/"
+    ]
   },
-
   "Mazateco": {
     "pais": "México",
     "poblacion": "~220K hablantes",
@@ -356,12 +684,24 @@
     "lengua": "Mazateco (familia oto-mangue, tonal)",
     "lugar": null,
     "customs": "La mazateca María Sabina fue la primera en compartir con el mundo la ceremonia del hongo sagrado (ndi xijtho) en los años 1950. Este rito de curación, conducido por curanderos-veladores, combina cantos en mazateco con los hongos psilocibios de Huautla de Jiménez. El mazateco también es una lengua de silbidos: los mensajes se transmiten sílaba a sílaba por los valles de la sierra.",
-    "foods": ["Tamales de chipilín de olla", "Hongos de temporada en salsa verde", "Atole de guayaba", "Frijoles negros de olla", "Elotes asados con epazote"],
-    "protocols": ["El uso de hongos sagrados fuera del ritual terapéutico es un abuso cultural y espiritual — no solicitarlo como 'experiencia'", "Huautla de Jiménez recibe visitantes; respetar la distinción entre ceremonias y comercio turístico", "No solicitar 'veladoras' como experiencia recreativa — son medicina y comunión espiritual, no entretenimiento"],
+    "foods": [
+      "Tamales de chipilín de olla",
+      "Hongos de temporada en salsa verde",
+      "Atole de guayaba",
+      "Frijoles negros de olla",
+      "Elotes asados con epazote"
+    ],
+    "protocols": [
+      "El uso de hongos sagrados fuera del ritual terapéutico es un abuso cultural y espiritual — no solicitarlo como 'experiencia'",
+      "Huautla de Jiménez recibe visitantes; respetar la distinción entre ceremonias y comercio turístico",
+      "No solicitar 'veladoras' como experiencia recreativa — son medicina y comunión espiritual, no entretenimiento"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_mazateco", "https://catalogo.inpi.gob.mx/mazateco/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_mazateco",
+      "https://catalogo.inpi.gob.mx/mazateco/"
+    ]
   },
-
   "Chatino": {
     "pais": "México",
     "poblacion": "~60K hablantes",
@@ -369,12 +709,24 @@
     "lengua": "Chatino (familia oto-mangue, emparentado con el zapoteco)",
     "lugar": null,
     "customs": "Los chatinos habitan la sierra costera de Oaxaca, entre el océano Pacífico y las montañas. Su sistema de cargos comunitarios y sus fiestas patronales, que pueden durar días, sostienen la cohesión social. El café chatino de altura es reconocido internacionalmente. El cerro Yucuita es el lugar sagrado central de rituales de petición de lluvia y renovación del ciclo agrícola.",
-    "foods": ["Memelas de maíz negro", "Iguana en verde", "Café chatino de altura", "Tamales de rajas con epazote", "Tejate (bebida de cacao y maíz)"],
-    "protocols": ["El cerro Yucuita es sagrado — no ascender sin autorización de las autoridades comunitarias", "Las festividades patronales de Santos Reyes Nopala tienen momentos reservados exclusivamente a la comunidad", "Comprar café directamente a las cooperativas chatinas para apoyar la economía local"],
+    "foods": [
+      "Memelas de maíz negro",
+      "Iguana en verde",
+      "Café chatino de altura",
+      "Tamales de rajas con epazote",
+      "Tejate (bebida de cacao y maíz)"
+    ],
+    "protocols": [
+      "El cerro Yucuita es sagrado — no ascender sin autorización de las autoridades comunitarias",
+      "Las festividades patronales de Santos Reyes Nopala tienen momentos reservados exclusivamente a la comunidad",
+      "Comprar café directamente a las cooperativas chatinas para apoyar la economía local"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_chatino", "https://catalogo.inpi.gob.mx/chatino/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_chatino",
+      "https://catalogo.inpi.gob.mx/chatino/"
+    ]
   },
-
   "Ikoots": {
     "pais": "México",
     "poblacion": "~20K personas",
@@ -382,12 +734,24 @@
     "lengua": "Ikoots / Huave (lengua aislada — sin familia lingüística establecida)",
     "lugar": null,
     "customs": "Los ikoots son un pueblo de pescadores que lleva milenios en los esteros y lagunas del Istmo de Tehuantepec. Su lengua es un aislado lingüístico — ninguna otra lengua conocida en el mundo tiene relación con ella. La pesca artesanal en la laguna Mar Muerto con redes y canoas es su actividad central. Sus ceremonias de bendición de redes y petición de pesca abundante siguen activas.",
-    "foods": ["Camarón seco del estero", "Tasajo istmeño", "Tlayudas con camarón", "Iguana en tasajo", "Atole de guaje"],
-    "protocols": ["Las lagunas son zonas de pesca comunitaria — no pescar ni acceder sin autorización de ejidatarios o pescadores locales", "Pedir permiso antes de fotografiar a pescadores en sus faenas rituales", "Respetar los calendarios de veda de camarón que las comunidades establecen"],
+    "foods": [
+      "Camarón seco del estero",
+      "Tasajo istmeño",
+      "Tlayudas con camarón",
+      "Iguana en tasajo",
+      "Atole de guaje"
+    ],
+    "protocols": [
+      "Las lagunas son zonas de pesca comunitaria — no pescar ni acceder sin autorización de ejidatarios o pescadores locales",
+      "Pedir permiso antes de fotografiar a pescadores en sus faenas rituales",
+      "Respetar los calendarios de veda de camarón que las comunidades establecen"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_huave", "https://catalogo.inpi.gob.mx/huave/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_huave",
+      "https://catalogo.inpi.gob.mx/huave/"
+    ]
   },
-
   "Comcáac": {
     "pais": "México",
     "poblacion": "~1,000 personas",
@@ -395,12 +759,32 @@
     "lengua": "Comcáac / Seri (lengua aislada — sin familia conocida)",
     "lugar": null,
     "customs": "Los comcáac son uno de los grupos más autónomos y más pequeños de México. Hasta el siglo XX fueron cazadores-recolectores del desierto costero más árido de Norteamérica. La Isla Tiburón (Hant Cöo, 'la isla nuestra'), su territorio ancestral protegido, permanece cerrada al turismo sin permiso expreso de la comunidad. La escultura en palo fierro — madera del árbol más duro de Sonora — y los collares de concha son su artesanía más célebre.",
-    "foods": ["Caguama (tortuga marina, solo ceremonial)", "Caracol de mar", "Cochi (vainas de mezquite molidas)", "Pitaya de cardón", "Venado bura"],
-    "protocols": ["La Isla Tiburón es territorio comcáac exclusivo — acceder sin su permiso explícito es ilegal y una violación grave", "Las tortugas marinas son seres sagrados; no fotografiarlas en contextos rituales", "Comprar esculturas de palo fierro directamente en Punta Chueca o El Desemboque"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_seri", "https://catalogo.inpi.gob.mx/seri/"]
+    "foods": [
+      "Caguama (tortuga marina, solo ceremonial)",
+      "Caracol de mar",
+      "Cochi (vainas de mezquite molidas)",
+      "Pitaya de cardón",
+      "Venado bura"
+    ],
+    "protocols": [
+      "La Isla Tiburón es territorio comcáac exclusivo — acceder sin su permiso explícito es ilegal y una violación grave",
+      "Las tortugas marinas son seres sagrados; no fotografiarlas en contextos rituales",
+      "Comprar esculturas de palo fierro directamente en Punta Chueca o El Desemboque"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Mujer",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Comc%C3%A1ac_%28Seri%29_Sonora.jpg",
+        "pie": "Mujer comcáac (seri) en Sonora",
+        "credito": "Rodolfo Herrera Valenzuela — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_seri",
+      "https://catalogo.inpi.gob.mx/seri/"
+    ]
   },
-
   "Yoeme": {
     "pais": "México",
     "poblacion": "~32K personas",
@@ -408,12 +792,32 @@
     "lengua": "Yoeme / Yaqui (familia uto-azteca)",
     "lugar": null,
     "customs": "Los yaquis libraron la guerra de resistencia más prolongada de México (1825-1929). Su Semana Santa — con danzas de pascolas, matachines y el danzante del venado — es una de las ceremonias más complejas de América del Norte: fusión de cosmovisión yaqui y catolicismo, donde el Maso (venado) muere y resucita simbolizando el ciclo cósmico. La autonomía del territorio de los ocho pueblos yaquis es reconocida por el gobierno mexicano.",
-    "foods": ["Carne asada de res", "Tortillas de harina", "Tamales yaquis de rajas", "Caldo de res con verduras de temporada", "Atole de maíz"],
-    "protocols": ["La Semana Santa yaqui es una ceremonia sagrada, no un espectáculo — comportamiento reverente obligatorio en todo momento", "No fotografiar la danza del venado (Maso) sin autorización expresa del grupo de danzantes y del gobernador tribal", "Respetar los límites del territorio de los ocho pueblos — tiene protección legal federal"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_yaqui", "https://catalogo.inpi.gob.mx/yaqui/"]
+    "foods": [
+      "Carne asada de res",
+      "Tortillas de harina",
+      "Tamales yaquis de rajas",
+      "Caldo de res con verduras de temporada",
+      "Atole de maíz"
+    ],
+    "protocols": [
+      "La Semana Santa yaqui es una ceremonia sagrada, no un espectáculo — comportamiento reverente obligatorio en todo momento",
+      "No fotografiar la danza del venado (Maso) sin autorización expresa del grupo de danzantes y del gobernador tribal",
+      "Respetar los límites del territorio de los ocho pueblos — tiene protección legal federal"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Ceremonial",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Danza_del_venado_yaqui.jpg",
+        "pie": "Danza del Venado yaqui (Maso) — rito sagrado de muerte y resurrección",
+        "credito": "Alejandro Yanes — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_yaqui",
+      "https://catalogo.inpi.gob.mx/yaqui/"
+    ]
   },
-
   "Yoreme": {
     "pais": "México",
     "poblacion": "~40K personas",
@@ -421,12 +825,32 @@
     "lengua": "Yoreme / Mayo (familia uto-azteca, emparentada con el yaqui)",
     "lugar": null,
     "customs": "Los yoreme, 'los que respetan la tradición', comparten con los yaquis la danza del pascola y del venado, pero en versión propia del río Mayo. Son agricultores del valle y pescadores del litoral. Su identidad gira en torno a las fiestas patronales y las ramadas ceremoniales, donde la música de arpa, violín y flauta acompaña los rituales. La cestería de palma y el tejido de palma en sombrero son sus artesanías más representativas.",
-    "foods": ["Tamales de elote de mayo", "Caldo de iguana", "Tortillas de maíz yoreme", "Atole de maíz blanco", "Frijoles mayocoba"],
-    "protocols": ["Las ceremonias de pascola son actos de la comunidad — observar solo si se recibe invitación", "No cruzar el área de la ramada ceremonial sin permiso del fiscal de la fiesta", "Respetar los ayunos y abstinencias que la comunidad guarda durante las fiestas mayores"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_mayo", "https://catalogo.inpi.gob.mx/mayo/"]
+    "foods": [
+      "Tamales de elote de mayo",
+      "Caldo de iguana",
+      "Tortillas de maíz yoreme",
+      "Atole de maíz blanco",
+      "Frijoles mayocoba"
+    ],
+    "protocols": [
+      "Las ceremonias de pascola son actos de la comunidad — observar solo si se recibe invitación",
+      "No cruzar el área de la ramada ceremonial sin permiso del fiscal de la fiesta",
+      "Respetar los ayunos y abstinencias que la comunidad guarda durante las fiestas mayores"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Ceremonial",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Bailarin_es_Mayo-Yoreme_02.jpg",
+        "pie": "Danzante pascola Mayo-Yoreme en traje ceremonial",
+        "credito": "ZoRrO0880 — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_mayo",
+      "https://catalogo.inpi.gob.mx/mayo/"
+    ]
   },
-
   "Náayerite": {
     "pais": "México",
     "poblacion": "~25K personas",
@@ -434,12 +858,24 @@
     "lengua": "Náayerite / Cora (familia uto-azteca)",
     "lugar": null,
     "customs": "Los náayerites fueron el último pueblo de México en ser incorporado a la Nueva España: la Sierra del Nayar cayó apenas en 1722, casi dos siglos después de la conquista. La ceremonia del Mitote (danza colectiva nocturna con cantos rituales) une a la comunidad con sus antepasados y el cosmos. El hikuri (peyote) y el maíz de color sagrado son los seres centrales de su cosmovisión, y la zona es de acceso muy restringido.",
-    "foods": ["Maíz ceremonial de color", "Tortillas de maíz nayerite", "Frijoles pintos de temporada", "Venado asado", "Tejuino (bebida fermentada de maíz)"],
-    "protocols": ["Los Mitotes son ceremonias privadas — la entrada de personas externas requiere autorización del gobernador tradicional", "El territorio cora es de difícil acceso y hay zonas vedadas; ir siempre con guía comunitario", "Fotografiar ceremonias está prohibido sin permiso explícito de las autoridades del pueblo"],
+    "foods": [
+      "Maíz ceremonial de color",
+      "Tortillas de maíz nayerite",
+      "Frijoles pintos de temporada",
+      "Venado asado",
+      "Tejuino (bebida fermentada de maíz)"
+    ],
+    "protocols": [
+      "Los Mitotes son ceremonias privadas — la entrada de personas externas requiere autorización del gobernador tradicional",
+      "El territorio cora es de difícil acceso y hay zonas vedadas; ir siempre con guía comunitario",
+      "Fotografiar ceremonias está prohibido sin permiso explícito de las autoridades del pueblo"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_cora", "https://catalogo.inpi.gob.mx/cora/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_cora",
+      "https://catalogo.inpi.gob.mx/cora/"
+    ]
   },
-
   "Mazahua": {
     "pais": "México",
     "poblacion": "~150K personas",
@@ -447,12 +883,24 @@
     "lengua": "Mazahua / Jñatjo (familia oto-pame)",
     "lugar": null,
     "customs": "Los mazahuas comparten la región del Valle de Toluca con los otomíes y los matlatzincas. Son conocidos por su tenaz defensa del agua: la Organización de Mujeres Mazahuas del Agua protagonizó una histórica marcha armada (2004) contra el desvío del sistema Cutzamala que nutre a la Ciudad de México. El bordado de animales y flores sobre tela de manta en tonos intensos es su expresión artística más reconocida.",
-    "foods": ["Mole de olla con verduras", "Enchiladas rojas", "Atole de guayaba", "Frijoles con chile morita", "Habas con chilacayote"],
-    "protocols": ["El agua es un derecho sagrado para los mazahuas — reconocer y apoyar su reclamo político histórico", "Comprar bordados directamente en los mercados de San Felipe del Progreso, Estado de México", "Pedir permiso antes de fotografiar artesanas en su trabajo"],
+    "foods": [
+      "Mole de olla con verduras",
+      "Enchiladas rojas",
+      "Atole de guayaba",
+      "Frijoles con chile morita",
+      "Habas con chilacayote"
+    ],
+    "protocols": [
+      "El agua es un derecho sagrado para los mazahuas — reconocer y apoyar su reclamo político histórico",
+      "Comprar bordados directamente en los mercados de San Felipe del Progreso, Estado de México",
+      "Pedir permiso antes de fotografiar artesanas en su trabajo"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_mazahua", "https://catalogo.inpi.gob.mx/mazahua/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_mazahua",
+      "https://catalogo.inpi.gob.mx/mazahua/"
+    ]
   },
-
   "Zoque": {
     "pais": "México",
     "poblacion": "~60K hablantes",
@@ -460,12 +908,24 @@
     "lengua": "Zoque / O'de püt (familia mixe-zoqueana)",
     "lugar": null,
     "customs": "Los zoques custodian el volcán Chichonal (El Chichón), que en 1982 protagonizó la erupción más mortífera del siglo XX en México, desplazando a miles de ellos. Su cosmología gira en torno al fuego y la tierra volcánica. En Tapijulapa, Tabasco, las comunidades zoques conservan uno de los paisajes de selva más intactos del sureste. La danza del Mono y los ritos de petición de lluvia al cerro sagrado son sus ceremonias más conocidas.",
-    "foods": ["Puntas de res en salsa", "Bolas de chipilin", "Tamal de bola", "Atole de elote", "Tasajo con hierba santa"],
-    "protocols": ["El Chichonal es sagrado y geológicamente activo — respetar sus restricciones de acceso y no escalar sin guía", "Pedir permiso a las autoridades comunitarias para visitar las grutas sagradas de Tapijulapa", "Las danzas rituales son actos comunitarios que requieren invitación o permiso explícito"],
+    "foods": [
+      "Puntas de res en salsa",
+      "Bolas de chipilin",
+      "Tamal de bola",
+      "Atole de elote",
+      "Tasajo con hierba santa"
+    ],
+    "protocols": [
+      "El Chichonal es sagrado y geológicamente activo — respetar sus restricciones de acceso y no escalar sin guía",
+      "Pedir permiso a las autoridades comunitarias para visitar las grutas sagradas de Tapijulapa",
+      "Las danzas rituales son actos comunitarios que requieren invitación o permiso explícito"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_zoque", "https://catalogo.inpi.gob.mx/zoque/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_zoque",
+      "https://catalogo.inpi.gob.mx/zoque/"
+    ]
   },
-
   "Tepehuán": {
     "pais": "México",
     "poblacion": "~28K personas",
@@ -473,25 +933,54 @@
     "lengua": "Tepehuán del sur / O'dam (familia uto-azteca)",
     "lugar": null,
     "customs": "Los tepehuanes del sur ('habitantes de la montaña') habitan la parte más inaccesible de la Sierra Madre Occidental. El peyote es central en sus ceremonias anuales de curación y renovación espiritual. La autonomía comunitaria es total: los visitantes deben presentarse ante el gobernador tradicional al llegar al territorio. Su guerra de resistencia del siglo XVII (Rebelión tepehuán de 1616) fue una de las más violentas del norte de Nueva España.",
-    "foods": ["Pinole de maíz tostado", "Tortillas de maíz de montaña", "Atole de guayaba", "Tejuino ceremonial", "Frijoles silvestres de temporada"],
-    "protocols": ["El gobernador tradicional es la autoridad máxima — presentarse ante él es el primer paso obligatorio al llegar", "El peyote es medicina sagrada, no objeto de curiosidad turística", "Los caminos hacia las comunidades requieren permiso expreso previo; no llegar sin coordinación"],
+    "foods": [
+      "Pinole de maíz tostado",
+      "Tortillas de maíz de montaña",
+      "Atole de guayaba",
+      "Tejuino ceremonial",
+      "Frijoles silvestres de temporada"
+    ],
+    "protocols": [
+      "El gobernador tradicional es la autoridad máxima — presentarse ante él es el primer paso obligatorio al llegar",
+      "El peyote es medicina sagrada, no objeto de curiosidad turística",
+      "Los caminos hacia las comunidades requieren permiso expreso previo; no llegar sin coordinación"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_tepehuan", "https://catalogo.inpi.gob.mx/tepehuan-del-sur/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_tepehuan",
+      "https://catalogo.inpi.gob.mx/tepehuan-del-sur/"
+    ]
   },
-
   "Ch'ol": {
     "pais": "México",
     "poblacion": "~230K hablantes",
     "region": "Chiapas y Tabasco",
     "lengua": "Ch'ol (familia maya)",
-    "lugar": null,
+    "lugar": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Palenque_Chiapas_-_Maya_ruins_-_1986_-_04.jpg",
+      "pie": "Palenque — ciudad maya ancestral del pueblo ch'ol",
+      "credito": "Infrogmation — CC BY-SA 4.0",
+      "fuente": "Wikimedia Commons"
+    },
     "customs": "Los ch'oles son los descendientes directos de quienes construyeron Palenque y Toniná, las ciudades mayas más espectaculares de la selva chiapaneca. Palenque es territorio ancestral ch'ol. Su cosmología preserva elementos del calendario maya de 260 días y los ch'oles lideran hoy procesos de recuperación de la escritura jeroglífica como herramienta de identidad contemporánea.",
-    "foods": ["Tamales de chipilín en hoja de plátano", "Mole negro chiapaneco", "Pozol blanco de cacao", "Café chiapaneco de sombra", "Chayote con ejote y epazote"],
-    "protocols": ["Palenque es territorio ancestral ch'ol — visitarla con conciencia cultural, no solo arqueológica", "Las comunidades ch'oles en la Selva Lacandona tienen acceso controlado por ejidos; coordinar con guías locales", "Apoyar a los guías ch'oles certificados de las zonas arqueológicas"],
+    "foods": [
+      "Tamales de chipilín en hoja de plátano",
+      "Mole negro chiapaneco",
+      "Pozol blanco de cacao",
+      "Café chiapaneco de sombra",
+      "Chayote con ejote y epazote"
+    ],
+    "protocols": [
+      "Palenque es territorio ancestral ch'ol — visitarla con conciencia cultural, no solo arqueológica",
+      "Las comunidades ch'oles en la Selva Lacandona tienen acceso controlado por ejidos; coordinar con guías locales",
+      "Apoyar a los guías ch'oles certificados de las zonas arqueológicas"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_chol", "https://catalogo.inpi.gob.mx/chol/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_chol",
+      "https://catalogo.inpi.gob.mx/chol/"
+    ]
   },
-
   "Me'phaa": {
     "pais": "México",
     "poblacion": "~120K hablantes",
@@ -499,12 +988,24 @@
     "lengua": "Me'phaa / Tlapaneco (familia tlapaneca-subtiaba)",
     "lugar": null,
     "customs": "Los me'phaa habitan la Montaña Alta de Guerrero, una de las regiones de mayor marginación y mayor resistencia indígena de México. La OPIM (Organización del Pueblo Indígena Me'phaa) ganó casos históricos ante la Corte Interamericana de Derechos Humanos. Su calendario ritual de 260 días, similar al tonalpohualli nahua, sigue usándose en varias comunidades para ordenar la vida ceremonial.",
-    "foods": ["Tlayudas de maíz morado", "Iguana en pipián de pepita", "Pozol con piloncillo", "Frijoles negros con chile", "Atole de guayaba"],
-    "protocols": ["Las comunidades me'phaa tienen sistemas de seguridad comunitaria — respetar los puntos de control al entrar", "La Montaña de Guerrero requiere coordinación con organizaciones locales para visitar de forma segura y respetuosa", "No fotografiar sin permiso; la desconfianza hacia foráneos tiene razones históricas absolutamente justificadas"],
+    "foods": [
+      "Tlayudas de maíz morado",
+      "Iguana en pipián de pepita",
+      "Pozol con piloncillo",
+      "Frijoles negros con chile",
+      "Atole de guayaba"
+    ],
+    "protocols": [
+      "Las comunidades me'phaa tienen sistemas de seguridad comunitaria — respetar los puntos de control al entrar",
+      "La Montaña de Guerrero requiere coordinación con organizaciones locales para visitar de forma segura y respetuosa",
+      "No fotografiar sin permiso; la desconfianza hacia foráneos tiene razones históricas absolutamente justificadas"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_tlapaneco", "https://catalogo.inpi.gob.mx/tlapaneco/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_tlapaneco",
+      "https://catalogo.inpi.gob.mx/tlapaneco/"
+    ]
   },
-
   "Chontal de Tabasco": {
     "pais": "México",
     "poblacion": "~55K hablantes",
@@ -512,12 +1013,24 @@
     "lengua": "Chontal de Tabasco / Yokot'an (familia maya)",
     "lugar": null,
     "customs": "Los yokot'anes son los mayas de los pantanos y ríos de Tabasco, herederos de los comerciantes mayas que conectaban el Golfo de México con las ciudades del interior. La navegación en cayuco y la pesca artesanal en los ríos y manglares son actividades centrales de su vida. Sus comunidades en los humedales del delta del Usumacinta son guardianas de uno de los ecosistemas costeros más ricos de México.",
-    "foods": ["Pejelagarto asado (pez primitivo del Usumacinta)", "Tortillas de maíz con frijoles", "Empanadas de chipilín", "Pozol blanco frío", "Pepita molida con tasajo"],
-    "protocols": ["El acceso a los manglares y humedales del Usumacinta requiere coordinación con ejidos ribereños", "Respetar las temporadas de veda de pesca establecidas por las comunidades", "La pesca con métodos tradicionales es parte de la identidad yokot'an — no interferir"],
+    "foods": [
+      "Pejelagarto asado (pez primitivo del Usumacinta)",
+      "Tortillas de maíz con frijoles",
+      "Empanadas de chipilín",
+      "Pozol blanco frío",
+      "Pepita molida con tasajo"
+    ],
+    "protocols": [
+      "El acceso a los manglares y humedales del Usumacinta requiere coordinación con ejidos ribereños",
+      "Respetar las temporadas de veda de pesca establecidas por las comunidades",
+      "La pesca con métodos tradicionales es parte de la identidad yokot'an — no interferir"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_chontal_de_Tabasco", "https://catalogo.inpi.gob.mx/chontal-de-tabasco/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_chontal_de_Tabasco",
+      "https://catalogo.inpi.gob.mx/chontal-de-tabasco/"
+    ]
   },
-
   "Guarijío": {
     "pais": "México",
     "poblacion": "~2,500 personas",
@@ -525,12 +1038,24 @@
     "lengua": "Guarijío / Makurawe (familia uto-azteca)",
     "lugar": null,
     "customs": "Los guarijíos habitan los cañones profundos entre Sonora y Chihuahua, uno de los territorios más inaccesibles de México. La fiesta del Tuburi (danza ceremonial nocturna de curación y comunión) reúne a las comunidades dispersas. Su resistencia a la presión agraria durante el siglo XX fue documentada por el antropólogo Alfonso Fabila y culminó en la dotación de tierras en 1976.",
-    "foods": ["Quelites silvestres de temporada", "Frijoles pintos de monte", "Maíz de temporal", "Venado asado", "Carne de jabalí"],
-    "protocols": ["Territorio de difícil acceso — ir siempre acompañado de guía o miembro de la comunidad; no llegar solo", "El Tuburi es una ceremonia sagrada — presenciarla requiere invitación de la comunidad", "No fotografiar a personas sin permiso explícito y personal"],
+    "foods": [
+      "Quelites silvestres de temporada",
+      "Frijoles pintos de monte",
+      "Maíz de temporal",
+      "Venado asado",
+      "Carne de jabalí"
+    ],
+    "protocols": [
+      "Territorio de difícil acceso — ir siempre acompañado de guía o miembro de la comunidad; no llegar solo",
+      "El Tuburi es una ceremonia sagrada — presenciarla requiere invitación de la comunidad",
+      "No fotografiar a personas sin permiso explícito y personal"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Guarij%C3%ADo", "https://catalogo.inpi.gob.mx/guarijio/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Guarij%C3%ADo",
+      "https://catalogo.inpi.gob.mx/guarijio/"
+    ]
   },
-
   "Tepehua": {
     "pais": "México",
     "poblacion": "~12K personas",
@@ -538,12 +1063,24 @@
     "lengua": "Tepehua (familia totonaco-tepehua)",
     "lugar": null,
     "customs": "Los tepehuas son parientes lingüísticos cercanos de los totonacas y comparten con ellos región y parte de las tradiciones. Sus rituales de curación incluyen el 'costumbre' — ceremonias dirigidas por especialistas rituales que conectan el mundo de los vivos con el de los espíritus a través de ofrendas, rezos y música de violín. La artesanía de palma tejida y el bordado sobre manta son sus expresiones más visibles.",
-    "foods": ["Tamales de rajas y queso", "Mole de olla con verduras", "Elote asado con chiltepin", "Café de olla con piloncillo", "Frijoles bayos de olla"],
-    "protocols": ["El 'costumbre' es una ceremonia sagrada de curación — observar solo si se recibe invitación", "Dirigirse a las autoridades comunitarias como primera instancia para cualquier visita", "Comprar artesanías directamente en Huehuetla, Veracruz, sin intermediarios"],
+    "foods": [
+      "Tamales de rajas y queso",
+      "Mole de olla con verduras",
+      "Elote asado con chiltepin",
+      "Café de olla con piloncillo",
+      "Frijoles bayos de olla"
+    ],
+    "protocols": [
+      "El 'costumbre' es una ceremonia sagrada de curación — observar solo si se recibe invitación",
+      "Dirigirse a las autoridades comunitarias como primera instancia para cualquier visita",
+      "Comprar artesanías directamente en Huehuetla, Veracruz, sin intermediarios"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_tepehua", "https://catalogo.inpi.gob.mx/tepehua/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_tepehua",
+      "https://catalogo.inpi.gob.mx/tepehua/"
+    ]
   },
-
   "Matlatzinca": {
     "pais": "México",
     "poblacion": "~2,000 personas (lengua en peligro crítico)",
@@ -551,12 +1088,24 @@
     "lengua": "Matlatzinca / Botzanga (familia oto-pame)",
     "lugar": null,
     "customs": "Los matlatzincas, 'los de la red', habitaron el Valle de Toluca antes de ser parcialmente desplazados por aztecas y otomíes. Hoy su comunidad activa es San Francisco Oxtotilpan, en las faldas del Nevado de Toluca (Xinantécatl), su volcán sagrado. Su lengua es una de las más amenazadas de México, con menos de 500 hablantes fluidos. La comunidad impulsa programas de revitalización lingüística en la escuela.",
-    "foods": ["Mole verde de pipián", "Tamales de frijol negro", "Atole de maíz azul", "Quelites de temporada", "Frijoles negros con epazote"],
-    "protocols": ["La comunidad de San Francisco Oxtotilpan tiene autonomía propia — respetar sus protocolos de visita y dirigirse a la autoridad local", "Apoyar los programas de revitalización de la lengua matlatzinca si se visita", "Pedir permiso para documentar cualquier aspecto cultural"],
+    "foods": [
+      "Mole verde de pipián",
+      "Tamales de frijol negro",
+      "Atole de maíz azul",
+      "Quelites de temporada",
+      "Frijoles negros con epazote"
+    ],
+    "protocols": [
+      "La comunidad de San Francisco Oxtotilpan tiene autonomía propia — respetar sus protocolos de visita y dirigirse a la autoridad local",
+      "Apoyar los programas de revitalización de la lengua matlatzinca si se visita",
+      "Pedir permiso para documentar cualquier aspecto cultural"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_matlatzinca", "https://catalogo.inpi.gob.mx/matlatzinca/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_matlatzinca",
+      "https://catalogo.inpi.gob.mx/matlatzinca/"
+    ]
   },
-
   "Tlahuica": {
     "pais": "México",
     "poblacion": "~2,000 personas (lengua muy amenazada)",
@@ -564,12 +1113,24 @@
     "lengua": "Tlahuica / Ocuilteco (familia oto-pame)",
     "lugar": null,
     "customs": "Los tlahuicas son uno de los grupos más pequeños de México, con su comunidad principal en San Juan Atzingo, en las faldas del Nevado de Toluca. Comparten tradiciones festivas con mazahuas y otomíes vecinos, pero mantienen una identidad propia con danzas y rituales únicos. Los bosques del Nevado de Toluca son su territorio ancestral y fuente espiritual.",
-    "foods": ["Quesillo de oveja con salsa", "Tamales de frijol negro", "Atole de maíz", "Quelites de bosque", "Frijoles pintos con chile morita"],
-    "protocols": ["Visitar San Juan Atzingo con respeto y coordinar con las autoridades comunitarias", "No documentar rituales sin permiso explícito de la comunidad", "Apoyar las iniciativas locales de preservación de la lengua ocuilteco"],
+    "foods": [
+      "Quesillo de oveja con salsa",
+      "Tamales de frijol negro",
+      "Atole de maíz",
+      "Quelites de bosque",
+      "Frijoles pintos con chile morita"
+    ],
+    "protocols": [
+      "Visitar San Juan Atzingo con respeto y coordinar con las autoridades comunitarias",
+      "No documentar rituales sin permiso explícito de la comunidad",
+      "Apoyar las iniciativas locales de preservación de la lengua ocuilteco"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Tlahuica_(pueblo)", "https://catalogo.inpi.gob.mx/tlahuica/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Tlahuica_(pueblo)",
+      "https://catalogo.inpi.gob.mx/tlahuica/"
+    ]
   },
-
   "Pame": {
     "pais": "México",
     "poblacion": "~12K personas",
@@ -577,12 +1138,24 @@
     "lengua": "Pame / Xi'iuy (familia oto-pame)",
     "lugar": null,
     "customs": "Los pames son los chichimecas del sur, habitantes de la árida Zona Media de San Luis Potosí. Resistieron la conquista española por más de 150 años en la llamada Guerra Chichimeca. Su cosmovisión integra el culto al maíz y los rituales de petición de lluvia en los cerros sagrados. Tradición oral en lengua pame y el lenguaje silbado para comunicación a distancia son parte de su legado.",
-    "foods": ["Nopalitos asados con chile", "Vainas de mezquite tostadas", "Quelites silvestres", "Frijoles pintos de temporal", "Maíz criollo en tortillas"],
-    "protocols": ["Las comunidades pames del norte de San Luis son de acceso restringido — contactar previamente con el INPI o la autoridad comunitaria", "Respetar los sitios de petición de lluvia en los cerros sagrados — son espacios rituales activos", "No recolectar plantas medicinales del monte sin autorización comunitaria"],
+    "foods": [
+      "Nopalitos asados con chile",
+      "Vainas de mezquite tostadas",
+      "Quelites silvestres",
+      "Frijoles pintos de temporal",
+      "Maíz criollo en tortillas"
+    ],
+    "protocols": [
+      "Las comunidades pames del norte de San Luis son de acceso restringido — contactar previamente con el INPI o la autoridad comunitaria",
+      "Respetar los sitios de petición de lluvia en los cerros sagrados — son espacios rituales activos",
+      "No recolectar plantas medicinales del monte sin autorización comunitaria"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_pame", "https://catalogo.inpi.gob.mx/pame/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_pame",
+      "https://catalogo.inpi.gob.mx/pame/"
+    ]
   },
-
   "Amuzgo": {
     "pais": "México",
     "poblacion": "~57K hablantes",
@@ -590,12 +1163,32 @@
     "lengua": "Amuzgo / Ñomndaa o Tzjon Non (familia oto-mangue)",
     "lugar": null,
     "customs": "Los amuzgos son reconocidos en todo el mundo por sus huipiles: tejidos en telar de cintura con diseños de animales, flores y serpientes en hilo de algodón mercerizado, son considerados de los textiles más elaborados y codiciados de México. Las mujeres amuzgas de Xochistlahuaca y Zacualpan Ometepec son artesanas de fama continental. Su sistema comunitario de gobierno por asamblea preserva la toma de decisiones colectiva.",
-    "foods": ["Iguana en mole verde", "Tamales de frijol negro", "Pozol de cacao", "Memelas de maíz negro", "Tejate ceremonial"],
-    "protocols": ["Los huipiles amuzgos tienen código visual de identidad clansaria — respetar su uso y no reproducir los diseños comercialmente sin acuerdo", "Comprar textiles directamente en Xochistlahuaca o con la cooperativa de tejedoras Ñomndaa", "Pedir permiso antes de fotografiar a tejedoras en su trabajo"],
-    "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_amuzgo", "https://catalogo.inpi.gob.mx/amuzgo/"]
+    "foods": [
+      "Iguana en mole verde",
+      "Tamales de frijol negro",
+      "Pozol de cacao",
+      "Memelas de maíz negro",
+      "Tejate ceremonial"
+    ],
+    "protocols": [
+      "Los huipiles amuzgos tienen código visual de identidad clansaria — respetar su uso y no reproducir los diseños comercialmente sin acuerdo",
+      "Comprar textiles directamente en Xochistlahuaca o con la cooperativa de tejedoras Ñomndaa",
+      "Pedir permiso antes de fotografiar a tejedoras en su trabajo"
+    ],
+    "imagenes": [
+      {
+        "tipo": "Mujer",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/XochisWeavers22.JPG",
+        "pie": "Tejedoras amuzgas de Xochistlahuaca en telar de cintura",
+        "credito": "AlejandroLinaresGarcia — CC BY-SA 3.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_amuzgo",
+      "https://catalogo.inpi.gob.mx/amuzgo/"
+    ]
   },
-
   "Chichimeco Jonaz": {
     "pais": "México",
     "poblacion": "~2,500 personas (lengua en peligro)",
@@ -603,12 +1196,24 @@
     "lengua": "Chichimeco Jonaz / Uza (lengua aislada)",
     "lugar": null,
     "customs": "Los chichimecos jonazes fueron los guerreros más temidos de la Guerra Chichimeca (1550-1590), la guerra de conquista más larga y costosa para la corona española en América del Norte. Hoy su comunidad de Misión de Chichimecas conserva danzas guerreras, rituales propios y la fiesta de la Virgen de Jalpa —síntesis de catolicismo y ritual chichimeco—. Su lengua es un aislado lingüístico sin parientes conocidos.",
-    "foods": ["Nopales asados con chile", "Mezquite (vainas molidas en pinole)", "Quelites de temporada", "Frijoles pintos", "Maíz en tortillas y tamales"],
-    "protocols": ["Misión de Chichimecas es una comunidad cohesionada y cerrada — respetar su privacidad y coordinar visitas con la delegación municipal", "Las danzas de la Conquista tienen un significado de resistencia y memoria, no de celebración de la derrota colonial", "Solicitar información a la delegación antes de cualquier visita cultural o documental"],
+    "foods": [
+      "Nopales asados con chile",
+      "Mezquite (vainas molidas en pinole)",
+      "Quelites de temporada",
+      "Frijoles pintos",
+      "Maíz en tortillas y tamales"
+    ],
+    "protocols": [
+      "Misión de Chichimecas es una comunidad cohesionada y cerrada — respetar su privacidad y coordinar visitas con la delegación municipal",
+      "Las danzas de la Conquista tienen un significado de resistencia y memoria, no de celebración de la derrota colonial",
+      "Solicitar información a la delegación antes de cualquier visita cultural o documental"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_chichimeco_jonaz", "https://catalogo.inpi.gob.mx/chichimeco-jonaz/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_chichimeco_jonaz",
+      "https://catalogo.inpi.gob.mx/chichimeco-jonaz/"
+    ]
   },
-
   "Popoluca": {
     "pais": "México",
     "poblacion": "~60K hablantes",
@@ -616,12 +1221,24 @@
     "lengua": "Popoluca de la Sierra (familia mixe-zoqueana)",
     "lugar": null,
     "customs": "Los popolucas del sur de Veracruz habitan las laderas de la Sierra de Los Tuxtlas, el fragmento de selva tropical más septentrional de Norteamérica. Son custodios del Parque Nacional Los Tuxtlas y sus bosques de niebla. El espíritu del maíz Homshuk, ser sagrado de la cosmovisión popoluca, conecta el ciclo agrícola con el espiritual y es protagonista de sus mitos de origen.",
-    "foods": ["Frijoles negros de olla", "Plátano macho asado", "Pepita molida con tasajo", "Tamales de rajas y queso", "Café de sombra de Los Tuxtlas"],
-    "protocols": ["El acceso a los bosques sagrados de Los Tuxtlas requiere permiso de los ejidos comunitarios", "El espíritu Homshuk es venerado — tratar el maíz con respeto, no desperdiciar", "Respetar las áreas de uso comunitario del bosque — no extraer plantas ni animales"],
+    "foods": [
+      "Frijoles negros de olla",
+      "Plátano macho asado",
+      "Pepita molida con tasajo",
+      "Tamales de rajas y queso",
+      "Café de sombra de Los Tuxtlas"
+    ],
+    "protocols": [
+      "El acceso a los bosques sagrados de Los Tuxtlas requiere permiso de los ejidos comunitarios",
+      "El espíritu Homshuk es venerado — tratar el maíz con respeto, no desperdiciar",
+      "Respetar las áreas de uso comunitario del bosque — no extraer plantas ni animales"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_popoluca", "https://catalogo.inpi.gob.mx/popoluca/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_popoluca",
+      "https://catalogo.inpi.gob.mx/popoluca/"
+    ]
   },
-
   "Cuicateco": {
     "pais": "México",
     "poblacion": "~13K hablantes",
@@ -629,12 +1246,24 @@
     "lengua": "Cuicateco / Nduuduwe (familia oto-mangue)",
     "lugar": null,
     "customs": "Los cuicatecos habitan el estrecho cañón del río Cuicatlán, en la región semiárida de la Cañada oaxaqueña, declarada Patrimonio Mundial de la UNESCO por su biodiversidad excepcional. Son expertos en el cultivo de la pitaya y en el aprovechamiento de las cactáceas del Valle de Tehuacán-Cuicatlán, uno de los centros de diversidad de cactus y agaves del mundo.",
-    "foods": ["Pitaya roja y amarilla de cardón", "Iguana en salsa de chile", "Chapulines al limón", "Tamales de rajas con epazote", "Atole de cacao"],
-    "protocols": ["El Valle Tehuacán-Cuicatlán es Patrimonio Mundial — respetar estrictamente las zonas de protección", "No recolectar cactus, agaves ni plantas del área protegida bajo ningún pretexto", "Solicitar guías cuicatecos locales en Cuicatlán para recorrer el cañón con respeto"],
+    "foods": [
+      "Pitaya roja y amarilla de cardón",
+      "Iguana en salsa de chile",
+      "Chapulines al limón",
+      "Tamales de rajas con epazote",
+      "Atole de cacao"
+    ],
+    "protocols": [
+      "El Valle Tehuacán-Cuicatlán es Patrimonio Mundial — respetar estrictamente las zonas de protección",
+      "No recolectar cactus, agaves ni plantas del área protegida bajo ningún pretexto",
+      "Solicitar guías cuicatecos locales en Cuicatlán para recorrer el cañón con respeto"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_cuicateco", "https://catalogo.inpi.gob.mx/cuicateco/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_cuicateco",
+      "https://catalogo.inpi.gob.mx/cuicateco/"
+    ]
   },
-
   "Cochimí": {
     "pais": "México",
     "poblacion": "Lengua prácticamente extinta (menos de 10 hablantes fluidos)",
@@ -642,12 +1271,24 @@
     "lengua": "Cochimí (familia yumana, documentación limitada)",
     "lugar": null,
     "customs": "Los cochimíes habitaron el corazón de la Península de Baja California durante milenios. Sus pinturas rupestres en las sierras de San Francisco y Guadalupe — declaradas Patrimonio de la Humanidad por la UNESCO — son las más grandes y mejor conservadas de América del Norte, con figuras humanas de varios metros de altura en colores ocre y negro. Cazadores-recolectores del desierto peninsular, su adaptación a la aridez fue una maestra de conocimiento ecológico.",
-    "foods": ["Pitaya de cardón (fruta sagrada de temporada)", "Agave asado (mezcal ancestral)", "Venado bura", "Pescado y mariscos de la costa", "Semillas silvestres molidas"],
-    "protocols": ["Las pinturas rupestres son Patrimonio UNESCO — visitarlas solo con guía autorizado por el INAH; no tocarlas ni acercarse sin protección", "Respetar los sitios de enterramiento cochimí en las cuevas peninsulares — son espacios sagrados", "El acceso a la Sierra de San Francisco requiere permiso del INAH y es gestionado por guías locales"],
+    "foods": [
+      "Pitaya de cardón (fruta sagrada de temporada)",
+      "Agave asado (mezcal ancestral)",
+      "Venado bura",
+      "Pescado y mariscos de la costa",
+      "Semillas silvestres molidas"
+    ],
+    "protocols": [
+      "Las pinturas rupestres son Patrimonio UNESCO — visitarlas solo con guía autorizado por el INAH; no tocarlas ni acercarse sin protección",
+      "Respetar los sitios de enterramiento cochimí en las cuevas peninsulares — son espacios sagrados",
+      "El acceso a la Sierra de San Francisco requiere permiso del INAH y es gestionado por guías locales"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_cochim%C3%AD", "https://whc.unesco.org/es/list/714"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_cochim%C3%AD",
+      "https://whc.unesco.org/es/list/714"
+    ]
   },
-
   "Kiliwa": {
     "pais": "México",
     "poblacion": "Menos de 60 personas (peligro crítico de extinción)",
@@ -655,12 +1296,24 @@
     "lengua": "Kiliwa (familia yumana)",
     "lugar": null,
     "customs": "Los kiliwas son el grupo indígena más pequeño de México y uno de los más reducidos del continente americano. Cazadores-recolectores del norte de Baja California, su territorio ancestral rodea la sierra de San Pedro Mártir. La transmisión oral de su cosmología y su lengua depende hoy de apenas una o dos personas mayores. Son el ejemplo más urgente de pérdida cultural irreversible en México.",
-    "foods": ["Venado cola blanca", "Conejo y liebres del desierto", "Plantas silvestres de temporada", "Bellotas de encino molidas", "Pitaya de cardón"],
-    "protocols": ["Cualquier contacto con la comunidad kiliwa debe mediarse a través del INPI (Instituto Nacional de los Pueblos Indígenas)", "No fotografiar ni documentar sin permiso explícito y personal de los miembros de la comunidad", "Su lengua está en estado crítico — apoyar la documentación solo con los propios kiliwas y organizaciones que ellos avalen"],
+    "foods": [
+      "Venado cola blanca",
+      "Conejo y liebres del desierto",
+      "Plantas silvestres de temporada",
+      "Bellotas de encino molidas",
+      "Pitaya de cardón"
+    ],
+    "protocols": [
+      "Cualquier contacto con la comunidad kiliwa debe mediarse a través del INPI (Instituto Nacional de los Pueblos Indígenas)",
+      "No fotografiar ni documentar sin permiso explícito y personal de los miembros de la comunidad",
+      "Su lengua está en estado crítico — apoyar la documentación solo con los propios kiliwas y organizaciones que ellos avalen"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_kiliwa", "https://catalogo.inpi.gob.mx/kiliwa/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_kiliwa",
+      "https://catalogo.inpi.gob.mx/kiliwa/"
+    ]
   },
-
   "Paipai": {
     "pais": "México",
     "poblacion": "~300 personas",
@@ -668,12 +1321,24 @@
     "lengua": "Paipai / Akwa'ala (familia yumana)",
     "lugar": null,
     "customs": "Los paipais, 'los que cazan con red', son cazadores y recolectores de las sierras del norte de Baja California. Comparten el territorio con kiliwas, cucapás y kumeyaay. Su comunidad de Santa Catarina celebra fiestas patronales que mezclan catolicismo y tradición yumana. La cestería de carrizo y yuca trenzada es su artesanía más representativa y un marcador de identidad cultural.",
-    "foods": ["Venado bura asado", "Conejo y liebre de monte", "Bellota de pino tostada", "Pitaya de cardón de temporada", "Agave asado"],
-    "protocols": ["Santa Catarina es comunidad cerrada — solicitar permiso al representante comunitario antes de visitar", "Las ceremonias sincréticas de las fiestas patronales son actos privados de la comunidad", "Comprar cestería directamente en la comunidad para apoyar a las artesanas"],
+    "foods": [
+      "Venado bura asado",
+      "Conejo y liebre de monte",
+      "Bellota de pino tostada",
+      "Pitaya de cardón de temporada",
+      "Agave asado"
+    ],
+    "protocols": [
+      "Santa Catarina es comunidad cerrada — solicitar permiso al representante comunitario antes de visitar",
+      "Las ceremonias sincréticas de las fiestas patronales son actos privados de la comunidad",
+      "Comprar cestería directamente en la comunidad para apoyar a las artesanas"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_paipai", "https://catalogo.inpi.gob.mx/paipai/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_paipai",
+      "https://catalogo.inpi.gob.mx/paipai/"
+    ]
   },
-
   "Ópata": {
     "pais": "México",
     "poblacion": "Lengua extinta; descendientes étnicos en Sonora",
@@ -681,12 +1346,24 @@
     "lengua": "Ópata / Tegüima (familia uto-azteca, extinta desde mediados del siglo XX)",
     "lugar": null,
     "customs": "Los ópatas fueron los aliados más constantes de la corona española en el norte de Nueva España, participando en guerras contra apaches y seris. Su lengua se extinguió en el siglo XX, pero comunidades en Sahuaripa, Ures y Bacadéhuachi reivindican identidad ópata. Hoy sus descendientes impulsan la revitalización cultural con danzas, conocimiento botánico y reclamos territoriales reconocidos por el INPI.",
-    "foods": ["Carne asada de res sonorense", "Tortillas de harina de trigo", "Frijoles pinto con chile", "Chiltepines silvestres en salsa", "Guacabaqui (caldo de res con verduras)"],
-    "protocols": ["Reconocer la identidad ópata de comunidades sonorenses que se autoidentifican como tales — no cuestionar su identidad", "Los procesos de revitalización cultural son delicados — acercarse con respeto y sin romantización ni espectáculo", "No confundir ópata con yaqui, mayo o pima — son pueblos distintos con historias diferentes"],
+    "foods": [
+      "Carne asada de res sonorense",
+      "Tortillas de harina de trigo",
+      "Frijoles pinto con chile",
+      "Chiltepines silvestres en salsa",
+      "Guacabaqui (caldo de res con verduras)"
+    ],
+    "protocols": [
+      "Reconocer la identidad ópata de comunidades sonorenses que se autoidentifican como tales — no cuestionar su identidad",
+      "Los procesos de revitalización cultural son delicados — acercarse con respeto y sin romantización ni espectáculo",
+      "No confundir ópata con yaqui, mayo o pima — son pueblos distintos con historias diferentes"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_%C3%B3pata", "https://catalogo.inpi.gob.mx/opata/"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_%C3%B3pata",
+      "https://catalogo.inpi.gob.mx/opata/"
+    ]
   },
-
   "Pericú": {
     "pais": "México",
     "poblacion": "Extinto como pueblo diferenciado (siglo XIX)",
@@ -694,12 +1371,24 @@
     "lengua": "Pericú (lengua extinta; sin clasificación lingüística establecida)",
     "lugar": null,
     "customs": "Los pericúes habitaron el extremo sur de Baja California Sur durante milenios. Sus pinturas rupestres en la cueva de San Borjitas muestran figuras humanas de gran tamaño y son de las más antiguas de la península. Protagonizaron la Rebelión Pericú de 1734, la más violenta resistencia contra la evangelización jesuita en el noroeste, que duró tres años y terminó con la ejecución de sus líderes. Su extinción fue consecuencia directa de epidemias y violencia colonial.",
-    "foods": ["Pesca y marisco (base alimentaria ancestral)", "Pitaya de cardón", "Agave asado", "Conejo y venado", "Carnes marinas de temporada"],
-    "protocols": ["Las pinturas rupestres pericúes son sitios de protección — visitar solo con guía autorizado por el INAH", "Reconocer el genocidio colonial como la causa de su extinción — no presentarlo como 'desaparición natural'", "Los sitios arqueológicos de Los Cabos relacionados con los pericúes son zonas protegidas federales"],
+    "foods": [
+      "Pesca y marisco (base alimentaria ancestral)",
+      "Pitaya de cardón",
+      "Agave asado",
+      "Conejo y venado",
+      "Carnes marinas de temporada"
+    ],
+    "protocols": [
+      "Las pinturas rupestres pericúes son sitios de protección — visitar solo con guía autorizado por el INAH",
+      "Reconocer el genocidio colonial como la causa de su extinción — no presentarlo como 'desaparición natural'",
+      "Los sitios arqueológicos de Los Cabos relacionados con los pericúes son zonas protegidas federales"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_peric%C3%BA", "https://mna.inah.gob.mx"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_peric%C3%BA",
+      "https://mna.inah.gob.mx"
+    ]
   },
-
   "Caxcán": {
     "pais": "México",
     "poblacion": "Lengua extinta; descendientes en Zacatecas y Jalisco",
@@ -707,9 +1396,22 @@
     "lengua": "Caxcán (familia uto-azteca, extinta)",
     "lugar": null,
     "customs": "Los caxcanes lideraron la Guerra del Mixtón (1541-1542), la mayor rebelión indígena de Nueva Galicia: enfrentaron al ejército más poderoso de la Nueva España y a punto estuvieron de revertir la conquista del occidente mexicano. Su caudillo Tenamaztle fue el primer indígena americano en comparecer ante el Consejo de Indias en España, donde fue defendido por fray Bartolomé de las Casas. Su lengua se extinguió en el siglo XVIII.",
-    "foods": ["Maíz criollo en tortillas", "Frijoles de temporal", "Venado asado", "Mezcal de agave ancestral", "Nopales con chile"],
-    "protocols": ["Reconocer la Guerra del Mixtón como una resistencia legítima, no una 'rebelión'", "Los sitios arqueológicos caxcanes en Juchipila y el Peñón del Mixtón son zonas de protección estatal", "El tequila y el mezcal de la región tienen raíces en el conocimiento indígena del agave — apoyar producción artesanal"],
+    "foods": [
+      "Maíz criollo en tortillas",
+      "Frijoles de temporal",
+      "Venado asado",
+      "Mezcal de agave ancestral",
+      "Nopales con chile"
+    ],
+    "protocols": [
+      "Reconocer la Guerra del Mixtón como una resistencia legítima, no una 'rebelión'",
+      "Los sitios arqueológicos caxcanes en Juchipila y el Peñón del Mixtón son zonas de protección estatal",
+      "El tequila y el mezcal de la región tienen raíces en el conocimiento indígena del agave — apoyar producción artesanal"
+    ],
     "imagenes": [],
-    "fuentes": ["https://es.wikipedia.org/wiki/Pueblo_caxc%C3%A1n", "https://mna.inah.gob.mx"]
+    "fuentes": [
+      "https://es.wikipedia.org/wiki/Pueblo_caxc%C3%A1n",
+      "https://mna.inah.gob.mx"
+    ]
   }
 }
