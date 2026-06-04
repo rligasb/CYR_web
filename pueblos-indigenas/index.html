@@ -154,43 +154,45 @@
       font-family: 'Lato', sans-serif; font-size: 12px; font-style: italic;
     }
 
-    /* ── CARD ── */
+    /* ── CARD — paleta "Tierra Viva" (tierra volcánica, terracota, parchment) ── */
     #cardOverlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.55); align-items: center; justify-content: center; z-index: 100;
+      background: rgba(0,0,0,0.65); align-items: center; justify-content: center; z-index: 100;
     }
     #cardOverlay.visible { display: flex; }
     #card {
-      background: #faf6ee; border-radius: 12px; width: 460px; max-height: 85vh; overflow-y: auto;
-      border-top: 4px solid #c8a96e;
+      background: linear-gradient(168deg, #231108 0%, #160902 100%);
+      border-radius: 12px; width: 460px; max-height: 85vh; overflow-y: auto;
+      border-top: 4px solid #c87640;
       transform: perspective(900px) translateZ(-80px) scale(0.8);
       transition: transform .45s cubic-bezier(.175,.885,.32,1.275);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.7); position: relative;
-      scrollbar-width: thin; scrollbar-color: #c8a96e transparent;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.85); position: relative;
+      scrollbar-width: thin; scrollbar-color: #c87640 transparent;
     }
     #card::-webkit-scrollbar { width: 4px; }
-    #card::-webkit-scrollbar-thumb { background: #c8a96e; border-radius: 2px; }
+    #card::-webkit-scrollbar-thumb { background: #c87640; border-radius: 2px; }
     #cardOverlay.visible #card { transform: perspective(900px) translateZ(0) scale(1); }
-    .card-hero { height: 110px; display: flex; align-items: flex-end; padding: 14px; border-radius: 8px 8px 0 0; position: relative; overflow: hidden; }
-    .card-badge { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.55); color: #c8a96e; font-size: 9px; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; font-family: 'Lato', sans-serif; text-transform: uppercase; }
-    .card-close { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #c8a96e; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-    .card-close:hover { background: #2c1a0a; }
-    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #fff; line-height: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
-    .card-sub   { font-size: 11px; color: rgba(255,255,255,0.85); margin-top: 3px; font-family: 'Lato', sans-serif; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .card-hero { height: 130px; display: flex; align-items: flex-end; padding: 14px; border-radius: 8px 8px 0 0; position: relative; overflow: hidden; }
+    .card-badge { position: absolute; top: 10px; left: 10px; background: rgba(190,75,25,0.55); color: #f5d090; font-size: 9px; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; font-family: 'Lato', sans-serif; text-transform: uppercase; }
+    .card-close { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.55); color: #f0c880; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .card-close:hover { background: rgba(180,55,15,0.75); }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #f5ddb0; line-height: 1; text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
+    .card-sub   { font-size: 11px; color: rgba(245,213,160,0.7); margin-top: 3px; font-family: 'Lato', sans-serif; }
     .card-body  { padding: 14px 16px; }
-    .card-section { margin-bottom: 16px; }
-    .section-title { font-size: 9px; letter-spacing: 3px; color: #8b6914; text-transform: uppercase; margin-bottom: 10px; font-family: 'Lato', sans-serif; font-weight: 700; padding-bottom: 5px; border-bottom: 1px solid rgba(200,169,110,0.25); }
+    .card-section { margin-bottom: 18px; border-bottom: 1px solid rgba(200,100,40,0.1); padding-bottom: 4px; }
+    .card-section:last-of-type { border-bottom: none; }
+    .section-title { font-size: 9px; letter-spacing: 3px; color: #d4904a; text-transform: uppercase; margin-bottom: 10px; font-family: 'Lato', sans-serif; font-weight: 700; padding-bottom: 5px; border-bottom: 1px solid rgba(210,130,60,0.3); }
     .carousel { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
     .carousel::-webkit-scrollbar { display: none; }
-    .thumb { min-width: 70px; height: 70px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(200,169,110,0.3); flex-shrink: 0; font-size: 22px; gap: 4px; }
-    .thumb-label { font-size: 9px; color: rgba(255,255,255,0.75); font-family: 'Lato', sans-serif; }
+    .thumb { min-width: 70px; height: 70px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(200,85,30,0.18); border: 1px solid rgba(200,120,55,0.45); flex-shrink: 0; font-size: 22px; gap: 4px; }
+    .thumb-label { font-size: 9px; color: rgba(245,210,155,0.7); font-family: 'Lato', sans-serif; }
     .food-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .food-tag { background: #f0e8d4; border: 1px solid #c8a96e; color: #6b4a10; font-size: 11px; padding: 3px 10px; border-radius: 20px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
-    .customs-text { font-size: 13px; color: #3a2a0a; line-height: 1.65; font-family: 'Cormorant Garamond', serif; font-style: italic; }
-    .protocol-item { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: #3a2a0a; line-height: 1.5; font-family: 'Lato', sans-serif; background: #f5ede0; border-radius: 6px; padding: 7px 10px; margin-bottom: 5px; }
-    .protocol-check { color: #8b6914; flex-shrink: 0; font-weight: 700; }
-    .card-cta { display: block; width: calc(100% - 28px); margin: 0 14px 14px; padding: 10px; background: #2c1a0a; color: #c8a96e; border: none; border-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; text-align: center; transition: background 0.2s; }
-    .card-cta:hover { background: #3d2514; }
+    .food-tag { background: rgba(170,65,20,0.28); border: 1px solid #b06535; color: #e8a870; font-size: 11px; padding: 4px 12px; border-radius: 20px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    .customs-text { font-size: 13px; color: #e8d4a0; line-height: 1.7; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    .protocol-item { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: #d4b880; line-height: 1.55; font-family: 'Lato', sans-serif; background: rgba(180,65,20,0.18); border-radius: 6px; padding: 8px 10px; margin-bottom: 6px; border-left: 3px solid rgba(200,105,40,0.55); }
+    .protocol-check { color: #d4854a; flex-shrink: 0; font-weight: 700; }
+    .card-cta { display: block; width: calc(100% - 28px); margin: 0 14px 14px; padding: 11px; background: linear-gradient(135deg, #8b3010 0%, #6a2008 100%); color: #f5d090; border: 1px solid rgba(200,100,40,0.4); border-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; text-align: center; transition: all 0.2s; }
+    .card-cta:hover { background: linear-gradient(135deg, #a03c18 0%, #7a2a10 100%); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(180,60,20,0.4); }
 
     /* ── MÓVIL (max 720px) ── */
     @media (max-width: 720px) {
@@ -204,7 +206,7 @@
       #panelEtnias.colapsado { height: 52px; overflow: hidden; }
       .panel-handle { display: flex; }
       #cardOverlay { align-items: flex-end; }
-      #card { width: 100% !important; max-height: 92vh; border-radius: 16px 16px 0 0; }
+      #card { width: 100% !important; max-height: 92vh; border-radius: 16px 16px 0 0; border-top-width: 4px; }
       #breadcrumb { font-size: 10px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     }
     @media (max-width: 480px) { .logo { font-size: 16px; } }
