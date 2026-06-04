@@ -23,25 +23,35 @@
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0d1117; }
 
-    #map { position: fixed; inset: 0; z-index: 0; }
+    #map {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
 
     /* Leaflet attribution — dark theme */
     .leaflet-control-attribution {
-      background: rgba(0,0,0,0.65) !important; color: rgba(255,255,255,0.4) !important;
-      font-size: 9px !important; font-family: 'Lato', sans-serif !important;
+      background: rgba(0,0,0,0.65) !important;
+      color: rgba(255,255,255,0.4) !important;
+      font-size: 9px !important;
+      font-family: 'Lato', sans-serif !important;
     }
     .leaflet-control-attribution a { color: rgba(200,169,110,0.7) !important; }
 
-    /* Leaflet tooltip — Cemanáhuac */
+    /* Leaflet tooltip — estilo Cemanáhuac */
     .leaflet-tooltip {
-      background: rgba(0,0,0,0.82) !important; color: #c8a96e !important;
-      font-size: 11px !important; padding: 5px 12px !important; border-radius: 6px !important;
-      font-family: 'Lato', sans-serif !important; border: 1px solid rgba(200,169,110,0.3) !important;
-      white-space: nowrap !important; box-shadow: none !important;
+      background: rgba(0,0,0,0.82) !important;
+      color: #c8a96e !important;
+      font-size: 11px !important;
+      padding: 5px 12px !important;
+      border-radius: 6px !important;
+      font-family: 'Lato', sans-serif !important;
+      border: 1px solid rgba(200,169,110,0.3) !important;
+      white-space: nowrap !important;
+      box-shadow: none !important;
     }
     .leaflet-tooltip::before { display: none !important; }
 
-    /* ── HEADER ── */
     #hdr {
       position: fixed; top: 0; left: 0; right: 0; z-index: 20;
       background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%);
@@ -56,16 +66,18 @@
       background: rgba(200,169,110,0.15); border: 1px solid #8b6914;
       color: #c8a96e; width: 30px; height: 30px; border-radius: 6px;
       cursor: pointer; font-size: 16px; font-family: monospace;
-      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
     }
     .ctrl:hover { background: rgba(200,169,110,0.3); }
 
     #hint {
       position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%);
       background: rgba(0,0,0,0.6); color: #c8a96e; font-size: 11px;
-      padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(139,105,20,0.4);
-      font-style: italic; transition: opacity 0.5s; pointer-events: none;
-      white-space: nowrap; font-family: 'Lato', sans-serif; z-index: 10;
+      padding: 6px 16px; border-radius: 20px;
+      border: 1px solid rgba(139,105,20,0.4); font-style: italic;
+      transition: opacity 0.5s; pointer-events: none; white-space: nowrap;
+      font-family: 'Lato', sans-serif; z-index: 10;
     }
     #tooltip {
       position: fixed; display: none; pointer-events: none;
@@ -79,81 +91,8 @@
       font-family: 'Cormorant Garamond', serif; pointer-events: none; z-index: 5; padding: 0 20px;
     }
 
-    /* ── PANEL DE ETNIAS (desktop: derecha) ── */
-    #panelEtnias {
-      position: fixed; top: 62px; right: 0; width: 320px; bottom: 0;
-      background: rgba(8,5,3,0.93); border-left: 1px solid rgba(200,169,110,0.18);
-      z-index: 15; display: none; flex-direction: column;
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    }
-    #panelEtnias.visible { display: flex; }
-
-    .panel-handle {
-      display: none; justify-content: center;
-      padding: 10px 0 4px; cursor: pointer; flex-shrink: 0;
-    }
-    .panel-handle-bar {
-      width: 40px; height: 4px;
-      background: rgba(200,169,110,0.35); border-radius: 2px;
-    }
-    .panel-head {
-      padding: 14px 16px 10px;
-      border-bottom: 1px solid rgba(200,169,110,0.12); flex-shrink: 0;
-    }
-    .panel-pais {
-      font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600;
-      color: #c8a96e; letter-spacing: 0.5px;
-    }
-    .panel-conteo {
-      font-size: 10px; color: rgba(200,169,110,0.5);
-      font-family: 'Lato', sans-serif; margin-top: 3px; letter-spacing: 0.3px;
-    }
-    .panel-search-wrap {
-      padding: 10px 12px 8px; border-bottom: 1px solid rgba(200,169,110,0.08); flex-shrink: 0;
-    }
-    .panel-search {
-      width: 100%; padding: 7px 12px;
-      background: rgba(200,169,110,0.07); border: 1px solid rgba(200,169,110,0.2);
-      border-radius: 6px; color: #c8a96e; font-family: 'Lato', sans-serif;
-      font-size: 12px; outline: none;
-    }
-    .panel-search::placeholder { color: rgba(200,169,110,0.3); }
-    .panel-search:focus { border-color: rgba(200,169,110,0.45); background: rgba(200,169,110,0.1); }
-    .panel-list {
-      flex: 1; overflow-y: auto; padding: 4px 0;
-      scrollbar-width: thin; scrollbar-color: rgba(200,169,110,0.25) transparent;
-    }
-    .panel-list::-webkit-scrollbar { width: 3px; }
-    .panel-list::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.25); border-radius: 2px; }
-    .panel-grupo {
-      font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
-      color: rgba(200,169,110,0.38); font-family: 'Lato', sans-serif;
-      padding: 10px 16px 4px; font-weight: 700; user-select: none;
-    }
-    .panel-item {
-      display: flex; align-items: center; gap: 8px;
-      padding: 9px 16px; cursor: pointer;
-      font-family: 'Lato', sans-serif; font-size: 12px; color: #c8a56a;
-      transition: background 0.15s; border-left: 3px solid transparent;
-      line-height: 1.4;
-    }
-    .panel-item:hover { background: rgba(200,169,110,0.08); }
-    .panel-item.activo {
-      background: rgba(200,169,110,0.13); border-left-color: #c8a96e; color: #e0c080;
-    }
-    .panel-item.sin-ficha { color: rgba(200,169,110,0.38); font-style: italic; }
-    .panel-item.sin-ficha:hover { background: rgba(200,169,110,0.05); }
-    .panel-dot { color: #c8a96e; font-size: 7px; flex-shrink: 0; line-height: 1; }
-    .panel-vacio {
-      padding: 20px 16px; color: rgba(200,169,110,0.3);
-      font-family: 'Lato', sans-serif; font-size: 12px; font-style: italic;
-    }
-
     /* ── CARD ── */
-    #cardOverlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.55); align-items: center; justify-content: center; z-index: 100;
-    }
+    #cardOverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); align-items: center; justify-content: center; z-index: 100; }
     #cardOverlay.visible { display: flex; }
     #card {
       background: #faf6ee; border-radius: 12px; width: 460px; max-height: 85vh; overflow-y: auto;
@@ -187,33 +126,7 @@
     .card-cta { display: block; width: calc(100% - 28px); margin: 0 14px 14px; padding: 10px; background: #2c1a0a; color: #c8a96e; border: none; border-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; text-align: center; transition: background 0.2s; }
     .card-cta:hover { background: #3d2514; }
 
-    /* ── MÓVIL (max 720px) ── */
-    @media (max-width: 720px) {
-      /* Panel: hoja inferior */
-      #panelEtnias {
-        top: auto; bottom: 0; left: 0; right: 0;
-        width: 100%; height: 45vh; max-height: 45vh;
-        border-left: none; border-top: 1px solid rgba(200,169,110,0.22);
-        border-radius: 16px 16px 0 0;
-        transition: height 0.3s ease;
-      }
-      #panelEtnias.colapsado { height: 52px; overflow: hidden; }
-      .panel-handle { display: flex; }
-
-      /* Card: casi pantalla completa */
-      #cardOverlay { align-items: flex-end; }
-      #card {
-        width: 100% !important; max-height: 92vh;
-        border-radius: 16px 16px 0 0; border-top-width: 4px;
-      }
-
-      /* Breadcrumb más corto en móvil */
-      #breadcrumb { font-size: 10px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    }
-
-    @media (max-width: 480px) {
-      .logo { font-size: 16px; }
-    }
+    @media (max-width: 768px) { #card { width: 95vw; } .logo { font-size: 16px; } #breadcrumb { display: none; } }
   </style>
 </head>
 <body>
@@ -239,22 +152,6 @@
     Los límites pueden ser imprecisos — consulta directamente con las naciones indígenas para información oficial.
   </div>
 
-  <!-- Panel de etnias -->
-  <div id="panelEtnias">
-    <div class="panel-handle" id="panelHandle">
-      <div class="panel-handle-bar"></div>
-    </div>
-    <div class="panel-head">
-      <div id="panelPaisNombre" class="panel-pais"></div>
-      <div id="panelConteo"    class="panel-conteo"></div>
-    </div>
-    <div class="panel-search-wrap">
-      <input type="text" id="panelBusqueda" class="panel-search" placeholder="Buscar pueblo…" autocomplete="off">
-    </div>
-    <div id="panelLista" class="panel-list"></div>
-  </div>
-
-  <!-- Card overlay (verbatim) -->
   <div id="cardOverlay">
     <div id="card">
       <div class="card-hero" id="cardHero">
@@ -309,6 +206,7 @@ const AMERICA_IDS = {
   328:'Guyana', 740:'Surinam', 254:'Guayana Francesa'
 };
 
+/* Nombres exactos de countries-50m.json para los 35 países americanos */
 const PAISES_AMERICA = new Set([
   'Canada','United States of America','Mexico',
   'Guatemala','Belize','Honduras','El Salvador',
@@ -322,6 +220,7 @@ const PAISES_AMERICA = new Set([
   'Chile','Argentina','Uruguay','Paraguay'
 ]);
 
+/* Paleta suave para países */
 const COUNTRY_PALETTE = [
   '#6a9e7c','#b87a50','#5a8a9e','#9e8a44','#7a6e9e',
   '#8a7050','#4a9e80','#b86050','#6a8a50','#9e5a70',
@@ -333,7 +232,7 @@ const COUNTRY_PALETTE = [
 ];
 
 /* ═══════════════════════════════════════
-   2. PUEBLOS_DATA (14 pueblos — verbatim)
+   2. PUEBLOS_DATA (14 pueblos)
    ═══════════════════════════════════════ */
 const PUEBLOS_DATA = {
   "Nahua":    { tag:"~1.5M hablantes",  foods:["Tamales","Pozole","Atole","Tlayudas","Huauzontle"],          customs:"La milpa es el centro de su vida espiritual y económica. Los temazcales son espacios sagrados de purificación. La danza del Xochipitzahuatl celebra la feminidad y la naturaleza.",                protocols:["Pedir permiso antes de fotografiar ceremonias","Vestir con modestia en espacios sagrados","Aceptar los alimentos ofrecidos como señal de respeto"] },
@@ -684,22 +583,26 @@ function getNombreEtnia(feature) {
    4. ESTADO
    ═══════════════════════════════════════ */
 let map;
-let capaPaises        = null;
-let capaEtniaActiva   = null;
-let allTerritories    = [];
-let listaEtnias       = [];   // [{nombre, features, tieneficha}]
-let paisActualFeature = null;
-let paisActualNombre  = null;
+let capaPaises   = null;
+let capaTerritorios = null;
+let allTerritories  = [];
 const AMERICAS_BOUNDS = [[-56, -82], [60, -34]];
-const COLOR_ORO       = '#c8a96e';
 
 /* ═══════════════════════════════════════
-   5. UI HELPERS
+   5. UI HELPERS (verbatim)
    ═══════════════════════════════════════ */
 function setHint(text) {
   const h = document.getElementById('hint');
   h.style.opacity = '0';
   setTimeout(() => { h.textContent = text; h.style.opacity = '1'; }, 300);
+}
+
+function updateBreadcrumb(countryName, count) {
+  const bc = document.getElementById('breadcrumb');
+  if (!countryName) { bc.innerHTML = 'El continente americano'; return; }
+  if (count === undefined) { bc.innerHTML = `América <span style="color:#c8a96e">›</span> ${countryName}`; return; }
+  bc.innerHTML = `América <span style="color:#c8a96e">›</span> ${countryName}` +
+    (count > 0 ? ` <span style="color:#c8a96e">· ${count} pueblo${count>1?'s':''}</span>` : '');
 }
 
 /* ═══════════════════════════════════════
@@ -728,8 +631,8 @@ function openCard(feature, color) {
   document.getElementById('cardFoods').innerHTML = data
     ? data.foods.map(f=>`<span class="food-tag">${f}</span>`).join('')
     : `<em style="font-size:12px;color:#8b6914">Contenido completo próximamente</em>`;
-  document.getElementById('cardCustoms').textContent = data ? data.customs : '';
-  document.getElementById('cardProtocols').innerHTML = data
+  document.getElementById('cardCustoms').textContent   = data ? data.customs   : '';
+  document.getElementById('cardProtocols').innerHTML   = data
     ? data.protocols.map(p=>`<div class="protocol-item"><span class="protocol-check">✓</span>${p}</div>`).join('')
     : '';
   document.getElementById('cardCta').onclick = () => window.open('https://native-land.ca','_blank');
@@ -742,7 +645,28 @@ document.getElementById('cardOverlay').addEventListener('click', e => {
 });
 
 /* ═══════════════════════════════════════
-   7. FILTRADO CON TURF (reusado)
+   7. COLOR DE ETNIA (ángulo dorado — replica colorAleatorio del globo)
+   ═══════════════════════════════════════ */
+function colorEtnia(seed) {
+  const hue = (seed * 137.508) % 360;
+  const s = 70, l = 55;
+  // Convertir HSL a hex para compatibilidad con gradientes inline
+  const c = (1 - Math.abs(2 * l / 100 - 1)) * s / 100;
+  const x = c * (1 - Math.abs((hue / 60) % 2 - 1));
+  const m = l / 100 - c / 2;
+  let r = 0, g = 0, b = 0;
+  if (hue < 60)       { r=c; g=x; b=0; }
+  else if (hue < 120) { r=x; g=c; b=0; }
+  else if (hue < 180) { r=0; g=c; b=x; }
+  else if (hue < 240) { r=0; g=x; b=c; }
+  else if (hue < 300) { r=x; g=0; b=c; }
+  else                { r=c; g=0; b=x; }
+  const toHex = v => Math.round((v + m) * 255).toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+/* ═══════════════════════════════════════
+   8. FILTRADO CON TURF
    ═══════════════════════════════════════ */
 function filtrarTerritoriosPorPais(countryFeature) {
   let countryBbox;
@@ -752,243 +676,109 @@ function filtrarTerritoriosPorPais(countryFeature) {
   for (const territorio of allTerritories) {
     try {
       const tBbox = turf.bbox(territorio);
+      // Pre-filtro bbox: descartar sin solapamiento
       if (tBbox[2] < countryBbox[0] || tBbox[0] > countryBbox[2] ||
           tBbox[3] < countryBbox[1] || tBbox[1] > countryBbox[3]) continue;
-      if (turf.booleanIntersects(territorio, countryFeature)) found.push(territorio);
-    } catch(e) { continue; }
+      // Intersección precisa con Turf
+      if (turf.booleanIntersects(territorio, countryFeature)) {
+        found.push(territorio);
+      }
+    } catch(e) { continue; } // geometría sucia — saltar y continuar
   }
   return found;
 }
 
 /* ═══════════════════════════════════════
-   8. LÓGICA DE FICHA — misma que usa openCard
+   9. PINTAR TERRITORIOS
    ═══════════════════════════════════════ */
-function tieneFicha(nombre) {
-  return !!Object.keys(PUEBLOS_DATA).find(k =>
-    nombre.toLowerCase().includes(k.toLowerCase()) ||
-    k.toLowerCase().includes(nombre.toLowerCase().split(' ')[0])
-  );
-}
+function pintarTerritorios(features) {
+  if (capaTerritorios) { map.removeLayer(capaTerritorios); capaTerritorios = null; }
+  if (!features.length) return;
 
-/* ═══════════════════════════════════════
-   9. FIT DESPLAZADO (espacio para el panel)
-   ═══════════════════════════════════════ */
-function fitDesplazado(bounds, maxZoom) {
-  const mobile = window.matchMedia('(max-width: 720px)').matches;
-  const opts   = { animate: true };
-  if (maxZoom) opts.maxZoom = maxZoom;
-  if (mobile) {
-    const ph = Math.round(window.innerHeight * 0.45);
-    opts.paddingTopLeft     = [20, 20];
-    opts.paddingBottomRight = [20, ph + 20];
-  } else {
-    opts.paddingTopLeft     = [30, 30];
-    opts.paddingBottomRight = [350, 30];
-  }
-  map.fitBounds(bounds, opts);
-}
+  // Pre-computar colores por feature (identidad de objeto)
+  const colorMap = new Map();
+  features.forEach((f, i) => colorMap.set(f, colorEtnia(i)));
 
-/* ═══════════════════════════════════════
-   10. RENDER DE LISTA DE ETNIAS
-   ═══════════════════════════════════════ */
-function renderLista(etnias, filtro) {
-  const lista = document.getElementById('panelLista');
-  const f     = filtro.toLowerCase().trim();
-  const vis   = f ? etnias.filter(e => e.nombre.toLowerCase().includes(f)) : etnias;
-
-  const conFicha = vis.filter(e =>  e.tieneficha);
-  const sinFicha = vis.filter(e => !e.tieneficha);
-
-  lista.innerHTML = '';
-
-  if (!conFicha.length && !sinFicha.length) {
-    const msg = document.createElement('div');
-    msg.className = 'panel-vacio';
-    msg.textContent = f ? 'Sin resultados para "' + filtro + '"' : 'Sin territorios registrados';
-    lista.appendChild(msg);
-    return;
-  }
-
-  const appendGroup = (titulo, items) => {
-    if (!items.length) return;
-    const sep = document.createElement('div');
-    sep.className   = 'panel-grupo';
-    sep.textContent = titulo;
-    lista.appendChild(sep);
-
-    items.forEach(etnia => {
-      const div = document.createElement('div');
-      div.className = 'panel-item' + (etnia.tieneficha ? '' : ' sin-ficha');
-
-      if (etnia.tieneficha) {
-        const dot = document.createElement('span');
-        dot.className   = 'panel-dot';
-        dot.textContent = '●';
-        div.appendChild(dot);
-      }
-      div.appendChild(document.createTextNode(etnia.nombre));
-
-      div.addEventListener('click', () => {
-        lista.querySelectorAll('.panel-item').forEach(i => i.classList.remove('activo'));
-        div.classList.add('activo');
-        seleccionarEtnia(etnia);
+  capaTerritorios = L.geoJSON(features, {
+    style: f => {
+      const color = colorMap.get(f) || '#c8956e';
+      return { fillColor: color, fillOpacity: 0.45, color, weight: 1, opacity: 0.8 };
+    },
+    onEachFeature: (feature, layer) => {
+      const nombre = getNombreEtnia(feature);
+      const color  = colorMap.get(feature) || '#c8956e';
+      layer.on('mouseover', () => {
+        layer.setStyle({ fillOpacity: 0.7 });
+        layer.bindTooltip(nombre, { sticky: true }).openTooltip();
       });
-      lista.appendChild(div);
-    });
-  };
-
-  appendGroup('Con información', conFicha);
-  appendGroup('Por documentar',  sinFicha);
-}
-
-/* ═══════════════════════════════════════
-   11. MOSTRAR PANEL
-   ═══════════════════════════════════════ */
-function mostrarPanel(nombre, etnias) {
-  document.getElementById('panelPaisNombre').textContent = nombre;
-  const n = etnias.length;
-  const m = etnias.filter(e => e.tieneficha).length;
-  document.getElementById('panelConteo').textContent =
-    `${n} pueblo${n !== 1 ? 's' : ''} (${m} con ficha)`;
-  document.getElementById('panelBusqueda').value = '';
-  renderLista(etnias, '');
-  const panel = document.getElementById('panelEtnias');
-  panel.classList.add('visible');
-  panel.classList.remove('colapsado');
-}
-
-/* ═══════════════════════════════════════
-   12. SELECCIONAR ETNIA
-   ═══════════════════════════════════════ */
-function seleccionarEtnia(etnia) {
-  // 1. Quitar resalte previo
-  if (capaEtniaActiva) { map.removeLayer(capaEtniaActiva); capaEtniaActiva = null; }
-
-  // 2. Dibujar SOLO los polígonos de esta etnia
-  capaEtniaActiva = L.geoJSON(etnia.features, {
-    style: {
-      fillColor:   COLOR_ORO,
-      fillOpacity: 0.55,
-      color:       COLOR_ORO,
-      weight:      2,
-      opacity:     1
+      layer.on('mouseout', () => {
+        layer.setStyle({ fillOpacity: 0.45 });
+      });
+      layer.on('click', () => openCard(feature, color));
     }
   }).addTo(map);
-
-  // 3. Encuadrar con desplazamiento (una etnia a la vez → maxZoom 7)
-  fitDesplazado(capaEtniaActiva.getBounds(), 7);
-
-  // 4. Abrir la card (verbatim openCard, feature representativo)
-  openCard(etnia.features[0], COLOR_ORO);
-
-  // 5. Breadcrumb: Cemanáhuac › País › Etnia
-  document.getElementById('breadcrumb').innerHTML =
-    `Cemanáhuac <span style="color:#c8a96e">›</span> ${paisActualNombre} <span style="color:#c8a96e">›</span> ${etnia.nombre}`;
 }
 
 /* ═══════════════════════════════════════
-   13. ENTRAR A UN PAÍS
+   10. ENTRAR A UN PAÍS
    ═══════════════════════════════════════ */
 function entrarPais(countryFeature, nombre, color) {
-  paisActualFeature = countryFeature;
-  paisActualNombre  = nombre;
+  // 1. Vuelo al país (fitBounds reemplaza flyToCountry del globo — funciona sin fórmulas de rotación)
+  map.fitBounds(L.geoJSON(countryFeature).getBounds(), { padding: [40, 40], maxZoom: 6 });
 
-  // Limpiar etnia previa
-  if (capaEtniaActiva) { map.removeLayer(capaEtniaActiva); capaEtniaActiva = null; }
-
-  // Ocultar capa de países
+  // 2. Ocultar capa de países
   if (capaPaises && map.hasLayer(capaPaises)) map.removeLayer(capaPaises);
 
-  // Breadcrumb
-  document.getElementById('breadcrumb').innerHTML =
-    `Cemanáhuac <span style="color:#c8a96e">›</span> ${nombre}`;
+  // 3. Limpiar territorios previos
+  if (capaTerritorios) { map.removeLayer(capaTerritorios); capaTerritorios = null; }
+
+  // 4. Breadcrumb y hint
+  updateBreadcrumb(nombre);
   setHint('Buscando pueblos indígenas…');
 
-  // Filtrado Turf (reusado)
+  // 5. Filtrar con Turf y pintar
   const encontrados = filtrarTerritoriosPorPais(countryFeature);
+  console.log('[Cemanáhuac]', nombre, '→ territorios:', encontrados.length);
 
-  if (!encontrados.length) {
-    document.getElementById('breadcrumb').innerHTML +=
-      ` <span style="color:#c8a96e">· 0 pueblos</span>`;
+  if (encontrados.length > 0) {
+    pintarTerritorios(encontrados);
+    updateBreadcrumb(nombre, encontrados.length);
+    setHint('Clic en un territorio para ver su ficha');
+  } else {
+    updateBreadcrumb(nombre, 0);
     setHint('No se encontraron territorios registrados en este país');
-    mostrarPanel(nombre, []);
-    fitDesplazado(L.geoJSON(countryFeature).getBounds());
-    return;
   }
-
-  // Construir mapa de etnias únicas (dedupe por nombre español)
-  const etniaMap = new Map();
-  for (const feature of encontrados) {
-    const n = getNombreEtnia(feature);
-    if (!etniaMap.has(n)) {
-      etniaMap.set(n, { nombre: n, features: [], tieneficha: tieneFicha(n) });
-    }
-    etniaMap.get(n).features.push(feature);
-  }
-
-  // Ordenar: con ficha primero, luego alfabético es-MX dentro de cada grupo
-  listaEtnias = Array.from(etniaMap.values()).sort((a, b) => {
-    if (a.tieneficha !== b.tieneficha) return a.tieneficha ? -1 : 1;
-    return a.nombre.localeCompare(b.nombre, 'es-MX');
-  });
-
-  const conFichaCount = listaEtnias.filter(e => e.tieneficha).length;
-  console.log('[Cemanáhuac]', nombre,
-    '→ pueblos en lista:', listaEtnias.length,
-    '| con ficha:', conFichaCount);
-
-  // Encuadrar país desplazado a la izquierda (hueco derecho = panel)
-  fitDesplazado(L.geoJSON(countryFeature).getBounds());
-
-  // Mostrar panel con lista
-  mostrarPanel(nombre, listaEtnias);
-  setHint('Selecciona una etnia de la lista');
 }
 
 /* ═══════════════════════════════════════
-   14. RESET
+   11. RESET
    ═══════════════════════════════════════ */
 function reset() {
   map.fitBounds(AMERICAS_BOUNDS);
-  if (capaEtniaActiva) { map.removeLayer(capaEtniaActiva); capaEtniaActiva = null; }
+  if (capaTerritorios) { map.removeLayer(capaTerritorios); capaTerritorios = null; }
   if (capaPaises && !map.hasLayer(capaPaises)) capaPaises.addTo(map);
-  const panel = document.getElementById('panelEtnias');
-  panel.classList.remove('visible');
-  panel.classList.remove('colapsado');
-  paisActualFeature = null;
-  paisActualNombre  = null;
-  listaEtnias       = [];
   closeCard();
-  document.getElementById('breadcrumb').textContent = 'El continente americano';
+  updateBreadcrumb(null);
   setHint('Haz clic en un país para explorar sus pueblos indígenas');
 }
 
 /* ═══════════════════════════════════════
-   15. EVENTOS PANEL
-   ═══════════════════════════════════════ */
-document.getElementById('panelBusqueda').addEventListener('input', e => {
-  renderLista(listaEtnias, e.target.value);
-});
-
-document.getElementById('panelHandle').addEventListener('click', () => {
-  if (window.matchMedia('(max-width: 720px)').matches) {
-    document.getElementById('panelEtnias').classList.toggle('colapsado');
-  }
-});
-
-/* ═══════════════════════════════════════
-   16. INIT
+   12. INIT
    ═══════════════════════════════════════ */
 async function init() {
+  // Inicializar mapa Leaflet
   map = L.map('map', { zoomControl: false });
 
+  // Fondo satelital Esri World Imagery (stack aprobado)
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics', maxZoom: 18 }
   ).addTo(map);
 
+  // Vista inicial: continente americano
   map.fitBounds(AMERICAS_BOUNDS);
 
+  // Controles del header cableados al mapa
   document.getElementById('btnZoomIn').onclick  = () => map.zoomIn();
   document.getElementById('btnZoomOut').onclick = () => map.zoomOut();
   document.getElementById('btnReset').onclick   = reset;
@@ -1000,20 +790,21 @@ async function init() {
     const all    = topojson.feature(topo, topo.objects.countries);
     const americas = all.features.filter(f => f.properties && PAISES_AMERICA.has(f.properties.name));
 
-    const fColorMap = new Map();
-    americas.forEach((f, i) => fColorMap.set(f, COUNTRY_PALETTE[i % COUNTRY_PALETTE.length]));
+    // Pre-computar colores por feature
+    const featureColorMap = new Map();
+    americas.forEach((f, i) => featureColorMap.set(f, COUNTRY_PALETTE[i % COUNTRY_PALETTE.length]));
 
     capaPaises = L.geoJSON(americas, {
       style: f => ({
-        fillColor:   fColorMap.get(f) || COUNTRY_PALETTE[0],
+        fillColor:   featureColorMap.get(f) || COUNTRY_PALETTE[0],
         fillOpacity: 0.35,
-        color:       COLOR_ORO,
+        color:       '#c8a96e',
         weight:      1,
         opacity:     0.6
       }),
       onEachFeature: (feature, layer) => {
         const nombre = AMERICA_IDS[+feature.id] || feature.properties.name || 'País';
-        const color  = fColorMap.get(feature) || COUNTRY_PALETTE[0];
+        const color  = featureColorMap.get(feature) || COUNTRY_PALETTE[0];
         layer.on('mouseover', () => {
           layer.setStyle({ fillOpacity: 0.55 });
           layer.bindTooltip(nombre, { sticky: true }).openTooltip();
@@ -1028,7 +819,7 @@ async function init() {
     console.log('[Cemanáhuac] países cargados:', americas.length);
   } catch(e) { console.error('[Cemanáhuac] world-atlas error:', e); }
 
-  // Cargar territorios (cache — no se recarga en cada clic)
+  // Cargar territorios (cache en memoria — no se recarga en cada clic)
   try {
     const res2 = await fetch('./territories_americas.geojson');
     const data = await res2.json();
