@@ -444,6 +444,12 @@
         "tipo": "Hombre",
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Group_in_Zocalo_-_Papantla_-_Veracruz_-_Mexico_%2815837342107%29.jpg/1280px-Group_in_Zocalo_-_Papantla_-_Veracruz_-_Mexico_%2815837342107%29.jpg",
         "credito": "Adam Jones from Kelowna, BC, Canada — CC BY-SA 2.0"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Le%C3%B1a_para_el_Zacahuil_01_Tecomajapa-Zontecomatl%C3%A1n%2C_Veracruz%2C_M%C3%A9xico.jpg/1280px-Le%C3%B1a_para_el_Zacahuil_01_Tecomajapa-Zontecomatl%C3%A1n%2C_Veracruz%2C_M%C3%A9xico.jpg",
+        "credito": "Jesús Eduardo Arteaga Flores — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
@@ -453,7 +459,8 @@
       "https://lugares.inah.gob.mx/es/taxonomy/term/56106",
       "https://catalogo.inpi.gob.mx/totonaco/"
     ],
-    "wikipedia": "https://es.wikipedia.org/wiki/Cultura_totonaca"
+    "wikipedia": "https://es.wikipedia.org/wiki/Cultura_totonaca",
+    "nombre": "Totonaca"
   },
   "Tzotzil": {
     "pais": "México",
@@ -846,6 +853,12 @@
         "tipo": "Hombre",
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mixtec_man_portrait_1906.png",
         "credito": "Joseph Deniker — Public domain"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Mole_negro_de_Oaxaca_con_arroz.jpg/1280px-Mole_negro_de_Oaxaca_con_arroz.jpg",
+        "credito": "ProtoplasmaKid — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
@@ -1143,6 +1156,12 @@
         "tipo": "Hombre",
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Abandoned_Seri_village_Tiburon_Island_1895.jpg",
         "credito": "William Dinwiddie (Life time: ) — Public domain"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Pitahayas_en_un_mercado.jpg/1280px-Pitahayas_en_un_mercado.jpg",
+        "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
@@ -1323,6 +1342,12 @@
         "tipo": "Hombre",
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/MONUMENTO_A_LOS_MAZAHUAS.jpg",
         "credito": "No machine-readable author provided. JEDIKNIGHT1970 assumed (based on copyright  — CC BY 2.5"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Mole_de_olla.jpg/1280px-Mole_de_olla.jpg",
+        "credito": "stu_spivack — CC BY-SA 2.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
@@ -1765,6 +1790,12 @@
         "tipo": "Hombre",
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Aguas_termal.jpg/1280px-Aguas_termal.jpg",
         "credito": "Valentin alexa — CC BY-SA 4.0"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Civilizaci%C3%B3n_chontal_-_historia_antigua_de_la_chontalpa_oaxaque%C3%B1a_%28IA_civilizacionchon00mart%29.pdf/page1-500px-Civilizaci%C3%B3n_chontal_-_historia_antigua_de_la_chontalpa_oaxaque%C3%B1a_%28IA_civilizacionchon00mart%29.pdf.jpg",
+        "credito": "Martínez Gracida, Manuel, 1847-1924 — Public domain",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
