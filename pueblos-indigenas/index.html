@@ -217,6 +217,8 @@
     .protocol-check { color: #d4854a; flex-shrink: 0; font-weight: 700; }
     .card-cta { display: block; width: calc(100% - 28px); margin: 0 14px 14px; padding: 11px; background: linear-gradient(135deg, #8b3010 0%, #6a2008 100%); color: #f5d090; border: 1px solid rgba(200,100,40,0.4); border-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; text-align: center; transition: all 0.2s; }
     .card-cta:hover { background: linear-gradient(135deg, #a03c18 0%, #7a2a10 100%); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(180,60,20,0.4); }
+    .wiki-link { display: inline-block; margin: 0 14px 14px; padding: 6px 14px; background: transparent; border: 1px solid rgba(255,255,255,0.35); border-radius: 4px; color: #bbb; font-size: 0.82rem; text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s ease, color 0.2s ease; }
+    .wiki-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
     /* ── MÓVIL (max 720px) ── */
     @media (max-width: 720px) {
@@ -305,6 +307,7 @@
         </div>
       </div>
       <button class="card-cta" id="cardCta">Explorar más sobre este pueblo ↗</button>
+      <a id="cardWikiLink" class="wiki-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">📖 Conoce más en Wikipedia →</a>
     </div>
   </div>
 </div>
@@ -798,6 +801,18 @@ function openCard(feature, color) {
     : '';
 
   document.getElementById('cardCta').onclick = () => window.open('https://native-land.ca','_blank');
+
+  // Botón Wikipedia
+  const wikiEl = document.getElementById('cardWikiLink');
+  if (wikiEl) {
+    if (data && data.wikipedia) {
+      wikiEl.href = data.wikipedia;
+      wikiEl.style.display = 'inline-block';
+    } else {
+      wikiEl.style.display = 'none';
+    }
+  }
+
   document.getElementById('cardOverlay').classList.add('visible');
 }
 

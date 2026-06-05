@@ -18,8 +18,31 @@
       "Vestir con modestia en espacios sagrados",
       "Aceptar los alimentos ofrecidos como señal de respeto"
     ],
-    "imagenes": [],
-    "fuentes": []
+    "imagenes": [
+      {
+        "tipo": "Hombre",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/02/General_History_of_the_Things_of_New_Spain_by_Fray_Bernardino_de_Sahag%C3%BAn-_The_Florentine_Codex._Book_II-_The_Ceremonies_WDL10613.jpg",
+        "pie": "Historia general de las cosas de nueva España (General history of the things of New Spain) is an encyclopedic work about the people and culture of central Mexic...",
+        "credito": "Sahagún, Bernardino de, 1499-1590 — Public domain",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Model_of_Tenochtitlan_-_Templo_Mayor_Archeological_Zone_-_Mexico_2024.jpg",
+        "pie": "Model of Tenochtitlan - Templo Mayor Archeological Zone - Mexico",
+        "credito": "José Luiz — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Tamales_Mexicanos_sweet_corn_tamales_01.jpg",
+        "pie": "Tamales Mexicanos sweet corn tamales made with young corn and milk",
+        "credito": "Usernet123u — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Nahuas"
   },
   "Maya": {
     "pais": "México / Guatemala / Belice / Honduras",
@@ -46,9 +69,31 @@
         "pie": "Mujer maya con textiles tradicionales",
         "credito": "StellarD — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Hombre",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Panquetzaliztli%2C_Banner_Raising%2C_the_15th_Month_of_the_Aztec_Solar_Calendar_WDL6715.png",
+        "pie": "The Tovar Codex, attributed to the 16th-century Mexican Jesuit Juan de Tovar, contains detailed information about the rites and ceremonies of the Aztecs (also k...",
+        "credito": "Tovar, Juan de, circa 1546-circa 1626 — Public domain",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chichen_Itza_3.jpg",
+        "pie": "El Castillo (pyramid of Kukulcán) in Chichén Itzá",
+        "credito": "Daniel Schwen — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Cochinita_pibil_2.jpg",
+        "pie": "a healthy serving of cochinita pibil, a traditional Yucatán dish.",
+        "credito": "Popo le Chien — CC BY-SA 3.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_maya"
   },
   "Zapotec": {
     "pais": "México",
@@ -68,8 +113,24 @@
       "Registrarse con autoridades al llegar",
       "El tequio es obligatorio en comunidades"
     ],
-    "imagenes": [],
-    "fuentes": []
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Monte_Alban_Oaxaca_IMS_1976_03.jpg",
+        "pie": "Monte Alban ruins, Oaxaca, 1976.",
+        "credito": "Infrogmation — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Tlayuda12-05oaxaca013x.jpg",
+        "pie": "A tlayuda.",
+        "credito": "The original uploader was Bobak at English Wikipedia. — CC BY-SA 2.5",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Zapotecos"
   },
   "Navajo": {
     "pais": "Estados Unidos",
@@ -90,7 +151,8 @@
       "Comprar directamente en la Nación Navajo"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Navajos"
   },
   "Cherokee": {
     "pais": "Estados Unidos",
@@ -111,7 +173,8 @@
       "Visitar los museos Cherokee"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Cheroqui"
   },
   "Wayuu": {
     "pais": "Colombia / Venezuela",
@@ -132,7 +195,8 @@
       "Preguntar antes de fotografiar artesanías"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Wayuu"
   },
   "Quechua": {
     "pais": "Perú / Bolivia / Ecuador / Colombia",
@@ -154,7 +218,8 @@
       "No caminar sobre terrazas en descanso"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Quechuas"
   },
   "Mapuche": {
     "pais": "Chile / Argentina",
@@ -176,7 +241,8 @@
       "Respetar el protocolo de saludo con el kimün"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_mapuche"
   },
   "Aymara": {
     "pais": "Bolivia / Perú / Chile",
@@ -198,7 +264,8 @@
       "No pisar ofrendas de la Pachamama"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_aimara"
   },
   "Guarani": {
     "pais": "Paraguay / Brasil / Argentina / Bolivia",
@@ -220,7 +287,8 @@
       "Respetar el silencio en templos jesuíticos guaraníes"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_guaran%C3%AD"
   },
   "Yanomami": {
     "pais": "Brasil / Venezuela",
@@ -241,7 +309,8 @@
       "Nunca fotografiar sin autorización"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Yanomami"
   },
   "Cree": {
     "pais": "Canadá / Estados Unidos",
@@ -262,7 +331,8 @@
       "Respetar zonas de caza y recolección"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Cree"
   },
   "Guna": {
     "pais": "Panamá / Colombia",
@@ -284,7 +354,8 @@
       "Comprar molas directamente a las creadoras"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Guna_(pueblo)"
   },
   "Emberá": {
     "pais": "Colombia / Panamá",
@@ -305,7 +376,8 @@
       "Respetar espacios de ritual en silencio"
     ],
     "imagenes": [],
-    "fuentes": []
+    "fuentes": [],
+    "wikipedia": "https://es.wikipedia.org/wiki/Ember%C3%A1"
   },
   "Totonac": {
     "pais": "México",
@@ -345,6 +417,13 @@
         "pie": "Danzantes de Papantla",
         "credito": "Yaomautzin Ohtokani Olvera Lara — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/El_Taj%C3%ADn_%28Veracruz%29_11.jpg",
+        "pie": "Zona arqueológica de El Tajín. Veracruz, México.",
+        "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
@@ -353,7 +432,8 @@
       "https://en.wikipedia.org/wiki/El_Taj%C3%ADn",
       "https://lugares.inah.gob.mx/es/taxonomy/term/56106",
       "https://catalogo.inpi.gob.mx/totonaco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Cultura_totonaca"
   },
   "Tzotzil": {
     "pais": "México",
@@ -386,12 +466,20 @@
         "pie": "Mujer tzotzil en Zinacantán, Chiapas",
         "credito": "Adam Jones — CC BY 2.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Vista_de_la_Iglesia_de_San_Juan_Bautista_en_San_Juan_Chamula%2C_Chiapas_01.jpg",
+        "pie": "Vista de la Iglesia de San Juan Bautista en San Juan Chamula, Chiapas, México 2022",
+        "credito": "B.jars — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_tzotzil",
       "https://catalogo.inpi.gob.mx/tzotzil/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_tzotzil"
   },
   "Tzeltal": {
     "pais": "México",
@@ -412,11 +500,20 @@
       "Las comunidades autónomas zapatistas tzeltales tienen protocolos de acceso propios — respetarlos",
       "Comprar textiles directamente a tejedoras, no a intermediarios"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/The_Ancient_Cities_of_the_New_World.djvu",
+        "pie": "Translation of: Les anciennes villes du nouveau monde",
+        "credito": "Charnay, Désiré, 1828-1915 — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_tzeltal",
       "https://catalogo.inpi.gob.mx/tzeltal/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_tzeltal"
   },
   "P'urhépecha": {
     "pais": "México",
@@ -449,12 +546,20 @@
         "pie": "Danzantes p'urhépecha en traje ceremonial",
         "credito": "Elsa Jaimes — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Yacatas_de_Tzintzuntzan%2C_Michoacan.jpg",
+        "pie": "This is a photo of a monument in Mexico, identified by ID",
+        "credito": "Antonio Carreon Guzman — CC BY-SA 3.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_p%27urhépecha",
       "https://catalogo.inpi.gob.mx/purhepecha/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_p%27urhépecha"
   },
   "Rarámuri": {
     "pais": "México",
@@ -480,11 +585,20 @@
       "El tesgüino en una reunión es señal de comunidad; rechazarlo puede considerarse desaire",
       "En las carreras rarámuri, los observadores no deben interrumpir ni cruzar el camino de los corredores"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Barrancas_del_Cobre%2C_Chihuahua_%2832525951550%29.jpg",
+        "pie": "Barrancas del Cobre, Chihuahua",
+        "credito": "Comisión Mexicana de Filmaciones from México D. F., México — CC BY-SA 2.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_rar%C3%A1muri",
       "https://catalogo.inpi.gob.mx/tarahumara/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_rar%C3%A1muri"
   },
   "Wixárika": {
     "pais": "México",
@@ -512,12 +626,20 @@
         "pie": "Cuadro de estambre wixárika representando al mara'akame (chamán)",
         "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Milpa_%28Wirikuta%2C_San_Luis_Potos%C3%AD%29.jpg",
+        "pie": "Wirikuta, San Luis Potosí",
+        "credito": "Feria de Productores — CC BY 2.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_wix%C3%A1rika",
       "https://catalogo.inpi.gob.mx/huichol/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_wix%C3%A1rika"
   },
   "Hñähñu": {
     "pais": "México",
@@ -545,12 +667,27 @@
         "pie": "Mujer hñähñu con bordado en punto de cruz",
         "credito": "AlejandroLinaresGarcia — CC BY-SA 3.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Biznaga%2C_Valle_del_Mezquital%2C_Hidalgo%2C_M%C3%A9xico.jpg",
+        "pie": "Biznaga, Valle del Mezquital, Hidalgo, México",
+        "credito": "AlmaMC — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/MGSA2018_-_Chinicuiles_2.jpg",
+        "pie": "Chinicuiles (maguey worms) being toasted on a comal at the XXXVIII Gastronomical fair of Santiago de Anaya, in the state of Hidalgo, Mexico.",
+        "credito": "MCGau — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_otom%C3%AD",
       "https://catalogo.inpi.gob.mx/otomi/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_otom%C3%AD"
   },
   "Tojolabal": {
     "pais": "México",
@@ -571,11 +708,27 @@
       "No fotografiar sin autorización de la asamblea comunitaria",
       "El trabajo colectivo en la milpa es sagrado — no interrumpirlo"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Las_Margaritas%2C_Chiapas_%2821836373629%29.jpg",
+        "pie": "Las Margaritas, Chiapas",
+        "credito": "Comisión Mexicana de Filmaciones from México D. F., México — CC BY-SA 2.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Tamalito-de-chipilin-luis-figueroa.jpg",
+        "pie": "Chipilin´s tamale",
+        "credito": "Luisfi — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_tojolabal",
       "https://catalogo.inpi.gob.mx/tojolabal/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_tojolabal"
   },
   "Ñuu Savi": {
     "pais": "México",
@@ -596,11 +749,20 @@
       "No entrar a zonas arqueológicas de la Mixteca cerradas al público sin permiso del INAH",
       "Las comunidades mixtecas tienen acceso controlado; coordinar visitas con el ayuntamiento o la asamblea local"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Path_with_Ruins_-_Mitla_Archaeological_Site_-_Oaxaca_-_Mexico_%2815158811460%29.jpg",
+        "pie": "Path with Ruins - Mitla Archaeological Site - Oaxaca - Mexico",
+        "credito": "Adam Jones from Kelowna, BC, Canada — CC BY-SA 2.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_mixteco",
       "https://catalogo.inpi.gob.mx/mixteco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_mixteco"
   },
   "Mixe": {
     "pais": "México",
@@ -621,11 +783,20 @@
       "El sistema de cargos es la autoridad legítima — dirigirse a él antes de cualquier actividad comunitaria",
       "Fotografiar ceremonias en el cerro sagrado está estrictamente vedado"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Sierra_mixteca.jpg",
+        "pie": "Panorámica de la Sierra Mixteca, a la altura de Nativitas Monte Verde (Oaxaca). Se trata de una de las regiones más pobres de México, tanto en recursos naturale...",
+        "credito": "No machine-readable author provided. Yavidaxiu assumed (based on copyright claims). — CC BY-SA 2.5",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_mixe",
       "https://catalogo.inpi.gob.mx/mixe/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_mixe"
   },
   "Tének": {
     "pais": "México",
@@ -646,11 +817,20 @@
       "El Zacahuil se comparte en festividades — aceptarlo es señal de integración y respeto",
       "Comprar bordados directamente en los mercados de Aquismón o Tancanhuitz"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Ilustrated_catalogue_of_books%2C_maps_and_documents_relating_to_Mexico%2C_Central_America_and_the_Maya_Indians_of_Yucatan_%28IA_illustratedcatal00wilkrich%29.pdf",
+        "pie": "Subjects: Mayas -- Bibliography; Mexico -- Bibliography; Central America -- Bibliography",
+        "credito": "Wilkinson, Paul, 1937- American Art Association — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_huasteco",
       "https://catalogo.inpi.gob.mx/teenek/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_huasteco"
   },
   "Chinantla": {
     "pais": "México",
@@ -671,11 +851,20 @@
       "Respetar las vedas de pesca en el Papaloapan y sus afluentes",
       "Fotografiar los trajes bordados solo con autorización — su diseño tiene significado identitario profundo"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Memoria_sobre_el_cultivo_del_tabaco_%28IA_memoriasobreelc00krau%29.pdf",
+        "pie": "136 páginas Compra Subjects: Tabaco",
+        "credito": "Karl Christian Friedrich Krause — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_chinanteco",
       "https://catalogo.inpi.gob.mx/chinanteco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_chinanteco"
   },
   "Mazateco": {
     "pais": "México",
@@ -696,11 +885,20 @@
       "Huautla de Jiménez recibe visitantes; respetar la distinción entre ceremonias y comercio turístico",
       "No solicitar 'veladoras' como experiencia recreativa — son medicina y comunión espiritual, no entretenimiento"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Huautla_de_Jimenez.jpg",
+        "pie": "Danceable of mazatecos sounds from Huautla de Jimenez",
+        "credito": "Evan Paunde — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_mazateco",
       "https://catalogo.inpi.gob.mx/mazateco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_mazateco"
   },
   "Chatino": {
     "pais": "México",
@@ -721,11 +919,27 @@
       "Las festividades patronales de Santos Reyes Nopala tienen momentos reservados exclusivamente a la comunidad",
       "Comprar café directamente a las cooperativas chatinas para apoyar la economía local"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Mexico_Oaxaca_Santos_Reyes_Nopala_location_map.svg",
+        "pie": "Mapa de localización del municipio de Santos Reyes Nopala, Oaxaca, México",
+        "credito": "Battroid — Public domain",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Memelas_de_ma%C3%ADz_yauitl.jpg",
+        "pie": "En la fotografía se pueden observar tres memelas de maíz yauitl del restaurante Maíz de cacao en la Ciudad de México. La base es de frijoles negros y queso fres...",
+        "credito": "Pequeño mar — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_chatino",
       "https://catalogo.inpi.gob.mx/chatino/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_chatino"
   },
   "Ikoots": {
     "pais": "México",
@@ -746,11 +960,20 @@
       "Pedir permiso antes de fotografiar a pescadores en sus faenas rituales",
       "Respetar los calendarios de veda de camarón que las comunidades establecen"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Ferrocarril_del_Istmo_de_Tehuantepec_%28FIT%29_4.jpg",
+        "pie": "GMD F59PH locomotive of the Ferrocarril del Istmo de Tehuantepec at Salina Cruz station, Oaxaca, Mexico.",
+        "credito": "Own work — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_huave",
       "https://catalogo.inpi.gob.mx/huave/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_huave"
   },
   "Comcáac": {
     "pais": "México",
@@ -778,12 +1001,20 @@
         "pie": "Mujer comcáac (seri) en Sonora",
         "credito": "Rodolfo Herrera Valenzuela — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/19980417USGovCopyrightRenUruguay.pdf",
+        "pie": "Part II Library of Congress Copyright Office Copyright Restoration of Works in Accordance With the Uruguay Round Agreements Act; List Identifying Copyrights Res...",
+        "credito": "Office of the Federal Register — Public domain",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_seri",
       "https://catalogo.inpi.gob.mx/seri/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_seri"
   },
   "Yoeme": {
     "pais": "México",
@@ -811,12 +1042,20 @@
         "pie": "Danza del Venado yaqui (Maso) — rito sagrado de muerte y resurrección",
         "credito": "Alejandro Yanes — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/MAzroca_de_Ma%C3%ADz_del_Valle_del_Yaqui.jpg",
+        "pie": "Mazorca de Maíz de los campos del Valle del Yaqui Vícam centro, Sonora.",
+        "credito": "WendyAvilesR — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_yaqui",
       "https://catalogo.inpi.gob.mx/yaqui/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_yaqui"
   },
   "Yoreme": {
     "pais": "México",
@@ -844,12 +1083,20 @@
         "pie": "Danzante pascola Mayo-Yoreme en traje ceremonial",
         "credito": "ZoRrO0880 — CC BY-SA 4.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Border_states_of_Mexico%3B_Sonora%2C_Sinaloa%2C_Chihuahua_and_Durango_%28IA_borderstatesofme02hami%29.pdf",
+        "pie": "Subjects:",
+        "credito": "Hamilton, Leonidas Le Cenci. [from old catalog] — Public domain",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_mayo",
       "https://catalogo.inpi.gob.mx/mayo/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_mayo"
   },
   "Náayerite": {
     "pais": "México",
@@ -870,11 +1117,20 @@
       "El territorio cora es de difícil acceso y hay zonas vedadas; ir siempre con guía comunitario",
       "Fotografiar ceremonias está prohibido sin permiso explícito de las autoridades del pueblo"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Alcantarilla_Tradicional_%282%29.jpg",
+        "pie": "En algunas zonas de la Sierra del Nayar donde se forman arroyos cuando llueve, los habitantes de la zona crean muros de piedra en las laderas, esto con la inten...",
+        "credito": "Joaquín Guardado — CC BY 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_cora",
       "https://catalogo.inpi.gob.mx/cora/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_cora"
   },
   "Mazahua": {
     "pais": "México",
@@ -895,11 +1151,20 @@
       "Comprar bordados directamente en los mercados de San Felipe del Progreso, Estado de México",
       "Pedir permiso antes de fotografiar artesanas en su trabajo"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Zacatonal_II_-_Nevado_de_Toluca%2C_Estado_de_M%C3%A9xico.jpg",
+        "pie": "Área de zacatonal - Nevado de Toluca, Edomex, México.",
+        "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_mazahua",
       "https://catalogo.inpi.gob.mx/mazahua/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_mazahua"
   },
   "Zoque": {
     "pais": "México",
@@ -920,11 +1185,20 @@
       "Pedir permiso a las autoridades comunitarias para visitar las grutas sagradas de Tapijulapa",
       "Las danzas rituales son actos comunitarios que requieren invitación o permiso explícito"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/El_Chich%C3%B3n.jpg",
+        "pie": "A high-altitude aerial oblique view taken on November 4, 1982 shows the effect of the El Chichón eruption about seven months later. This view from the west show...",
+        "credito": "National Aeronautics and Space Administration (NASA) — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_zoque",
       "https://catalogo.inpi.gob.mx/zoque/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_zoque"
   },
   "Tepehuán": {
     "pais": "México",
@@ -945,11 +1219,27 @@
       "El peyote es medicina sagrada, no objeto de curiosidad turística",
       "Los caminos hacia las comunidades requieren permiso expreso previo; no llegar sin coordinación"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Sierra_de_Durango_desde_el_Aire..jpg",
+        "pie": "La sierra de Durango desde el aire.",
+        "credito": "Pollomessi — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Haciendo_pinole_de_ma%C3%ADz.jpg",
+        "pie": "Mujer preparando pinole, que es maíz tostado en una hoya de barro, en esta imagen ella está moliendo el maíz con la final de hacerlo polvo para su consumo.",
+        "credito": "Kikealm — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_tepehuan",
       "https://catalogo.inpi.gob.mx/tepehuan-del-sur/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_tepehuan"
   },
   "Ch'ol": {
     "pais": "México",
@@ -975,11 +1265,20 @@
       "Las comunidades ch'oles en la Selva Lacandona tienen acceso controlado por ejidos; coordinar con guías locales",
       "Apoyar a los guías ch'oles certificados de las zonas arqueológicas"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Tonin%C3%A1_41.jpg",
+        "pie": "The Classic Period Maya ruins of Toniná, in Chiapas, Mexico.",
+        "credito": "Simon Burchell — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_chol",
       "https://catalogo.inpi.gob.mx/chol/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_chol"
   },
   "Me'phaa": {
     "pais": "México",
@@ -1000,11 +1299,20 @@
       "La Montaña de Guerrero requiere coordinación con organizaciones locales para visitar de forma segura y respetuosa",
       "No fotografiar sin permiso; la desconfianza hacia foráneos tiene razones históricas absolutamente justificadas"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Mole_de_guajolote_en_la_Monta%C3%B1a_de_Guerrero.jpg",
+        "pie": "en días especiales para celebrar, uno de los alimentos tradicionales por excelencia es el guajolote , el mole no puede faltar cuando el corazón esta contento.",
+        "credito": "SolMendezAvila — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_tlapaneco",
       "https://catalogo.inpi.gob.mx/tlapaneco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_tlapaneco"
   },
   "Chontal de Tabasco": {
     "pais": "México",
@@ -1025,11 +1333,20 @@
       "Respetar las temporadas de veda de pesca establecidas por las comunidades",
       "La pesca con métodos tradicionales es parte de la identidad yokot'an — no interferir"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Report_of_the_fellow_in_American_archaeology._1902-1905_.._%28IA_reportoffellowin00arch%29.pdf",
+        "pie": "PREMARC/SERLOC merged record Subjects: Archaeology -- Societies. [from old catalog]; America -- Antiquities",
+        "credito": "Archaeological institute of America. [from old catalog] — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_chontal_de_Tabasco",
       "https://catalogo.inpi.gob.mx/chontal-de-tabasco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_chontal_de_Tabasco"
   },
   "Guarijío": {
     "pais": "México",
@@ -1050,11 +1367,20 @@
       "El Tuburi es una ceremonia sagrada — presenciarla requiere invitación de la comunidad",
       "No fotografiar a personas sin permiso explícito y personal"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Anales_del_Ministerio_de_Fomento_de_la_Rep%C3%BAblica_Mexicana_%28IA_analesdelministe5188mexi%29.pdf",
+        "pie": "Tomo 9 (1891) is dedicated to the State of Jalisco Subjects: Agriculture; Mines and mineral resources",
+        "credito": "Mexico. Ministerio de Fomento — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Guarij%C3%ADo",
       "https://catalogo.inpi.gob.mx/guarijio/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Guarij%C3%ADo"
   },
   "Tepehua": {
     "pais": "México",
@@ -1075,11 +1401,27 @@
       "Dirigirse a las autoridades comunitarias como primera instancia para cualquier visita",
       "Comprar artesanías directamente en Huehuetla, Veracruz, sin intermediarios"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Ensayo_de_una_historia_de_Orizaba.djvu",
+        "pie": "Libro sobre la historia de la ciudad de Orizaba. Digitalizado por Google de la colección de la Universidad de Harvard.",
+        "credito": "Joaquín Arróniz — Public domain",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Tamal_de_rajas_con_queso.jpg",
+        "pie": "En México, es una tradición celebrar el Día de la Candelaria con tamales y atole.",
+        "credito": "Selmma Ledry — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_tepehua",
       "https://catalogo.inpi.gob.mx/tepehua/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_tepehua"
   },
   "Matlatzinca": {
     "pais": "México",
@@ -1100,11 +1442,27 @@
       "Apoyar los programas de revitalización de la lengua matlatzinca si se visita",
       "Pedir permiso para documentar cualquier aspecto cultural"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Xinant%C3%A9catl_o_Nevado_de_Toluca_desde_la_carretera_M%C3%A9xico-Toluca_2025.jpg",
+        "pie": "Fotografía del Xinantécatl o Nevado de Toluca al fondo de la carretera México Toluca. Tomada en marzo de 2025.",
+        "credito": "Sinabi2025 — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Adma_publicidad2007_0110_133759.JPG",
+        "pie": "This image is from a series of records that have been formed under the Abraço de Acatempan that takes place every Jan. 10, the birthplace of Dr. Pablo Sandoval ...",
+        "credito": "AdirparaAgir — CC BY 3.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_matlatzinca",
       "https://catalogo.inpi.gob.mx/matlatzinca/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_matlatzinca"
   },
   "Tlahuica": {
     "pais": "México",
@@ -1125,11 +1483,20 @@
       "No documentar rituales sin permiso explícito de la comunidad",
       "Apoyar las iniciativas locales de preservación de la lengua ocuilteco"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Zacatonal_II_-_Nevado_de_Toluca%2C_Estado_de_M%C3%A9xico.jpg",
+        "pie": "Área de zacatonal - Nevado de Toluca, Edomex, México.",
+        "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Tlahuica_(pueblo)",
       "https://catalogo.inpi.gob.mx/tlahuica/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Tlahuica_(pueblo)"
   },
   "Pame": {
     "pais": "México",
@@ -1150,11 +1517,20 @@
       "Respetar los sitios de petición de lluvia en los cerros sagrados — son espacios rituales activos",
       "No recolectar plantas medicinales del monte sin autorización comunitaria"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/SierraGordaQueretaro.JPG",
+        "pie": "Las Maravillas, comunidad de San Joaquín, municipio en la Sierra Gorda, Querétaro.",
+        "credito": "No machine-readable author provided. Diógenes89 assumed (based on copyright claims). — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_pame",
       "https://catalogo.inpi.gob.mx/pame/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_pame"
   },
   "Amuzgo": {
     "pais": "México",
@@ -1182,12 +1558,20 @@
         "pie": "Tejedoras amuzgas de Xochistlahuaca en telar de cintura",
         "credito": "AlejandroLinaresGarcia — CC BY-SA 3.0",
         "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Flor_de_tanalos%C3%BAchitl_-_dise%C3%B1o_textil_amuzgo_%28Xochistlahuaca%2C_Guerrero%29.jpg",
+        "pie": "Diseño textil de flor de tanalosúchitl creado con telar de cintura, tradición del pueblo amuzgo de Xochistlahuaca (Guerrero), México.",
+        "credito": "Juan Carlos Fonseca Mata — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
       }
     ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_amuzgo",
       "https://catalogo.inpi.gob.mx/amuzgo/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_amuzgo"
   },
   "Chichimeco Jonaz": {
     "pais": "México",
@@ -1208,11 +1592,20 @@
       "Las danzas de la Conquista tienen un significado de resistencia y memoria, no de celebración de la derrota colonial",
       "Solicitar información a la delegación antes de cualquier visita cultural o documental"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Ernesto_Tovar%2C_l%C3%ADder_de_los_danzante_Chichimecas_Jonaz.jpg",
+        "pie": "El es Ernesto Tovar, el miembro que conoce toda la historia de los antepasados Chichimecas. Se ha encargado de hacer el colectivo de danzantes en Misión de Chic...",
+        "credito": "Francisco del Valle — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_chichimeco_jonaz",
       "https://catalogo.inpi.gob.mx/chichimeco-jonaz/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_chichimeco_jonaz"
   },
   "Popoluca": {
     "pais": "México",
@@ -1233,11 +1626,20 @@
       "El espíritu Homshuk es venerado — tratar el maíz con respeto, no desperdiciar",
       "Respetar las áreas de uso comunitario del bosque — no extraer plantas ni animales"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Bulletin_%28IA_bulletin1381943smit%29.pdf",
+        "pie": "ANTH v. 30 pts. 1-2 39088009320821-839 have bookplate: Smithsonian Institution Libraries, Gift from the library of John C. Ewers Subjects: Ethnology",
+        "credito": "Smithsonian Institution. Bureau of American Ethnology — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_popoluca",
       "https://catalogo.inpi.gob.mx/popoluca/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_popoluca"
   },
   "Cuicateco": {
     "pais": "México",
@@ -1258,11 +1660,20 @@
       "No recolectar cactus, agaves ni plantas del área protegida bajo ningún pretexto",
       "Solicitar guías cuicatecos locales en Cuicatlán para recorrer el cañón con respeto"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Studies_on_American_grasses_-_The_North_American_species_of_Ch%C3%A6tochloa_%28IA_CAT90250227%29.pdf",
+        "pie": "Subjects: Setaria North America",
+        "credito": "Lamson-Scribner, F. Merrill, Elmer Drew, — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_cuicateco",
       "https://catalogo.inpi.gob.mx/cuicateco/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_cuicateco"
   },
   "Cochimí": {
     "pais": "México",
@@ -1283,11 +1694,20 @@
       "Respetar los sitios de enterramiento cochimí en las cuevas peninsulares — son espacios sagrados",
       "El acceso a la Sierra de San Francisco requiere permiso del INAH y es gestionado por guías locales"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Pintura_rupestre_de_Baja_California.jpg",
+        "pie": "Los primeros hombres an América datan de hace 12 mil años. En su viaje entraron a la península de Baja California, donde realizaron pinturas en la cuevas que re...",
+        "credito": "Santarrana — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_cochim%C3%AD",
       "https://whc.unesco.org/es/list/714"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_cochim%C3%AD"
   },
   "Kiliwa": {
     "pais": "México",
@@ -1308,11 +1728,27 @@
       "No fotografiar ni documentar sin permiso explícito y personal de los miembros de la comunidad",
       "Su lengua está en estado crítico — apoyar la documentación solo con los propios kiliwas y organizaciones que ellos avalen"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Sierra_de_San_Pedro_M%C3%A1rtir%2C_Baja_California-_San_Pedro_M%C3%A1rtir_moutain_range_%2820497002643%29.jpg",
+        "pie": "Sierra de San Pedro Mártir, Baja California/ San Pedro Mártir moutain range",
+        "credito": "Comisión Mexicana de Filmaciones from México D. F., México — CC BY-SA 2.0",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Venado_Cola_Blanca_en_Chingaza.jpg",
+        "pie": "Venado cola blanca en el Parque Natural Chingaza",
+        "credito": "Camilo 24CH — CC BY 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_kiliwa",
       "https://catalogo.inpi.gob.mx/kiliwa/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_kiliwa"
   },
   "Paipai": {
     "pais": "México",
@@ -1333,11 +1769,20 @@
       "Las ceremonias sincréticas de las fiestas patronales son actos privados de la comunidad",
       "Comprar cestería directamente en la comunidad para apoyar a las artesanas"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Camp_and_camino_in_Lower_California%3B_a_record_of_the_adventures_of_the_author_while_exploring_peninsular_California%2C_Mexico_%28IA_campcaminoinlowe00nort%29.pdf",
+        "pie": "\"Lower California bibliography\": p. 335-341 Subjects:",
+        "credito": "North, Arthur Walbridge — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_paipai",
       "https://catalogo.inpi.gob.mx/paipai/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_paipai"
   },
   "Ópata": {
     "pais": "México",
@@ -1358,11 +1803,20 @@
       "Los procesos de revitalización cultural son delicados — acercarse con respeto y sin romantización ni espectáculo",
       "No confundir ópata con yaqui, mayo o pima — son pueblos distintos con historias diferentes"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Maps_and_reports_of_the_San_Juan_del_Rio_ranche%2C_in_Sonora%2C_Mexico_%28IA_mapsreportsofsan00cinc%29.pdf",
+        "pie": "Subjects: San Juan del Rio ranche, Sonora, Mexico; Mines and mineral resources",
+        "credito": "Cincinnati & Sonora Mining Association Cherry, Cummings Cherry, James — Public domain",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_%C3%B3pata",
       "https://catalogo.inpi.gob.mx/opata/"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_%C3%B3pata"
   },
   "Pericú": {
     "pais": "México",
@@ -1383,11 +1837,20 @@
       "Reconocer el genocidio colonial como la causa de su extinción — no presentarlo como 'desaparición natural'",
       "Los sitios arqueológicos de Los Cabos relacionados con los pericúes son zonas protegidas federales"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Cabrilla_de_piedra_%28Epinephelus_labriformis%29%2C_Los_Cabos%2C_Baja_California%2C_M%C3%A9xico%2C_2024-12-17%2C_DD_09.jpg",
+        "pie": "Potrait of a starry grouper (Epinephelus labriformis), Los Cabos, Baja California, Mexico. This species is widespread throughout the tropical waters of the east...",
+        "credito": "Diego Delso — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_peric%C3%BA",
       "https://mna.inah.gob.mx"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_peric%C3%BA"
   },
   "Caxcán": {
     "pais": "México",
@@ -1408,10 +1871,26 @@
       "Los sitios arqueológicos caxcanes en Juchipila y el Peñón del Mixtón son zonas de protección estatal",
       "El tequila y el mezcal de la región tienen raíces en el conocimiento indígena del agave — apoyar producción artesanal"
     ],
-    "imagenes": [],
+    "imagenes": [
+      {
+        "tipo": "Arquitectura",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Geograf%C3%ADa_y_estad%C3%ADstica_del_estado_de_Zacatecas_%28IA_b28095601%29.pdf",
+        "pie": "Subjects:",
+        "credito": "Velasco, Alfonso Luis — Public domain",
+        "fuente": "Wikimedia Commons"
+      },
+      {
+        "tipo": "Alimentos",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/10/Frijoles_con_salsa_y_queso.jpg",
+        "pie": "Los frijoles se cuecen en olla de barro, con leña se acompañan de salsa de chile costeño, jitomate criollo, preparada en molcajete, sin faltar las tortillas de ...",
+        "credito": "Lorena Bautista Ortiz — CC BY-SA 4.0",
+        "fuente": "Wikimedia Commons"
+      }
+    ],
     "fuentes": [
       "https://es.wikipedia.org/wiki/Pueblo_caxc%C3%A1n",
       "https://mna.inah.gob.mx"
-    ]
+    ],
+    "wikipedia": "https://es.wikipedia.org/wiki/Pueblo_caxc%C3%A1n"
   }
 }
