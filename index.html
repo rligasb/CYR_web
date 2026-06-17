@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ============================================================
+       PREVIEW — Rediseño visual "Sereno / bienestar"
+       Rama: rediseno-visual · NO es producción.
+       Concepto corregido: Conócete y Reconócete = el ser interior.
+       UN solo viaje hacia adentro (no interior↔raíces).
+  ============================================================ -->
+
   <!-- Primary SEO -->
-  <title>Conócete y Reconócete | Coaching de Identidad y Raíces Culturales</title>
-  <meta name="description" content="Conócete y Reconócete es un espacio de coaching para reconectar con tu identidad, tus raíces y los pueblos indígenas de América. Con Laura González Hernández.">
-  <meta name="keywords" content="coaching identidad, raíces culturales, pueblos indígenas, autoconocimiento, Laura González, América Latina">
+  <title>Conócete y Reconócete | Un espacio seguro para tu transformación</title>
+  <meta name="description" content="Conócete y Reconócete: un espacio de coaching con Laura González Hernández para reconectar contigo, saber quién eres y dar claridad a tu visión de vida.">
+  <meta name="keywords" content="coaching personal, autoconocimiento, transformación personal, desarrollo humano, Laura González, charlas, introspección">
   <meta name="author" content="Laura González Hernández">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://conoceteyreconocete.com/">
@@ -15,1606 +22,834 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://conoceteyreconocete.com/">
-  <meta property="og:title" content="Conócete y Reconócete | Coaching de Identidad y Raíces Culturales">
-  <meta property="og:description" content="Un espacio para reconectar con tu identidad y tus raíces. Coaching con Laura González Hernández. Descubre los pueblos indígenas del continente americano.">
+  <meta property="og:title" content="Conócete y Reconócete | Un espacio seguro para tu transformación">
+  <meta property="og:description" content="Un espacio para reconectar contigo y dar claridad a tu visión de vida. Coaching y charlas con Laura González Hernández.">
   <meta property="og:image" content="https://conoceteyreconocete.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Conócete y Reconócete">
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://conoceteyreconocete.com/">
-  <meta name="twitter:title" content="Conócete y Reconócete | Coaching de Identidad y Raíces Culturales">
-  <meta name="twitter:description" content="Un espacio para reconectar con tu identidad y tus raíces. Coaching con Laura González Hernández.">
+  <meta name="twitter:title" content="Conócete y Reconócete">
+  <meta name="twitter:description" content="Un espacio seguro para conocerte, reconocerte y crecer.">
   <meta name="twitter:image" content="https://conoceteyreconocete.com/og-image.jpg">
 
-  <!-- Favicon completo -->
+  <!-- Favicon -->
   <link rel="icon" href="./Loco CYR transparente.png">
-  <link rel="shortcut icon" href="./Loco CYR transparente.png">
   <link rel="apple-touch-icon" href="./Loco CYR transparente.png">
 
-  <!-- Schema Markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://conoceteyreconocete.com/#website",
-        "url": "https://conoceteyreconocete.com/",
-        "name": "Conócete y Reconócete",
-        "description": "Coaching de identidad y raíces culturales con Laura González Hernández",
-        "inLanguage": "es-MX",
-        "publisher": {
-          "@id": "https://conoceteyreconocete.com/#person"
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://conoceteyreconocete.com/#person",
-        "name": "Laura González Hernández",
-        "jobTitle": "Coach",
-        "url": "https://conoceteyreconocete.com/"
-      }
-    ]
-  }
-  </script>
-  <link rel="icon" type="image/png" href="./Loco%20CYR%20transparente.png">
-  <link rel="shortcut icon" type="image/png" href="./Loco%20CYR%20transparente.png">
-  <!-- Google Fonts: Cormorant Garamond (serif elegante) + Lato (humanista sans-serif) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Fonts — Sereno: Lora (títulos) + Raleway (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ================================================================
-       RESET & BASE
-    ================================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      overflow: hidden;
-    }
-
-    /* ================================================================
-       CONTENEDOR PRINCIPAL — SCROLL SNAPPING
-       scroll-snap-type: y mandatory crea el efecto de pantalla completa
-    ================================================================ */
-    .scroll-container {
-      height: 100vh;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .scroll-container::-webkit-scrollbar { display: none; }
-
-    /* ================================================================
-       SECCIONES — BASE
-       Cada sección ocupa 100vh y se ancla al inicio del snap
-    ================================================================ */
-    .section {
-      height: 100vh;
-      scroll-snap-align: start;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* ================================================================
-       HEADER FIJO
-    ================================================================ */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(10, 10, 10, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 0 2.5rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(200, 169, 110, 0.18);
-    }
-
-    .header-logo img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      color: rgba(255, 255, 255, 0.65);
-      text-decoration: none;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      transition: color 0.3s ease;
-    }
-    .nav-link:hover,
-    .nav-link.active { color: #c8a96e; }
-
-    /* Botón "Registra tu compra" en header */
-    .btn-compra {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 1.1rem;
-      background: #8b6914;
-      color: #fff;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background 0.25s ease, transform 0.2s ease;
-      white-space: nowrap;
-    }
-    .btn-compra:hover  { background: #6b5010; transform: translateY(-1px); }
-    .btn-compra svg    { width: 13px; height: 13px; flex-shrink: 0; }
-
-    /* Selector de idioma en header */
-    .lang-selector {
-      display: flex;
-      align-items: center;
-      margin-left: 1.5rem;
-      padding-left: 1.5rem;
-      border-left: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Select de idioma — header (fondo oscuro) */
-    .lang-select {
-      appearance: none;
-      -webkit-appearance: none;
-      background-color: transparent;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c8a96e'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.5rem center;
-      background-size: 8px;
-      border: 1px solid rgba(200, 169, 110, 0.35);
-      border-radius: 3px;
-      color: #c8a96e;
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      outline: none;
-      padding: 0.28rem 1.8rem 0.28rem 0.6rem;
-      text-transform: uppercase;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-    .lang-select:hover  { border-color: #c8a96e; }
-    .lang-select option { background: #1a1a1a; color: #fff; letter-spacing: 0; text-transform: none; }
-
-    /* Select de idioma — footer (fondo blanco) */
-    .lang-select-light {
-      appearance: none;
-      -webkit-appearance: none;
-      background-color: transparent;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238b6914'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.5rem center;
-      background-size: 8px;
-      border: 1px solid rgba(139, 105, 20, 0.35);
-      border-radius: 3px;
-      color: #8b6914;
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      outline: none;
-      padding: 0.28rem 1.8rem 0.28rem 0.6rem;
-      text-transform: uppercase;
-      transition: border-color 0.2s ease;
-    }
-    .lang-select-light:hover  { border-color: #8b6914; }
-    .lang-select-light option  { background: #fff; color: #1a1a1a; letter-spacing: 0; text-transform: none; }
-
-    /* Hamburger móvil */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: #fff;
-      transition: all 0.3s ease;
-    }
-
-    /* Nav móvil desplegable */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: rgba(8, 8, 8, 0.97);
-      padding: 1.5rem 2rem 2rem;
-      z-index: 999;
-      flex-direction: column;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(200, 169, 110, 0.15);
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav .nav-link { font-size: 0.95rem; padding: 0.5rem 0; text-align: left; }
-    .mobile-lang { display: flex; margin-top: 0.75rem; }
-
-    /* ================================================================
-       SECCIÓN 1 — HERO
-       Atmósfera: Negra, sofisticada, portal de entrada
-    ================================================================ */
-    #section-hero {
-      background: #ffffff;
-      padding-top: 100px;
-      background-image:
-        radial-gradient(ellipse at 20% 50%, rgba(200, 169, 110, 0.08) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(200, 169, 110, 0.05) 0%, transparent 45%);
-    }
-
-    .hero-content {
-      text-align: center;
-      padding: 0 2rem;
-      max-width: 700px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Logo hero — animación scale + fade */
-    .hero-logo {
-      width: 130px;
-      height: 130px;
-      object-fit: contain;
-      margin: 0 auto 1.75rem;
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.9s ease 0.1s, transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
-    }
-    .hero-logo.anim { opacity: 1; transform: scale(1); }
-
-    /* Título — stagger delay 0.35s */
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-      font-weight: 300;
-      color: #1a1a1a;
-      letter-spacing: 0.02em;
-      line-height: 1.1;
-      margin-bottom: 0.9rem;
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.8s ease 0.35s, transform 0.8s ease 0.35s;
-    }
-    .hero-title.anim { opacity: 1; transform: translateY(0); }
-
-    /* Subtítulo — delay 0.55s */
-    .hero-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
-      font-weight: 300;
-      font-style: italic;
-      color: #8b6914;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s;
-    }
-    .hero-subtitle.anim { opacity: 1; transform: translateY(0); }
-
-    /* Párrafo — delay 0.75s */
-    .hero-text {
-      font-size: clamp(0.875rem, 1.6vw, 1rem);
-      font-weight: 300;
-      color: #5a4a3a;
-      line-height: 1.85;
-      max-width: 540px;
-      margin: 0 auto 2.25rem;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.8s ease 0.75s, transform 0.8s ease 0.75s;
-    }
-    .hero-text.anim { opacity: 1; transform: translateY(0); }
-
-    /* CTA — delay 0.95s */
-    .hero-cta {
-      display: inline-block;
-      padding: 0.8rem 2.4rem;
-      border: 1px solid #8b6914;
-      color: #8b6914;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      cursor: pointer;
-      background: transparent;
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.8s ease 0.95s, transform 0.8s ease 0.95s,
-                  background 0.3s ease, color 0.3s ease;
-    }
-    .hero-cta.anim { opacity: 1; transform: translateY(0); }
-    .hero-cta:hover { background: #8b6914; color: #ffffff; }
-
-    /* Indicador de scroll */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      color: rgba(180, 140, 70, 0.7);
-      font-size: 0.65rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 44px;
-      background: linear-gradient(to bottom, transparent, rgba(200, 169, 110, 0.65));
-      animation: scrollPulse 2.2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.35; transform: scaleY(0.75) translateY(-4px); }
-      50%       { opacity: 1;    transform: scaleY(1)    translateY(0); }
-    }
-
-    /* ================================================================
-       SECCIÓN 2 — PAQUETE 3+4=7
-       Atmósfera: Blanca, limpia, estructurada. Contraste total con S1.
-    ================================================================ */
-    #section-paquete {
-      background: #ffffff;
-      justify-content: flex-start;
-      padding-top: 64px;
-      overflow-y: auto; /* scroll interno si el contenido no cabe */
-    }
-
-    .section-inner {
-      width: 100%;
-      max-width: 1080px;
-      padding: 2.5rem 2rem 2rem;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 2.25rem;
-    }
-
-    .section-tag {
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      display: block;
-    }
-
-    /* S2: rojo profundo */
-    .s2-tag { color: #8b0000; }
-
-    .s2-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 600;
-      color: #1a1a1a;
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
-    }
-
-    .s2-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-      font-style: italic;
-      color: #8b0000;
-      font-weight: 300;
-    }
-
-    .s2-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-
-    .s2-card {
-      background: #fff;
-      border-left: 4px solid #8b0000;
-      padding: 1.5rem 1.35rem;
-      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .s2-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-    }
-
-    .s2-card-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: rgba(139, 0, 0, 0.12);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .s2-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 0.6rem;
-    }
-
-    .s2-card-body {
-      font-size: 0.875rem;
-      color: #555;
-      line-height: 1.75;
-      font-style: italic;
-    }
-
-    /* ================================================================
-       SECCIÓN 3 — SEMINARIO DE PANAMÁ
-       Atmósfera: Beige cálido, orgánico, esperanzador. Contraste con S2.
-    ================================================================ */
-    #section-seminario {
-      background: #f5f0e8;
-      justify-content: flex-start;
-      padding-top: 64px;
-      overflow-y: auto;
-    }
-
-    .s3-tag { color: #8b6914; }
-
-    .s3-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 600;
-      color: #3d2b1f;
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
-    }
-
-    .s3-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-      font-style: italic;
-      color: #8b6914;
-      font-weight: 300;
-    }
-
-    /* Separador dorado */
-    .s3-divider {
-      width: 55px;
-      height: 2px;
-      background: linear-gradient(to right, #8b6914, transparent);
-      margin: 1.25rem auto 0;
-    }
-
-    .s3-blocks {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .s3-block {
-      background: rgba(255, 255, 255, 0.52);
-      border-top: 3px solid #8b6914;
-      padding: 1.1rem 1.1rem;
-    }
-
-    .s3-block-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #3d2b1f;
-      margin-bottom: 0.4rem;
-    }
-
-    .s3-block-body {
-      font-size: 0.845rem;
-      color: #5a4035;
-      line-height: 1.65;
-      font-style: italic;
-    }
-
-    /* Grid blog / actualizaciones */
-    /* WordPress: Reemplazar estas tarjetas con llamada a WP REST API en fase 2 */
-    .s3-blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
-    }
-
-    .s3-blog-card {
-      background: rgba(255, 255, 255, 0.65);
-      padding: 1.1rem;
-      border-bottom: 2px solid #8b6914;
-    }
-
-    .s3-blog-date {
-      font-size: 0.68rem;
-      color: #8b6914;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .s3-blog-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: #3d2b1f;
-      margin-bottom: 0.4rem;
-      line-height: 1.35;
-    }
-
-    .s3-blog-excerpt {
-      font-size: 0.8rem;
-      color: #5a4035;
-      line-height: 1.6;
-      font-style: italic;
-    }
-
-    /* ================================================================
-       SECCIÓN 4 — FOOTER
-       Atmósfera: Negra con oro. Cierre coherente con S1.
-    ================================================================ */
-    #section-footer {
-      background: #ffffff;
-      background-image: radial-gradient(ellipse at 50% 50%, rgba(200, 169, 110, 0.07) 0%, transparent 65%);
-    }
-
-    .footer-content {
-      text-align: center;
-      padding: 0 2rem;
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-    .footer-content.anim { opacity: 1; transform: translateY(0); }
-
-    .footer-logo {
-      height: 90px;
-      width: auto;
-      margin: 0 auto 1.75rem;
-      display: block;
-    }
-
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.7rem);
-      font-weight: 300;
-      color: #1a1a1a;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 1.1rem;
-    }
-
-    .footer-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-      font-style: italic;
-      color: #5a4a3a;
-      max-width: 480px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.6;
-    }
-
-    .footer-divider {
-      width: 70px;
-      height: 1px;
-      background: rgba(200, 169, 110, 0.45);
-      margin: 0 auto 1.5rem;
-    }
-
-    .footer-note {
-      font-size: 0.775rem;
-      color: #999;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    /* Selector de idioma en footer */
-    .footer-lang {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .footer-copy {
-      font-size: 0.72rem;
-      color: #bbb;
-      letter-spacing: 0.05em;
-    }
-
-    /* ================================================================
-       ANIMACIONES DE ENTRADA (usadas en S2 y S3)
-    ================================================================ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .fade-in.anim { opacity: 1; transform: translateY(0); }
-
-    /* ================================================================
-       RESPONSIVE — TABLET (≤ 1024px)
-       Scroll snap sigue activo, ajustes de espaciado y grid
-    ================================================================ */
-    @media (max-width: 1024px) {
-      .section-inner { max-width: 100%; padding: 2rem 1.75rem; }
-
-      .s2-grid      { gap: 1rem; }
-      .s3-blocks    { gap: 0.85rem; }
-      .s3-blog-grid { gap: 0.85rem; }
-
-      .lang-selector { margin-left: 1rem; padding-left: 1rem; }
-      .lang-select   { font-size: 0.65rem; padding: 0.22rem 1.6rem 0.22rem 0.5rem; }
-    }
-
-    /* ================================================================
-       RESPONSIVE — MÓVIL (≤ 768px)
-       Desactivar snap: las secciones fluyen como página normal
-    ================================================================ */
-    @media (max-width: 768px) {
-      /* El body y el contenedor fluyen normalmente */
-      body { overflow: auto; }
-
-      .scroll-container {
-        height: auto;
-        overflow-y: visible;
-        scroll-snap-type: none;
-      }
-
-      /* Secciones: altura automática, mínimo pantalla completa */
-      .section {
-        height: auto;
-        min-height: 100svh; /* svh evita saltos con la barra del navegador móvil */
-        overflow: visible;
-        scroll-snap-align: none;
-        padding-top: 64px; /* espacio para header fijo */
-      }
-
-      /* Hero: centrado vertical con flexbox */
-      #section-hero {
-        justify-content: center;
-        padding-bottom: 3rem;
-        padding-top: 64px;
-      }
-
-      /* Secciones con contenido largo: altura libre */
-      #section-paquete,
-      #section-seminario {
-        height: auto;
-        min-height: auto;
-        padding-top: 80px;
-        padding-bottom: 3rem;
-        overflow: visible;
-      }
-
-      /* Footer: centrado con padding generoso */
-      #section-footer {
-        height: auto;
-        min-height: 100svh;
-        padding: 80px 1.5rem 3rem;
-        overflow: visible;
-      }
-
-      /* Header: ocultar nav, mostrar hamburger */
-      .header-nav { display: none; }
-      .hamburger  { display: flex; }
-      header      { padding: 0 1.25rem; }
-
-      /* Hero: logo y texto reducidos */
-      .hero-logo   { width: 85px; height: 85px; margin-bottom: 1.25rem; }
-      .hero-content { padding: 0 1.25rem; }
-      .hero-cta    { padding: 0.75rem 2rem; }
-
-      /* Grids: columna única */
-      .s2-grid      { grid-template-columns: 1fr; gap: 0.9rem; }
-      .s3-blocks    { grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 1rem; }
-      .s3-blog-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-
-      /* Espaciado interior secciones */
-      .section-inner { padding: 0 1.25rem 2rem; }
-
-      /* Scroll indicator: ocultar en móvil */
-      .scroll-indicator { display: none; }
-    }
-
-    /* ================================================================
-       RESPONSIVE — MÓVIL PEQUEÑO (≤ 480px)
-    ================================================================ */
-    @media (max-width: 480px) {
-      .hero-logo   { width: 70px; height: 70px; }
-
-      .s2-card     { padding: 1.25rem 1rem; }
-      .s3-block    { padding: 0.9rem; }
-      .s3-blog-card { padding: 0.9rem; }
-
-      .footer-logo  { height: 70px; }
-      .footer-brand { letter-spacing: 0.1em; }
-    }
-
-    /* ================================================================
-       RESPONSIVE — LANDSCAPE MÓVIL (altura < 500px)
-       Reducir espaciados para que el hero no quede cortado
-    ================================================================ */
-    @media (max-height: 500px) and (max-width: 900px) {
-      .hero-logo   { width: 55px; height: 55px; margin-bottom: 0.75rem; }
-      .hero-text   { display: none; } /* ocultar párrafo largo en landscape */
-      .hero-content { padding: 0 1.5rem; }
-      #section-hero { padding-top: 64px; justify-content: center; }
-    }
+  /* ============================================================
+     TOKENS — Dirección "Sereno / bienestar"
+  ============================================================ */
+  :root{
+    --hueso:    #FBF9F4;
+    --arena:    #EFE7D8;
+    --arena-2:  #E6DAC6;
+    --salvia:   #7C8A6E;
+    --salvia-d: #5E6A52;
+    --oro:      #B8923A;
+    --oro-tenue:#C9A24B;
+    --tinta:    #2E2A26;
+    --tinta-2:  #5A554E;
+    --linea:    rgba(46,42,38,0.10);
+    --header-bg:rgba(251,249,244,0.82);
+
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Raleway', system-ui, sans-serif;
+
+    --maxw: 1140px;
+    --z-header: 50;
+    --z-mobilenav: 40;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--sans);
+    font-weight:400;
+    color:var(--tinta);
+    background:var(--hueso);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:rgba(184,146,58,0.22); }
+
+  a{ color:inherit; }
+
+  .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 1.6rem; }
+
+  /* ============================================================
+     HEADER (sin botón de compra — flujo informativo)
+  ============================================================ */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:var(--z-header);
+    background:var(--header-bg);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--linea);
+    transition:box-shadow .3s ease, background .3s ease;
+  }
+  header.scrolled{ box-shadow:0 6px 24px rgba(46,42,38,0.06); }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:70px; max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;
+  }
+  .brand{ display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+  .brand img{ height:42px; width:auto; display:block; }
+  .brand-name{
+    font-family:var(--serif); font-size:1.02rem; font-weight:500;
+    letter-spacing:.01em; color:var(--tinta); white-space:nowrap;
+  }
+  .brand-name span{ color:var(--oro); font-style:italic; }
+
+  .nav{ display:flex; align-items:center; gap:2.1rem; }
+  .nav-link{
+    font-size:.74rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--tinta-2); text-decoration:none; background:none; border:none;
+    cursor:pointer; padding:.2rem 0; position:relative; transition:color .25s ease;
+  }
+  .nav-link::after{
+    content:''; position:absolute; left:0; right:100%; bottom:-4px; height:1.5px;
+    background:var(--oro); transition:right .3s ease;
+  }
+  .nav-link:hover, .nav-link.active{ color:var(--tinta); }
+  .nav-link:hover::after, .nav-link.active::after{ right:0; }
+
+  .lang-wrap{ display:flex; align-items:center; padding-left:1.6rem; margin-left:.3rem; border-left:1px solid var(--linea); }
+  .lang-select{
+    appearance:none; -webkit-appearance:none;
+    background-color:transparent;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23B8923A'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right .5rem center; background-size:8px;
+    border:1px solid rgba(184,146,58,0.35); border-radius:4px;
+    color:var(--oro); cursor:pointer; font-family:var(--sans);
+    font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    outline:none; padding:.3rem 1.7rem .3rem .6rem; transition:border-color .2s ease;
+  }
+  .lang-select:hover{ border-color:var(--oro); }
+  .lang-select option{ background:#fff; color:var(--tinta); letter-spacing:0; text-transform:none; }
+
+  .hamburger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+  .hamburger span{ display:block; width:24px; height:1.6px; background:var(--tinta); transition:all .3s ease; }
+
+  .mobile-nav{
+    display:none; position:fixed; top:70px; left:0; right:0; z-index:var(--z-mobilenav);
+    background:var(--hueso); border-bottom:1px solid var(--linea);
+    flex-direction:column; gap:.4rem; padding:1.2rem 1.6rem 1.8rem;
+    box-shadow:0 14px 30px rgba(46,42,38,0.08);
+  }
+  .mobile-nav.open{ display:flex; }
+  .mobile-nav .nav-link{ font-size:.95rem; padding:.6rem 0; }
+  .mobile-nav .lang-wrap{ border:none; padding:0; margin-top:.6rem; }
+
+  /* ============================================================
+     BOTONES
+  ============================================================ */
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-family:var(--sans); font-size:.76rem; font-weight:600;
+    letter-spacing:.12em; text-transform:uppercase; text-decoration:none;
+    padding:.85rem 1.9rem; border-radius:40px; cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+    white-space:nowrap; border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--salvia); color:var(--hueso); box-shadow:0 8px 20px rgba(124,138,110,0.28); }
+  .btn-primary:hover{ background:var(--salvia-d); transform:translateY(-2px); box-shadow:0 12px 26px rgba(124,138,110,0.34); }
+  .btn-ghost{ background:transparent; color:var(--tinta); border-color:rgba(46,42,38,0.22); }
+  .btn-ghost:hover{ border-color:var(--oro); color:var(--oro); transform:translateY(-2px); }
+  .btn svg{ width:15px; height:15px; flex-shrink:0; }
+
+  /* ============================================================
+     SECCIONES — base
+  ============================================================ */
+  section{ padding:7rem 0; position:relative; }
+  .eyebrow{
+    display:inline-block; font-size:.72rem; font-weight:600; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--oro); margin-bottom:1.1rem;
+  }
+  .eyebrow::before{ content:''; display:inline-block; width:26px; height:1px; background:var(--oro); vertical-align:middle; margin-right:.7rem; }
+  h2{ font-family:var(--serif); font-weight:500; font-size:clamp(1.9rem,3.6vw,2.9rem); line-height:1.18; color:var(--tinta); letter-spacing:-.01em; }
+  h3{ font-family:var(--serif); font-weight:500; font-size:1.32rem; color:var(--tinta); }
+  .lead{ font-size:1.08rem; color:var(--tinta-2); max-width:60ch; }
+
+  /* reveal animation */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ============================================================
+     HERO
+  ============================================================ */
+  #hero{
+    min-height:100svh; display:flex; align-items:center; text-align:center;
+    padding:9rem 0 5rem; position:relative; overflow:hidden;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(201,162,75,0.10), transparent 70%),
+      radial-gradient(70% 60% at 50% 110%, rgba(124,138,110,0.14), transparent 70%),
+      linear-gradient(180deg, var(--hueso) 0%, var(--arena) 100%);
+  }
+  /* textura sutil de papel */
+  #hero::before{
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(rgba(46,42,38,0.025) 1px, transparent 1px);
+    background-size:4px 4px;
+  }
+  .hero-portrait{
+    position:absolute; right:0; bottom:0; height:86%; width:auto; z-index:0;
+    opacity:.5; pointer-events:none; user-select:none;
+    -webkit-mask-image:linear-gradient(to left,#000 30%,transparent 88%);
+    mask-image:linear-gradient(to left,#000 30%,transparent 88%);
+  }
+  .hero-portrait img{ height:100%; width:auto; display:block; filter:saturate(.9); }
+  @media (max-width:1100px){ .hero-portrait{ display:none; } }
+  .hero-inner{ position:relative; z-index:1; max-width:780px; margin:0 auto; }
+  .hero-logo{ height:118px; width:auto; margin:0 auto 1.8rem; display:block; }
+  .hero-title{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(2.6rem,7vw,5rem); line-height:1.08; letter-spacing:-.02em;
+    color:var(--tinta); margin-bottom:1.1rem;
+  }
+  .hero-title em{ color:var(--oro); font-style:italic; font-weight:400; }
+  .hero-sub{ font-family:var(--serif); font-style:italic; font-size:clamp(1.15rem,2.4vw,1.5rem); color:var(--salvia-d); margin-bottom:1.6rem; }
+  .hero-text{ font-size:1.06rem; color:var(--tinta-2); max-width:56ch; margin:0 auto 2.4rem; }
+  .hero-cta-row{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  .scroll-cue{ position:absolute; left:50%; bottom:2rem; transform:translateX(-50%); z-index:1; display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+  .scroll-cue span{ font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; color:var(--tinta-2); }
+  .scroll-cue .line{ width:1px; height:42px; background:linear-gradient(var(--oro),transparent); animation:cue 2.2s ease-in-out infinite; }
+  @keyframes cue{ 0%,100%{ opacity:.3; transform:scaleY(.6); } 50%{ opacity:1; transform:scaleY(1); } }
+
+  /* ============================================================
+     LAURA
+  ============================================================ */
+  #laura{ background:var(--hueso); }
+  .laura-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:4rem; align-items:center; }
+  .laura-photo{
+    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/5;
+    background:linear-gradient(160deg,var(--arena),var(--arena-2));
+    box-shadow:0 20px 50px rgba(46,42,38,0.10); border:1px solid var(--linea);
+  }
+  .laura-photo picture{ position:absolute; inset:0; display:block; }
+  .laura-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 14%; display:block; }
+  .laura-body p{ margin-bottom:1.1rem; color:var(--tinta-2); }
+  .laura-body p:first-of-type{ font-size:1.12rem; color:var(--tinta); }
+  .laura-sign{ font-family:var(--serif); font-style:italic; font-size:1.25rem; color:var(--oro); margin-top:1.4rem; }
+
+  /* ============================================================
+     EL PROCESO — un solo viaje (Conócete · Reconócete)
+  ============================================================ */
+  #proceso{ background:linear-gradient(180deg,var(--arena) 0%, var(--hueso) 100%); }
+  .proceso-head{ max-width:64ch; margin:0 auto 3.4rem; text-align:center; }
+  .proceso-head .lead{ margin:1.2rem auto 0; }
+  .proceso-duo{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; position:relative; }
+  .proceso-card{
+    background:var(--hueso); border:1px solid var(--linea); border-radius:14px;
+    padding:2.6rem 2.2rem; transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .proceso-card:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(46,42,38,0.08); }
+  .proceso-step{ font-family:var(--serif); font-style:italic; font-size:2.4rem; color:var(--oro-tenue); line-height:1; margin-bottom:1rem; }
+  .proceso-card h3{ margin-bottom:.7rem; }
+  .proceso-card p{ color:var(--tinta-2); font-size:.98rem; }
+  .proceso-join{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:54px; height:54px; border-radius:50%; background:var(--salvia); color:var(--hueso);
+    display:flex; align-items:center; justify-content:center; font-family:var(--serif);
+    font-style:italic; font-size:1.2rem; box-shadow:0 8px 20px rgba(124,138,110,0.3); z-index:2;
+  }
+
+  /* ============================================================
+     CHARLAS / PROGRAMAS — informa y enlaza a venta (no vende)
+  ============================================================ */
+  #charlas{ background:var(--hueso); }
+  .charlas-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-bottom:3rem; flex-wrap:wrap; }
+  .charlas-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; }
+  .charla-card{
+    border:1px solid var(--linea); border-radius:16px; padding:2.6rem; background:var(--hueso);
+    display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative; overflow:hidden;
+  }
+  .charla-card::before{ content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--oro); opacity:0; transition:opacity .3s ease; }
+  .charla-card:hover{ transform:translateY(-5px); box-shadow:0 22px 48px rgba(46,42,38,0.09); border-color:transparent; }
+  .charla-card:hover::before{ opacity:1; }
+  .charla-tag{ font-size:.68rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--salvia-d); margin-bottom:1rem; }
+  .charla-card h3{ font-size:1.5rem; margin-bottom:.8rem; }
+  .charla-card p{ color:var(--tinta-2); font-size:.98rem; margin-bottom:1.8rem; flex:1; }
+  .charla-link{
+    display:inline-flex; align-items:center; gap:.5rem; align-self:flex-start;
+    font-size:.76rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--oro); text-decoration:none; transition:gap .25s ease;
+  }
+  .charla-link:hover{ gap:.85rem; }
+  .charla-link svg{ width:15px; height:15px; }
+  .charlas-note{ text-align:center; margin-top:2.4rem; font-size:.86rem; color:var(--tinta-2); }
+
+  /* ============================================================
+     CEMANÁHUAC — secundario
+  ============================================================ */
+  #cemanahuac{
+    background:linear-gradient(150deg, var(--salvia-d), var(--salvia));
+    color:var(--hueso);
+  }
+  .cem-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:3.5rem; align-items:center; }
+  #cemanahuac .eyebrow{ color:#E8E2D2; }
+  #cemanahuac .eyebrow::before{ background:#E8E2D2; }
+  #cemanahuac h2{ color:var(--hueso); }
+  .cem-text{ color:rgba(251,249,244,0.88); margin:1.2rem 0 2rem; font-size:1.04rem; max-width:52ch; }
+  #cemanahuac .btn-ghost{ color:var(--hueso); border-color:rgba(251,249,244,0.5); }
+  #cemanahuac .btn-ghost:hover{ background:rgba(251,249,244,0.12); border-color:var(--hueso); color:var(--hueso); }
+  .cem-visual{
+    aspect-ratio:1/1; border-radius:50%; border:1px solid rgba(251,249,244,0.3);
+    display:flex; align-items:center; justify-content:center; position:relative;
+    background:radial-gradient(circle at 50% 40%, rgba(251,249,244,0.14), transparent 65%);
+  }
+  .cem-visual svg{ width:46%; height:46%; opacity:.85; }
+
+  /* ============================================================
+     FOOTER
+  ============================================================ */
+  footer{ background:var(--tinta); color:var(--hueso); padding:5rem 0 2.4rem; text-align:center; }
+  .footer-logo{ height:84px; width:auto; margin:0 auto 1.4rem; display:block; filter:none; }
+  .footer-brand{ font-family:var(--serif); font-size:1.6rem; font-weight:500; margin-bottom:.8rem; }
+  .footer-brand span{ color:var(--oro-tenue); font-style:italic; }
+  .footer-tagline{ font-family:var(--serif); font-style:italic; color:rgba(251,249,244,0.72); max-width:46ch; margin:0 auto 2rem; }
+  .footer-divider{ width:50px; height:1px; background:rgba(251,249,244,0.25); margin:0 auto 2rem; }
+  .footer-note{ font-size:.84rem; color:rgba(251,249,244,0.55); margin-bottom:1.8rem; }
+  .footer-lang{ display:flex; justify-content:center; margin-bottom:2rem; }
+  .footer-lang .lang-select{
+    color:var(--oro-tenue); border-color:rgba(201,162,75,0.4);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A24B'/%3E%3C/svg%3E");
+  }
+  .footer-lang .lang-select option{ background:var(--tinta); color:var(--hueso); }
+  .footer-copy{ font-size:.78rem; color:rgba(251,249,244,0.4); letter-spacing:.04em; }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width:900px){
+    .laura-grid{ grid-template-columns:1fr; gap:2.4rem; }
+    .laura-photo{ max-width:380px; margin:0 auto; width:100%; }
+    .cem-grid{ grid-template-columns:1fr; gap:2.4rem; }
+    .cem-visual{ max-width:300px; margin:0 auto; width:100%; order:-1; }
+  }
+  @media (max-width:768px){
+    .nav{ display:none; }
+    .hamburger{ display:flex; }
+    section{ padding:5rem 0; }
+    .brand-name{ display:none; }
+    .proceso-duo{ grid-template-columns:1fr; gap:2.4rem; }
+    .proceso-join{ position:static; transform:none; margin:0 auto; }
+    .charlas-grid{ grid-template-columns:1fr; }
+    .charlas-head{ flex-direction:column; align-items:flex-start; }
+    .scroll-cue{ display:none; }
+  }
+  @media (max-width:480px){
+    .container, .header-inner{ padding-left:1.1rem; padding-right:1.1rem; }
+    .hero-cta-row{ flex-direction:column; align-items:center; }
+    .hero-cta-row .btn{ width:100%; max-width:300px; justify-content:center; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .scroll-cue .line{ animation:none; }
+  }
   </style>
 </head>
 <body>
 
-<!-- ================================================================
-     HEADER FIJO
-     Logo izquierda · Navegación derecha · Selector de idioma
-================================================================ -->
-<header id="main-header">
-
-  <!-- Logo — usar siempre la imagen, no texto -->
-  <div class="header-logo">
-    <img src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
-  </div>
-
-  <!-- Navegación escritorio -->
-  <nav class="header-nav" id="desktop-nav">
-    <button class="nav-link active"
-            onclick="scrollToSection('section-hero')"
-            data-section="section-hero"
-            data-i18n="nav_home"></button>
-
-    <button class="nav-link"
-            onclick="scrollToSection('section-paquete')"
-            data-section="section-paquete"
-            data-i18n="nav_paquete"></button>
-
-    <button class="nav-link"
-            onclick="scrollToSection('section-seminario')"
-            data-section="section-seminario"
-            data-i18n="nav_seminario"></button>
-
-    <div class="lang-selector" id="header-lang">
-      <!-- Botones de idioma generados por JS -->
-    </div>
-
-    <a class="btn-compra" href="./compras.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-      </svg>
-      Registra tu compra
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="header-inner">
+    <a class="brand" href="#hero">
+      <img src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
+      <span class="brand-name">Conócete <span>y</span> Reconócete</span>
     </a>
-  </nav>
 
-  <!-- Botón hamburger (móvil) -->
-  <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
+    <nav class="nav">
+      <a class="nav-link" href="#hero"       data-i18n="nav_home"></a>
+      <a class="nav-link" href="#laura"      data-i18n="nav_laura"></a>
+      <a class="nav-link" href="#charlas"    data-i18n="nav_charlas"></a>
+      <a class="nav-link" href="#cemanahuac" data-i18n="nav_cemanahuac"></a>
+      <div class="lang-wrap" id="lang-desktop"></div>
+    </nav>
 
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<!-- Nav móvil desplegable -->
 <nav class="mobile-nav" id="mobile-nav">
-  <button class="nav-link"
-          onclick="scrollToSection('section-hero'); closeMobileNav()"
-          data-i18n="nav_home"></button>
-  <button class="nav-link"
-          onclick="scrollToSection('section-paquete'); closeMobileNav()"
-          data-i18n="nav_paquete"></button>
-  <button class="nav-link"
-          onclick="scrollToSection('section-seminario'); closeMobileNav()"
-          data-i18n="nav_seminario"></button>
-  <div class="mobile-lang" id="mobile-lang">
-    <!-- Botones de idioma generados por JS -->
-  </div>
-  <a class="btn-compra" href="./compras.html" style="margin-top:0.5rem; align-self:flex-start;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;">
-      <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-    </svg>
-    Registra tu compra
-  </a>
+  <a class="nav-link" href="#hero"       data-i18n="nav_home"></a>
+  <a class="nav-link" href="#laura"      data-i18n="nav_laura"></a>
+  <a class="nav-link" href="#charlas"    data-i18n="nav_charlas"></a>
+  <a class="nav-link" href="#cemanahuac" data-i18n="nav_cemanahuac"></a>
+  <div class="lang-wrap" id="lang-mobile"></div>
 </nav>
 
-
-<!-- ================================================================
-     CONTENEDOR DE SCROLL SNAPPING
-================================================================ -->
-<div class="scroll-container" id="scroll-container">
-
-
-  <!-- ==============================================================
-       SECCIÓN 1 — HERO / PRESENTACIÓN
-       Paleta: Negro · Blanco · Ocre (#c8a96e) · Beige (#d4c5a9)
-  ============================================================== -->
-  <section class="section" id="section-hero">
-
-    <div class="hero-content" id="hero-content">
-
-      <!-- LOGO HERO — 130px, animación scale+fade -->
-      <img class="hero-logo" id="hero-logo"
-           src="./Loco%20CYR%20transparente.png"
-           alt="Conócete y Reconócete">
-
-      <!-- TÍTULO PRINCIPAL -->
-      <h1 class="hero-title" id="hero-title" data-i18n="hero_title"></h1>
-
-      <!-- SUBTÍTULO -->
-      <p class="hero-subtitle" data-i18n="hero_subtitle"></p>
-
-      <!-- PÁRRAFO — EDITAR: descripción de Laura y del proyecto -->
-      <p class="hero-text" data-i18n="hero_text"></p>
-
-      <!-- BOTÓN CTA -->
-      <button class="hero-cta" id="hero-cta"
-              onclick="scrollToSection('section-paquete')"
-              data-i18n="hero_cta"></button>
-
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <div class="hero-portrait" aria-hidden="true">
+    <picture>
+      <source srcset="./laura-hero.webp" type="image/webp">
+      <img src="./laura-hero.png" alt="">
+    </picture>
+  </div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
+    <h1 class="hero-title" data-i18n-html="hero_title"></h1>
+    <p class="hero-sub" data-i18n="hero_sub"></p>
+    <p class="hero-text" data-i18n="hero_text"></p>
+    <div class="hero-cta-row">
+      <a class="btn btn-primary" href="#laura" data-i18n="hero_cta1"></a>
+      <a class="btn btn-ghost" href="#charlas" data-i18n="hero_cta2"></a>
     </div>
+  </div>
+  <div class="scroll-cue">
+    <span data-i18n="scroll_hint"></span>
+    <div class="line"></div>
+  </div>
+</section>
 
-    <!-- Indicador de scroll animado -->
-    <div class="scroll-indicator">
-      <span data-i18n="scroll_hint"></span>
-      <div class="scroll-line"></div>
-    </div>
-
-  </section>
-
-
-  <!-- ==============================================================
-       SECCIÓN 2 — PAQUETE 3+4=7
-       Paleta: Blanco · Negro (#1a1a1a) · Rojo profundo (#8b0000)
-       WordPress/blog: En fases posteriores esta sección puede
-       conectarse a un CPT (Custom Post Type) en WordPress.
-  ============================================================== -->
-  <section class="section" id="section-paquete">
-    <div class="section-inner">
-
-      <div class="section-header fade-in">
-        <span class="section-tag s2-tag" data-i18n="s2_tag"></span>
-        <h2 class="s2-title" data-i18n="s2_title"></h2>
-        <p class="s2-subtitle" data-i18n="s2_subtitle"></p>
+<!-- ================= LAURA ================= -->
+<section id="laura">
+  <div class="container">
+    <div class="laura-grid">
+      <div class="laura-photo reveal">
+        <picture>
+          <source srcset="./laura-hero.webp" type="image/webp">
+          <img src="./laura-hero.png" alt="Laura González Hernández" loading="lazy">
+        </picture>
       </div>
-
-      <div class="s2-grid">
-
-        <!-- TARJETA 1 ── EDITAR: descripción de lo que incluye el paquete -->
-        <div class="s2-card fade-in">
-          <div class="s2-card-number">01</div>
-          <h3 class="s2-card-title" data-i18n="s2_card1_title"></h3>
-          <p class="s2-card-body" data-i18n="s2_card1_body"></p>
-        </div>
-
-        <!-- TARJETA 2 ── EDITAR: significado y filosofía del paquete -->
-        <div class="s2-card fade-in">
-          <div class="s2-card-number">02</div>
-          <h3 class="s2-card-title" data-i18n="s2_card2_title"></h3>
-          <p class="s2-card-body" data-i18n="s2_card2_body"></p>
-        </div>
-
-        <!-- TARJETA 3 ── EDITAR: etapas del proceso -->
-        <div class="s2-card fade-in">
-          <div class="s2-card-number">03</div>
-          <h3 class="s2-card-title" data-i18n="s2_card3_title"></h3>
-          <p class="s2-card-body" data-i18n="s2_card3_body"></p>
-        </div>
-
-        <!-- TARJETA 4 ── EDITAR: métodos y datos de pago -->
-        <div class="s2-card fade-in">
-          <div class="s2-card-number">04</div>
-          <h3 class="s2-card-title" data-i18n="s2_card4_title"></h3>
-          <p class="s2-card-body" data-i18n="s2_card4_body"></p>
-        </div>
-
+      <div class="laura-body reveal">
+        <span class="eyebrow" data-i18n="laura_eyebrow"></span>
+        <h2 data-i18n="laura_title"></h2>
+        <div style="height:1.4rem"></div>
+        <p data-i18n="laura_p1"></p>
+        <p data-i18n="laura_p2"></p>
+        <p class="laura-sign" data-i18n="laura_sign"></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- ==============================================================
-       SECCIÓN 3 — SEMINARIO DE PANAMÁ
-       Paleta: Beige (#f5f0e8) · Marrón (#3d2b1f) · Dorado (#8b6914)
-       WordPress/blog: Las tarjetas de blog de abajo se reemplazarán
-       con llamadas a WP REST API (/wp-json/wp/v2/posts) en fase 2.
-  ============================================================== -->
-  <section class="section" id="section-seminario">
-    <div class="section-inner">
-
-      <div class="section-header fade-in">
-        <span class="section-tag s3-tag" data-i18n="s3_tag"></span>
-        <h2 class="s3-title" data-i18n="s3_title"></h2>
-        <p class="s3-subtitle" data-i18n="s3_subtitle"></p>
-        <div class="s3-divider"></div>
+<!-- ================= EL PROCESO ================= -->
+<section id="proceso">
+  <div class="container">
+    <div class="proceso-head reveal">
+      <span class="eyebrow" data-i18n="proc_eyebrow"></span>
+      <h2 data-i18n="proc_title"></h2>
+      <p class="lead" data-i18n="proc_lead"></p>
+    </div>
+    <div class="proceso-duo">
+      <div class="proceso-card reveal">
+        <div class="proceso-step">01</div>
+        <h3 data-i18n="proc_a_title"></h3>
+        <p data-i18n="proc_a_body"></p>
       </div>
-
-      <div class="s3-blocks">
-
-        <!-- BLOQUE 1 ── EDITAR: historia y motivación del seminario -->
-        <div class="s3-block fade-in">
-          <h3 class="s3-block-title" data-i18n="s3_block1_title"></h3>
-          <p class="s3-block-body" data-i18n="s3_block1_body"></p>
-        </div>
-
-        <!-- BLOQUE 2 ── EDITAR: temario y contenidos -->
-        <div class="s3-block fade-in">
-          <h3 class="s3-block-title" data-i18n="s3_block2_title"></h3>
-          <p class="s3-block-body" data-i18n="s3_block2_body"></p>
-        </div>
-
-        <!-- BLOQUE 3 ── EDITAR: actualizaciones y noticias -->
-        <div class="s3-block fade-in">
-          <h3 class="s3-block-title" data-i18n="s3_block3_title"></h3>
-          <p class="s3-block-body" data-i18n="s3_block3_body"></p>
-        </div>
-
-        <!-- BLOQUE 4 ── EDITAR: descripción mesas humanitarias -->
-        <div class="s3-block fade-in">
-          <h3 class="s3-block-title" data-i18n="s3_block4_title"></h3>
-          <p class="s3-block-body" data-i18n="s3_block4_body"></p>
-        </div>
-
-      </div>
-
-      <!-- BLOG / ACTUALIZACIONES
-           WordPress fase 2: reemplazar con fetch('/wp-json/wp/v2/posts?per_page=3') -->
-      <div class="s3-blog-grid">
-
-        <!-- POST 1 ── EDITAR o reemplazar con WP API -->
-        <div class="s3-blog-card fade-in">
-          <p class="s3-blog-date" data-i18n="s3_blog1_date"></p>
-          <h4 class="s3-blog-title" data-i18n="s3_blog1_title"></h4>
-          <p class="s3-blog-excerpt" data-i18n="s3_blog1_excerpt"></p>
-        </div>
-
-        <!-- POST 2 ── EDITAR o reemplazar con WP API -->
-        <div class="s3-blog-card fade-in">
-          <p class="s3-blog-date" data-i18n="s3_blog2_date"></p>
-          <h4 class="s3-blog-title" data-i18n="s3_blog2_title"></h4>
-          <p class="s3-blog-excerpt" data-i18n="s3_blog2_excerpt"></p>
-        </div>
-
-        <!-- POST 3 ── EDITAR o reemplazar con WP API -->
-        <div class="s3-blog-card fade-in">
-          <p class="s3-blog-date" data-i18n="s3_blog3_date"></p>
-          <h4 class="s3-blog-title" data-i18n="s3_blog3_title"></h4>
-          <p class="s3-blog-excerpt" data-i18n="s3_blog3_excerpt"></p>
-        </div>
-
+      <div class="proceso-join">·</div>
+      <div class="proceso-card reveal">
+        <div class="proceso-step">02</div>
+        <h3 data-i18n="proc_b_title"></h3>
+        <p data-i18n="proc_b_body"></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- ==============================================================
-       SECCIÓN 4 — FOOTER (página completa)
-       Paleta: Negro (#0a0a0a) · Ocre · Beige. Cierre visual con S1.
-  ============================================================== -->
-  <section class="section" id="section-footer">
-
-    <div class="footer-content" id="footer-content">
-
-      <!-- LOGO FOOTER — tamaño grande, centrado -->
-      <img class="footer-logo"
-           src="./Loco%20CYR%20transparente.png"
-           alt="Conócete y Reconócete">
-
-      <!-- Nombre del proyecto -->
-      <p class="footer-brand">Conócete &amp; Reconócete</p>
-
-      <!-- TAGLINE -->
-      <p class="footer-tagline" data-i18n="footer_tagline"></p>
-
-      <div class="footer-divider"></div>
-
-      <!-- NOTA DE PRIVACIDAD ── EDITAR si cambia el aviso -->
-      <p class="footer-note" data-i18n="footer_note"></p>
-
-      <!-- Selector de idioma en footer -->
-      <div class="footer-lang" id="footer-lang">
-        <!-- Botones generados por JS -->
+<!-- ================= CHARLAS / PROGRAMAS ================= -->
+<section id="charlas">
+  <div class="container">
+    <div class="charlas-head reveal">
+      <div>
+        <span class="eyebrow" data-i18n="char_eyebrow"></span>
+        <h2 data-i18n="char_title"></h2>
       </div>
-
-      <!-- COPYRIGHT ── EDITAR año si es necesario -->
-      <p class="footer-copy" data-i18n="footer_copy"></p>
-
+      <p class="lead" data-i18n="char_lead"></p>
     </div>
 
-  </section>
+    <div class="charlas-grid">
+      <!-- Producto 1 — 3+4=7 -->
+      <div class="charla-card reveal">
+        <span class="charla-tag" data-i18n="char_c1_tag"></span>
+        <h3 data-i18n="char_c1_title"></h3>
+        <p data-i18n="char_c1_body"></p>
+        <a class="charla-link" href="./3-4-7.html" data-i18n="char_c1_link"></a>
+      </div>
+      <!-- Producto 2 — Seminario para las familias -->
+      <div class="charla-card reveal">
+        <span class="charla-tag" data-i18n="char_c2_tag"></span>
+        <h3 data-i18n="char_c2_title"></h3>
+        <p data-i18n="char_c2_body"></p>
+        <a class="charla-link" href="./seminario-familias.html" data-i18n="char_c2_link"></a>
+      </div>
+    </div>
+    <p class="charlas-note" data-i18n="char_note"></p>
+  </div>
+</section>
 
+<!-- ================= CEMANÁHUAC (secundario) ================= -->
+<section id="cemanahuac">
+  <div class="container">
+    <div class="cem-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="cem_eyebrow"></span>
+        <h2 data-i18n="cem_title"></h2>
+        <p class="cem-text" data-i18n="cem_text"></p>
+        <a class="btn btn-ghost" href="./pueblos-indigenas/" data-i18n="cem_cta"></a>
+      </div>
+      <div class="cem-visual reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div><!-- /scroll-container -->
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <img class="footer-logo" src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
+    <p class="footer-brand">Conócete <span>&amp;</span> Reconócete</p>
+    <p class="footer-tagline" data-i18n="footer_tagline"></p>
+    <div class="footer-divider"></div>
+    <p class="footer-note" data-i18n="footer_note"></p>
+    <div class="footer-lang" id="lang-footer"></div>
+    <p class="footer-copy" data-i18n="footer_copy"></p>
+  </div>
+</footer>
 
-
-<!-- ================================================================
-     JAVASCRIPT
-     - Sistema de traducciones (objeto translations)
-     - setLanguage(lang) — aplica idioma a todos los data-i18n
-     - scrollToSection(id) — scroll suave a sección
-     - IntersectionObserver — animaciones de entrada
-     - buildLangSelectors() — genera botones de idioma dinámicamente
-================================================================ -->
 <script>
-
-/* ================================================================
-   TRADUCCIONES
-   Para editar texto: modificar los valores en cada idioma.
-   Para agregar un idioma: duplicar un bloque y traducir.
-   NUNCA escribir texto directamente en el HTML — siempre aquí.
-================================================================ */
+/* ============================================================
+   i18n — ES completo + EN. (IT/RO/HI/PT pendientes de Fase 2;
+   se añaden duplicando un bloque y traduciendo.)
+   Para editar copy: cambiar valores aquí, NUNCA en el HTML.
+============================================================ */
 const translations = {
-
-  /* ── ESPAÑOL — idioma principal, completamente traducido ── */
   es: {
-    // Navegación
-    nav_home:      'Inicio',
-    nav_paquete:   'Paquete 3+4=7',
-    nav_seminario: 'Seminario de Panamá',
+    nav_home:'Inicio', nav_laura:'Laura', nav_charlas:'Charlas', nav_cemanahuac:'Cemanáhuac',
+    hero_title:'Conócete <em>y</em> Reconócete',
+    hero_sub:'Un espacio seguro para tu transformación',
+    hero_text:'Mirar hacia adentro para saber quién eres, reconocerte y dar claridad a tu visión de vida. Un acompañamiento cercano, desde el coaching, para volver a ti.',
+    hero_cta1:'Conoce a Laura', hero_cta2:'Ver charlas',
+    scroll_hint:'Desliza',
 
-    // Sección 1: Hero
-    hero_title:    'Conócete y Reconócete',
-    hero_subtitle: 'Un espacio seguro para tu transformación',
-    // EDITAR: descripción de Laura y el proyecto
-    hero_text:     'Laura es una coach certificada con formación en diversas disciplinas, que trabaja de forma individual, grupal y empresarial. Este proyecto nació de la necesidad colectiva de entendernos, aportar y aprender juntos.',
-    hero_cta:      'Descubre más',
-    scroll_hint:   'Desliza',
+    laura_eyebrow:'Quién te acompaña',
+    laura_title:'Laura González Hernández',
+    laura_photo_ph:'Foto de Laura · pendiente',
+    laura_p1:'Laura es coach certificada, con formación en diversas disciplinas del desarrollo humano. Da charlas a grupos en México y toda América Latina, y acompaña a personas en su proceso de autoconocimiento.',
+    laura_p2:'En sus charlas trabaja la motivación y la introspección: ayuda a cada quien a encontrar su propio «yo», a mirar de frente esos «demonios» que todos cargamos y a corregir, desde el coaching, lo que pesa en la vida. Acompaña de cerca y sin juicio, porque reconocerte es el primer paso para cambiar.',
+    laura_sign:'«Conocerte es el principio de todo cambio.»',
 
-    // Sección 2: Paquete 3+4=7
-    s2_tag:         'Tu inversión · Tu proceso',
-    s2_title:       'Paquete 3+4=7',
-    s2_subtitle:    'Tu inversión, tu proceso, tu transformación',
-    s2_card1_title: '¿Qué adquiriste?',
-    // EDITAR: descripción del contenido del paquete
-    s2_card1_body:  '[Descripción del paquete adquirido. Detalla los módulos, sesiones o servicios incluidos en tu compra.]',
-    s2_card2_title: '¿Qué significa?',
-    // EDITAR: filosofía y significado del 3+4=7
-    s2_card2_body:  '[El significado y propósito del proceso: 3 sesiones individuales + 4 grupales = 7 encuentros de transformación. Detalla la filosofía detrás.]',
-    s2_card3_title: 'El proceso',
-    // EDITAR: etapas, frecuencia y duración
-    s2_card3_body:  '[Describe las etapas del proceso: inicio, desarrollo y cierre. Incluye frecuencia de sesiones, duración y metodología.]',
-    s2_card4_title: 'Forma de pago',
-    // EDITAR: métodos de pago, cuentas, plazos
-    s2_card4_body:  '[Información sobre métodos de pago aceptados, plazos, cuentas bancarias o plataformas de pago habilitadas.]',
+    proc_eyebrow:'El camino',
+    proc_title:'Un solo viaje hacia adentro',
+    proc_lead:'Conócete y Reconócete no son dos cosas distintas: son dos momentos del mismo proceso. Primero descubres quién eres; luego te reconoces y eliges desde ahí.',
+    proc_a_title:'Conócete',
+    proc_a_body:'Mirar de frente quién eres hoy: tus historias, tus miedos, tu manera de estar en el mundo. El punto de partida honesto.',
+    proc_b_title:'Reconócete',
+    proc_b_body:'Saberte y aceptarte. Reconocer tu valor y tu visión de vida para empezar a vivir desde ahí, con claridad y dirección.',
 
-    // Sección 3: Seminario de Panamá
-    s3_tag:          'Capacitándonos para servir',
-    s3_title:        'Seminario de Panamá',
-    s3_subtitle:     'Capacitándonos juntos para servir',
-    s3_block1_title: '¿Por qué este seminario?',
-    // EDITAR: historia y motivación del seminario
-    s3_block1_body:  '[Historia y motivación detrás del Seminario de Panamá. ¿Qué necesidad lo originó? ¿Qué lo hace único?]',
-    s3_block2_title: '¿Qué veremos?',
-    // EDITAR: temario, módulos y facilitadores
-    s3_block2_body:  '[Temario del seminario: módulos, temas, facilitadores. Incluye los grandes ejes de aprendizaje y metodología.]',
-    s3_block3_title: 'Procesos en desarrollo',
-    // EDITAR: actualizaciones, logros, próximos pasos
-    s3_block3_body:  '[Actualizaciones sobre los procesos actuales, novedades, logros y próximos pasos del seminario.]',
-    s3_block4_title: 'Mesas de ayuda humanitaria',
-    // EDITAR: descripción de las mesas y pregunta reflexiva
-    s3_block4_body:  'Espacios de acción colectiva donde canalizamos lo aprendido en servicio real. ¿A quién quieres ayudar y cómo?',
+    char_eyebrow:'Charlas y programas',
+    char_title:'Espacios para trabajar en ti',
+    char_lead:'Laura facilita charlas y programas para personas, grupos y empresas. Aquí te contamos qué son; el detalle y la inscripción están en cada página.',
+    char_c1_tag:'Programa',
+    char_c1_title:'3 + 4 = 7',
+    char_c1_body:'[PENDIENTE — descripción breve del programa 3+4=7: qué es, para quién, qué transforma. El detalle completo y la inscripción viven en su propia página.]',
+    char_c1_link:'Conoce el programa',
+    char_c2_tag:'Seminario',
+    char_c2_title:'Seminario para las familias',
+    char_c2_body:'[PENDIENTE — definir el seminario: a quién acompaña, qué temas trabaja, formato. Por ahora es un espacio reservado.]',
+    char_c2_link:'Ver detalles',
+    char_note:'La inscripción y el pago se realizan en la página de cada programa, fuera de este espacio informativo.',
 
-    // Blog / Actualizaciones (placeholders hasta integración WordPress)
-    s3_blog1_date:    'Próximamente',
-    s3_blog1_title:   'Primera actualización del seminario',
-    s3_blog1_excerpt: '[Este espacio se conectará con el blog de WordPress en la siguiente fase. Aquí aparecerán las novedades del seminario.]',
-    s3_blog2_date:    'Próximamente',
-    s3_blog2_title:   'Avances de las mesas humanitarias',
-    s3_blog2_excerpt: '[Actualizaciones sobre el trabajo de las mesas de ayuda humanitaria y su impacto en la comunidad.]',
-    s3_blog3_date:    'Próximamente',
-    s3_blog3_title:   'Reflexiones del proceso',
-    s3_blog3_excerpt: '[Reflexiones, aprendizajes y testimonios de los participantes del Seminario de Panamá.]',
+    cem_eyebrow:'Un proyecto aparte de Laura',
+    cem_title:'Cemanáhuac',
+    cem_text:'Cemanáhuac es un proyecto independiente dedicado a las poblaciones originarias de América: un mapa interactivo para explorar sus territorios y reconocer su presencia en el continente. Vive aquí como sección propia, con su propio camino. [Confirmar con Raúl el matiz de cómo se relaciona con el trabajo de Laura.]',
+    cem_cta:'Explorar el mapa',
 
-    // Footer
-    footer_tagline: 'Un espacio seguro para conocerte, reconocerte y crecer.',
-    // EDITAR: aviso de privacidad / acceso exclusivo
-    footer_note:    'La información publicada es exclusiva para nuestros participantes.',
-    footer_copy:    '© 2025 Conócete y Reconócete. Todos los derechos reservados.',
+    footer_tagline:'Un espacio seguro para conocerte, reconocerte y crecer.',
+    footer_note:'La información publicada es exclusiva para nuestros participantes.',
+    footer_copy:'© 2026 Conócete y Reconócete. Todos los derechos reservados.'
   },
-
-
-  /* ── INGLÉS — placeholder, completar en fases posteriores ── */
   en: {
-    nav_home:        'Home',
-    nav_paquete:     'Package 3+4=7',
-    nav_seminario:   'Panama Seminar',
-    hero_title:      'Know Yourself and Recognize Yourself',
-    hero_subtitle:   'A safe space for your transformation',
-    hero_text:       'Laura is a certified coach with training in various disciplines, working individually, in groups, and with organizations. This project was born from the collective need to understand each other, contribute, and learn together.',
-    hero_cta:        'Discover more',
-    scroll_hint:     'Scroll',
-    s2_tag:          'Your investment · Your process',
-    s2_title:        'Package 3+4=7',
-    s2_subtitle:     'Your investment, your process, your transformation',
-    s2_card1_title:  'What did you acquire?',
-    s2_card1_body:   '[Package description — to be completed]',
-    s2_card2_title:  'What does it mean?',
-    s2_card2_body:   '[Package meaning — to be completed]',
-    s2_card3_title:  'The process',
-    s2_card3_body:   '[Process stages — to be completed]',
-    s2_card4_title:  'Payment method',
-    s2_card4_body:   '[Payment information — to be completed]',
-    s3_tag:          'Training to serve',
-    s3_title:        'Panama Seminar',
-    s3_subtitle:     'Training together to serve',
-    s3_block1_title: 'Why this seminar?',
-    s3_block1_body:  '[Seminar history and motivation — to be completed]',
-    s3_block2_title: 'What will we cover?',
-    s3_block2_body:  '[Curriculum and modules — to be completed]',
-    s3_block3_title: 'Ongoing processes',
-    s3_block3_body:  '[Current updates — to be completed]',
-    s3_block4_title: 'Humanitarian aid tables',
-    s3_block4_body:  'Collective action spaces where we channel what we learned into real service. Who do you want to help and how?',
-    s3_blog1_date:    'Coming soon',
-    s3_blog1_title:   'First seminar update',
-    s3_blog1_excerpt: '[Will connect to WordPress blog in the next phase.]',
-    s3_blog2_date:    'Coming soon',
-    s3_blog2_title:   'Humanitarian tables update',
-    s3_blog2_excerpt: '[Updates on humanitarian work — to be completed]',
-    s3_blog3_date:    'Coming soon',
-    s3_blog3_title:   'Process reflections',
-    s3_blog3_excerpt: '[Testimonials and learnings — to be completed]',
-    footer_tagline:  'A safe space to know yourself, recognize yourself, and grow.',
-    footer_note:     'Published information is exclusive for our participants.',
-    footer_copy:     '© 2025 Conócete y Reconócete. All rights reserved.',
+    nav_home:'Home', nav_laura:'Laura', nav_charlas:'Talks', nav_cemanahuac:'Cemanáhuac',
+    hero_title:'Know <em>&amp;</em> Recognize Yourself',
+    hero_sub:'A safe space for your transformation',
+    hero_text:'Looking inward to know who you are, recognize yourself and bring clarity to your vision of life. Close, coaching-based guidance to come back to yourself.',
+    hero_cta1:'Meet Laura', hero_cta2:'See talks',
+    scroll_hint:'Scroll',
+
+    laura_eyebrow:'Who guides you',
+    laura_title:'Laura González Hernández',
+    laura_photo_ph:'Laura’s photo · pending',
+    laura_p1:'Laura is a certified coach trained in several human-development disciplines. She gives talks to groups across Mexico and Latin America and guides people through their self-knowledge process.',
+    laura_p2:'In her talks she works with motivation and introspection: she helps each person find their own “self”, face the “demons” we all carry, and correct — through coaching — what weighs on their life. She guides closely and without judgment, because recognizing yourself is the first step to change.',
+    laura_sign:'“Knowing yourself is where every change begins.”',
+
+    proc_eyebrow:'The path',
+    proc_title:'A single journey inward',
+    proc_lead:'Know and Recognize are not two separate things: they are two moments of the same process. First you discover who you are; then you recognize yourself and choose from there.',
+    proc_a_title:'Know yourself',
+    proc_a_body:'Facing who you are today: your stories, your fears, your way of being in the world. The honest starting point.',
+    proc_b_title:'Recognize yourself',
+    proc_b_body:'To know and accept yourself. To recognize your worth and your vision of life, and start living from there with clarity and direction.',
+
+    char_eyebrow:'Talks & programs',
+    char_title:'Spaces to work on yourself',
+    char_lead:'Laura facilitates talks and programs for individuals, groups and companies. Here is what they are; details and sign-up live on each page.',
+    char_c1_tag:'Program',
+    char_c1_title:'3 + 4 = 7',
+    char_c1_body:'[PENDING — short description of the 3+4=7 program. Full detail and sign-up live on its own page.]',
+    char_c1_link:'Discover the program',
+    char_c2_tag:'Seminar',
+    char_c2_title:'Seminar for families',
+    char_c2_body:'[PENDING — define the seminar. A reserved space for now.]',
+    char_c2_link:'See details',
+    char_note:'Sign-up and payment happen on each program’s page, outside this informational space.',
+
+    cem_eyebrow:'A separate project by Laura',
+    cem_title:'Cemanáhuac',
+    cem_text:'Cemanáhuac is an independent project devoted to the original peoples of the Americas: an interactive map to explore their territories and recognize their presence across the continent. It lives here as its own section, on its own path. [Confirm with Raúl how it relates to Laura’s work.]',
+    cem_cta:'Explore the map',
+
+    footer_tagline:'A safe space to know, recognize and grow.',
+    footer_note:'Published information is exclusive to our participants.',
+    footer_copy:'© 2026 Conócete y Reconócete. All rights reserved.'
   },
-
-
-  /* ── RUMANO — placeholder, traducción en curso ── */
-  ro: {
-    nav_home:        'Acasă',
-    nav_paquete:     'Pachet 3+4=7',
-    nav_seminario:   'Seminarul din Panama',
-    hero_title:      'Cunoaște-te și Recunoaște-te',
-    hero_subtitle:   'Un spațiu sigur pentru transformarea ta',
-    hero_text:       '[Traducere în curs — Laura este un coach certificat cu formare în diverse discipline, care lucrează individual, în grup și cu organizații.]',
-    hero_cta:        'Descoperă mai mult',
-    scroll_hint:     'Derulează',
-    s2_tag:          'Investiția ta · Procesul tău',
-    s2_title:        'Pachet 3+4=7',
-    s2_subtitle:     'Investiția ta, procesul tău, transformarea ta',
-    s2_card1_title:  'Ce ai achiziționat?',
-    s2_card1_body:   '[Traducere în curs — Conținut în curând]',
-    s2_card2_title:  'Ce înseamnă?',
-    s2_card2_body:   '[Traducere în curs]',
-    s2_card3_title:  'Procesul',
-    s2_card3_body:   '[Traducere în curs]',
-    s2_card4_title:  'Modalitate de plată',
-    s2_card4_body:   '[Traducere în curs]',
-    s3_tag:          'Ne formăm pentru a servi',
-    s3_title:        'Seminarul din Panama',
-    s3_subtitle:     'Ne formăm împreună pentru a servi',
-    s3_block1_title: 'De ce acest seminar?',
-    s3_block1_body:  '[Traducere în curs]',
-    s3_block2_title: 'Ce vom vedea?',
-    s3_block2_body:  '[Traducere în curs]',
-    s3_block3_title: 'Procese în desfășurare',
-    s3_block3_body:  '[Traducere în curs]',
-    s3_block4_title: 'Mese de ajutor umanitar',
-    s3_block4_body:  'Spații de acțiune colectivă. Cui vrei să ajuți și cum?',
-    s3_blog1_date:    'În curând',
-    s3_blog1_title:   'Prima actualizare a seminarului',
-    s3_blog1_excerpt: '[Traducere în curs]',
-    s3_blog2_date:    'În curând',
-    s3_blog2_title:   'Actualizare mese umanitare',
-    s3_blog2_excerpt: '[Traducere în curs]',
-    s3_blog3_date:    'În curând',
-    s3_blog3_title:   'Reflecții ale procesului',
-    s3_blog3_excerpt: '[Traducere în curs]',
-    footer_tagline:  'Un spațiu sigur pentru a te cunoaște, recunoaște și crește.',
-    footer_note:     'Informațiile publicate sunt exclusive pentru participanții noștri.',
-    footer_copy:     '© 2025 Conócete y Reconócete. Toate drepturile rezervate.',
-  },
-
-
-  /* ── HINDI — placeholder, traducción en curso ── */
-  hi: {
-    nav_home:        'मुख्य पृष्ठ',
-    nav_paquete:     'पैकेज 3+4=7',
-    nav_seminario:   'पनामा सेमिनार',
-    hero_title:      'स्वयं को जानें और पहचानें',
-    hero_subtitle:   'आपके परिवर्तन के लिए एक सुरक्षित स्थान',
-    hero_text:       '[अनुवाद शीघ्र आ रहा है — Laura एक प्रमाणित कोच हैं जो व्यक्तिगत, समूह और संगठनात्मक स्तर पर कार्य करती हैं।]',
-    hero_cta:        'और जानें',
-    scroll_hint:     'स्क्रॉल करें',
-    s2_tag:          'आपका निवेश · आपकी प्रक्रिया',
-    s2_title:        'पैकेज 3+4=7',
-    s2_subtitle:     'आपका निवेश, आपकी प्रक्रिया, आपका परिवर्तन',
-    s2_card1_title:  'आपने क्या प्राप्त किया?',
-    s2_card1_body:   '[अनुवाद शीघ्र आ रहा है]',
-    s2_card2_title:  'इसका क्या अर्थ है?',
-    s2_card2_body:   '[अनुवाद शीघ्र आ रहा है]',
-    s2_card3_title:  'प्रक्रिया',
-    s2_card3_body:   '[अनुवाद शीघ्र आ रहा है]',
-    s2_card4_title:  'भुगतान विधि',
-    s2_card4_body:   '[अनुवाद शीघ्र आ रहा है]',
-    s3_tag:          'सेवा के लिए प्रशिक्षण',
-    s3_title:        'पनामा सेमिनार',
-    s3_subtitle:     'सेवा के लिए मिलकर प्रशिक्षण',
-    s3_block1_title: 'यह सेमिनार क्यों?',
-    s3_block1_body:  '[अनुवाद शीघ्र आ रहा है]',
-    s3_block2_title: 'हम क्या सीखेंगे?',
-    s3_block2_body:  '[अनुवाद शीघ्र आ रहा है]',
-    s3_block3_title: 'विकासशील प्रक्रियाएं',
-    s3_block3_body:  '[अनुवाद शीघ्र आ रहा है]',
-    s3_block4_title: 'मानवीय सहायता समूह',
-    s3_block4_body:  'सामूहिक कार्य के स्थान। आप किसकी मदद करना चाहते हैं और कैसे?',
-    s3_blog1_date:    'शीघ्र आ रहा है',
-    s3_blog1_title:   'सेमिनार का पहला अपडेट',
-    s3_blog1_excerpt: '[अनुवाद शीघ्र आ रहा है]',
-    s3_blog2_date:    'शीघ्र आ रहा है',
-    s3_blog2_title:   'मानवीय कार्य अपडेट',
-    s3_blog2_excerpt: '[अनुवाद शीघ्र आ रहा है]',
-    s3_blog3_date:    'शीघ्र आ रहा है',
-    s3_blog3_title:   'प्रक्रिया की प्रतिबिंब',
-    s3_blog3_excerpt: '[अनुवाद शीघ्र आ रहा है]',
-    footer_tagline:  'स्वयं को जानने, पहचानने और बढ़ने के लिए एक सुरक्षित स्थान।',
-    footer_note:     'प्रकाशित जानकारी केवल हमारे प्रतिभागियों के लिए है।',
-    footer_copy:     '© 2025 Conócete y Reconócete. सर्वाधिकार सुरक्षित।',
-  },
-
-
-  /* ── PORTUGUÉS — placeholder, traducción en curso ── */
-  pt: {
-    nav_home:        'Início',
-    nav_paquete:     'Pacote 3+4=7',
-    nav_seminario:   'Seminário do Panamá',
-    hero_title:      'Conheça-se e Reconheça-se',
-    hero_subtitle:   'Um espaço seguro para a sua transformação',
-    hero_text:       'Laura é uma coach certificada com formação em diversas disciplinas, que trabalha de forma individual, em grupo e empresarial. [Tradução em andamento]',
-    hero_cta:        'Descubra mais',
-    scroll_hint:     'Deslize',
-    s2_tag:          'Seu investimento · Seu processo',
-    s2_title:        'Pacote 3+4=7',
-    s2_subtitle:     'Seu investimento, seu processo, sua transformação',
-    s2_card1_title:  'O que você adquiriu?',
-    s2_card1_body:   '[Tradução em andamento — Conteúdo em breve]',
-    s2_card2_title:  'O que significa?',
-    s2_card2_body:   '[Tradução em andamento]',
-    s2_card3_title:  'O processo',
-    s2_card3_body:   '[Tradução em andamento]',
-    s2_card4_title:  'Forma de pagamento',
-    s2_card4_body:   '[Tradução em andamento]',
-    s3_tag:          'Treinando para servir',
-    s3_title:        'Seminário do Panamá',
-    s3_subtitle:     'Treinando juntos para servir',
-    s3_block1_title: 'Por que este seminário?',
-    s3_block1_body:  '[Tradução em andamento]',
-    s3_block2_title: 'O que veremos?',
-    s3_block2_body:  '[Tradução em andamento]',
-    s3_block3_title: 'Processos em desenvolvimento',
-    s3_block3_body:  '[Tradução em andamento]',
-    s3_block4_title: 'Mesas de ajuda humanitária',
-    s3_block4_body:  'Espaços de ação coletiva. A quem você quer ajudar e como?',
-    s3_blog1_date:    'Em breve',
-    s3_blog1_title:   'Primeira atualização do seminário',
-    s3_blog1_excerpt: '[Tradução em andamento]',
-    s3_blog2_date:    'Em breve',
-    s3_blog2_title:   'Atualização das mesas humanitárias',
-    s3_blog2_excerpt: '[Tradução em andamento]',
-    s3_blog3_date:    'Em breve',
-    s3_blog3_title:   'Reflexões do processo',
-    s3_blog3_excerpt: '[Tradução em andamento]',
-    footer_tagline:  'Um espaço seguro para se conhecer, reconhecer e crescer.',
-    footer_note:     'As informações publicadas são exclusivas para nossos participantes.',
-    footer_copy:     '© 2025 Conócete y Reconócete. Todos os direitos reservados.',
-  },
-
-  /* ── ITALIANO — completamente traducido ── */
   it: {
-    nav_home:        'Inizio',
-    nav_paquete:     'Pacchetto 3+4=7',
-    nav_seminario:   'Seminario di Panamá',
-    hero_title:      'Conosci te stesso e Riconosciti',
-    hero_subtitle:   'Uno spazio sicuro per la tua trasformazione',
-    hero_text:       'Laura è una coach certificata con formazione in diverse discipline, che lavora in modo individuale, di gruppo e aziendale. Questo progetto è nato dal bisogno collettivo di capirci, contribuire e imparare insieme.',
-    hero_cta:        'Scopri di più',
-    scroll_hint:     'Scorri',
-    s2_tag:          'Il tuo investimento · Il tuo processo',
-    s2_title:        'Pacchetto 3+4=7',
-    s2_subtitle:     'Il tuo investimento, il tuo processo, la tua trasformazione',
-    s2_card1_title:  'Cosa hai acquistato?',
-    s2_card1_body:   '[Descrizione del pacchetto acquistato. Dettaglia i moduli, le sessioni o i servizi inclusi nel tuo acquisto.]',
-    s2_card2_title:  'Cosa significa?',
-    s2_card2_body:   '[Il significato e lo scopo del processo: 3 sessioni individuali + 4 di gruppo = 7 incontri di trasformazione. Dettaglia la filosofia che vi sta dietro.]',
-    s2_card3_title:  'Il processo',
-    s2_card3_body:   '[Descrivi le fasi del processo: inizio, sviluppo e chiusura. Includi la frequenza delle sessioni, la durata e la metodologia.]',
-    s2_card4_title:  'Modalità di pagamento',
-    s2_card4_body:   '[Informazioni sui metodi di pagamento accettati, scadenze, conti bancari o piattaforme di pagamento abilitate.]',
-    s3_tag:          'Formarci per servire',
-    s3_title:        'Seminario di Panamá',
-    s3_subtitle:     'Formarci insieme per servire',
-    s3_block1_title: 'Perché questo seminario?',
-    s3_block1_body:  '[Storia e motivazione dietro al Seminario di Panamá. Quale bisogno lo ha originato? Cosa lo rende unico?]',
-    s3_block2_title: 'Cosa vedremo?',
-    s3_block2_body:  '[Programma del seminario: moduli, temi, facilitatori. Include i grandi assi di apprendimento e la metodologia.]',
-    s3_block3_title: 'Processi in sviluppo',
-    s3_block3_body:  '[Aggiornamenti sui processi attuali, novità, risultati e prossimi passi del seminario.]',
-    s3_block4_title: 'Tavoli di aiuto umanitario',
-    s3_block4_body:  'Spazi di azione collettiva dove convogliamo ciò che abbiamo imparato in un servizio reale. Chi vuoi aiutare e come?',
-    s3_blog1_date:    'Prossimamente',
-    s3_blog1_title:   'Primo aggiornamento del seminario',
-    s3_blog1_excerpt: '[Questo spazio si collegherà al blog WordPress nella fase successiva. Qui appariranno le novità del seminario.]',
-    s3_blog2_date:    'Prossimamente',
-    s3_blog2_title:   'Avanzamento dei tavoli umanitari',
-    s3_blog2_excerpt: '[Aggiornamenti sul lavoro dei tavoli di aiuto umanitario e il loro impatto sulla comunità.]',
-    s3_blog3_date:    'Prossimamente',
-    s3_blog3_title:   'Riflessioni del processo',
-    s3_blog3_excerpt: '[Riflessioni, apprendimenti e testimonianze dei partecipanti al Seminario di Panamá.]',
-    footer_tagline:  'Uno spazio sicuro per conoscerti, riconoscerti e crescere.',
-    footer_note:     'Le informazioni pubblicate sono esclusive per i nostri partecipanti.',
-    footer_copy:     '© 2025 Conócete y Reconócete. Tutti i diritti riservati.',
+    nav_home:'Inizio', nav_laura:'Laura', nav_charlas:'Conferenze', nav_cemanahuac:'Cemanáhuac',
+    hero_title:'Conosci <em>e</em> Riconosci te stesso',
+    hero_sub:'Uno spazio sicuro per la tua trasformazione',
+    hero_text:'Guardare dentro di sé per sapere chi sei, riconoscerti e dare chiarezza alla tua visione di vita. Un accompagnamento vicino, dal coaching, per tornare a te.',
+    hero_cta1:'Conosci Laura', hero_cta2:'Vedi le conferenze',
+    scroll_hint:'Scorri',
+    laura_eyebrow:'Chi ti accompagna',
+    laura_title:'Laura González Hernández',
+    laura_photo_ph:'Foto di Laura · in arrivo',
+    laura_p1:'Laura è coach certificata, con formazione in diverse discipline dello sviluppo umano. Tiene conferenze a gruppi in Messico e in tutta l’America Latina e accompagna le persone nel loro processo di autoconoscenza.',
+    laura_p2:'Nelle sue conferenze lavora la motivazione e l’introspezione: aiuta ciascuno a trovare il proprio «io», a guardare in faccia quei «demoni» che tutti portiamo e a correggere, attraverso il coaching, ciò che pesa nella vita. Accompagna con vicinanza e senza giudizio, perché riconoscerti è il primo passo per cambiare.',
+    laura_sign:'«Conoscerti è l’inizio di ogni cambiamento.»',
+    proc_eyebrow:'Il cammino',
+    proc_title:'Un solo viaggio verso l’interno',
+    proc_lead:'Conoscersi e Riconoscersi non sono due cose diverse: sono due momenti dello stesso processo. Prima scopri chi sei; poi ti riconosci e scegli da lì.',
+    proc_a_title:'Conosci te stesso',
+    proc_a_body:'Guardare in faccia chi sei oggi: le tue storie, le tue paure, il tuo modo di stare al mondo. Il punto di partenza onesto.',
+    proc_b_title:'Riconosci te stesso',
+    proc_b_body:'Sapersi e accettarsi. Riconoscere il proprio valore e la propria visione di vita per iniziare a vivere da lì, con chiarezza e direzione.',
+    char_eyebrow:'Conferenze e programmi',
+    char_title:'Spazi per lavorare su di te',
+    char_lead:'Laura facilita conferenze e programmi per persone, gruppi e aziende. Qui ti raccontiamo cosa sono; il dettaglio e l’iscrizione sono in ogni pagina.',
+    char_c1_tag:'Programma', char_c1_title:'3 + 4 = 7',
+    char_c1_body:'[In definizione — descrizione del programma 3+4=7. Il dettaglio completo e l’iscrizione vivono nella sua pagina.]',
+    char_c1_link:'Scopri il programma',
+    char_c2_tag:'Seminario', char_c2_title:'Seminario per le famiglie',
+    char_c2_body:'[In definizione — uno spazio riservato per ora.]',
+    char_c2_link:'Vedi i dettagli',
+    char_note:'L’iscrizione e il pagamento avvengono nella pagina di ogni programma, fuori da questo spazio informativo.',
+    cem_eyebrow:'Un progetto a parte di Laura', cem_title:'Cemanáhuac',
+    cem_text:'Cemanáhuac è un progetto indipendente dedicato ai popoli originari delle Americhe: una mappa interattiva per esplorare i loro territori e riconoscere la loro presenza nel continente. Vive qui come sezione propria, con il suo cammino.',
+    cem_cta:'Esplora la mappa',
+    footer_tagline:'Uno spazio sicuro per conoscerti, riconoscerti e crescere.',
+    footer_note:'Le informazioni pubblicate sono riservate ai nostri partecipanti.',
+    footer_copy:'© 2026 Conócete y Reconócete. Tutti i diritti riservati.'
   },
+  ro: {
+    nav_home:'Acasă', nav_laura:'Laura', nav_charlas:'Conferințe', nav_cemanahuac:'Cemanáhuac',
+    hero_title:'Cunoaște-<em>te</em> și Recunoaște-te',
+    hero_sub:'Un spațiu sigur pentru transformarea ta',
+    hero_text:'Să privești înăuntru pentru a ști cine ești, a te recunoaște și a-ți limpezi viziunea despre viață. O însoțire apropiată, prin coaching, pentru a reveni la tine.',
+    hero_cta1:'Cunoaște-o pe Laura', hero_cta2:'Vezi conferințele',
+    scroll_hint:'Derulează',
+    laura_eyebrow:'Cine te însoțește',
+    laura_title:'Laura González Hernández',
+    laura_photo_ph:'Fotografia Laurei · în curând',
+    laura_p1:'Laura este coach certificat, cu formare în diverse discipline ale dezvoltării umane. Susține conferințe pentru grupuri în Mexic și în toată America Latină și însoțește oamenii în procesul lor de autocunoaștere.',
+    laura_p2:'În conferințele sale lucrează cu motivația și introspecția: ajută pe fiecare să își găsească propriul „eu”, să privească în față „demonii” pe care îi purtăm cu toții și să corecteze, prin coaching, ceea ce apasă în viață. Însoțește cu apropiere și fără judecată, pentru că a te recunoaște este primul pas spre schimbare.',
+    laura_sign:'„A te cunoaște este începutul oricărei schimbări.”',
+    proc_eyebrow:'Drumul',
+    proc_title:'O singură călătorie spre interior',
+    proc_lead:'A te cunoaște și a te recunoaște nu sunt două lucruri diferite: sunt două momente ale aceluiași proces. Mai întâi descoperi cine ești; apoi te recunoști și alegi de acolo.',
+    proc_a_title:'Cunoaște-te',
+    proc_a_body:'Să privești în față cine ești azi: poveștile tale, temerile tale, felul tău de a fi în lume. Punctul de plecare onest.',
+    proc_b_title:'Recunoaște-te',
+    proc_b_body:'Să te știi și să te accepți. Să îți recunoști valoarea și viziunea despre viață pentru a începe să trăiești de acolo, cu claritate și direcție.',
+    char_eyebrow:'Conferințe și programe',
+    char_title:'Spații pentru a lucra cu tine',
+    char_lead:'Laura facilitează conferințe și programe pentru persoane, grupuri și companii. Aici îți spunem ce sunt; detaliile și înscrierea sunt pe fiecare pagină.',
+    char_c1_tag:'Program', char_c1_title:'3 + 4 = 7',
+    char_c1_body:'[În definire — descrierea programului 3+4=7. Detaliile complete și înscrierea sunt pe pagina sa.]',
+    char_c1_link:'Descoperă programul',
+    char_c2_tag:'Seminar', char_c2_title:'Seminar pentru familii',
+    char_c2_body:'[În definire — un spațiu rezervat deocamdată.]',
+    char_c2_link:'Vezi detaliile',
+    char_note:'Înscrierea și plata se fac pe pagina fiecărui program, în afara acestui spațiu informativ.',
+    cem_eyebrow:'Un proiect separat al Laurei', cem_title:'Cemanáhuac',
+    cem_text:'Cemanáhuac este un proiect independent dedicat popoarelor originare ale Americilor: o hartă interactivă pentru a le explora teritoriile și a le recunoaște prezența pe continent. Trăiește aici ca secțiune proprie, cu drumul său.',
+    cem_cta:'Explorează harta',
+    footer_tagline:'Un spațiu sigur pentru a te cunoaște, a te recunoaște și a crește.',
+    footer_note:'Informațiile publicate sunt exclusive participanților noștri.',
+    footer_copy:'© 2026 Conócete y Reconócete. Toate drepturile rezervate.'
+  },
+  hi: {
+    nav_home:'मुख्य पृष्ठ', nav_laura:'लौरा', nav_charlas:'वार्ताएँ', nav_cemanahuac:'सेमानाहुआक',
+    hero_title:'स्वयं को जानें <em>और</em> पहचानें',
+    hero_sub:'आपके रूपांतरण के लिए एक सुरक्षित स्थान',
+    hero_text:'अपने भीतर झाँककर यह जानना कि आप कौन हैं, स्वयं को पहचानना और अपने जीवन-दृष्टिकोण को स्पष्ट करना। कोचिंग के माध्यम से एक आत्मीय संग, ताकि आप स्वयं तक लौट सकें।',
+    hero_cta1:'लौरा को जानें', hero_cta2:'वार्ताएँ देखें',
+    scroll_hint:'स्क्रॉल करें',
+    laura_eyebrow:'कौन आपका साथ देता है',
+    laura_title:'Laura González Hernández',
+    laura_photo_ph:'लौरा की तस्वीर · शीघ्र',
+    laura_p1:'लौरा एक प्रमाणित कोच हैं, जिन्हें मानव विकास की विभिन्न विधाओं में प्रशिक्षण प्राप्त है। वे मेक्सिको और पूरे लैटिन अमेरिका में समूहों को वार्ताएँ देती हैं और लोगों को आत्म-ज्ञान की यात्रा में साथ देती हैं।',
+    laura_p2:'अपनी वार्ताओं में वे प्रेरणा और आत्मनिरीक्षण पर काम करती हैं: हर व्यक्ति को उसका अपना «मैं» खोजने, उन «राक्षसों» का सामना करने जिन्हें हम सब ढोते हैं, और कोचिंग के माध्यम से जीवन के भारी पहलुओं को सुधारने में मदद करती हैं। वे निकटता और बिना किसी निर्णय के साथ देती हैं, क्योंकि स्वयं को पहचानना बदलाव का पहला कदम है।',
+    laura_sign:'«स्वयं को जानना ही हर बदलाव की शुरुआत है।»',
+    proc_eyebrow:'मार्ग',
+    proc_title:'भीतर की ओर एक ही यात्रा',
+    proc_lead:'जानना और पहचानना दो अलग बातें नहीं हैं: ये एक ही प्रक्रिया के दो क्षण हैं। पहले आप जानते हैं कि आप कौन हैं; फिर आप स्वयं को पहचानते हैं और वहीं से चुनाव करते हैं।',
+    proc_a_title:'स्वयं को जानें',
+    proc_a_body:'आज आप कौन हैं इसका सामना करना: आपकी कहानियाँ, आपके भय, दुनिया में रहने का आपका तरीका। एक ईमानदार आरंभ-बिंदु।',
+    proc_b_title:'स्वयं को पहचानें',
+    proc_b_body:'स्वयं को जानना और स्वीकारना। अपने मूल्य और जीवन-दृष्टिकोण को पहचानना, ताकि आप वहीं से स्पष्टता और दिशा के साथ जीना शुरू करें।',
+    char_eyebrow:'वार्ताएँ और कार्यक्रम',
+    char_title:'स्वयं पर काम करने के स्थान',
+    char_lead:'लौरा व्यक्तियों, समूहों और कंपनियों के लिए वार्ताएँ और कार्यक्रम संचालित करती हैं। यहाँ हम बताते हैं कि वे क्या हैं; विवरण और पंजीकरण प्रत्येक पृष्ठ पर हैं।',
+    char_c1_tag:'कार्यक्रम', char_c1_title:'3 + 4 = 7',
+    char_c1_body:'[परिभाषित किया जाना है — 3+4=7 कार्यक्रम का विवरण। पूरा विवरण और पंजीकरण इसके पृष्ठ पर हैं।]',
+    char_c1_link:'कार्यक्रम जानें',
+    char_c2_tag:'सेमिनार', char_c2_title:'परिवारों के लिए सेमिनार',
+    char_c2_body:'[परिभाषित किया जाना है — फ़िलहाल एक आरक्षित स्थान।]',
+    char_c2_link:'विवरण देखें',
+    char_note:'पंजीकरण और भुगतान प्रत्येक कार्यक्रम के पृष्ठ पर होते हैं, इस सूचनात्मक स्थान के बाहर।',
+    cem_eyebrow:'लौरा की एक अलग परियोजना', cem_title:'सेमानाहुआक',
+    cem_text:'सेमानाहुआक एक स्वतंत्र परियोजना है जो अमेरिका के मूल निवासी समुदायों को समर्पित है: उनके क्षेत्रों का अन्वेषण करने और महाद्वीप में उनकी उपस्थिति को पहचानने के लिए एक इंटरैक्टिव मानचित्र। यह यहाँ अपने स्वयं के अनुभाग के रूप में, अपने मार्ग के साथ रहती है।',
+    cem_cta:'मानचित्र देखें',
+    footer_tagline:'स्वयं को जानने, पहचानने और बढ़ने के लिए एक सुरक्षित स्थान।',
+    footer_note:'प्रकाशित जानकारी केवल हमारे प्रतिभागियों के लिए है।',
+    footer_copy:'© 2026 Conócete y Reconócete. सर्वाधिकार सुरक्षित।'
+  },
+  pt: {
+    nav_home:'Início', nav_laura:'Laura', nav_charlas:'Palestras', nav_cemanahuac:'Cemanáhuac',
+    hero_title:'Conheça <em>e</em> Reconheça-se',
+    hero_sub:'Um espaço seguro para a sua transformação',
+    hero_text:'Olhar para dentro para saber quem você é, reconhecer-se e dar clareza à sua visão de vida. Um acompanhamento próximo, a partir do coaching, para voltar a si.',
+    hero_cta1:'Conheça a Laura', hero_cta2:'Ver palestras',
+    scroll_hint:'Role',
+    laura_eyebrow:'Quem acompanha você',
+    laura_title:'Laura González Hernández',
+    laura_photo_ph:'Foto da Laura · em breve',
+    laura_p1:'Laura é coach certificada, com formação em diversas disciplinas do desenvolvimento humano. Dá palestras a grupos no México e em toda a América Latina e acompanha pessoas em seu processo de autoconhecimento.',
+    laura_p2:'Em suas palestras trabalha a motivação e a introspecção: ajuda cada pessoa a encontrar o seu próprio «eu», a encarar os «demônios» que todos carregamos e a corrigir, pelo coaching, o que pesa na vida. Acompanha com proximidade e sem julgamento, porque reconhecer-se é o primeiro passo para mudar.',
+    laura_sign:'«Conhecer-se é o princípio de toda mudança.»',
+    proc_eyebrow:'O caminho',
+    proc_title:'Uma só viagem para dentro',
+    proc_lead:'Conhecer-se e Reconhecer-se não são duas coisas distintas: são dois momentos do mesmo processo. Primeiro você descobre quem é; depois se reconhece e escolhe a partir daí.',
+    proc_a_title:'Conheça-se',
+    proc_a_body:'Encarar quem você é hoje: suas histórias, seus medos, sua maneira de estar no mundo. O ponto de partida honesto.',
+    proc_b_title:'Reconheça-se',
+    proc_b_body:'Saber-se e aceitar-se. Reconhecer o seu valor e a sua visão de vida para começar a viver a partir daí, com clareza e direção.',
+    char_eyebrow:'Palestras e programas',
+    char_title:'Espaços para trabalhar em você',
+    char_lead:'Laura facilita palestras e programas para pessoas, grupos e empresas. Aqui contamos o que são; o detalhe e a inscrição estão em cada página.',
+    char_c1_tag:'Programa', char_c1_title:'3 + 4 = 7',
+    char_c1_body:'[A definir — descrição do programa 3+4=7. O detalhe completo e a inscrição vivem na sua página.]',
+    char_c1_link:'Conheça o programa',
+    char_c2_tag:'Seminário', char_c2_title:'Seminário para as famílias',
+    char_c2_body:'[A definir — um espaço reservado por enquanto.]',
+    char_c2_link:'Ver detalhes',
+    char_note:'A inscrição e o pagamento acontecem na página de cada programa, fora deste espaço informativo.',
+    cem_eyebrow:'Um projeto à parte da Laura', cem_title:'Cemanáhuac',
+    cem_text:'Cemanáhuac é um projeto independente dedicado aos povos originários das Américas: um mapa interativo para explorar seus territórios e reconhecer sua presença no continente. Vive aqui como seção própria, com o seu caminho.',
+    cem_cta:'Explorar o mapa',
+    footer_tagline:'Um espaço seguro para conhecer-se, reconhecer-se e crescer.',
+    footer_note:'As informações publicadas são exclusivas para nossos participantes.',
+    footer_copy:'© 2026 Conócete y Reconócete. Todos os direitos reservados.'
+  }
+};
 
-}; // fin translations
-
-
-/* ================================================================
-   CONFIGURACIÓN DE IDIOMAS
-================================================================ */
 const languages = [
-  { code: 'es', label: 'ES', name: 'Español'   },
-  { code: 'en', label: 'EN', name: 'English'   },
-  { code: 'it', label: 'IT', name: 'Italiano'  },
-  { code: 'ro', label: 'RO', name: 'Română'    },
-  { code: 'hi', label: 'HI', name: 'हिन्दी'   },
-  { code: 'pt', label: 'PT', name: 'Português' },
+  { code:'es', label:'ES — Español'   },
+  { code:'en', label:'EN — English'   },
+  { code:'it', label:'IT — Italiano'  },
+  { code:'ro', label:'RO — Română'    },
+  { code:'hi', label:'HI — हिन्दी'    },
+  { code:'pt', label:'PT — Português' }
 ];
 
-
-/* ================================================================
-   setLanguage(lang)
-   Aplica un idioma a todos los elementos con data-i18n.
-   Guarda la preferencia en localStorage.
-================================================================ */
-function setLanguage(lang) {
-  if (!translations[lang]) return;
-  const t = translations[lang];
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    var key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
+function setLanguage(lang){
+  const t = translations[lang]; if(!t) return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n'); if(t[k]!=null) el.textContent = t[k];
   });
-
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html'); if(t[k]!=null) el.innerHTML = t[k];
+  });
   document.documentElement.lang = lang;
-
-  // Marcar botón activo en todos los selectores
-  // Sincronizar todos los <select> de idioma
-  document.querySelectorAll('.lang-select, .lang-select-light').forEach(function(sel) {
-    sel.value = lang;
-  });
-
-  localStorage.setItem('cyr_lang', lang);
+  document.querySelectorAll('.lang-select').forEach(s=> s.value = lang);
+  try{ localStorage.setItem('cyr_lang', lang); }catch(e){}
 }
 
+function buildLangSelectors(){
+  ['lang-desktop','lang-mobile','lang-footer'].forEach(id=>{
+    const c = document.getElementById(id); if(!c) return;
+    const sel = document.createElement('select');
+    sel.className = 'lang-select'; sel.setAttribute('aria-label','Seleccionar idioma');
+    languages.forEach(l=>{ const o=document.createElement('option'); o.value=l.code; o.textContent=l.label; sel.appendChild(o); });
+    sel.addEventListener('change', function(){ setLanguage(this.value); });
+    c.appendChild(sel);
+  });
+}
 
-/* ================================================================
-   scrollToSection(id)
-   Desplaza el scroll-container a la sección indicada.
-================================================================ */
-function scrollToSection(sectionId) {
-  var el = document.getElementById(sectionId);
-  if (!el) return;
-
-  // En móvil el body tiene overflow, en desktop el scroll-container
-  var isMobile = window.innerWidth <= 768;
-  if (isMobile) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    var container = document.getElementById('scroll-container');
-    var index = Array.from(container.children).indexOf(el);
-    container.scrollTo({ top: index * window.innerHeight, behavior: 'smooth' });
+/* Header scroll state + active link */
+const header = document.getElementById('header');
+const sections = ['hero','laura','charlas','cemanahuac'];
+function onScroll(){
+  header.classList.toggle('scrolled', window.scrollY > 12);
+  let current = 'hero';
+  for(const id of sections){
+    const el = document.getElementById(id);
+    if(el && el.getBoundingClientRect().top <= 120) current = id;
   }
-}
-
-
-/* ================================================================
-   closeMobileNav()
-================================================================ */
-function closeMobileNav() {
-  document.getElementById('mobile-nav').classList.remove('open');
-}
-
-
-/* ================================================================
-   buildLangSelectors()
-   Genera los botones de idioma en header, footer y móvil.
-================================================================ */
-function buildLangSelectors() {
-
-  function makeSelect(cssClass) {
-    var sel = document.createElement('select');
-    sel.className = cssClass;
-    sel.setAttribute('aria-label', 'Seleccionar idioma');
-    languages.forEach(function(lang) {
-      var opt = document.createElement('option');
-      opt.value = lang.code;
-      opt.textContent = lang.label + ' — ' + lang.name;
-      sel.appendChild(opt);
-    });
-    sel.addEventListener('change', function() { setLanguage(this.value); });
-    return sel;
-  }
-
-  // Header (fondo oscuro)
-  var headerContainer = document.getElementById('header-lang');
-  if (headerContainer) headerContainer.appendChild(makeSelect('lang-select'));
-
-  // Footer (fondo blanco)
-  var footerContainer = document.getElementById('footer-lang');
-  if (footerContainer) footerContainer.appendChild(makeSelect('lang-select-light'));
-
-  // Móvil (fondo oscuro)
-  var mobileContainer = document.getElementById('mobile-lang');
-  if (mobileContainer) mobileContainer.appendChild(makeSelect('lang-select'));
-}
-
-
-/* ================================================================
-   triggerHeroAnimations()
-   Dispara las animaciones de entrada de la sección Hero con stagger.
-================================================================ */
-function triggerHeroAnimations() {
-  var elements = [
-    { id: 'hero-logo',     delay: 80  },
-    { id: 'hero-title',    delay: 350 },
-    { id: 'hero-cta',      delay: 950 },
-  ];
-
-  // Aplicar también a .hero-subtitle y .hero-text por clase
-  var subtitleEl = document.querySelector('.hero-subtitle');
-  var textEl     = document.querySelector('.hero-text');
-  var heroContent = document.querySelector('.hero-content');
-
-  // Reset por si se re-invoca
-  elements.forEach(function(item) {
-    var el = document.getElementById(item.id);
-    if (el) el.classList.remove('anim');
-  });
-  if (subtitleEl) subtitleEl.classList.remove('anim');
-  if (textEl)     textEl.classList.remove('anim');
-  if (heroContent) heroContent.style.visibility = 'visible';
-
-  // Stagger
-  elements.forEach(function(item) {
-    setTimeout(function() {
-      var el = document.getElementById(item.id);
-      if (el) el.classList.add('anim');
-    }, item.delay);
-  });
-  setTimeout(function() { if (subtitleEl) subtitleEl.classList.add('anim'); }, 550);
-  setTimeout(function() { if (textEl)     textEl.classList.add('anim'); },     750);
-}
-
-
-/* ================================================================
-   initScrollAnimations()
-   IntersectionObserver para los elementos .fade-in y el footer.
-================================================================ */
-function initScrollAnimations() {
-  var isMobile  = window.innerWidth <= 768;
-  var rootEl    = isMobile ? null : document.getElementById('scroll-container');
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) entry.target.classList.add('anim');
-    });
-  }, { threshold: 0.12, root: rootEl });
-
-  document.querySelectorAll('.fade-in').forEach(function(el) {
-    observer.observe(el);
-  });
-
-  var footerContent = document.getElementById('footer-content');
-  if (footerContent) observer.observe(footerContent);
-}
-
-
-/* ================================================================
-   initActiveNav()
-   Resalta en ocre el link de la sección actualmente visible.
-================================================================ */
-function initActiveNav() {
-  var sectionIds = ['section-hero', 'section-paquete', 'section-seminario', 'section-footer'];
-  var isMobile   = window.innerWidth <= 768;
-  var rootEl     = isMobile ? null : document.getElementById('scroll-container');
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var activeId = entry.target.id;
-      document.querySelectorAll('.nav-link[data-section]').forEach(function(link) {
-        link.classList.toggle('active', link.dataset.section === activeId);
-      });
-    });
-  }, { threshold: 0.5, root: rootEl });
-
-  sectionIds.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) observer.observe(el);
+  document.querySelectorAll('.nav-link').forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href') === '#'+current);
   });
 }
 
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold:0.14 });
 
-/* ================================================================
-   HAMBURGER
-================================================================ */
-document.getElementById('hamburger-btn').addEventListener('click', function() {
-  document.getElementById('mobile-nav').classList.toggle('open');
+/* Mobile nav */
+const hb = document.getElementById('hamburger');
+const mn = document.getElementById('mobile-nav');
+hb.addEventListener('click', ()=>{
+  const open = mn.classList.toggle('open');
+  hb.setAttribute('aria-expanded', open);
 });
+mn.querySelectorAll('.nav-link').forEach(a=> a.addEventListener('click', ()=>{ mn.classList.remove('open'); hb.setAttribute('aria-expanded','false'); }));
 
-
-/* ================================================================
-   INICIALIZACIÓN
-================================================================ */
-document.addEventListener('DOMContentLoaded', function() {
-
-  // 1. Construir selectores de idioma
+document.addEventListener('DOMContentLoaded', ()=>{
   buildLangSelectors();
-
-  // 2. Aplicar idioma guardado (o español por defecto)
-  var savedLang = localStorage.getItem('cyr_lang') || 'es';
-  setLanguage(savedLang);
-
-  // 3. Animaciones de scroll
-  initScrollAnimations();
-
-  // 4. Navegación activa
-  initActiveNav();
-
-  // 5. Hero — pequeño delay para que la fuente cargue
-  setTimeout(triggerHeroAnimations, 250);
-
+  let lang = 'es';
+  try{ lang = localStorage.getItem('cyr_lang') || 'es'; }catch(e){}
+  if(!translations[lang]) lang = 'es';
+  setLanguage(lang);
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
 });
-
 </script>
+
 </body>
 </html>
