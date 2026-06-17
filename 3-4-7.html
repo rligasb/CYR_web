@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- PREVIEW rediseno-visual · página de VENTA aislada · NO producción -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://conoceteyreconocete.com/3-4-7.html">
-  <title>Programa 3+4=7 — Conócete y Reconócete</title>
+  <title>3+4=7 — Información para la comunidad — Conócete y Reconócete</title>
   <link rel="icon" href="./Loco CYR transparente.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
       --hueso:#FBF9F4; --arena:#EFE7D8; --salvia:#7C8A6E; --salvia-d:#5E6A52;
@@ -18,9 +17,9 @@
       --serif:'Lora',Georgia,serif; --sans:'Raleway',system-ui,sans-serif;
     }
     *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-    body{ font-family:var(--sans); color:var(--tinta); background:var(--hueso); display:flex; flex-direction:column; min-height:100svh; }
+    body{ font-family:var(--sans); color:var(--tinta); background:var(--hueso); display:flex; flex-direction:column; min-height:100svh; line-height:1.7; }
 
-    /* HEADER mínimo — solo logo + volver, sin nav informativo */
+    /* HEADER mínimo */
     header{
       display:flex; align-items:center; justify-content:space-between;
       height:66px; padding:0 1.6rem; background:rgba(251,249,244,0.9);
@@ -40,20 +39,31 @@
     .btn-volver:hover{ border-color:var(--oro); color:var(--oro); }
     .btn-volver svg{ width:14px; height:14px; }
 
-    /* INTRO del producto */
-    .intro{ text-align:center; padding:3.2rem 1.6rem 2.2rem; background:linear-gradient(180deg,var(--hueso),var(--arena)); flex-shrink:0; }
+    main{ flex:1; }
+    .intro{ text-align:center; padding:3.6rem 1.6rem 2.4rem; background:linear-gradient(180deg,var(--hueso),var(--arena)); }
     .intro .tag{ display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--oro); margin-bottom:.9rem; }
-    .intro h1{ font-family:var(--serif); font-weight:500; font-size:clamp(2rem,5vw,3.1rem); line-height:1.1; margin-bottom:.9rem; }
-    .intro p{ color:var(--tinta-2); max-width:60ch; margin:0 auto; font-size:1.02rem; }
-    .intro .pending{ margin-top:1rem; font-size:.8rem; color:var(--salvia-d); font-style:italic; }
+    .intro h1{ font-family:var(--serif); font-weight:500; font-size:clamp(2rem,5vw,3.1rem); line-height:1.1; margin-bottom:1rem; }
+    .intro p{ color:var(--tinta-2); max-width:60ch; margin:0 auto; font-size:1.05rem; }
 
-    /* zona de inscripción / portal */
-    .checkout-band{ text-align:center; padding:1.6rem; background:var(--arena); border-bottom:1px solid var(--linea); flex-shrink:0; }
-    .checkout-band span{ font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-2); }
-    .frame-wrap{ flex:1; min-height:560px; overflow:hidden; background:var(--hueso); }
-    iframe{ width:100%; height:100%; min-height:560px; border:none; display:block; }
+    .wrap{ max-width:680px; margin:0 auto; padding:3.2rem 1.6rem 1rem; }
+    .block{ margin-bottom:2.6rem; }
+    .block h2{ font-family:var(--serif); font-weight:500; font-size:1.35rem; margin-bottom:.7rem; }
+    .block p{ color:var(--tinta-2); }
 
-    footer{ text-align:center; padding:1.4rem; font-size:.76rem; color:var(--tinta-2); background:var(--hueso); border-top:1px solid var(--linea); flex-shrink:0; }
+    .estado{
+      display:flex; gap:.9rem; align-items:flex-start;
+      background:var(--arena); border:1px solid var(--linea); border-radius:14px;
+      padding:1.4rem 1.6rem; margin-bottom:2.6rem;
+    }
+    .estado svg{ width:22px; height:22px; color:var(--salvia-d); flex-shrink:0; margin-top:2px; }
+    .estado strong{ font-weight:600; color:var(--tinta); }
+
+    .disclaimer{
+      border-top:1px solid var(--linea); margin:1rem auto 0; max-width:680px;
+      padding:1.6rem; font-size:.84rem; color:var(--tinta-2); font-style:italic;
+    }
+
+    footer{ text-align:center; padding:1.6rem; font-size:.76rem; color:var(--tinta-2); background:var(--hueso); border-top:1px solid var(--linea); flex-shrink:0; }
     @media (max-width:480px){ header{ padding:0 1rem; } .brand span{ display:none; } }
   </style>
 </head>
@@ -70,22 +80,39 @@
   </a>
 </header>
 
-<!-- INTRO — PENDIENTE: contenido real del producto 3+4=7 -->
-<section class="intro">
-  <span class="tag">Programa</span>
-  <h1>3 + 4 = 7</h1>
-  <p>[PENDIENTE — Raúl entrega el detalle: qué incluye el programa, para quién es, qué transforma, etapas, duración y precio. Este bloque cuenta el valor antes de la inscripción.]</p>
-  <p class="pending">Esta es una página de venta aislada. El contenido informativo vive en el home.</p>
-</section>
+<main>
+  <section class="intro">
+    <span class="tag">Información para la comunidad</span>
+    <h1>3 + 4 = 7</h1>
+    <p>Participación en bonos numismáticos dirigida a la comunidad de Conócete y Reconócete, pagadera el día de su redención.</p>
+  </section>
 
-<!-- ZONA DE INSCRIPCIÓN — mismo portal proyectosycompras (decisión cerrada) -->
-<div class="checkout-band"><span>Inscripción y registro</span></div>
-<div class="frame-wrap">
-  <iframe src="https://proyectosycompras.com/portal/conocete-y-reconote"
-          title="Inscripción 3+4=7 — Conócete y Reconócete" allow="fullscreen"></iframe>
-</div>
+  <div class="wrap">
+    <div class="estado">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+      <p><strong>La venta de participaciones está cerrada.</strong> Esta página se mantiene como referencia informativa para quienes ya forman parte.</p>
+    </div>
 
-<footer>© 2026 Conócete y Reconócete · Programa 3+4=7</footer>
+    <div class="block">
+      <h2>¿Qué es 3+4=7?</h2>
+      <p>3+4=7 es una participación en bonos numismáticos ofrecida a la comunidad de Conócete y Reconócete. Cada participación se hace pagadera el día en que los bonos se rediman.</p>
+    </div>
+
+    <div class="block">
+      <h2>¿A quién está dirigida?</h2>
+      <p>Exclusivamente a la comunidad de Conócete y Reconócete. No es una oferta abierta al público.</p>
+    </div>
+
+    <div class="block">
+      <h2>Dudas sobre tu participación</h2>
+      <p>Si ya formas parte y tienes preguntas sobre tu participación o su redención, contacta directamente con el equipo de Conócete y Reconócete.</p>
+    </div>
+  </div>
+
+  <p class="disclaimer">Esta página es únicamente informativa y se refiere a una venta ya cerrada. No constituye una oferta, recomendación ni invitación a invertir, ni promete rendimiento alguno.</p>
+</main>
+
+<footer>© 2026 Conócete y Reconócete · 3+4=7 · Información para la comunidad</footer>
 
 </body>
 </html>
