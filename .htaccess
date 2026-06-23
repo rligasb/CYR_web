@@ -14,6 +14,12 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ------------------------------------------------------------
+# 1b. MIGRACIÓN — /pueblos-indigenas/ se mudó a cemanahuac.cloud
+# 301 permanente al nuevo dominio (mapa de pueblos originarios)
+# ------------------------------------------------------------
+RewriteRule ^pueblos-indigenas(/.*)?$ https://cemanahuac.cloud/pueblos-originarios/ [R=301,L]
+
+# ------------------------------------------------------------
 # 2. HEADERS DE SEGURIDAD
 # ------------------------------------------------------------
 <IfModule mod_headers.c>
@@ -179,9 +185,6 @@ RewriteBase /
 # Archivos y carpetas que sí existen → servir directo
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# /pueblos-indigenas/* → index.html del módulo
-RewriteRule ^pueblos-indigenas/(.*)$ /pueblos-indigenas/index.html [L]
 
 # 404 general → index principal
 ErrorDocument 404 /index.html
