@@ -84,7 +84,7 @@
   .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 1.6rem; }
 
   /* ============================================================
-     HEADER (sin botón de compra — flujo informativo)
+     HEADER (con botón "Registra tu compra" → compras.html)
   ============================================================ */
   header{
     position:fixed; top:0; left:0; right:0; z-index:var(--z-header);
@@ -118,6 +118,23 @@
   }
   .nav-link:hover, .nav-link.active{ color:var(--tinta); }
   .nav-link:hover::after, .nav-link.active::after{ right:0; }
+
+  /* Botón "Registra tu compra" en header */
+  .btn-compra{
+    display:inline-flex; align-items:center; gap:.45rem;
+    font-family:var(--sans); font-size:.7rem; font-weight:600;
+    letter-spacing:.12em; text-transform:uppercase; text-decoration:none;
+    padding:.48rem 1.1rem; border-radius:40px; cursor:pointer; white-space:nowrap;
+    background:var(--oro); color:var(--hueso);
+    border:1px solid transparent;
+    box-shadow:0 4px 14px rgba(184,146,58,0.28);
+    transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+  .btn-compra svg{ width:13px; height:13px; flex-shrink:0; }
+  .btn-compra:hover{
+    background:var(--oro-tenue); transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(184,146,58,0.36);
+  }
 
   .lang-wrap{ display:flex; align-items:center; padding-left:1.6rem; margin-left:.3rem; border-left:1px solid var(--linea); }
   .lang-select{
@@ -372,6 +389,12 @@
       <a class="nav-link" href="#laura"      data-i18n="nav_laura"></a>
       <a class="nav-link" href="#charlas"    data-i18n="nav_charlas"></a>
       <a class="nav-link" href="#cemanahuac" data-i18n="nav_cemanahuac"></a>
+      <a class="btn-compra" href="./compras.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+        Registra tu compra
+      </a>
       <div class="lang-wrap" id="lang-desktop"></div>
     </nav>
 
@@ -386,6 +409,12 @@
   <a class="nav-link" href="#laura"      data-i18n="nav_laura"></a>
   <a class="nav-link" href="#charlas"    data-i18n="nav_charlas"></a>
   <a class="nav-link" href="#cemanahuac" data-i18n="nav_cemanahuac"></a>
+  <a class="btn-compra" href="./compras.html" style="margin-top:0.5rem; align-self:flex-start;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+    </svg>
+    Registra tu compra
+  </a>
   <div class="lang-wrap" id="lang-mobile"></div>
 </nav>
 
@@ -585,10 +614,10 @@ const translations = {
 
     laura_eyebrow:'Who guides you',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'Laura’s photo · pending',
+    laura_photo_ph:'Laura\'s photo · pending',
     laura_p1:'Laura is a certified coach trained in several human-development disciplines. She gives talks to groups across Mexico and Latin America and guides people through their self-knowledge process.',
-    laura_p2:'In her talks she works with motivation and introspection: she helps each person find their own “self”, face the “demons” we all carry, and correct — through coaching — what weighs on their life. She guides closely and without judgment, because recognizing yourself is the first step to change.',
-    laura_sign:'“Knowing yourself is where every change begins.”',
+    laura_p2:'In her talks she works with motivation and introspection: she helps each person find their own "self", face the "demons" we all carry, and correct — through coaching — what weighs on their life. She guides closely and without judgment, because recognizing yourself is the first step to change.',
+    laura_sign:'"Knowing yourself is where every change begins."',
 
     proc_eyebrow:'The path',
     proc_title:'A single journey inward',
@@ -609,7 +638,7 @@ const translations = {
     char_c2_title:'Seminar for families',
     char_c2_body:'A guidance seminar for families, rooted in self-knowledge. Details coming soon.',
     char_c2_link:'Coming soon',
-    char_note:'Sign-up and payment happen on each program’s page, outside this informational space.',
+    char_note:'Sign-up and payment happen on each program\'s page, outside this informational space.',
 
     cem_eyebrow:'A separate project by Laura',
     cem_title:'Cemanáhuac',
@@ -630,11 +659,11 @@ const translations = {
     laura_eyebrow:'Chi ti accompagna',
     laura_title:'Laura González Hernández',
     laura_photo_ph:'Foto di Laura · in arrivo',
-    laura_p1:'Laura è coach certificata, con formazione in diverse discipline dello sviluppo umano. Tiene conferenze a gruppi in Messico e in tutta l’America Latina e accompagna le persone nel loro processo di autoconoscenza.',
-    laura_p2:'Nelle sue conferenze lavora la motivazione e l’introspezione: aiuta ciascuno a trovare il proprio «io», a guardare in faccia quei «demoni» che tutti portiamo e a correggere, attraverso il coaching, ciò che pesa nella vita. Accompagna con vicinanza e senza giudizio, perché riconoscerti è il primo passo per cambiare.',
-    laura_sign:'«Conoscerti è l’inizio di ogni cambiamento.»',
+    laura_p1:'Laura è coach certificata, con formazione in diverse discipline dello sviluppo umano. Tiene conferenze a gruppi in Messico e in tutta l\'America Latina e accompagna le persone nel loro processo di autoconoscenza.',
+    laura_p2:'Nelle sue conferenze lavora con la motivazione e l\'introspezione: aiuta ciascuno a trovare il proprio «io», a guardare in faccia quei «demoni» che tutti portiamo e a correggere, attraverso il coaching, ciò che pesa nella vita. Accompagna con vicinanza e senza giudizio, perché riconoscerti è il primo passo per cambiare.',
+    laura_sign:'«Conoscerti è l\'inizio di ogni cambiamento.»',
     proc_eyebrow:'Il cammino',
-    proc_title:'Un solo viaggio verso l’interno',
+    proc_title:'Un solo viaggio verso l\'interno',
     proc_lead:'Conoscersi e Riconoscersi non sono due cose diverse: sono due momenti dello stesso processo. Prima scopri chi sei; poi ti riconosci e scegli da lì.',
     proc_a_title:'Conosci te stesso',
     proc_a_body:'Guardare in faccia chi sei oggi: le tue storie, le tue paure, il tuo modo di stare al mondo. Il punto di partenza onesto.',
@@ -642,14 +671,14 @@ const translations = {
     proc_b_body:'Sapersi e accettarsi. Riconoscere il proprio valore e la propria visione di vita per iniziare a vivere da lì, con chiarezza e direzione.',
     char_eyebrow:'Conferenze e programmi',
     char_title:'Spazi per lavorare su di te',
-    char_lead:'Laura facilita conferenze e programmi per persone, gruppi e aziende. Qui ti raccontiamo cosa sono; il dettaglio e l’iscrizione sono in ogni pagina.',
+    char_lead:'Laura facilita conferenze e programmi per persone, gruppi e aziende. Qui ti raccontiamo cosa sono; il dettaglio e l\'iscrizione sono in ogni pagina.',
     char_c1_tag:'Comunità', char_c1_title:'3 + 4 = 7',
     char_c1_body:'Partecipazione in obbligazioni numismatiche per la comunità di Conócete y Reconócete, pagabile alla redenzione. La vendita è chiusa; questa pagina è solo informativa, per i partecipanti.',
     char_c1_link:'Maggiori informazioni',
     char_c2_tag:'Seminario', char_c2_title:'Seminario per le famiglie',
-    char_c2_body:'Un seminario di accompagnamento per le famiglie, dall’autoconoscenza. Presto i dettagli.',
+    char_c2_body:'Un seminario di accompagnamento per le famiglie, dall\'autoconoscenza. Presto i dettagli.',
     char_c2_link:'Prossimamente',
-    char_note:'L’iscrizione e il pagamento avvengono nella pagina di ogni programma, fuori da questo spazio informativo.',
+    char_note:'L\'iscrizione e il pagamento avvengono nella pagina di ogni programma, fuori da questo spazio informativo.',
     cem_eyebrow:'Un progetto a parte di Laura', cem_title:'Cemanáhuac',
     cem_text:'Cemanáhuac è un progetto indipendente dedicato ai popoli originari delle Americhe: una mappa interattiva per esplorare i loro territori e riconoscere la loro presenza nel continente. Vive qui come sezione propria, con il suo cammino.',
     cem_cta:'Esplora la mappa',
@@ -668,8 +697,8 @@ const translations = {
     laura_title:'Laura González Hernández',
     laura_photo_ph:'Fotografia Laurei · în curând',
     laura_p1:'Laura este coach certificat, cu formare în diverse discipline ale dezvoltării umane. Susține conferințe pentru grupuri în Mexic și în toată America Latină și însoțește oamenii în procesul lor de autocunoaștere.',
-    laura_p2:'În conferințele sale lucrează cu motivația și introspecția: ajută pe fiecare să își găsească propriul „eu”, să privească în față „demonii” pe care îi purtăm cu toții și să corecteze, prin coaching, ceea ce apasă în viață. Însoțește cu apropiere și fără judecată, pentru că a te recunoaște este primul pas spre schimbare.',
-    laura_sign:'„A te cunoaște este începutul oricărei schimbări.”',
+    laura_p2:'În conferințele sale lucrează cu motivația și introspecția: ajută pe fiecare să își găsească propriul „eu", să privească în față „demonii" pe care îi purtăm cu toții și să corecteze, prin coaching, ceea ce apasă în viață. Însoțește cu apropiere și fără judecată, pentru că a te recunoaște este primul pas spre schimbare.',
+    laura_sign:'„A te cunoaște este începutul oricărei schimbări."',
     proc_eyebrow:'Drumul',
     proc_title:'O singură călătorie spre interior',
     proc_lead:'A te cunoaște și a te recunoaște nu sunt două lucruri diferite: sunt două momente ale aceluiași proces. Mai întâi descoperi cine ești; apoi te recunoști și alegi de acolo.',
