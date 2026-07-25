@@ -11,6 +11,13 @@
   <meta name="author" content="Laura González Hernández">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://conoceteyreconocete.com/">
+  <link rel="alternate" hreflang="es" href="https://conoceteyreconocete.com/?lang=es">
+  <link rel="alternate" hreflang="en" href="https://conoceteyreconocete.com/?lang=en">
+  <link rel="alternate" hreflang="it" href="https://conoceteyreconocete.com/?lang=it">
+  <link rel="alternate" hreflang="ro" href="https://conoceteyreconocete.com/?lang=ro">
+  <link rel="alternate" hreflang="hi" href="https://conoceteyreconocete.com/?lang=hi">
+  <link rel="alternate" hreflang="pt" href="https://conoceteyreconocete.com/?lang=pt">
+  <link rel="alternate" hreflang="x-default" href="https://conoceteyreconocete.com/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -214,14 +221,6 @@
     background-image:radial-gradient(rgba(46,42,38,0.025) 1px, transparent 1px);
     background-size:4px 4px;
   }
-  .hero-portrait{
-    position:absolute; right:0; bottom:0; height:86%; width:auto; z-index:0;
-    opacity:.5; pointer-events:none; user-select:none;
-    -webkit-mask-image:linear-gradient(to left,#000 30%,transparent 88%);
-    mask-image:linear-gradient(to left,#000 30%,transparent 88%);
-  }
-  .hero-portrait img{ height:100%; width:auto; display:block; filter:saturate(.9); }
-  @media (max-width:1100px){ .hero-portrait{ display:none; } }
   .hero-inner{ position:relative; z-index:1; max-width:780px; margin:0 auto; }
   .hero-logo{ height:118px; width:auto; margin:0 auto 1.8rem; display:block; }
   .hero-title{
@@ -244,13 +243,13 @@
   ============================================================ */
   #laura{ background:var(--hueso); }
   .laura-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:4rem; align-items:center; }
-  .laura-photo{
+  .laura-visual{
     position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/5;
     background:linear-gradient(160deg,var(--arena),var(--arena-2));
     box-shadow:0 20px 50px rgba(46,42,38,0.10); border:1px solid var(--linea);
   }
-  .laura-photo picture{ position:absolute; inset:0; display:block; }
-  .laura-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 14%; display:block; }
+  .laura-visual{ overflow:hidden; }
+  .laura-visual svg{ width:100%; height:100%; display:block; }
   .laura-body p{ margin-bottom:1.1rem; color:var(--tinta-2); }
   .laura-body p:first-of-type{ font-size:1.12rem; color:var(--tinta); }
   .laura-sign{ font-family:var(--serif); font-style:italic; font-size:1.25rem; color:var(--oro); margin-top:1.4rem; }
@@ -347,7 +346,7 @@
   ============================================================ */
   @media (max-width:900px){
     .laura-grid{ grid-template-columns:1fr; gap:2.4rem; }
-    .laura-photo{ max-width:380px; margin:0 auto; width:100%; }
+    .laura-visual{ max-width:380px; margin:0 auto; width:100%; }
     .cem-grid{ grid-template-columns:1fr; gap:2.4rem; }
     .cem-visual{ max-width:300px; margin:0 auto; width:100%; order:-1; }
   }
@@ -420,12 +419,6 @@
 
 <!-- ================= HERO ================= -->
 <section id="hero">
-  <div class="hero-portrait" aria-hidden="true">
-    <picture>
-      <source srcset="./laura-hero.webp" type="image/webp">
-      <img src="./laura-hero.png" alt="">
-    </picture>
-  </div>
   <div class="hero-inner">
     <img class="hero-logo" src="./Loco%20CYR%20transparente.png" alt="Conócete y Reconócete">
     <h1 class="hero-title" data-i18n-html="hero_title"></h1>
@@ -446,11 +439,13 @@
 <section id="laura">
   <div class="container">
     <div class="laura-grid">
-      <div class="laura-photo reveal">
-        <picture>
-          <source srcset="./laura-hero.webp" type="image/webp">
-          <img src="./laura-hero.png" alt="Laura González Hernández" loading="lazy">
-        </picture>
+      <div class="laura-visual reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="presentation" focusable="false">
+          <ellipse cx="165" cy="215" rx="118" ry="132" fill="var(--salvia)" opacity=".26"/>
+          <ellipse cx="248" cy="300" rx="102" ry="112" fill="var(--oro)" opacity=".20"/>
+          <circle cx="200" cy="258" r="76" fill="none" stroke="var(--salvia-d)" stroke-width="1.2" opacity=".45"/>
+          <circle cx="200" cy="258" r="132" fill="none" stroke="var(--oro)" stroke-width="1.2" opacity=".32"/>
+        </svg>
       </div>
       <div class="laura-body reveal">
         <span class="eyebrow" data-i18n="laura_eyebrow"></span>
@@ -569,7 +564,6 @@ const translations = {
 
     laura_eyebrow:'Quién te acompaña',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'Foto de Laura · pendiente',
     laura_p1:'Laura es coach certificada, con formación en diversas disciplinas del desarrollo humano. Da charlas a grupos en México y toda América Latina, y acompaña a personas en su proceso de autoconocimiento.',
     laura_p2:'En sus charlas trabaja la motivación y la introspección: ayuda a cada quien a encontrar su propio «yo», a mirar de frente esos «demonios» que todos cargamos y a corregir, desde el coaching, lo que pesa en la vida. Acompaña de cerca y sin juicio, porque reconocerte es el primer paso para cambiar.',
     laura_sign:'«Conocerte es el principio de todo cambio.»',
@@ -602,7 +596,10 @@ const translations = {
 
     footer_tagline:'Un espacio seguro para conocerte, reconocerte y crecer.',
     footer_note:'La información publicada es exclusiva para nuestros participantes.',
-    footer_copy:'© 2026 Conócete y Reconócete. Todos los derechos reservados.'
+    footer_copy:'© 2026 Conócete y Reconócete. Todos los derechos reservados.',
+
+    meta_title:'Conócete y Reconócete — Conócete y Reconócete',
+    meta_desc:'Un espacio seguro para tu transformación'
   },
   en: {
     nav_home:'Home', nav_laura:'Laura', nav_charlas:'Talks', nav_cemanahuac:'Cemanáhuac',
@@ -614,7 +611,6 @@ const translations = {
 
     laura_eyebrow:'Who guides you',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'Laura\'s photo · pending',
     laura_p1:'Laura is a certified coach trained in several human-development disciplines. She gives talks to groups across Mexico and Latin America and guides people through their self-knowledge process.',
     laura_p2:'In her talks she works with motivation and introspection: she helps each person find their own "self", face the "demons" we all carry, and correct — through coaching — what weighs on their life. She guides closely and without judgment, because recognizing yourself is the first step to change.',
     laura_sign:'"Knowing yourself is where every change begins."',
@@ -647,7 +643,10 @@ const translations = {
 
     footer_tagline:'A safe space to know, recognize and grow.',
     footer_note:'Published information is exclusive to our participants.',
-    footer_copy:'© 2026 Conócete y Reconócete. All rights reserved.'
+    footer_copy:'© 2026 Conócete y Reconócete. All rights reserved.',
+
+    meta_title:'Know & Recognize Yourself — Conócete y Reconócete',
+    meta_desc:'A safe space for your transformation'
   },
   it: {
     nav_home:'Inizio', nav_laura:'Laura', nav_charlas:'Conferenze', nav_cemanahuac:'Cemanáhuac',
@@ -658,7 +657,6 @@ const translations = {
     scroll_hint:'Scorri',
     laura_eyebrow:'Chi ti accompagna',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'Foto di Laura · in arrivo',
     laura_p1:'Laura è coach certificata, con formazione in diverse discipline dello sviluppo umano. Tiene conferenze a gruppi in Messico e in tutta l\'America Latina e accompagna le persone nel loro processo di autoconoscenza.',
     laura_p2:'Nelle sue conferenze lavora con la motivazione e l\'introspezione: aiuta ciascuno a trovare il proprio «io», a guardare in faccia quei «demoni» che tutti portiamo e a correggere, attraverso il coaching, ciò che pesa nella vita. Accompagna con vicinanza e senza giudizio, perché riconoscerti è il primo passo per cambiare.',
     laura_sign:'«Conoscerti è l\'inizio di ogni cambiamento.»',
@@ -684,7 +682,10 @@ const translations = {
     cem_cta:'Esplora la mappa',
     footer_tagline:'Uno spazio sicuro per conoscerti, riconoscerti e crescere.',
     footer_note:'Le informazioni pubblicate sono riservate ai nostri partecipanti.',
-    footer_copy:'© 2026 Conócete y Reconócete. Tutti i diritti riservati.'
+    footer_copy:'© 2026 Conócete y Reconócete. Tutti i diritti riservati.',
+
+    meta_title:'Conosci e Riconosci te stesso — Conócete y Reconócete',
+    meta_desc:'Uno spazio sicuro per la tua trasformazione'
   },
   ro: {
     nav_home:'Acasă', nav_laura:'Laura', nav_charlas:'Conferințe', nav_cemanahuac:'Cemanáhuac',
@@ -695,7 +696,6 @@ const translations = {
     scroll_hint:'Derulează',
     laura_eyebrow:'Cine te însoțește',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'Fotografia Laurei · în curând',
     laura_p1:'Laura este coach certificat, cu formare în diverse discipline ale dezvoltării umane. Susține conferințe pentru grupuri în Mexic și în toată America Latină și însoțește oamenii în procesul lor de autocunoaștere.',
     laura_p2:'În conferințele sale lucrează cu motivația și introspecția: ajută pe fiecare să își găsească propriul „eu", să privească în față „demonii" pe care îi purtăm cu toții și să corecteze, prin coaching, ceea ce apasă în viață. Însoțește cu apropiere și fără judecată, pentru că a te recunoaște este primul pas spre schimbare.',
     laura_sign:'„A te cunoaște este începutul oricărei schimbări."',
@@ -721,7 +721,10 @@ const translations = {
     cem_cta:'Explorează harta',
     footer_tagline:'Un spațiu sigur pentru a te cunoaște, a te recunoaște și a crește.',
     footer_note:'Informațiile publicate sunt exclusive participanților noștri.',
-    footer_copy:'© 2026 Conócete y Reconócete. Toate drepturile rezervate.'
+    footer_copy:'© 2026 Conócete y Reconócete. Toate drepturile rezervate.',
+
+    meta_title:'Cunoaște-te și Recunoaște-te — Conócete y Reconócete',
+    meta_desc:'Un spațiu sigur pentru transformarea ta'
   },
   hi: {
     nav_home:'मुख्य पृष्ठ', nav_laura:'लौरा', nav_charlas:'वार्ताएँ', nav_cemanahuac:'सेमानाहुआक',
@@ -732,7 +735,6 @@ const translations = {
     scroll_hint:'स्क्रॉल करें',
     laura_eyebrow:'कौन आपका साथ देता है',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'लौरा की तस्वीर · शीघ्र',
     laura_p1:'लौरा एक प्रमाणित कोच हैं, जिन्हें मानव विकास की विभिन्न विधाओं में प्रशिक्षण प्राप्त है। वे मेक्सिको और पूरे लैटिन अमेरिका में समूहों को वार्ताएँ देती हैं और लोगों को आत्म-ज्ञान की यात्रा में साथ देती हैं।',
     laura_p2:'अपनी वार्ताओं में वे प्रेरणा और आत्मनिरीक्षण पर काम करती हैं: हर व्यक्ति को उसका अपना «मैं» खोजने, उन «राक्षसों» का सामना करने जिन्हें हम सब ढोते हैं, और कोचिंग के माध्यम से जीवन के भारी पहलुओं को सुधारने में मदद करती हैं। वे निकटता और बिना किसी निर्णय के साथ देती हैं, क्योंकि स्वयं को पहचानना बदलाव का पहला कदम है।',
     laura_sign:'«स्वयं को जानना ही हर बदलाव की शुरुआत है।»',
@@ -758,7 +760,10 @@ const translations = {
     cem_cta:'मानचित्र देखें',
     footer_tagline:'स्वयं को जानने, पहचानने और बढ़ने के लिए एक सुरक्षित स्थान।',
     footer_note:'प्रकाशित जानकारी केवल हमारे प्रतिभागियों के लिए है।',
-    footer_copy:'© 2026 Conócete y Reconócete. सर्वाधिकार सुरक्षित।'
+    footer_copy:'© 2026 Conócete y Reconócete. सर्वाधिकार सुरक्षित।',
+
+    meta_title:'स्वयं को जानें और पहचानें — Conócete y Reconócete',
+    meta_desc:'आपके रूपांतरण के लिए एक सुरक्षित स्थान'
   },
   pt: {
     nav_home:'Início', nav_laura:'Laura', nav_charlas:'Palestras', nav_cemanahuac:'Cemanáhuac',
@@ -769,7 +774,6 @@ const translations = {
     scroll_hint:'Role',
     laura_eyebrow:'Quem acompanha você',
     laura_title:'Laura González Hernández',
-    laura_photo_ph:'Foto da Laura · em breve',
     laura_p1:'Laura é coach certificada, com formação em diversas disciplinas do desenvolvimento humano. Dá palestras a grupos no México e em toda a América Latina e acompanha pessoas em seu processo de autoconhecimento.',
     laura_p2:'Em suas palestras trabalha a motivação e a introspecção: ajuda cada pessoa a encontrar o seu próprio «eu», a encarar os «demônios» que todos carregamos e a corrigir, pelo coaching, o que pesa na vida. Acompanha com proximidade e sem julgamento, porque reconhecer-se é o primeiro passo para mudar.',
     laura_sign:'«Conhecer-se é o princípio de toda mudança.»',
@@ -795,7 +799,10 @@ const translations = {
     cem_cta:'Explorar o mapa',
     footer_tagline:'Um espaço seguro para conhecer-se, reconhecer-se e crescer.',
     footer_note:'As informações publicadas são exclusivas para nossos participantes.',
-    footer_copy:'© 2026 Conócete y Reconócete. Todos os direitos reservados.'
+    footer_copy:'© 2026 Conócete y Reconócete. Todos os direitos reservados.',
+
+    meta_title:'Conheça e Reconheça-se — Conócete y Reconócete',
+    meta_desc:'Um espaço seguro para a sua transformação'
   }
 };
 
@@ -808,6 +815,22 @@ const languages = [
   { code:'pt', label:'PT — Português' }
 ];
 
+function detectLanguage(){
+  try{
+    const urlLang = new URL(window.location.href).searchParams.get('lang');
+    if(urlLang && translations[urlLang]) return urlLang;
+  }catch(e){}
+  try{
+    const stored = localStorage.getItem('cyr_lang');
+    if(stored && translations[stored]) return stored;
+  }catch(e){}
+  try{
+    const nav = (navigator.language || '').slice(0,2);
+    if(nav && translations[nav]) return nav;
+  }catch(e){}
+  return 'es';
+}
+
 function setLanguage(lang){
   const t = translations[lang]; if(!t) return;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -819,6 +842,16 @@ function setLanguage(lang){
   document.documentElement.lang = lang;
   document.querySelectorAll('.lang-select').forEach(s=> s.value = lang);
   try{ localStorage.setItem('cyr_lang', lang); }catch(e){}
+  if(t.meta_title) document.title = t.meta_title;
+  if(t.meta_desc){
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', t.meta_desc);
+  }
+  try{
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    history.replaceState(null, '', url.toString());
+  }catch(e){}
 }
 
 function buildLangSelectors(){
@@ -863,10 +896,7 @@ mn.querySelectorAll('.nav-link').forEach(a=> a.addEventListener('click', ()=>{ m
 
 document.addEventListener('DOMContentLoaded', ()=>{
   buildLangSelectors();
-  let lang = 'es';
-  try{ lang = localStorage.getItem('cyr_lang') || 'es'; }catch(e){}
-  if(!translations[lang]) lang = 'es';
-  setLanguage(lang);
+  setLanguage(detectLanguage());
   document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
